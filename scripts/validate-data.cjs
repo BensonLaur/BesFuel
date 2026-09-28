@@ -99,6 +99,24 @@ function validateSnapshot(data, hostOverrides = {}) {
         }
       }
     }
+    if (region.historyGaps !== undefined) {
+      assert.ok(Array.isArray(region.historyGaps), `${key}: history gaps`);
+      const first = region.grades["92"].history[0]?.date;
+      const last = region.grades["92"].history.at(-1)?.date;
+      let previous = "";
+      for (const gap of region.historyGaps) {
+        assert.ok(validDate(gap.date) && gap.date > previous &&
+          gap.date > first && gap.date < last &&
+          isOfficialUrl(gap.sourceUrl, hosts) &&
+          typeof gap.reason === "string" && gap.reason.trim(),
+        `${key}: audited history gap`);
+        for (const grade of ["92", "95", "diesel"]) {
+          assert.ok(!region.grades[grade].history.some(point => point.date === gap.date),
+            `${key}/${grade}: gap cannot also be a price point`);
+        }
+        previous = gap.date;
+      }
+    }
     if (key === "guangdong") {
       assert.equal(region.name, "广东", "Guangdong display name");
       assert.match(region.source.url, officialNotice, "Guangdong current official source");

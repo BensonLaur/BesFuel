@@ -143,6 +143,7 @@
     const history = (selectedGrade()?.history || [])
       .filter(item => /^\d{4}-\d{2}-\d{2}$/.test(item.date) && Number.isFinite(item.price) && item.price >= 0)
       .sort((a, b) => a.date.localeCompare(b.date));
+    const historyGaps = selectedRegion().historyGaps || [];
     hideHistoryPoint = () => {};
     ui.chart.replaceChildren();
     ui.historyCount.textContent = `${history.length} 条已核实记录`;
@@ -177,7 +178,11 @@
     svg.append(guide);
     if (history.length > 1) {
       let path = `M ${x(0)} ${y(history[0].price)}`;
-      for (let i = 1; i < history.length; i++) path += ` H ${x(i)} V ${y(history[i].price)}`;
+      for (let i = 1; i < history.length; i++) {
+        // Omitted official adjustments must not appear as a flat price interval.
+        const hasGap = historyGaps.some(gap => gap.date > history[i - 1].date && gap.date < history[i].date);
+        path += hasGap ? ` M ${x(i)} ${y(history[i].price)}` : ` H ${x(i)} V ${y(history[i].price)}`;
+      }
       svg.append(svgElement("path", { d: path, class: "chart-path" }));
     }
     const points = history.map((item, index) => svgElement("circle", { cx: x(index), cy: y(item.price), r: index === history.length - 1 ? 5 : 3.5, class: "chart-point" }));
@@ -238,11 +243,12 @@
       hitLayer.append(hit);
     });
     ui.chart.append(svg, hitLayer, tooltip);
-    ui.chart.setAttribute("aria-label", `${gradeNames[ui.grade.value]}，从 ${history[0].date} 到 ${last.date}，共 ${history.length} 条价格记录；最新 ${last.price.toFixed(2)} 元每升`);
+    ui.chart.setAttribute("aria-label", `${gradeNames[ui.grade.value]}，从 ${history[0].date} 到 ${last.date}，共 ${history.length} 条价格记录；最新 ${last.price.toFixed(2)} 元每升${historyGaps.length ? `；其中 ${historyGaps.length} 处历史缺口` : ""}`);
     ui.historyRange.textContent = history.length === 1 ? history[0].date : `${history[0].date} 至 ${last.date}`;
     ui.historyNote.textContent = history.length === 1
       ? "轻点或聚焦节点可查看日期和价格；至少两次调价记录才能形成趋势。"
-      : "浅色横虚线标出最新价；悬停、轻点或聚焦节点可查看调价日期和价格。";
+      : "浅色横虚线标出最新价；悬停、轻点或聚焦节点可查看调价日期和价格。" +
+        (historyGaps.length ? ` 历史缺口：${historyGaps.map(gap => gap.date).join("、")} 缺完整价格，阶梯线在这些日期断开。` : "");
   }
 
   function refresh(preserveTripPrice = false) {

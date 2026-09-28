@@ -83,3 +83,12 @@ test("manual imports reject tonne-only prices and attachments outside the offici
   guizhou.notices[0].dieselImageUrl = "https://example.com/diesel.png";
   assert.throws(() => importVerified(snapshot, guizhou), /official dieselImageUrl/);
 });
+
+test("audited missing adjustments are retained and cannot point outside the official host", () => {
+  const record = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "data", "verified", "shaanxi-xian.json"), "utf8"));
+  const imported = importVerified(snapshot, record);
+  assert.deepEqual(imported.regions[record.id].historyGaps.map(gap => gap.date),
+    ["2026-05-22", "2026-08-15"]);
+  record.historyGaps[0].url = "https://example.com/fake";
+  assert.throws(() => importVerified(snapshot, record), /audited history gap/);
+});

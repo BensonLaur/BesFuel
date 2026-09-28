@@ -1,0 +1,278 @@
+{
+  "id": "shaanxi-xian",
+  "name": "陕西·西安市区",
+  "sourceName": "陕西省发展和改革委员会",
+  "priceScope": "汽油采用陕西中北部价区（西安市场）的最高零售价；0 号柴油仅采用西安市区价，省内其他市场柴油价不同。单位：元/升。",
+  "allowedHostnames": [
+    "sndrc.shaanxi.gov.cn"
+  ],
+  "unit": "元/升",
+  "checkedAt": "2026-09-28",
+  "historyGaps": [
+    {
+      "publishedDate": "2026-05-21",
+      "url": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202605/t20260521_3640325.html",
+      "reason": "官网价格处只找到 92 号汽油和 0 号柴油价，未找到同日 95 号价格表。"
+    },
+    {
+      "publishedDate": "2026-08-14",
+      "url": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202608/t20260814_3666736.html",
+      "reason": "官网价格处只找到 92 号汽油和 0 号柴油价，未找到同日 95 号价格表。"
+    }
+  ],
+  "notices": [
+    {
+      "publishedDate": "2025-08-26",
+      "effectiveDate": "2025-08-27",
+      "url": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202508/t20250826_3559101.html",
+      "imageUrl": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202508/W020250826638628505245_ORIGIN.png",
+      "prices": {
+        "92": 7,
+        "95": 7.4,
+        "diesel": 6.66
+      }
+    },
+    {
+      "publishedDate": "2025-10-13",
+      "effectiveDate": "2025-10-14",
+      "url": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202510/t20251013_3574782.html",
+      "imageUrl": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202510/W020251013623526287227.png",
+      "prices": {
+        "92": 6.94,
+        "95": 7.34,
+        "diesel": 6.6
+      }
+    },
+    {
+      "publishedDate": "2025-10-27",
+      "effectiveDate": "2025-10-28",
+      "url": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202510/t20251027_3578856.html",
+      "imageUrl": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202510/W020251027643045987003_ORIGIN.png",
+      "prices": {
+        "92": 6.73,
+        "95": 7.11,
+        "diesel": 6.38
+      }
+    },
+    {
+      "publishedDate": "2025-11-10",
+      "effectiveDate": "2025-11-11",
+      "url": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202511/t20251110_3583570.html",
+      "imageUrl": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202511/W020251110635509301367_ORIGIN.png",
+      "prices": {
+        "92": 6.83,
+        "95": 7.22,
+        "diesel": 6.48
+      }
+    },
+    {
+      "publishedDate": "2025-11-24",
+      "effectiveDate": "2025-11-25",
+      "url": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202511/t20251124_3588016.html",
+      "imageUrl": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202511/W020251124642393531849_ORIGIN.png",
+      "prices": {
+        "92": 6.78,
+        "95": 7.16,
+        "diesel": 6.43
+      }
+    },
+    {
+      "publishedDate": "2025-12-08",
+      "effectiveDate": "2025-12-09",
+      "url": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202512/t20251208_3593922.html",
+      "imageUrl": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202512/W020251208656108494034_ORIGIN.png",
+      "prices": {
+        "92": 6.73,
+        "95": 7.11,
+        "diesel": 6.38
+      }
+    },
+    {
+      "publishedDate": "2025-12-22",
+      "effectiveDate": "2025-12-23",
+      "url": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202512/t20251222_3598338.html",
+      "imageUrl": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202512/W020251222625148622107.png",
+      "prices": {
+        "92": 6.6,
+        "95": 6.97,
+        "diesel": 6.24
+      }
+    },
+    {
+      "publishedDate": "2026-01-20",
+      "effectiveDate": "2026-01-21",
+      "url": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202601/t20260120_3606435.html",
+      "imageUrl": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202601/W020260120634589201569_ORIGIN.png",
+      "prices": {
+        "92": 6.67,
+        "95": 7.04,
+        "diesel": 6.31
+      }
+    },
+    {
+      "publishedDate": "2026-02-03",
+      "effectiveDate": "2026-02-04",
+      "url": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202602/t20260203_3610511.html",
+      "imageUrl": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202602/W020260203636588082055.png",
+      "prices": {
+        "92": 6.83,
+        "95": 7.22,
+        "diesel": 6.48
+      }
+    },
+    {
+      "publishedDate": "2026-02-24",
+      "effectiveDate": "2026-02-25",
+      "url": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202602/t20260224_3614740.html",
+      "imageUrl": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202602/W020260224646200971663.png",
+      "prices": {
+        "92": 6.97,
+        "95": 7.36,
+        "diesel": 6.62
+      }
+    },
+    {
+      "publishedDate": "2026-03-09",
+      "effectiveDate": "2026-03-10",
+      "url": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202603/t20260309_3618788.html",
+      "imageUrl": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202603/W020260309635073940775.png",
+      "prices": {
+        "92": 7.52,
+        "95": 7.95,
+        "diesel": 7.19
+      }
+    },
+    {
+      "publishedDate": "2026-03-23",
+      "effectiveDate": "2026-03-24",
+      "url": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202603/t20260323_3623976.html",
+      "imageUrl": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202603/W020260323603812746813.jpg",
+      "prices": {
+        "92": 8.44,
+        "95": 8.92,
+        "diesel": 8.14
+      }
+    },
+    {
+      "publishedDate": "2026-04-07",
+      "effectiveDate": "2026-04-08",
+      "url": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202604/t20260407_3627865.html",
+      "imageUrl": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202604/W020260407587365578520.jpg",
+      "prices": {
+        "92": 8.78,
+        "95": 9.27,
+        "diesel": 8.48
+      }
+    },
+    {
+      "publishedDate": "2026-04-21",
+      "effectiveDate": "2026-04-22",
+      "url": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202604/t20260421_3631845.html",
+      "imageUrl": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202604/W020260421604441062542.png",
+      "prices": {
+        "92": 8.34,
+        "95": 8.81,
+        "diesel": 8.03
+      }
+    },
+    {
+      "publishedDate": "2026-05-08",
+      "effectiveDate": "2026-05-09",
+      "url": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202605/t20260508_3636350.html",
+      "imageUrl": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202605/W020260508593415229836.png",
+      "prices": {
+        "92": 8.59,
+        "95": 9.08,
+        "diesel": 8.29
+      }
+    },
+    {
+      "publishedDate": "2026-06-04",
+      "effectiveDate": "2026-06-05",
+      "url": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202606/t20260604_3644631.html",
+      "imageUrl": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202606/W020260604566920573431.png",
+      "prices": {
+        "92": 8.23,
+        "95": 8.7,
+        "diesel": 7.92
+      }
+    },
+    {
+      "publishedDate": "2026-06-18",
+      "effectiveDate": "2026-06-19",
+      "url": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202606/t20260618_3648869.html",
+      "imageUrl": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202606/W020260618580919387978_ORIGIN.png",
+      "prices": {
+        "92": 7.82,
+        "95": 8.27,
+        "diesel": 7.5
+      }
+    },
+    {
+      "publishedDate": "2026-07-03",
+      "effectiveDate": "2026-07-04",
+      "url": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202607/t20260703_3653572.html",
+      "imageUrl": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202607/W020260703652313883943_ORIGIN.png",
+      "prices": {
+        "92": 7.07,
+        "95": 7.47,
+        "diesel": 6.72
+      }
+    },
+    {
+      "publishedDate": "2026-07-17",
+      "effectiveDate": "2026-07-18",
+      "url": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202607/t20260717_3657928.html",
+      "imageUrl": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202607/W020260717589422487104.png",
+      "prices": {
+        "92": 7.31,
+        "95": 7.72,
+        "diesel": 6.97
+      }
+    },
+    {
+      "publishedDate": "2026-07-31",
+      "effectiveDate": "2026-08-01",
+      "url": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202607/t20260731_3662239.html",
+      "imageUrl": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202607/W020260731596746495122_ORIGIN.png",
+      "prices": {
+        "92": 7.85,
+        "95": 8.3,
+        "diesel": 7.53
+      }
+    },
+    {
+      "publishedDate": "2026-08-28",
+      "effectiveDate": "2026-08-29",
+      "url": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202608/t20260828_3671934.html",
+      "imageUrl": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202608/W020260828589114852880.png",
+      "prices": {
+        "92": 7.97,
+        "95": 8.42,
+        "diesel": 7.65
+      }
+    },
+    {
+      "publishedDate": "2026-09-11",
+      "effectiveDate": "2026-09-12",
+      "url": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202609/t20260911_3689503.html",
+      "imageUrl": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202609/W020260911627679042497.png",
+      "prices": {
+        "92": 8.17,
+        "95": 8.64,
+        "diesel": 7.86
+      }
+    },
+    {
+      "publishedDate": "2026-09-24",
+      "effectiveDate": "2026-09-25",
+      "url": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202609/t20260924_3698846.html",
+      "imageUrl": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202609/W020260924591852927577.png",
+      "prices": {
+        "92": 8.49,
+        "95": 8.97,
+        "diesel": 8.19
+      }
+    }
+  ]
+}

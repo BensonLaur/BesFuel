@@ -2,6 +2,7 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
 const { mergeRegion, officialUrl, writeSnapshot } = require("./update-regions.cjs");
+const { validateSnapshot } = require("./validate-data.cjs");
 
 const root = path.resolve(__dirname, "..");
 
@@ -37,7 +38,21 @@ function importVerified(data, record) {
   }
   const copy = structuredClone(data);
   mergeRegion(copy, record, record.notices, record.checkedAt);
-  return copy;
+  if (record.historyGaps) {
+    assert.ok(Array.isArray(record.historyGaps), `${record.id}: historyGaps`);
+    copy.regions[record.id].historyGaps = record.historyGaps.map(gap => {
+      assert.ok(/^\d{4}-\d{2}-\d{2}$/.test(gap.publishedDate) &&
+        officialUrl(gap.url, record.allowedHostnames) &&
+        typeof gap.reason === "string" && gap.reason.trim(),
+      `${record.id}: audited history gap`);
+      const day = new Date(`${gap.publishedDate}T00:00:00Z`);
+      assert.ok(!Number.isNaN(day.getTime()) && day.toISOString().slice(0, 10) === gap.publishedDate,
+        `${record.id}: history gap date`);
+      day.setUTCDate(day.getUTCDate() + 1);
+      return { date: day.toISOString().slice(0, 10), sourceUrl: gap.url, reason: gap.reason };
+    });
+  }
+  return validateSnapshot(copy);
 }
 
 if (require.main === module) {

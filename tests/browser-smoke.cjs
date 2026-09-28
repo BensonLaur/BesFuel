@@ -127,6 +127,12 @@ async function main() {
     assert.equal(await evaluate("document.querySelectorAll('.chart-point').length"), region.grades["92"].history.length);
     assert.equal(await evaluate("document.getElementById('next-window').textContent"), windowFresh ? national.nextAdjustment.dateLabel : national.nextAdjustment.date ? "待重新核实" : "待核实");
   }
+  if (snapshot.regions["shaanxi-xian"]) {
+    await setValue("region", "shaanxi-xian", "change");
+    assert.equal(await evaluate("(document.querySelector('.chart-path').getAttribute('d').match(/\\bM\\b/g) || []).length"), 3);
+    assert.ok(await evaluate("document.getElementById('history-note').textContent.includes('2026-05-22')"));
+    assert.ok(await evaluate("document.getElementById('history-note').textContent.includes('2026-08-15')"));
+  }
   if (snapshot.regions["heilongjiang-south"]) {
     await setValue("region", "heilongjiang-south", "change");
     await evaluate("window.BESFUEL_DATA.regions['heilongjiang-south'].priceValidThrough = '2000-01-01'; document.getElementById('region').dispatchEvent(new Event('change', { bubbles: true }))");
