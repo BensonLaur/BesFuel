@@ -63,6 +63,13 @@ async function main() {
   async function setValue(id, value, eventName) {
     await evaluate(`(() => { const element = document.getElementById(${JSON.stringify(id)}); element.value = ${JSON.stringify(value)}; element.dispatchEvent(new Event(${JSON.stringify(eventName)}, { bubbles: true })); })()`);
   }
+  async function waitForSupportImage() {
+    for (let attempt = 0; attempt < 50; attempt++) {
+      if (await evaluate("document.getElementById('support-image').naturalWidth > 0")) return;
+      await delay(100);
+    }
+    throw new Error("Support image did not load.");
+  }
 
   await send("Runtime.enable");
   await send("Page.enable");
@@ -94,6 +101,7 @@ async function main() {
   assert.ok(await evaluate("document.getElementById('sync-note').textContent.includes('本地模式')"));
   await evaluate("document.getElementById('open-support').focus(); document.getElementById('open-support').click()");
   assert.ok(await evaluate("document.getElementById('support-dialog').open"));
+  await waitForSupportImage();
   assert.ok(await evaluate("document.getElementById('support-image').naturalWidth > 0"));
   await evaluate("document.querySelector('[data-method=alipay]').click()");
   assert.ok(await evaluate("document.getElementById('support-image').src.endsWith('/resources/support/alipay.png')"));
@@ -180,6 +188,7 @@ async function main() {
     assert.equal(await evaluate("document.getElementById('region-label').textContent"), "广东");
     assert.ok(await evaluate("Number.isFinite(Number(document.getElementById('current-price').textContent))"));
     await evaluate("document.getElementById('open-support').click()");
+    await waitForSupportImage();
     assert.ok(await evaluate("document.getElementById('support-image').naturalWidth > 0"), "published original image must load");
     assert.ok(await evaluate("document.documentElement.scrollWidth <= innerWidth"), "published mobile viewport must fit");
   }
