@@ -148,12 +148,12 @@ if ($nextWindowDate) {
 }
 
 $jsonText = $data | ConvertTo-Json -Depth 30
-$jsText = "// Generated from data/prices.json by scripts/update-guangdong.ps1.`nwindow.BESFUEL_DATA = $jsonText;"
 $jsonTemporary = Join-Path $dataDirectory '.prices.json.tmp'
 $jsTemporary = Join-Path $dataDirectory '.prices.js.tmp'
 try {
     Write-CrlfUtf8 $jsonTemporary $jsonText
-    Write-CrlfUtf8 $jsTemporary $jsText
+    & node (Join-Path $PSScriptRoot 'format-snapshot.cjs') $jsonTemporary $jsTemporary
+    if ($LASTEXITCODE -ne 0) { throw '快照格式化失败，现有数据保持不变。' }
     & node (Join-Path $PSScriptRoot 'validate-data.cjs') $jsonTemporary $jsTemporary
     if ($LASTEXITCODE -ne 0) { throw '新快照验证失败，现有数据保持不变。' }
     Move-Item -LiteralPath $jsonTemporary -Destination $jsonPath -Force

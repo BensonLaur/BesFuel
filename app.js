@@ -8,7 +8,8 @@
   const ui = {
     region: $("region"), grade: $("grade"), regionLabel: $("region-label"), gradeLabel: $("grade-label"),
     price: $("current-price"), priceDetail: $("price-detail"), effective: $("effective-time"),
-    freshness: $("freshness"), source: $("price-source"), sourceNote: $("source-note"), syncNote: $("sync-note"),
+    freshness: $("freshness"), source: $("price-source"), conversionSource: $("conversion-source"),
+    sourceNote: $("source-note"), syncNote: $("sync-note"),
     nextWindow: $("next-window"), windowDetail: $("window-detail"),
     windowRuleSource: $("window-rule-source"), windowHolidaySource: $("window-holiday-source"),
     prediction: $("prediction-text"), predictionArrow: $("prediction-arrow"),
@@ -34,7 +35,18 @@
 
   function selectedRegion() { return data.regions[ui.region.value]; }
   function selectedGrade() { return selectedRegion()?.grades?.[ui.grade.value]; }
+  function chinaDate() {
+    const parts = Object.fromEntries(new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit"
+    }).formatToParts(new Date()).map(part => [part.type, part.value]));
+    return `${parts.year}-${parts.month}-${parts.day}`;
+  }
+  function priceExpired() {
+    const until = selectedRegion()?.priceValidThrough;
+    return Boolean(until && chinaDate() > until);
+  }
   function referencePrice() {
+    if (priceExpired()) return null;
     const price = selectedGrade()?.price;
     return typeof price === "number" && Number.isFinite(price) && price >= 0 ? price : null;
   }
@@ -48,31 +60,33 @@
   function showPrice() {
     const region = selectedRegion();
     const price = referencePrice();
+    const expired = priceExpired();
     ui.regionLabel.textContent = region.name;
     ui.gradeLabel.textContent = gradeNames[ui.grade.value];
     ui.price.textContent = price === null ? "—" : price.toFixed(2);
-    ui.effective.textContent = price === null ? "暂无已核实报价" : region.effectiveLabel;
+    ui.effective.textContent = expired ? "折算系数待复核" : price === null ? "暂无已核实报价" : region.effectiveLabel;
     ui.priceDetail.textContent = price === null
-      ? "这一油号暂无可核实的官方参考价，仍可在下方手动输入实际加油价。"
+      ? expired ? "本价区的季节折算系数已到期，请等待重新核价；仍可手动输入实际加油价。" :
+        "这一油号暂无可核实的官方参考价，仍可在下方手动输入实际加油价。"
       : region.priceScope;
     ui.source.href = region.source.url;
     ui.source.textContent = region.source.name + " ↗";
+    ui.conversionSource.hidden = !region.conversionSource;
+    if (region.conversionSource) ui.conversionSource.href = region.conversionSource.url;
     const checkedAt = region.checkedAt || data.checkedAt;
     ui.sourceNote.textContent = `${region.source.name}，数据核对日期：${checkedAt}。${region.priceScope}本站不会将历史快照称为实时价格。`;
 
     const age = snapshotAgeDays();
     ui.freshness.classList.toggle("stale", age === null || age > 3);
-    ui.freshness.textContent = price === null ? "待补充" : age === null || age > 3 ? "请核对价格" : `${checkedAt} 已核对`;
+    ui.freshness.textContent = expired ? "待复核" : price === null ? "待补充" :
+      age === null || age > 3 ? "请核对价格" : `${checkedAt} 已核对`;
   }
 
   function showAdjustment() {
     const national = data.nationalAdjustment || {};
     const windowData = national.nextAdjustment || {};
     const forecast = national.forecast || {};
-    const today = Object.fromEntries(new Intl.DateTimeFormat("en-GB", {
-      timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit"
-    }).formatToParts(new Date()).map(part => [part.type, part.value]));
-    const todayIso = `${today.year}-${today.month}-${today.day}`;
+    const todayIso = chinaDate();
     const windowReady = /^\d{4}-\d{2}-\d{2}$/.test(windowData.date || "") && windowData.date >= todayIso;
     ui.nextWindow.textContent = windowReady ? windowData.dateLabel : windowData.date ? "待重新核实" : "待核实";
     ui.windowDetail.textContent = windowReady
@@ -240,7 +254,11 @@
   function populateRegions() {
     const selected = ui.region.value;
     ui.region.replaceChildren();
-    Object.entries(data.regions).forEach(([key, region]) => ui.region.add(new Option(region.name, key)));
+    Object.entries(data.regions)
+      .sort(([leftKey, left], [rightKey, right]) =>
+        (leftKey === "guangdong" ? -1 : rightKey === "guangdong" ? 1 :
+          left.name.localeCompare(right.name, "zh-CN")))
+      .forEach(([key, region]) => ui.region.add(new Option(region.name, key)));
     if (data.regions[selected]) ui.region.value = selected;
   }
 

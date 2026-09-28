@@ -30,6 +30,15 @@ test("rejects missing official provenance and duplicate historical dates", () =>
   assert.throws(() => validateSnapshot(duplicate), /ordered unique dates/);
 });
 
+test("other regions also require their own official host for current and historical prices", () => {
+  const current = clone();
+  current.regions.hebei.source.url = "https://example.com/notice";
+  assert.throws(() => validateSnapshot(current), /hebei: current official source/);
+  const history = clone();
+  history.regions.hebei.grades["92"].history[0].sourceUrl = "https://example.com/notice";
+  assert.throws(() => validateSnapshot(history), /hebei\/92: official historical source/);
+});
+
 test("forecast and adjustment need their own dated sources", () => {
   const snapshot = clone();
   snapshot.nationalAdjustment.forecast.sourceUrl = "https://example.com/forecast";

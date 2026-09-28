@@ -6,13 +6,38 @@ const vm = require("node:vm");
 const root = path.resolve(__dirname, "..");
 const officialNotice = /^https:\/\/drc\.gd\.gov\.cn\/ywgg\/content\/post_\d+\.html$/;
 
+function officialHosts(key) {
+  if (key === "guangdong") return ["drc.gd.gov.cn"];
+  const sourceFile = path.join(__dirname, "sources", `${key}.cjs`);
+  if (fs.existsSync(sourceFile)) {
+    const source = require(sourceFile);
+    return source.id === key ? source.allowedHostnames : [];
+  }
+  const verifiedFile = path.join(root, "data", "verified", `${key}.json`);
+  if (fs.existsSync(verifiedFile)) {
+    const verified = JSON.parse(fs.readFileSync(verifiedFile, "utf8"));
+    return verified.id === key ? verified.allowedHostnames : [];
+  }
+  return [];
+}
+
+function isOfficialUrl(value, hosts) {
+  try {
+    const url = new URL(value);
+    return ["http:", "https:"].includes(url.protocol) && hosts.includes(url.hostname) &&
+      !url.username && !url.password;
+  } catch (_) {
+    return false;
+  }
+}
+
 function validDate(value) {
   if (typeof value !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
   const date = new Date(`${value}T00:00:00Z`);
   return !Number.isNaN(date.getTime()) && date.toISOString().slice(0, 10) === value;
 }
 
-function validateSnapshot(data) {
+function validateSnapshot(data, hostOverrides = {}) {
   assert.equal(data.version, 2, "snapshot version");
   assert.ok(validDate(data.checkedAt), "snapshot checkedAt");
   const national = data.nationalAdjustment;
@@ -39,11 +64,20 @@ function validateSnapshot(data) {
   }
   assert.ok(data.regions && typeof data.regions === "object" && Object.keys(data.regions).length, "regions");
   for (const [key, region] of Object.entries(data.regions)) {
+    const hosts = hostOverrides[key] || officialHosts(key);
+    assert.ok(Array.isArray(hosts) && hosts.length, `${key}: official host list`);
     assert.ok(!Object.hasOwn(region, "nextAdjustment") && !Object.hasOwn(region, "forecast"), `${key}: shared adjustment must not be duplicated`);
     assert.ok(region.name && region.priceScope && region.effectiveLabel, `${key}: label and scope`);
     assert.ok(validDate(region.checkedAt), `${key}: checkedAt`);
     assert.ok(region.checkedAt <= data.checkedAt, `${key}: region checkedAt cannot exceed snapshot date`);
-    assert.ok(region.source?.name && /^https:\/\//.test(region.source.url), `${key}: source`);
+    if (region.priceValidThrough) assert.ok(validDate(region.priceValidThrough), `${key}: price validity`);
+    if (region.conversionSource) {
+      assert.ok(region.priceValidThrough === region.conversionSource.validThrough &&
+        isOfficialUrl(region.conversionSource.url, hosts) &&
+        (!region.conversionSource.ruleUrl || isOfficialUrl(region.conversionSource.ruleUrl, hosts)),
+      `${key}: official conversion source`);
+    }
+    assert.ok(region.source?.name && isOfficialUrl(region.source.url, hosts), `${key}: current official source`);
     assert.ok(region.grades && typeof region.grades === "object", `${key}: grades`);
     for (const grade of ["92", "95", "98", "diesel"]) {
       const entry = region.grades[grade];
@@ -53,13 +87,16 @@ function validateSnapshot(data) {
       for (const point of entry.history) {
         assert.ok(validDate(point.date) && point.date > previous, `${key}/${grade}: ordered unique dates`);
         assert.ok(Number.isFinite(point.price) && point.price >= 1 && point.price <= 30, `${key}/${grade}: historical price`);
-        assert.ok(/^https:\/\//.test(point.sourceUrl), `${key}/${grade}: historical source`);
+        assert.ok(isOfficialUrl(point.sourceUrl, hosts), `${key}/${grade}: official historical source`);
         if (key === "guangdong") assert.match(point.sourceUrl, officialNotice, `${key}/${grade}: official history`);
         previous = point.date;
       }
       if (entry.price !== null) {
         assert.ok(entry.history.length, `${key}/${grade}: priced grade needs history`);
         assert.equal(entry.price, entry.history.at(-1).price, `${key}/${grade}: latest history price`);
+        if (region.priceValidThrough) {
+          assert.ok(entry.history.at(-1).date <= region.priceValidThrough, `${key}/${grade}: price validity`);
+        }
       }
     }
     if (key === "guangdong") {

@@ -119,6 +119,23 @@ async function main() {
   assert.ok(await evaluate(`document.querySelector('.chart-tooltip').textContent.includes(${JSON.stringify(guangdong.grades["92"].history[6].date)})`));
   await evaluate("document.body.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true, pointerType: 'touch' }))");
   assert.ok(await evaluate("document.querySelector('.chart-tooltip').hidden"));
+  for (const [key, region] of Object.entries(snapshot.regions)) {
+    if (key === "guangdong") continue;
+    await setValue("region", key, "change");
+    assert.equal(await evaluate("document.getElementById('region-label').textContent"), region.name);
+    assert.equal(await evaluate("document.getElementById('current-price').textContent"), region.grades["92"].price.toFixed(2));
+    assert.equal(await evaluate("document.querySelectorAll('.chart-point').length"), region.grades["92"].history.length);
+    assert.equal(await evaluate("document.getElementById('next-window').textContent"), windowFresh ? national.nextAdjustment.dateLabel : national.nextAdjustment.date ? "待重新核实" : "待核实");
+  }
+  if (snapshot.regions["heilongjiang-south"]) {
+    await setValue("region", "heilongjiang-south", "change");
+    await evaluate("window.BESFUEL_DATA.regions['heilongjiang-south'].priceValidThrough = '2000-01-01'; document.getElementById('region').dispatchEvent(new Event('change', { bubbles: true }))");
+    assert.equal(await evaluate("document.getElementById('current-price').textContent"), "—");
+    assert.equal(await evaluate("document.getElementById('freshness').textContent"), "待复核");
+    assert.equal(await evaluate("document.getElementById('trip-price').value"), "");
+    assert.ok(await evaluate("document.getElementById('price-detail').textContent.includes('季节折算系数已到期')"));
+  }
+  await setValue("region", "guangdong", "change");
   await setValue("distance", "9", "input");
   assert.equal(await evaluate("document.getElementById('per-km').textContent"), calculate("9", "9", String(guangdong.grades["92"].price)).perKm.toFixed(2));
   assert.equal(await evaluate("document.getElementById('trip-total').textContent"), expectedTotal(guangdong.grades["92"].price));

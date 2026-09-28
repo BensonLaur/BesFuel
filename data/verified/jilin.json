@@ -1,0 +1,40 @@
+{
+  "id": "jilin",
+  "name": "吉林",
+  "sourceName": "吉林省发展和改革委员会",
+  "priceScope": "吉林省成品油最高零售价格（元/升）；92、95 号乙醇汽油和 0 号车用柴油",
+  "allowedHostnames": [
+    "jldrc.jl.gov.cn"
+  ],
+  "checkedAt": "2026-09-28",
+  "notices": [
+    {
+      "publishedDate": "2026-08-14",
+      "effectiveDate": "2026-08-15",
+      "url": "https://jldrc.jl.gov.cn/ztzl/nyzyjg/202608/t20260814_3655617.html",
+      "pdfUrl": "https://jldrc.jl.gov.cn/ztzl/nyzyjg/202608/P020260814554913012291.pdf",
+      "prices": { "92": 7.75, "95": 8.36, "diesel": 7.36 }
+    },
+    {
+      "publishedDate": "2026-08-28",
+      "effectiveDate": "2026-08-29",
+      "url": "https://jldrc.jl.gov.cn/ztzl/nyzyjg/202608/t20260828_3666432.html",
+      "pdfUrl": "https://jldrc.jl.gov.cn/ztzl/nyzyjg/202608/P020260828552795484516.pdf",
+      "prices": { "92": 8.05, "95": 8.68, "diesel": 7.67 }
+    },
+    {
+      "publishedDate": "2026-09-11",
+      "effectiveDate": "2026-09-12",
+      "url": "https://jldrc.jl.gov.cn/ztzl/nyzyjg/202609/t20260911_3669974.html",
+      "pdfUrl": "https://jldrc.jl.gov.cn/ztzl/nyzyjg/202609/P020260911549303276742.pdf",
+      "prices": { "92": 8.26, "95": 8.91, "diesel": 7.88 }
+    },
+    {
+      "publishedDate": "2026-09-24",
+      "effectiveDate": "2026-09-25",
+      "url": "https://jldrc.jl.gov.cn/ztzl/nyzyjg/202609/t20260924_3672674.html",
+      "pdfUrl": "https://jldrc.jl.gov.cn/ztzl/nyzyjg/202609/P020260924563212373946.pdf",
+      "prices": { "92": 8.57, "95": 9.25, "diesel": 8.21 }
+    }
+  ]
+}

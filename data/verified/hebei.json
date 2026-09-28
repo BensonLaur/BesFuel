@@ -1,0 +1,56 @@
+{
+  "id": "hebei",
+  "name": "河北",
+  "sourceName": "河北省发展和改革委员会",
+  "priceScope": "河北省汽、柴油最高零售价格（元/升）；加油站实际成交价可能不同。",
+  "allowedHostnames": [
+    "hbdrc.hebei.gov.cn"
+  ],
+  "checkedAt": "2026-09-28",
+  "notices": [
+    {
+      "publishedDate": "2026-08-14",
+      "effectiveDate": "2026-08-15",
+      "url": "https://hbdrc.hebei.gov.cn/gggs_980/202608/t20260814_138182.html",
+      "imageUrl": "https://hbdrc.hebei.gov.cn/gggs_980/202608/W020260814588262643450.jpg",
+      "prices": {
+        "92": 7.78,
+        "95": 8.22,
+        "diesel": 7.45
+      }
+    },
+    {
+      "publishedDate": "2026-08-28",
+      "effectiveDate": "2026-08-29",
+      "url": "https://hbdrc.hebei.gov.cn/gggs_980/202608/t20260828_138700.html",
+      "imageUrl": "https://hbdrc.hebei.gov.cn/gggs_980/202608/W020260828583286976648.png",
+      "prices": {
+        "92": 8.08,
+        "95": 8.54,
+        "diesel": 7.76
+      }
+    },
+    {
+      "publishedDate": "2026-09-11",
+      "effectiveDate": "2026-09-12",
+      "url": "https://hbdrc.hebei.gov.cn/gggs_980/202609/t20260911_139247.html",
+      "imageUrl": "https://hbdrc.hebei.gov.cn/gggs_980/202609/W020260911571357329012.png",
+      "prices": {
+        "92": 8.29,
+        "95": 8.76,
+        "diesel": 7.98
+      }
+    },
+    {
+      "publishedDate": "2026-09-24",
+      "effectiveDate": "2026-09-25",
+      "url": "https://hbdrc.hebei.gov.cn/gggs_980/202609/t20260924_139750.html",
+      "imageUrl": "https://hbdrc.hebei.gov.cn/gggs_980/202609/W020260924569195066666.png",
+      "prices": {
+        "92": 8.61,
+        "95": 9.09,
+        "diesel": 8.31
+      }
+    }
+  ]
+}

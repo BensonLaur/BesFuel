@@ -1,0 +1,199 @@
+{
+  "id": "heilongjiang-north",
+  "name": "黑龙江北区",
+  "sourceName": "黑龙江省发展和改革委员会",
+  "priceScope": "黑龙江省北区（齐齐哈尔、佳木斯、双鸭山、伊春、黑河、鹤岗、绥化、大兴安岭、抚远）汽、柴油最高零售吨价按官方夏季系数折算为元/升；实际成交价可能更低。",
+  "allowedHostnames": [
+    "drc.hlj.gov.cn"
+  ],
+  "checkedAt": "2026-09-28",
+  "conversion": {
+    "validFrom": "2026-05-01",
+    "validThrough": "2026-10-31",
+    "ruleUrl": "https://drc.hlj.gov.cn/drc/c111444/201701/c00_31467233.shtml",
+    "url": "https://drc.hlj.gov.cn/drc/c111433/202604/c00_31936584.shtml",
+    "litersPerTon": {
+      "92": 1314.92,
+      "95": 1296.64,
+      "diesel": 1186.6
+    }
+  },
+  "notices": [
+    {
+      "publishedDate": "2026-05-08",
+      "effectiveDate": "2026-05-09",
+      "url": "https://drc.hlj.gov.cn/drc/c111486/202605/c00_31938610.shtml",
+      "imageUrl": "https://drc.hlj.gov.cn/drc/c111486/202605/31938610/images/%E5%9B%BE%E7%89%871.png",
+      "tonPrices": {
+        "92": 11469,
+        "95": 12118,
+        "diesel": 9745
+      },
+      "prices": {
+        "92": 8.72,
+        "95": 9.35,
+        "diesel": 8.21
+      }
+    },
+    {
+      "publishedDate": "2026-05-21",
+      "effectiveDate": "2026-05-22",
+      "url": "https://drc.hlj.gov.cn/drc/c111486/202605/c00_31942639.shtml",
+      "imageUrl": "https://drc.hlj.gov.cn/drc/c111486/202605/31942639/images/%E5%9B%BE%E7%89%871-20260521163041290.png",
+      "tonPrices": {
+        "92": 11549,
+        "95": 12202,
+        "diesel": 9815
+      },
+      "prices": {
+        "92": 8.78,
+        "95": 9.41,
+        "diesel": 8.27
+      }
+    },
+    {
+      "publishedDate": "2026-06-04",
+      "effectiveDate": "2026-06-05",
+      "url": "https://drc.hlj.gov.cn/drc/c111486/202606/c00_31946927.shtml",
+      "imageUrl": "https://drc.hlj.gov.cn/drc/c111486/202606/31946927/images/%E5%9B%BE%E7%89%871.png",
+      "tonPrices": {
+        "92": 10992,
+        "95": 11614,
+        "diesel": 9310
+      },
+      "prices": {
+        "92": 8.36,
+        "95": 8.96,
+        "diesel": 7.85
+      }
+    },
+    {
+      "publishedDate": "2026-06-18",
+      "effectiveDate": "2026-06-19",
+      "url": "https://drc.hlj.gov.cn/drc/c111486/202606/c00_31951259.shtml",
+      "imageUrl": "https://drc.hlj.gov.cn/drc/c111486/202606/31951259/images/%E5%9B%BE%E7%89%871-20260618170937677.png",
+      "tonPrices": {
+        "92": 10446,
+        "95": 11038,
+        "diesel": 8815
+      },
+      "prices": {
+        "92": 7.94,
+        "95": 8.51,
+        "diesel": 7.43
+      }
+    },
+    {
+      "publishedDate": "2026-07-03",
+      "effectiveDate": "2026-07-04",
+      "url": "https://drc.hlj.gov.cn/drc/c111486/202607/c00_31955359.shtml",
+      "imageUrl": "https://drc.hlj.gov.cn/drc/c111486/202607/31955359/images/%E5%9B%BE%E7%89%871-20260703160921772.png",
+      "tonPrices": {
+        "92": 9439,
+        "95": 9974,
+        "diesel": 7900
+      },
+      "prices": {
+        "92": 7.18,
+        "95": 7.69,
+        "diesel": 6.66
+      }
+    },
+    {
+      "publishedDate": "2026-07-17",
+      "effectiveDate": "2026-07-18",
+      "url": "https://drc.hlj.gov.cn/drc/c111486/202607/c00_31959373.shtml",
+      "imageUrl": "https://drc.hlj.gov.cn/drc/c111486/202607/31959373/images/%E5%9B%BE%E7%89%871-20260717165929158.png",
+      "tonPrices": {
+        "92": 9757,
+        "95": 10310,
+        "diesel": 8190
+      },
+      "prices": {
+        "92": 7.42,
+        "95": 7.95,
+        "diesel": 6.9
+      }
+    },
+    {
+      "publishedDate": "2026-07-31",
+      "effectiveDate": "2026-08-01",
+      "url": "https://drc.hlj.gov.cn/drc/c111486/202607/c00_31963395.shtml",
+      "imageUrl": "https://drc.hlj.gov.cn/drc/c111486/202607/31963395/images/%E5%9B%BE%E7%89%872.png",
+      "tonPrices": {
+        "92": 10483,
+        "95": 11077,
+        "diesel": 8845
+      },
+      "prices": {
+        "92": 7.97,
+        "95": 8.54,
+        "diesel": 7.45
+      }
+    },
+    {
+      "publishedDate": "2026-08-14",
+      "effectiveDate": "2026-08-15",
+      "url": "https://drc.hlj.gov.cn/drc/c111486/202608/c00_31967100.shtml",
+      "imageUrl": "https://drc.hlj.gov.cn/drc/c111486/202608/31967100/images/%E5%9B%BE%E7%89%871-20260814153344758.png",
+      "tonPrices": {
+        "92": 10240,
+        "95": 10819,
+        "diesel": 8625
+      },
+      "prices": {
+        "92": 7.79,
+        "95": 8.34,
+        "diesel": 7.27
+      }
+    },
+    {
+      "publishedDate": "2026-08-28",
+      "effectiveDate": "2026-08-29",
+      "url": "https://drc.hlj.gov.cn/drc/c111486/202608/c00_31970612.shtml",
+      "imageUrl": "https://drc.hlj.gov.cn/drc/c111486/202608/31970612/images/%E5%9B%BE%E7%89%871-20260828153528805.png",
+      "tonPrices": {
+        "92": 10637,
+        "95": 11239,
+        "diesel": 8985
+      },
+      "prices": {
+        "92": 8.09,
+        "95": 8.67,
+        "diesel": 7.57
+      }
+    },
+    {
+      "publishedDate": "2026-09-11",
+      "effectiveDate": "2026-09-12",
+      "url": "https://drc.hlj.gov.cn/drc/c111486/202609/c00_31974718.shtml",
+      "imageUrl": "https://drc.hlj.gov.cn/drc/c111486/202609/31974718/images/%E5%9B%BE%E7%89%871-20260911155235300.png",
+      "tonPrices": {
+        "92": 10913,
+        "95": 11530,
+        "diesel": 9235
+      },
+      "prices": {
+        "92": 8.3,
+        "95": 8.89,
+        "diesel": 7.78
+      }
+    },
+    {
+      "publishedDate": "2026-09-24",
+      "effectiveDate": "2026-09-25",
+      "url": "https://drc.hlj.gov.cn/drc/c111486/202609/c00_31979097.shtml",
+      "imageUrl": "https://drc.hlj.gov.cn/drc/c111486/202609/31979097/images/%E5%9B%BE%E7%89%871-20260924165751850.png",
+      "tonPrices": {
+        "92": 11331,
+        "95": 11973,
+        "diesel": 9620
+      },
+      "prices": {
+        "92": 8.62,
+        "95": 9.23,
+        "diesel": 8.11
+      }
+    }
+  ]
+}

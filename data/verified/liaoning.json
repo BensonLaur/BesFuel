@@ -1,0 +1,57 @@
+{
+  "id": "liaoning",
+  "name": "辽宁",
+  "sourceName": "辽宁省发展和改革委员会",
+  "allowedHostnames": [
+    "fgw.ln.gov.cn"
+  ],
+  "checkedAt": "2026-09-28",
+  "unit": "元/吨",
+  "priceScope": "辽宁省汽、柴油最高零售价格（元/吨）。官网公告未列元/升，不能直接用于元/升油费计算。",
+  "notices": [
+    {
+      "publishedDate": "2026-08-14",
+      "effectiveDate": "2026-08-15",
+      "url": "https://fgw.ln.gov.cn/fgw/articleFileDir/2026-08/14/3af13f860f5d4812b8f51c9b7d6fc1d0/2026081417253963780.pdf",
+      "retailPerTonne": {
+        "92": 10240,
+        "95": 10819,
+        "diesel": 8625
+      },
+      "requiresManualLiterReview": true
+    },
+    {
+      "publishedDate": "2026-08-28",
+      "effectiveDate": "2026-08-29",
+      "url": "https://fgw.ln.gov.cn/fgw/articleFileDir/2026-08/28/5a904918f4e24e3e8b0512785678d8a7/2026082815145040207.pdf",
+      "retailPerTonne": {
+        "92": 10637,
+        "95": 11239,
+        "diesel": 8985
+      },
+      "requiresManualLiterReview": true
+    },
+    {
+      "publishedDate": "2026-09-11",
+      "effectiveDate": "2026-09-12",
+      "url": "https://fgw.ln.gov.cn/fgw/articleFileDir/2026-09/11/bad3864fa5d2415e9a2ef776e0494f45/2026091117272415754.pdf",
+      "retailPerTonne": {
+        "92": 10913,
+        "95": 11530,
+        "diesel": 9235
+      },
+      "requiresManualLiterReview": true
+    },
+    {
+      "publishedDate": "2026-09-24",
+      "effectiveDate": "2026-09-25",
+      "url": "https://fgw.ln.gov.cn/fgw/articleFileDir/2026-09/24/8ccc407774ea4bd3b4717f8bbc7662b2/2026092415362259031.pdf",
+      "retailPerTonne": {
+        "92": 11331,
+        "95": 11973,
+        "diesel": 9620
+      },
+      "requiresManualLiterReview": true
+    }
+  ]
+}

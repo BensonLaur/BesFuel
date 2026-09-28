@@ -1,4 +1,4 @@
-name: 核对广东油价并发布 Pages
+name: 核对官方油价并发布 Pages
 
 on:
   push:
@@ -28,10 +28,17 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: '22'
-      - name: 抓取广东官方公告并核对下一轮信息
+      - name: 核对广东及已接入地区的官方油价
         shell: pwsh
         run: |
           powershell -NoProfile -File .\scripts\update-guangdong.ps1
+          if ($LASTEXITCODE -ne 0) {
+            Write-Warning '广东公告核对失败；保留此前可信快照。'
+            '广东：本次核对失败，已保留此前可信价格和核对日期。' | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append -Encoding utf8
+          }
+          npm run update:regions
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm run check:monitors
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           npm run validate:data
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
@@ -53,7 +60,7 @@ jobs:
           if ($LASTEXITCODE -ne 1) { exit $LASTEXITCODE }
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'chore(data): 核对广东官方油价'
+          git commit -m 'chore(data): 核对已接入地区官方油价'
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           git push origin HEAD:main
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
