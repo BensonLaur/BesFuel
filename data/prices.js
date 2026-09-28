@@ -6,7 +6,7 @@ window.BESFUEL_DATA = {
     "guangdong": {
       "name": "广东",
       "priceScope": "广东省公布的全省最高销售价格；加油站实际成交价可能不同。",
-      "checkedAt": "2026-09-28",
+      "checkedAt": "2026-09-29",
       "source": {
         "name": "广东省发展和改革委员会",
         "url": "https://drc.gd.gov.cn/ywgg/content/post_4960317.html"
@@ -308,7 +308,7 @@ window.BESFUEL_DATA = {
     "beijing": {
       "name": "北京",
       "priceScope": "北京市汽、柴油最高零售价格（元/升）",
-      "checkedAt": "2026-09-28",
+      "checkedAt": "2026-09-29",
       "source": {
         "name": "北京市发展和改革委员会",
         "url": "https://fgw.beijing.gov.cn/fgwzwgk/2024zcwj/bwqtwj/202609/t20260924_4879948.htm"
@@ -1122,7 +1122,7 @@ window.BESFUEL_DATA = {
     "shanghai": {
       "name": "上海",
       "priceScope": "上海市车用汽、柴油最高零售价格（元/升）",
-      "checkedAt": "2026-09-28",
+      "checkedAt": "2026-09-29",
       "source": {
         "name": "上海市发展和改革委员会",
         "url": "https://fgw.sh.gov.cn/fgw_jggl/20260924/9346a0fd85d74075a9431f83f365cef8.html"
@@ -1513,7 +1513,7 @@ window.BESFUEL_DATA = {
     "fujian": {
       "name": "福建",
       "priceScope": "福建省汽、柴油最高零售价格（元/升）",
-      "checkedAt": "2026-09-28",
+      "checkedAt": "2026-09-29",
       "source": {
         "name": "福建省发展和改革委员会",
         "url": "https://fgw.fujian.gov.cn/zfxxgkzl/zfxxgkml/yzdgkdqtxx/202609/t20260924_7218113.htm"
