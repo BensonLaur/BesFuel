@@ -1,0 +1,132 @@
+{
+  "id": "xizang-lhasa",
+  "name": "西藏拉萨价区",
+  "sourceName": "西藏自治区发展和改革委员会",
+  "priceScope": "西藏自治区拉萨价区（拉萨、日喀则、山南、林芝、那曲）汽、柴油最高零售价格（元/升）；加油站实付价可能不同。",
+  "allowedHostnames": [
+    "drc.xizang.gov.cn"
+  ],
+  "checkedAt": "2026-09-28",
+  "notices": [
+    {
+      "publishedDate": "2026-04-21",
+      "effectiveDate": "2026-04-22",
+      "url": "https://drc.xizang.gov.cn/zwgk_1941/tz/202604/t20260421_536123.html",
+      "prices": {
+        "92": 9.33,
+        "95": 9.87,
+        "diesel": 8.67
+      }
+    },
+    {
+      "publishedDate": "2026-05-08",
+      "effectiveDate": "2026-05-09",
+      "url": "https://drc.xizang.gov.cn/zwgk_1941/tz/202605/t20260508_539058.html",
+      "prices": {
+        "92": 9.58,
+        "95": 10.14,
+        "diesel": 8.94
+      }
+    },
+    {
+      "publishedDate": "2026-05-21",
+      "effectiveDate": "2026-05-22",
+      "url": "https://drc.xizang.gov.cn/zwgk_1941/tz/202605/t20260521_541325.html",
+      "prices": {
+        "92": 9.64,
+        "95": 10.2,
+        "diesel": 9.0
+      }
+    },
+    {
+      "publishedDate": "2026-06-04",
+      "effectiveDate": "2026-06-05",
+      "url": "https://drc.xizang.gov.cn/zwgk_1941/tz/202606/t20260604_543878.html",
+      "prices": {
+        "92": 9.22,
+        "95": 9.76,
+        "diesel": 8.57
+      }
+    },
+    {
+      "publishedDate": "2026-06-18",
+      "effectiveDate": "2026-06-19",
+      "url": "https://drc.xizang.gov.cn/zwgk_1941/tz/202606/t20260622_546498.html",
+      "prices": {
+        "92": 8.82,
+        "95": 9.32,
+        "diesel": 8.15
+      }
+    },
+    {
+      "publishedDate": "2026-07-03",
+      "effectiveDate": "2026-07-04",
+      "url": "https://drc.xizang.gov.cn/fgdt/jggl/202607/t20260703_548286.html",
+      "prices": {
+        "92": 8.06,
+        "95": 8.53,
+        "diesel": 7.37
+      }
+    },
+    {
+      "publishedDate": "2026-07-17",
+      "effectiveDate": "2026-07-18",
+      "url": "https://drc.xizang.gov.cn/zwgk_1941/tz/202607/t20260717_550504.html",
+      "prices": {
+        "92": 8.3,
+        "95": 8.78,
+        "diesel": 7.62
+      }
+    },
+    {
+      "publishedDate": "2026-07-31",
+      "effectiveDate": "2026-08-01",
+      "url": "https://drc.xizang.gov.cn/zwgk_1941/tz/202607/t20260731_552184.html",
+      "prices": {
+        "92": 8.84,
+        "95": 9.35,
+        "diesel": 8.17
+      }
+    },
+    {
+      "publishedDate": "2026-08-14",
+      "effectiveDate": "2026-08-15",
+      "url": "https://drc.xizang.gov.cn/zwgk_1941/tz/202608/t20260814_553896.html",
+      "prices": {
+        "92": 8.66,
+        "95": 9.16,
+        "diesel": 7.99
+      }
+    },
+    {
+      "publishedDate": "2026-08-28",
+      "effectiveDate": "2026-08-29",
+      "url": "https://drc.xizang.gov.cn/zwgk_1941/tz/202608/t20260831_555835.html",
+      "prices": {
+        "92": 8.96,
+        "95": 9.48,
+        "diesel": 8.29
+      }
+    },
+    {
+      "publishedDate": "2026-09-11",
+      "effectiveDate": "2026-09-12",
+      "url": "https://drc.xizang.gov.cn/zwgk_1941/tz/202609/t20260911_558334.html",
+      "prices": {
+        "92": 9.17,
+        "95": 9.69,
+        "diesel": 8.5
+      }
+    },
+    {
+      "publishedDate": "2026-09-24",
+      "effectiveDate": "2026-09-25",
+      "url": "https://drc.xizang.gov.cn/fgdt/jggl/202609/t20260924_560588.html",
+      "prices": {
+        "92": 9.48,
+        "95": 10.03,
+        "diesel": 8.83
+      }
+    }
+  ]
+}

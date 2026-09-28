@@ -1,0 +1,192 @@
+{
+  "id": "anhui",
+  "name": "安徽",
+  "sourceName": "安徽省发展和改革委员会",
+  "priceScope": "安徽省汽、柴油最高零售价格（元/升）；省发改委统一发布全省价格表，加油站实付价可能不同。",
+  "allowedHostnames": [
+    "fzggw.ah.gov.cn"
+  ],
+  "checkedAt": "2026-09-28",
+  "notices": [
+    {
+      "publishedDate": "2026-01-20",
+      "effectiveDate": "2026-01-21",
+      "url": "https://fzggw.ah.gov.cn/ywdt/tzgg/150403651.html",
+      "prices": {
+        "92": 6.74,
+        "95": 7.23,
+        "diesel": 6.44
+      }
+    },
+    {
+      "publishedDate": "2026-02-03",
+      "effectiveDate": "2026-02-04",
+      "url": "https://fzggw.ah.gov.cn/ywdt/tzgg/150418371.html",
+      "prices": {
+        "92": 6.9,
+        "95": 7.4,
+        "diesel": 6.61
+      }
+    },
+    {
+      "publishedDate": "2026-02-24",
+      "effectiveDate": "2026-02-25",
+      "url": "https://fzggw.ah.gov.cn/ywdt/tzgg/150431341.html",
+      "prices": {
+        "92": 7.04,
+        "95": 7.55,
+        "diesel": 6.76
+      }
+    },
+    {
+      "publishedDate": "2026-03-09",
+      "effectiveDate": "2026-03-10",
+      "url": "https://fzggw.ah.gov.cn/ywdt/tzgg/150444821.html",
+      "prices": {
+        "92": 7.59,
+        "95": 8.13,
+        "diesel": 7.33
+      }
+    },
+    {
+      "publishedDate": "2026-03-23",
+      "effectiveDate": "2026-03-24",
+      "url": "https://fzggw.ah.gov.cn/ywdt/tzgg/150472401.html",
+      "prices": {
+        "92": 8.51,
+        "95": 9.1,
+        "diesel": 8.3
+      }
+    },
+    {
+      "publishedDate": "2026-04-07",
+      "effectiveDate": "2026-04-08",
+      "url": "https://fzggw.ah.gov.cn/ywdt/tzgg/150495691.html",
+      "prices": {
+        "92": 8.84,
+        "95": 9.45,
+        "diesel": 8.64
+      }
+    },
+    {
+      "publishedDate": "2026-04-21",
+      "effectiveDate": "2026-04-22",
+      "url": "https://fzggw.ah.gov.cn/ywdt/tzgg/150511581.html",
+      "prices": {
+        "92": 8.4,
+        "95": 8.98,
+        "diesel": 8.18
+      }
+    },
+    {
+      "publishedDate": "2026-05-08",
+      "effectiveDate": "2026-05-09",
+      "url": "https://fzggw.ah.gov.cn/ywdt/tzgg/150528881.html",
+      "prices": {
+        "92": 8.66,
+        "95": 9.25,
+        "diesel": 8.45
+      }
+    },
+    {
+      "publishedDate": "2026-05-21",
+      "effectiveDate": "2026-05-22",
+      "url": "https://fzggw.ah.gov.cn/ywdt/tzgg/150545471.html",
+      "prices": {
+        "92": 8.71,
+        "95": 9.31,
+        "diesel": 8.51
+      }
+    },
+    {
+      "publishedDate": "2026-06-04",
+      "effectiveDate": "2026-06-05",
+      "url": "https://fzggw.ah.gov.cn/ywdt/tzgg/150561541.html",
+      "prices": {
+        "92": 8.3,
+        "95": 8.88,
+        "diesel": 8.08
+      }
+    },
+    {
+      "publishedDate": "2026-06-18",
+      "effectiveDate": "2026-06-19",
+      "url": "https://fzggw.ah.gov.cn/ywdt/tzgg/150578741.html",
+      "prices": {
+        "92": 7.89,
+        "95": 8.44,
+        "diesel": 7.65
+      }
+    },
+    {
+      "publishedDate": "2026-07-03",
+      "effectiveDate": "2026-07-04",
+      "url": "https://fzggw.ah.gov.cn/ywdt/tzgg/150597531.html",
+      "prices": {
+        "92": 7.14,
+        "95": 7.65,
+        "diesel": 6.86
+      }
+    },
+    {
+      "publishedDate": "2026-07-17",
+      "effectiveDate": "2026-07-18",
+      "url": "https://fzggw.ah.gov.cn/ywdt/tzgg/150613261.html",
+      "prices": {
+        "92": 7.38,
+        "95": 7.9,
+        "diesel": 7.11
+      }
+    },
+    {
+      "publishedDate": "2026-07-31",
+      "effectiveDate": "2026-08-01",
+      "url": "https://fzggw.ah.gov.cn/ywdt/tzgg/150629751.html",
+      "prices": {
+        "92": 7.92,
+        "95": 8.47,
+        "diesel": 7.67
+      }
+    },
+    {
+      "publishedDate": "2026-08-14",
+      "effectiveDate": "2026-08-15",
+      "url": "https://fzggw.ah.gov.cn/ywdt/tzgg/150643451.html",
+      "prices": {
+        "92": 7.74,
+        "95": 8.28,
+        "diesel": 7.48
+      }
+    },
+    {
+      "publishedDate": "2026-08-28",
+      "effectiveDate": "2026-08-29",
+      "url": "https://fzggw.ah.gov.cn/ywdt/tzgg/150657511.html",
+      "prices": {
+        "92": 8.03,
+        "95": 8.6,
+        "diesel": 7.8
+      }
+    },
+    {
+      "publishedDate": "2026-09-11",
+      "effectiveDate": "2026-09-12",
+      "url": "https://fzggw.ah.gov.cn/ywdt/tzgg/150674671.html",
+      "prices": {
+        "92": 8.24,
+        "95": 8.81,
+        "diesel": 8.01
+      }
+    },
+    {
+      "publishedDate": "2026-09-24",
+      "effectiveDate": "2026-09-25",
+      "url": "https://fzggw.ah.gov.cn/ywdt/tzgg/150688401.html",
+      "prices": {
+        "92": 8.55,
+        "95": 9.14,
+        "diesel": 8.34
+      }
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "xizang-ngari",
+  "name": "西藏·阿里价区",
+  "sourceName": "西藏自治区发展和改革委员会",
+  "priceScope": "西藏自治区阿里价区（阿里地区）汽、柴油最高零售价格（元/升）；与拉萨、昌都价区分别定价，加油站实付价可能不同。",
+  "unit": "元/升",
+  "allowedHostnames": ["drc.xizang.gov.cn"],
+  "checkedAt": "2026-09-29",
+  "notices": [
+    {"publishedDate":"2026-04-21","effectiveDate":"2026-04-22","url":"https://drc.xizang.gov.cn/zwgk_1941/tz/202604/t20260421_536123.html","prices":{"92":9.71,"95":10.26,"diesel":9.08}},
+    {"publishedDate":"2026-05-08","effectiveDate":"2026-05-09","url":"https://drc.xizang.gov.cn/zwgk_1941/tz/202605/t20260508_539058.html","prices":{"92":9.97,"95":10.53,"diesel":9.34}},
+    {"publishedDate":"2026-05-21","effectiveDate":"2026-05-22","url":"https://drc.xizang.gov.cn/zwgk_1941/tz/202605/t20260521_541325.html","prices":{"92":10.02,"95":10.59,"diesel":9.40}},
+    {"publishedDate":"2026-06-04","effectiveDate":"2026-06-05","url":"https://drc.xizang.gov.cn/zwgk_1941/tz/202606/t20260604_543878.html","prices":{"92":9.61,"95":10.15,"diesel":8.97}},
+    {"publishedDate":"2026-06-18","effectiveDate":"2026-06-19","url":"https://drc.xizang.gov.cn/zwgk_1941/tz/202606/t20260622_546498.html","prices":{"92":9.20,"95":9.72,"diesel":8.56}},
+    {"publishedDate":"2026-07-03","effectiveDate":"2026-07-04","url":"https://drc.xizang.gov.cn/fgdt/jggl/202607/t20260703_548286.html","prices":{"92":8.45,"95":8.92,"diesel":7.78}},
+    {"publishedDate":"2026-07-17","effectiveDate":"2026-07-18","url":"https://drc.xizang.gov.cn/zwgk_1941/tz/202607/t20260717_550504.html","prices":{"92":8.69,"95":9.17,"diesel":8.03}},
+    {"publishedDate":"2026-07-31","effectiveDate":"2026-08-01","url":"https://drc.xizang.gov.cn/zwgk_1941/tz/202607/t20260731_552184.html","prices":{"92":9.23,"95":9.75,"diesel":8.58}},
+    {"publishedDate":"2026-08-14","effectiveDate":"2026-08-15","url":"https://drc.xizang.gov.cn/zwgk_1941/tz/202608/t20260814_553896.html","prices":{"92":9.05,"95":9.55,"diesel":8.39}},
+    {"publishedDate":"2026-08-28","effectiveDate":"2026-08-29","url":"https://drc.xizang.gov.cn/zwgk_1941/tz/202608/t20260831_555835.html","prices":{"92":9.34,"95":9.87,"diesel":8.70}},
+    {"publishedDate":"2026-09-11","effectiveDate":"2026-09-12","url":"https://drc.xizang.gov.cn/zwgk_1941/tz/202609/t20260911_558334.html","prices":{"92":9.55,"95":10.09,"diesel":8.91}},
+    {"publishedDate":"2026-09-24","effectiveDate":"2026-09-25","url":"https://drc.xizang.gov.cn/fgdt/jggl/202609/t20260924_560588.html","prices":{"92":9.86,"95":10.42,"diesel":9.24}}
+  ]
+}

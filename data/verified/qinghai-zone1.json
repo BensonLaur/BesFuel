@@ -1,0 +1,144 @@
+{
+  "id": "qinghai-zone1",
+  "name": "青海第一价区",
+  "sourceName": "青海省发展和改革委员会",
+  "priceScope": "青海省发改委价表中的第一价区汽、柴油最高零售价格（元/升）；价区所辖具体地区待省级正式划分文件复核，加油站实付价可能不同。",
+  "allowedHostnames": [
+    "fgw.qinghai.gov.cn"
+  ],
+  "checkedAt": "2026-09-28",
+  "notices": [
+    {
+      "publishedDate": "2026-04-21",
+      "effectiveDate": "2026-04-22",
+      "url": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202604/t20260421_91497.html",
+      "imageUrl": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202604/W020260421623628245589.JPG",
+      "prices": {
+        "92": 8.42,
+        "95": 9.02,
+        "diesel": 8.06
+      }
+    },
+    {
+      "publishedDate": "2026-05-08",
+      "effectiveDate": "2026-05-09",
+      "url": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202605/t20260508_91620.html",
+      "imageUrl": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202605/W020260508600134405902.JPG",
+      "prices": {
+        "92": 8.67,
+        "95": 9.3,
+        "diesel": 8.32
+      }
+    },
+    {
+      "publishedDate": "2026-05-21",
+      "effectiveDate": "2026-05-22",
+      "url": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202605/t20260521_91759.html",
+      "imageUrl": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202605/W020260521613057438954.png",
+      "prices": {
+        "92": 8.73,
+        "95": 9.36,
+        "diesel": 8.38
+      }
+    },
+    {
+      "publishedDate": "2026-06-04",
+      "effectiveDate": "2026-06-05",
+      "url": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202606/t20260604_91859.html",
+      "imageUrl": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202606/W020260604620443303646.JPG",
+      "prices": {
+        "92": 8.31,
+        "95": 8.91,
+        "diesel": 7.95
+      }
+    },
+    {
+      "publishedDate": "2026-06-18",
+      "effectiveDate": "2026-06-19",
+      "url": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202606/t20260618_92012.html",
+      "imageUrl": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202606/W020260618622729531929.JPG",
+      "prices": {
+        "92": 7.9,
+        "95": 8.47,
+        "diesel": 7.53
+      }
+    },
+    {
+      "publishedDate": "2026-07-03",
+      "effectiveDate": "2026-07-04",
+      "url": "http://fgw.qinghai.gov.cn/sjfb/jgdt/202607/t20260703_92127.html",
+      "imageUrl": "http://fgw.qinghai.gov.cn/sjfb/jgdt/202607/W020260703627584909872.png",
+      "prices": {
+        "92": 7.13,
+        "95": 7.65,
+        "diesel": 6.75
+      }
+    },
+    {
+      "publishedDate": "2026-07-17",
+      "effectiveDate": "2026-07-18",
+      "url": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202607/t20260717_92231.html",
+      "imageUrl": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202607/W020260717592228680224.JPG",
+      "prices": {
+        "92": 7.37,
+        "95": 7.91,
+        "diesel": 7.0
+      }
+    },
+    {
+      "publishedDate": "2026-07-31",
+      "effectiveDate": "2026-08-01",
+      "url": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202607/t20260731_92331.html",
+      "imageUrl": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202607/W020260731597684167065.JPG",
+      "prices": {
+        "92": 7.93,
+        "95": 8.5,
+        "diesel": 7.56
+      }
+    },
+    {
+      "publishedDate": "2026-08-14",
+      "effectiveDate": "2026-08-15",
+      "url": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202608/t20260814_92402.html",
+      "imageUrl": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202608/W020260814637834898709.JPG",
+      "prices": {
+        "92": 7.74,
+        "95": 8.3,
+        "diesel": 7.37
+      }
+    },
+    {
+      "publishedDate": "2026-08-28",
+      "effectiveDate": "2026-08-29",
+      "url": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202608/t20260828_92542.html",
+      "imageUrl": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202608/W020260828595397614963.JPG",
+      "prices": {
+        "92": 8.04,
+        "95": 8.62,
+        "diesel": 7.68
+      }
+    },
+    {
+      "publishedDate": "2026-09-11",
+      "effectiveDate": "2026-09-12",
+      "url": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202609/t20260911_92671.html",
+      "imageUrl": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202609/W020260911615860867869.JPG",
+      "prices": {
+        "92": 8.25,
+        "95": 8.85,
+        "diesel": 7.89
+      }
+    },
+    {
+      "publishedDate": "2026-09-24",
+      "effectiveDate": "2026-09-25",
+      "url": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202609/t20260924_92769.html",
+      "imageUrl": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202609/W020260924585955568253.JPG",
+      "prices": {
+        "92": 8.57,
+        "95": 9.19,
+        "diesel": 8.22
+      }
+    }
+  ]
+}
