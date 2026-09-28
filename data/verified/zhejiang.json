@@ -1,0 +1,133 @@
+{
+  "id": "zhejiang",
+  "name": "浙江",
+  "sourceName": "浙江省发展和改革委员会",
+  "priceScope": "浙江省公布的成品油最高零售价格（元/升）；已核公告未列省内分价区。",
+  "allowedHostnames": [
+    "fzggw.zj.gov.cn"
+  ],
+  "unit": "元/升",
+  "checkedAt": "2026-09-29",
+  "notices": [
+    {
+      "publishedDate": "2026-04-21",
+      "effectiveDate": "2026-04-22",
+      "url": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_fb453a1e05104499a3b14f683d7b5657.html",
+      "prices": {
+        "92": 8.42,
+        "95": 8.96,
+        "diesel": 8.12
+      }
+    },
+    {
+      "publishedDate": "2026-05-08",
+      "effectiveDate": "2026-05-09",
+      "url": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_4b333cceb53c4535b74b7fe9baff2241.html",
+      "prices": {
+        "92": 8.68,
+        "95": 9.23,
+        "diesel": 8.39
+      }
+    },
+    {
+      "publishedDate": "2026-05-21",
+      "effectiveDate": "2026-05-22",
+      "url": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_2f67d96d980144f78ec5d090f40e1185.html",
+      "prices": {
+        "92": 8.74,
+        "95": 9.3,
+        "diesel": 8.45
+      }
+    },
+    {
+      "publishedDate": "2026-06-04",
+      "effectiveDate": "2026-06-05",
+      "url": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_a896d5e9be7d4303a1e2cc5e78753c08.html",
+      "prices": {
+        "92": 8.32,
+        "95": 8.85,
+        "diesel": 8.02
+      }
+    },
+    {
+      "publishedDate": "2026-06-18",
+      "effectiveDate": "2026-06-19",
+      "url": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_274905738b2945e98289f869286f6eea.html",
+      "prices": {
+        "92": 7.91,
+        "95": 8.41,
+        "diesel": 7.59
+      }
+    },
+    {
+      "publishedDate": "2026-07-03",
+      "effectiveDate": "2026-07-04",
+      "url": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_6eb83bc3139749009bdabcc66d6616d9.html",
+      "prices": {
+        "92": 7.15,
+        "95": 7.61,
+        "diesel": 6.81
+      }
+    },
+    {
+      "publishedDate": "2026-07-17",
+      "effectiveDate": "2026-07-18",
+      "url": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_dddc04b9b47d4560bc26fcf36a74ce52.html",
+      "prices": {
+        "92": 7.39,
+        "95": 7.86,
+        "diesel": 7.06
+      }
+    },
+    {
+      "publishedDate": "2026-07-31",
+      "effectiveDate": "2026-08-01",
+      "url": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_ae07a532588342b9b0c4b9a47a508180.html",
+      "prices": {
+        "92": 7.94,
+        "95": 8.44,
+        "diesel": 7.62
+      }
+    },
+    {
+      "publishedDate": "2026-08-14",
+      "effectiveDate": "2026-08-15",
+      "url": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_3245a1f8163a4180bd8b2b7f327e52dc.html",
+      "prices": {
+        "92": 7.75,
+        "95": 8.25,
+        "diesel": 7.43
+      }
+    },
+    {
+      "publishedDate": "2026-08-28",
+      "effectiveDate": "2026-08-29",
+      "url": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_ef6622dd9bb24575b0cbd9aaa88b09f5.html",
+      "prices": {
+        "92": 8.05,
+        "95": 8.57,
+        "diesel": 7.74
+      }
+    },
+    {
+      "publishedDate": "2026-09-11",
+      "effectiveDate": "2026-09-12",
+      "url": "https://fzggw.zj.gov.cn/col/col1599544/art/2026/art_00f45baf51384f3c9d3db61b19852946.html",
+      "prices": {
+        "92": 8.26,
+        "95": 8.79,
+        "diesel": 7.95
+      }
+    },
+    {
+      "publishedDate": "2026-09-24",
+      "effectiveDate": "2026-09-25",
+      "url": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_ed9666e8c2204d60b9207d75412e7cee.html",
+      "prices": {
+        "92": 8.58,
+        "95": 9.12,
+        "diesel": 8.28
+      }
+    }
+  ]
+}

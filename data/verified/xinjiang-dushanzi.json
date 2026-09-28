@@ -1,0 +1,133 @@
+{
+  "id": "xinjiang-dushanzi",
+  "name": "新疆·克拉玛依（独山子区）",
+  "sourceName": "克拉玛依市发展和改革委员会",
+  "priceScope": "克拉玛依市独山子区加油站成品油最高零售价格（元/升）；依市发改委公告独山子区列核录，0号柴油价格不同于克拉玛依、白碱滩、乌尔禾区。实际成交价可能不同。",
+  "unit": "元/升",
+  "allowedHostnames": [
+    "www.klmy.gov.cn"
+  ],
+  "checkedAt": "2026-09-29",
+  "notices": [
+    {
+      "url": "https://www.klmy.gov.cn/klmys/c100186/202604/428fa6bf07f14507bf973817aca0eb59.shtml",
+      "publishedDate": "2026-04-21",
+      "effectiveDate": "2026-04-22",
+      "prices": {
+        "92": 8.36,
+        "95": 8.99,
+        "diesel": 7.94
+      }
+    },
+    {
+      "url": "https://www.klmy.gov.cn/klmys/c100186/202605/03e442ed775242f2a33628ecbae7af09.shtml",
+      "publishedDate": "2026-05-08",
+      "effectiveDate": "2026-05-09",
+      "prices": {
+        "92": 8.59,
+        "95": 9.25,
+        "diesel": 8.1
+      }
+    },
+    {
+      "url": "https://www.klmy.gov.cn/klmys/c100186/202605/d6ec88b39c264b14b7c27bf36b190d38.shtml",
+      "publishedDate": "2026-05-21",
+      "effectiveDate": "2026-05-22",
+      "prices": {
+        "92": 8.65,
+        "95": 9.31,
+        "diesel": 8.16
+      }
+    },
+    {
+      "url": "https://www.klmy.gov.cn/klmys/c100186/202606/34065cd1f2224e7486b81f3bf71a424d.shtml",
+      "publishedDate": "2026-06-04",
+      "effectiveDate": "2026-06-05",
+      "prices": {
+        "92": 8.22,
+        "95": 8.86,
+        "diesel": 7.74
+      }
+    },
+    {
+      "url": "https://www.klmy.gov.cn/klmys/c100186/202606/29a6ec9905394f1ea4dfd2c1aa769fff.shtml",
+      "publishedDate": "2026-06-18",
+      "effectiveDate": "2026-06-19",
+      "prices": {
+        "92": 7.81,
+        "95": 8.41,
+        "diesel": 7.32
+      }
+    },
+    {
+      "url": "https://www.klmy.gov.cn/klmys/c100186/202607/4b70e1a9b1f34f1c9d8f076cc78b37a3.shtml",
+      "publishedDate": "2026-07-03",
+      "effectiveDate": "2026-07-04",
+      "prices": {
+        "92": 7.04,
+        "95": 7.58,
+        "diesel": 6.55
+      }
+    },
+    {
+      "url": "https://www.klmy.gov.cn/klmys/c100186/202607/0df9f8abe09b456d9917fce39c1563a9.shtml",
+      "publishedDate": "2026-07-17",
+      "effectiveDate": "2026-07-18",
+      "prices": {
+        "92": 7.28,
+        "95": 7.84,
+        "diesel": 6.79
+      }
+    },
+    {
+      "url": "https://www.klmy.gov.cn/klmys/c100186/202607/1e46bd6f09204ec99b40631dd984a598.shtml",
+      "publishedDate": "2026-07-31",
+      "effectiveDate": "2026-08-01",
+      "prices": {
+        "92": 7.83,
+        "95": 8.44,
+        "diesel": 7.35
+      }
+    },
+    {
+      "url": "https://www.klmy.gov.cn/klmys/c100186/202608/74dbc8bf4e7144a88716a445a75cbe9c.shtml",
+      "publishedDate": "2026-08-14",
+      "effectiveDate": "2026-08-15",
+      "prices": {
+        "92": 7.65,
+        "95": 8.24,
+        "diesel": 7.16
+      }
+    },
+    {
+      "url": "https://www.klmy.gov.cn/klmys/c100186/202608/6d2288b43d1d4fd0b7a08a952b9ebeb9.shtml",
+      "publishedDate": "2026-08-28",
+      "effectiveDate": "2026-08-29",
+      "prices": {
+        "92": 7.95,
+        "95": 8.56,
+        "diesel": 7.46
+      }
+    },
+    {
+      "url": "https://www.klmy.gov.cn/klmys/c100186/202609/1971324a997848c38bc7345d1e5c880a.shtml",
+      "publishedDate": "2026-09-11",
+      "effectiveDate": "2026-09-12",
+      "prices": {
+        "92": 8.16,
+        "95": 8.79,
+        "diesel": 7.67
+      }
+    },
+    {
+      "url": "https://www.klmy.gov.cn/klmys/c100186/202609/12cf558ed5584d25b75d1f4e709f8746.shtml",
+      "publishedDate": "2026-09-24",
+      "effectiveDate": "2026-09-25",
+      "prices": {
+        "92": 8.48,
+        "95": 9.13,
+        "diesel": 8
+      }
+    }
+  ]
+}

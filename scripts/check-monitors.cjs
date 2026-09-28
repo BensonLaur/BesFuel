@@ -18,8 +18,12 @@ async function checkMonitors({ modules, data, reader = makeReader } = {}) {
         throw new Error("监测器返回了非官方公告地址");
       }
       const stored = snapshot.regions[monitor.id];
+      // A government page can be corrected in place without changing its URL.
+      const priceChanged = Boolean(stored && latest.prices &&
+        ["92", "95", "diesel"].some(grade =>
+          latest.prices[grade] !== stored.grades?.[grade]?.price));
       const needsReview = !stored || stored.source.url !== latest.url ||
-        latest.requiresManualCoefficientReview === true;
+        latest.requiresManualCoefficientReview === true || priceChanged;
       results.push({ id: monitor.id, ok: true, latest, stored: Boolean(stored), needsReview });
     } catch (error) {
       results.push({ id: monitor.id, ok: false, error: error.message });
