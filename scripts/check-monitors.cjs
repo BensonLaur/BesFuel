@@ -52,7 +52,7 @@ if (require.main === module) {
       else if (result.needsReview) console.warn(result.latest.requiresManualCoefficientReview ?
         `${result.id}: 折算系数适用期已结束，需人工复核：${result.latest.coefficientNoticeUrl}` :
         result.latest.requiresManualLiterReview && !result.stored ?
-          `${result.id}: 官网只有吨价，元/升仍待核实：${result.latest.url}` :
+          `${result.id}: 官方每升价仍待人工核实：${result.latest.url}` :
           `${result.id}: 新公告需人工核价：${result.latest.url}`);
       else console.log(`${result.id}: 最新公告与人工核价快照一致`);
     }
@@ -62,7 +62,7 @@ if (require.main === module) {
           result.latest.requiresManualCoefficientReview ?
             `折算系数需人工复核：${result.latest.coefficientNoticeUrl}` :
             result.latest.requiresManualLiterReview && !result.stored ?
-              `官网只有吨价，元/升待核实：${result.latest.url}` : result.needsReview ?
+              `官方每升价待人工核实：${result.latest.url}` : result.needsReview ?
                 `新公告待核价：${result.latest.url}` : "公告与快照一致"}`), ""];
       fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join("\n"), "utf8");
     }

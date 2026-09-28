@@ -1,0 +1,23 @@
+{
+  "id": "chongqing",
+  "name": "重庆",
+  "sourceName": "重庆市发展和改革委员会",
+  "priceScope": "重庆市公布的全市汽、柴油最高零售价格（元/升）；市发改委公告只有一张全市价表，未列区县价区；加油站实付价可能不同。",
+  "unit": "元/升",
+  "allowedHostnames": ["fzggw.cq.gov.cn"],
+  "checkedAt": "2026-09-29",
+  "notices": [
+    {"publishedDate":"2026-04-21","effectiveDate":"2026-04-22","url":"https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202604/t20260422_15629291.html","prices":{"92":8.51,"95":9.00,"diesel":8.20}},
+    {"publishedDate":"2026-05-08","effectiveDate":"2026-05-09","url":"https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202605/t20260508_15660804.html","prices":{"92":8.77,"95":9.26,"diesel":8.47}},
+    {"publishedDate":"2026-05-21","effectiveDate":"2026-05-22","url":"https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202605/t20260521_15694913.html","prices":{"92":8.83,"95":9.33,"diesel":8.52}},
+    {"publishedDate":"2026-06-04","effectiveDate":"2026-06-05","url":"https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202606/t20260604_15729667.html","prices":{"92":8.41,"95":8.89,"diesel":8.10}},
+    {"publishedDate":"2026-06-18","effectiveDate":"2026-06-19","url":"https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202606/t20260618_15765147.html","prices":{"92":8.00,"95":8.45,"diesel":7.67}},
+    {"publishedDate":"2026-07-03","effectiveDate":"2026-07-04","url":"https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202607/t20260704_15799337.html","prices":{"92":7.25,"95":7.66,"diesel":6.90}},
+    {"publishedDate":"2026-07-17","effectiveDate":"2026-07-18","url":"https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202607/t20260717_15831693.html","prices":{"92":7.49,"95":7.91,"diesel":7.14}},
+    {"publishedDate":"2026-07-31","effectiveDate":"2026-08-01","url":"https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202607/t20260731_15879412.html","prices":{"92":8.03,"95":8.48,"diesel":7.70}},
+    {"publishedDate":"2026-08-14","effectiveDate":"2026-08-15","url":"https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202608/t20260814_15934418.html","prices":{"92":7.85,"95":8.29,"diesel":7.51}},
+    {"publishedDate":"2026-08-28","effectiveDate":"2026-08-29","url":"https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202608/t20260828_16000008.html","prices":{"92":8.14,"95":8.61,"diesel":7.82}},
+    {"publishedDate":"2026-09-11","effectiveDate":"2026-09-12","url":"https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202609/t20260911_16066573.html","prices":{"92":8.35,"95":8.82,"diesel":8.03}},
+    {"publishedDate":"2026-09-24","effectiveDate":"2026-09-25","url":"https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202609/t20260924_16130868.html","prices":{"92":8.67,"95":9.16,"diesel":8.36}}
+  ]
+}

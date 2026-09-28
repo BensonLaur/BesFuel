@@ -7906,6 +7906,1030 @@ window.BESFUEL_DATA = {
           ]
         }
       }
+    },
+    "henan": {
+      "name": "河南",
+      "priceScope": "河南省国VIB车用乙醇汽油和国VI车用柴油最高零售价格（元/升）；加油站可在最高价以内自主定价。",
+      "checkedAt": "2026-09-29",
+      "source": {
+        "name": "河南省发展和改革委员会",
+        "url": "https://fgw.henan.gov.cn/2026/09-24/3432590.html"
+      },
+      "effectiveLabel": "2026-09-24 24:00 起",
+      "grades": {
+        "92": {
+          "price": 8.62,
+          "history": [
+            {
+              "date": "2026-01-21",
+              "price": 6.78,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/01-20/3311818.html"
+            },
+            {
+              "date": "2026-02-04",
+              "price": 6.94,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/02-03/3321407.html"
+            },
+            {
+              "date": "2026-02-25",
+              "price": 7.08,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/02-24/3327922.html"
+            },
+            {
+              "date": "2026-03-10",
+              "price": 7.64,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/03-09/3332658.html"
+            },
+            {
+              "date": "2026-03-24",
+              "price": 8.58,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/03-23/3336526.html"
+            },
+            {
+              "date": "2026-04-08",
+              "price": 8.91,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/04-07/3340733.html"
+            },
+            {
+              "date": "2026-04-22",
+              "price": 8.47,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/04-21/3344571.html"
+            },
+            {
+              "date": "2026-05-09",
+              "price": 8.72,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/05-08/3349410.html"
+            },
+            {
+              "date": "2026-05-22",
+              "price": 8.79,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/05-21/3357054.html"
+            },
+            {
+              "date": "2026-06-05",
+              "price": 8.36,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/06-04/3362458.html"
+            },
+            {
+              "date": "2026-06-19",
+              "price": 7.95,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/06-18/3367331.html"
+            },
+            {
+              "date": "2026-07-04",
+              "price": 7.18,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/07-03/3372354.html"
+            },
+            {
+              "date": "2026-07-18",
+              "price": 7.43,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/07-17/3376846.html"
+            },
+            {
+              "date": "2026-08-01",
+              "price": 7.98,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/07-31/3381372.html"
+            },
+            {
+              "date": "2026-08-15",
+              "price": 7.79,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/08-14/3399241.html"
+            },
+            {
+              "date": "2026-08-29",
+              "price": 8.09,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/08-28/3408739.html"
+            },
+            {
+              "date": "2026-09-12",
+              "price": 8.3,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/09-11/3418685.html"
+            },
+            {
+              "date": "2026-09-25",
+              "price": 8.62,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/09-24/3432590.html"
+            }
+          ]
+        },
+        "95": {
+          "price": 9.21,
+          "history": [
+            {
+              "date": "2026-01-21",
+              "price": 7.24,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/01-20/3311818.html"
+            },
+            {
+              "date": "2026-02-04",
+              "price": 7.41,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/02-03/3321407.html"
+            },
+            {
+              "date": "2026-02-25",
+              "price": 7.56,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/02-24/3327922.html"
+            },
+            {
+              "date": "2026-03-10",
+              "price": 8.16,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/03-09/3332658.html"
+            },
+            {
+              "date": "2026-03-24",
+              "price": 9.16,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/03-23/3336526.html"
+            },
+            {
+              "date": "2026-04-08",
+              "price": 9.52,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/04-07/3340733.html"
+            },
+            {
+              "date": "2026-04-22",
+              "price": 9.04,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/04-21/3344571.html"
+            },
+            {
+              "date": "2026-05-09",
+              "price": 9.32,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/05-08/3349410.html"
+            },
+            {
+              "date": "2026-05-22",
+              "price": 9.38,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/05-21/3357054.html"
+            },
+            {
+              "date": "2026-06-05",
+              "price": 8.93,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/06-04/3362458.html"
+            },
+            {
+              "date": "2026-06-19",
+              "price": 8.49,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/06-18/3367331.html"
+            },
+            {
+              "date": "2026-07-04",
+              "price": 7.67,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/07-03/3372354.html"
+            },
+            {
+              "date": "2026-07-18",
+              "price": 7.93,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/07-17/3376846.html"
+            },
+            {
+              "date": "2026-08-01",
+              "price": 8.52,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/07-31/3381372.html"
+            },
+            {
+              "date": "2026-08-15",
+              "price": 8.32,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/08-14/3399241.html"
+            },
+            {
+              "date": "2026-08-29",
+              "price": 8.64,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/08-28/3408739.html"
+            },
+            {
+              "date": "2026-09-12",
+              "price": 8.87,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/09-11/3418685.html"
+            },
+            {
+              "date": "2026-09-25",
+              "price": 9.21,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/09-24/3432590.html"
+            }
+          ]
+        },
+        "98": {
+          "price": null,
+          "history": []
+        },
+        "diesel": {
+          "price": 8.29,
+          "history": [
+            {
+              "date": "2026-01-21",
+              "price": 6.39,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/01-20/3311818.html"
+            },
+            {
+              "date": "2026-02-04",
+              "price": 6.56,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/02-03/3321407.html"
+            },
+            {
+              "date": "2026-02-25",
+              "price": 6.71,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/02-24/3327922.html"
+            },
+            {
+              "date": "2026-03-10",
+              "price": 7.28,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/03-09/3332658.html"
+            },
+            {
+              "date": "2026-03-24",
+              "price": 8.24,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/03-23/3336526.html"
+            },
+            {
+              "date": "2026-04-08",
+              "price": 8.59,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/04-07/3340733.html"
+            },
+            {
+              "date": "2026-04-22",
+              "price": 8.13,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/04-21/3344571.html"
+            },
+            {
+              "date": "2026-05-09",
+              "price": 8.4,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/05-08/3349410.html"
+            },
+            {
+              "date": "2026-05-22",
+              "price": 8.46,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/05-21/3357054.html"
+            },
+            {
+              "date": "2026-06-05",
+              "price": 8.02,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/06-04/3362458.html"
+            },
+            {
+              "date": "2026-06-19",
+              "price": 7.6,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/06-18/3367331.html"
+            },
+            {
+              "date": "2026-07-04",
+              "price": 6.81,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/07-03/3372354.html"
+            },
+            {
+              "date": "2026-07-18",
+              "price": 7.06,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/07-17/3376846.html"
+            },
+            {
+              "date": "2026-08-01",
+              "price": 7.62,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/07-31/3381372.html"
+            },
+            {
+              "date": "2026-08-15",
+              "price": 7.43,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/08-14/3399241.html"
+            },
+            {
+              "date": "2026-08-29",
+              "price": 7.74,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/08-28/3408739.html"
+            },
+            {
+              "date": "2026-09-12",
+              "price": 7.96,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/09-11/3418685.html"
+            },
+            {
+              "date": "2026-09-25",
+              "price": 8.29,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/09-24/3432590.html"
+            }
+          ]
+        }
+      }
+    },
+    "shandong": {
+      "name": "山东",
+      "priceScope": "山东省公布的汽、柴油最高零售价格（元/升）；省级公告仅列全省一张价格表，未另列市县价区；加油站实付价可能不同。",
+      "checkedAt": "2026-09-29",
+      "source": {
+        "name": "威海市发展和改革委员会（山东省价表）",
+        "url": "https://fgw.weihai.gov.cn/art/2026/9/24/art_53887_6642605.html"
+      },
+      "effectiveLabel": "2026-09-24 24:00 起",
+      "grades": {
+        "92": {
+          "price": 8.57,
+          "history": [
+            {
+              "date": "2026-04-22",
+              "price": 8.42,
+              "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/4/21/art_53887_6301247.html"
+            },
+            {
+              "date": "2026-05-09",
+              "price": 8.68,
+              "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/5/8/art_53887_6338728.html"
+            },
+            {
+              "date": "2026-05-22",
+              "price": 8.74,
+              "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/5/21/art_53887_6370187.html"
+            },
+            {
+              "date": "2026-06-05",
+              "price": 8.32,
+              "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/6/4/art_53887_6401206.html"
+            },
+            {
+              "date": "2026-06-19",
+              "price": 7.9,
+              "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/6/18/art_53887_6431526.html"
+            },
+            {
+              "date": "2026-07-04",
+              "price": 7.14,
+              "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/7/3/art_53887_6462105.html"
+            },
+            {
+              "date": "2026-07-18",
+              "price": 7.38,
+              "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/7/17/art_53887_6490427.html"
+            },
+            {
+              "date": "2026-08-01",
+              "price": 7.93,
+              "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/7/31/art_53887_6519446.html"
+            },
+            {
+              "date": "2026-08-15",
+              "price": 7.75,
+              "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/8/14/art_53887_6549065.html"
+            },
+            {
+              "date": "2026-08-29",
+              "price": 8.05,
+              "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/8/28/art_53887_6574748.html"
+            },
+            {
+              "date": "2026-09-12",
+              "price": 8.26,
+              "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/9/11/art_53887_6608405.html"
+            },
+            {
+              "date": "2026-09-25",
+              "price": 8.57,
+              "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/9/24/art_53887_6642605.html"
+            }
+          ]
+        },
+        "95": {
+          "price": 9.2,
+          "history": [
+            {
+              "date": "2026-04-22",
+              "price": 9.03,
+              "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/4/21/art_53887_6301247.html"
+            },
+            {
+              "date": "2026-05-09",
+              "price": 9.31,
+              "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/5/8/art_53887_6338728.html"
+            },
+            {
+              "date": "2026-05-22",
+              "price": 9.37,
+              "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/5/21/art_53887_6370187.html"
+            },
+            {
+              "date": "2026-06-05",
+              "price": 8.92,
+              "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/6/4/art_53887_6401206.html"
+            },
+            {
+              "date": "2026-06-19",
+              "price": 8.48,
+              "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/6/18/art_53887_6431526.html"
+            },
+            {
+              "date": "2026-07-04",
+              "price": 7.66,
+              "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/7/3/art_53887_6462105.html"
+            },
+            {
+              "date": "2026-07-18",
+              "price": 7.92,
+              "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/7/17/art_53887_6490427.html"
+            },
+            {
+              "date": "2026-08-01",
+              "price": 8.51,
+              "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/7/31/art_53887_6519446.html"
+            },
+            {
+              "date": "2026-08-15",
+              "price": 8.31,
+              "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/8/14/art_53887_6549065.html"
+            },
+            {
+              "date": "2026-08-29",
+              "price": 8.63,
+              "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/8/28/art_53887_6574748.html"
+            },
+            {
+              "date": "2026-09-12",
+              "price": 8.86,
+              "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/9/11/art_53887_6608405.html"
+            },
+            {
+              "date": "2026-09-25",
+              "price": 9.2,
+              "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/9/24/art_53887_6642605.html"
+            }
+          ]
+        },
+        "98": {
+          "price": null,
+          "history": []
+        },
+        "diesel": {
+          "price": 8.21,
+          "history": [
+            {
+              "date": "2026-04-22",
+              "price": 8.05,
+              "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/4/21/art_53887_6301247.html"
+            },
+            {
+              "date": "2026-05-09",
+              "price": 8.32,
+              "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/5/8/art_53887_6338728.html"
+            },
+            {
+              "date": "2026-05-22",
+              "price": 8.38,
+              "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/5/21/art_53887_6370187.html"
+            },
+            {
+              "date": "2026-06-05",
+              "price": 7.95,
+              "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/6/4/art_53887_6401206.html"
+            },
+            {
+              "date": "2026-06-19",
+              "price": 7.52,
+              "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/6/18/art_53887_6431526.html"
+            },
+            {
+              "date": "2026-07-04",
+              "price": 6.74,
+              "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/7/3/art_53887_6462105.html"
+            },
+            {
+              "date": "2026-07-18",
+              "price": 6.99,
+              "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/7/17/art_53887_6490427.html"
+            },
+            {
+              "date": "2026-08-01",
+              "price": 7.55,
+              "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/7/31/art_53887_6519446.html"
+            },
+            {
+              "date": "2026-08-15",
+              "price": 7.36,
+              "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/8/14/art_53887_6549065.html"
+            },
+            {
+              "date": "2026-08-29",
+              "price": 7.67,
+              "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/8/28/art_53887_6574748.html"
+            },
+            {
+              "date": "2026-09-12",
+              "price": 7.88,
+              "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/9/11/art_53887_6608405.html"
+            },
+            {
+              "date": "2026-09-25",
+              "price": 8.21,
+              "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/9/24/art_53887_6642605.html"
+            }
+          ]
+        }
+      }
+    },
+    "ningxia": {
+      "name": "宁夏",
+      "priceScope": "宁夏市场车用汽油、柴油最高零售价格（元/升）；加油站实付价可能不同。",
+      "checkedAt": "2026-09-29",
+      "source": {
+        "name": "宁夏回族自治区发展和改革委员会",
+        "url": "https://fzggw.nx.gov.cn/tzgg/202609/t20260924_5357138.html"
+      },
+      "effectiveLabel": "2026-09-24 24:00 起",
+      "grades": {
+        "92": {
+          "price": 8.5,
+          "history": [
+            {
+              "date": "2026-01-21",
+              "price": 6.68,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202601/t20260120_5139675.html"
+            },
+            {
+              "date": "2026-02-04",
+              "price": 6.84,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202602/t20260203_5158880.html"
+            },
+            {
+              "date": "2026-02-25",
+              "price": 6.98,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202602/t20260224_5176468.html"
+            },
+            {
+              "date": "2026-03-10",
+              "price": 7.54,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202603/t20260309_5188315.html"
+            },
+            {
+              "date": "2026-03-24",
+              "price": 8.46,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202603/t20260323_5200148.html"
+            },
+            {
+              "date": "2026-04-08",
+              "price": 8.79,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202604/t20260407_5211377.html"
+            },
+            {
+              "date": "2026-04-22",
+              "price": 8.35,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202604/t20260421_5222490.html"
+            },
+            {
+              "date": "2026-05-09",
+              "price": 8.61,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202605/t20260508_5234574.html"
+            },
+            {
+              "date": "2026-05-22",
+              "price": 8.67,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202605/t20260521_5246277.html"
+            },
+            {
+              "date": "2026-06-05",
+              "price": 8.25,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202606/t20260604_5256299.html"
+            },
+            {
+              "date": "2026-06-19",
+              "price": 7.84,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202606/t20260618_5269354.html"
+            },
+            {
+              "date": "2026-07-04",
+              "price": 7.08,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202607/t20260703_5281341.html"
+            },
+            {
+              "date": "2026-07-18",
+              "price": 7.32,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202607/t20260717_5291940.html"
+            },
+            {
+              "date": "2026-08-01",
+              "price": 7.87,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202607/t20260731_5303481.html"
+            },
+            {
+              "date": "2026-08-15",
+              "price": 7.68,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202608/t20260814_5313437.html"
+            },
+            {
+              "date": "2026-08-29",
+              "price": 7.98,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202608/t20260828_5325812.html"
+            },
+            {
+              "date": "2026-09-12",
+              "price": 8.19,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202609/t20260915_5343467.html"
+            },
+            {
+              "date": "2026-09-25",
+              "price": 8.5,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202609/t20260924_5357138.html"
+            }
+          ]
+        },
+        "95": {
+          "price": 8.98,
+          "history": [
+            {
+              "date": "2026-01-21",
+              "price": 7.06,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202601/t20260120_5139675.html"
+            },
+            {
+              "date": "2026-02-04",
+              "price": 7.23,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202602/t20260203_5158880.html"
+            },
+            {
+              "date": "2026-02-25",
+              "price": 7.38,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202602/t20260224_5176468.html"
+            },
+            {
+              "date": "2026-03-10",
+              "price": 7.96,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202603/t20260309_5188315.html"
+            },
+            {
+              "date": "2026-03-24",
+              "price": 8.94,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202603/t20260323_5200148.html"
+            },
+            {
+              "date": "2026-04-08",
+              "price": 9.29,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202604/t20260407_5211377.html"
+            },
+            {
+              "date": "2026-04-22",
+              "price": 8.82,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202604/t20260421_5222490.html"
+            },
+            {
+              "date": "2026-05-09",
+              "price": 9.09,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202605/t20260508_5234574.html"
+            },
+            {
+              "date": "2026-05-22",
+              "price": 9.16,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202605/t20260521_5246277.html"
+            },
+            {
+              "date": "2026-06-05",
+              "price": 8.72,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202606/t20260604_5256299.html"
+            },
+            {
+              "date": "2026-06-19",
+              "price": 8.28,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202606/t20260618_5269354.html"
+            },
+            {
+              "date": "2026-07-04",
+              "price": 7.48,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202607/t20260703_5281341.html"
+            },
+            {
+              "date": "2026-07-18",
+              "price": 7.74,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202607/t20260717_5291940.html"
+            },
+            {
+              "date": "2026-08-01",
+              "price": 8.31,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202607/t20260731_5303481.html"
+            },
+            {
+              "date": "2026-08-15",
+              "price": 8.12,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202608/t20260814_5313437.html"
+            },
+            {
+              "date": "2026-08-29",
+              "price": 8.43,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202608/t20260828_5325812.html"
+            },
+            {
+              "date": "2026-09-12",
+              "price": 8.65,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202609/t20260915_5343467.html"
+            },
+            {
+              "date": "2026-09-25",
+              "price": 8.98,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202609/t20260924_5357138.html"
+            }
+          ]
+        },
+        "98": {
+          "price": null,
+          "history": []
+        },
+        "diesel": {
+          "price": 8.18,
+          "history": [
+            {
+              "date": "2026-01-21",
+              "price": 6.3,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202601/t20260120_5139675.html"
+            },
+            {
+              "date": "2026-02-04",
+              "price": 6.47,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202602/t20260203_5158880.html"
+            },
+            {
+              "date": "2026-02-25",
+              "price": 6.61,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202602/t20260224_5176468.html"
+            },
+            {
+              "date": "2026-03-10",
+              "price": 7.18,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202603/t20260309_5188315.html"
+            },
+            {
+              "date": "2026-03-24",
+              "price": 8.13,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202603/t20260323_5200148.html"
+            },
+            {
+              "date": "2026-04-08",
+              "price": 8.47,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202604/t20260407_5211377.html"
+            },
+            {
+              "date": "2026-04-22",
+              "price": 8.02,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202604/t20260421_5222490.html"
+            },
+            {
+              "date": "2026-05-09",
+              "price": 8.28,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202605/t20260508_5234574.html"
+            },
+            {
+              "date": "2026-05-22",
+              "price": 8.34,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202605/t20260521_5246277.html"
+            },
+            {
+              "date": "2026-06-05",
+              "price": 7.91,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202606/t20260604_5256299.html"
+            },
+            {
+              "date": "2026-06-19",
+              "price": 7.49,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202606/t20260618_5269354.html"
+            },
+            {
+              "date": "2026-07-04",
+              "price": 6.72,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202607/t20260703_5281341.html"
+            },
+            {
+              "date": "2026-07-18",
+              "price": 6.96,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202607/t20260717_5291940.html"
+            },
+            {
+              "date": "2026-08-01",
+              "price": 7.52,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202607/t20260731_5303481.html"
+            },
+            {
+              "date": "2026-08-15",
+              "price": 7.33,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202608/t20260814_5313437.html"
+            },
+            {
+              "date": "2026-08-29",
+              "price": 7.64,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202608/t20260828_5325812.html"
+            },
+            {
+              "date": "2026-09-12",
+              "price": 7.85,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202609/t20260915_5343467.html"
+            },
+            {
+              "date": "2026-09-25",
+              "price": 8.18,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202609/t20260924_5357138.html"
+            }
+          ]
+        }
+      }
+    },
+    "chongqing": {
+      "name": "重庆",
+      "priceScope": "重庆市公布的全市汽、柴油最高零售价格（元/升）；市发改委公告只有一张全市价表，未列区县价区；加油站实付价可能不同。",
+      "checkedAt": "2026-09-29",
+      "source": {
+        "name": "重庆市发展和改革委员会",
+        "url": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202609/t20260924_16130868.html"
+      },
+      "effectiveLabel": "2026-09-24 24:00 起",
+      "grades": {
+        "92": {
+          "price": 8.67,
+          "history": [
+            {
+              "date": "2026-04-22",
+              "price": 8.51,
+              "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202604/t20260422_15629291.html"
+            },
+            {
+              "date": "2026-05-09",
+              "price": 8.77,
+              "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202605/t20260508_15660804.html"
+            },
+            {
+              "date": "2026-05-22",
+              "price": 8.83,
+              "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202605/t20260521_15694913.html"
+            },
+            {
+              "date": "2026-06-05",
+              "price": 8.41,
+              "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202606/t20260604_15729667.html"
+            },
+            {
+              "date": "2026-06-19",
+              "price": 8,
+              "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202606/t20260618_15765147.html"
+            },
+            {
+              "date": "2026-07-04",
+              "price": 7.25,
+              "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202607/t20260704_15799337.html"
+            },
+            {
+              "date": "2026-07-18",
+              "price": 7.49,
+              "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202607/t20260717_15831693.html"
+            },
+            {
+              "date": "2026-08-01",
+              "price": 8.03,
+              "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202607/t20260731_15879412.html"
+            },
+            {
+              "date": "2026-08-15",
+              "price": 7.85,
+              "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202608/t20260814_15934418.html"
+            },
+            {
+              "date": "2026-08-29",
+              "price": 8.14,
+              "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202608/t20260828_16000008.html"
+            },
+            {
+              "date": "2026-09-12",
+              "price": 8.35,
+              "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202609/t20260911_16066573.html"
+            },
+            {
+              "date": "2026-09-25",
+              "price": 8.67,
+              "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202609/t20260924_16130868.html"
+            }
+          ]
+        },
+        "95": {
+          "price": 9.16,
+          "history": [
+            {
+              "date": "2026-04-22",
+              "price": 9,
+              "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202604/t20260422_15629291.html"
+            },
+            {
+              "date": "2026-05-09",
+              "price": 9.26,
+              "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202605/t20260508_15660804.html"
+            },
+            {
+              "date": "2026-05-22",
+              "price": 9.33,
+              "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202605/t20260521_15694913.html"
+            },
+            {
+              "date": "2026-06-05",
+              "price": 8.89,
+              "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202606/t20260604_15729667.html"
+            },
+            {
+              "date": "2026-06-19",
+              "price": 8.45,
+              "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202606/t20260618_15765147.html"
+            },
+            {
+              "date": "2026-07-04",
+              "price": 7.66,
+              "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202607/t20260704_15799337.html"
+            },
+            {
+              "date": "2026-07-18",
+              "price": 7.91,
+              "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202607/t20260717_15831693.html"
+            },
+            {
+              "date": "2026-08-01",
+              "price": 8.48,
+              "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202607/t20260731_15879412.html"
+            },
+            {
+              "date": "2026-08-15",
+              "price": 8.29,
+              "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202608/t20260814_15934418.html"
+            },
+            {
+              "date": "2026-08-29",
+              "price": 8.61,
+              "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202608/t20260828_16000008.html"
+            },
+            {
+              "date": "2026-09-12",
+              "price": 8.82,
+              "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202609/t20260911_16066573.html"
+            },
+            {
+              "date": "2026-09-25",
+              "price": 9.16,
+              "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202609/t20260924_16130868.html"
+            }
+          ]
+        },
+        "98": {
+          "price": null,
+          "history": []
+        },
+        "diesel": {
+          "price": 8.36,
+          "history": [
+            {
+              "date": "2026-04-22",
+              "price": 8.2,
+              "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202604/t20260422_15629291.html"
+            },
+            {
+              "date": "2026-05-09",
+              "price": 8.47,
+              "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202605/t20260508_15660804.html"
+            },
+            {
+              "date": "2026-05-22",
+              "price": 8.52,
+              "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202605/t20260521_15694913.html"
+            },
+            {
+              "date": "2026-06-05",
+              "price": 8.1,
+              "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202606/t20260604_15729667.html"
+            },
+            {
+              "date": "2026-06-19",
+              "price": 7.67,
+              "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202606/t20260618_15765147.html"
+            },
+            {
+              "date": "2026-07-04",
+              "price": 6.9,
+              "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202607/t20260704_15799337.html"
+            },
+            {
+              "date": "2026-07-18",
+              "price": 7.14,
+              "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202607/t20260717_15831693.html"
+            },
+            {
+              "date": "2026-08-01",
+              "price": 7.7,
+              "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202607/t20260731_15879412.html"
+            },
+            {
+              "date": "2026-08-15",
+              "price": 7.51,
+              "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202608/t20260814_15934418.html"
+            },
+            {
+              "date": "2026-08-29",
+              "price": 7.82,
+              "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202608/t20260828_16000008.html"
+            },
+            {
+              "date": "2026-09-12",
+              "price": 8.03,
+              "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202609/t20260911_16066573.html"
+            },
+            {
+              "date": "2026-09-25",
+              "price": 8.36,
+              "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202609/t20260924_16130868.html"
+            }
+          ]
+        }
+      }
     }
   },
   "nationalAdjustment": {

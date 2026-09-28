@@ -1,0 +1,24 @@
+{
+  "id": "shandong",
+  "name": "山东",
+  "sourceName": "威海市发展和改革委员会（山东省价表）",
+  "priceScope": "山东省公布的汽、柴油最高零售价格（元/升）；省级公告仅列全省一张价格表，未另列市县价区；加油站实付价可能不同。",
+  "unit": "元/升",
+  "allowedHostnames": ["fgw.shandong.gov.cn", "fgw.weihai.gov.cn"],
+  "checkedAt": "2026-09-29",
+  "auditNote": "12 期均据威海市发展改革委发布的山东省成品油最高批发价格和零售价格表核对；最新一期还核对省发改委原站公告路径、标题、日期和表格结构，以及济南市发展改革委发布的同一省价表。省发改委原站 HTTP 访问间歇失败，监测使用稳定的威海市发改委价格信息列表。",
+  "notices": [
+    {"publishedDate":"2026-04-21","effectiveDate":"2026-04-22","url":"https://fgw.weihai.gov.cn/art/2026/4/21/art_53887_6301247.html","prices":{"92":8.42,"95":9.03,"diesel":8.05}},
+    {"publishedDate":"2026-05-08","effectiveDate":"2026-05-09","url":"https://fgw.weihai.gov.cn/art/2026/5/8/art_53887_6338728.html","prices":{"92":8.68,"95":9.31,"diesel":8.32}},
+    {"publishedDate":"2026-05-21","effectiveDate":"2026-05-22","url":"https://fgw.weihai.gov.cn/art/2026/5/21/art_53887_6370187.html","prices":{"92":8.74,"95":9.37,"diesel":8.38}},
+    {"publishedDate":"2026-06-04","effectiveDate":"2026-06-05","url":"https://fgw.weihai.gov.cn/art/2026/6/4/art_53887_6401206.html","prices":{"92":8.32,"95":8.92,"diesel":7.95}},
+    {"publishedDate":"2026-06-18","effectiveDate":"2026-06-19","url":"https://fgw.weihai.gov.cn/art/2026/6/18/art_53887_6431526.html","prices":{"92":7.90,"95":8.48,"diesel":7.52}},
+    {"publishedDate":"2026-07-03","effectiveDate":"2026-07-04","url":"https://fgw.weihai.gov.cn/art/2026/7/3/art_53887_6462105.html","prices":{"92":7.14,"95":7.66,"diesel":6.74}},
+    {"publishedDate":"2026-07-17","effectiveDate":"2026-07-18","url":"https://fgw.weihai.gov.cn/art/2026/7/17/art_53887_6490427.html","prices":{"92":7.38,"95":7.92,"diesel":6.99}},
+    {"publishedDate":"2026-07-31","effectiveDate":"2026-08-01","url":"https://fgw.weihai.gov.cn/art/2026/7/31/art_53887_6519446.html","prices":{"92":7.93,"95":8.51,"diesel":7.55}},
+    {"publishedDate":"2026-08-14","effectiveDate":"2026-08-15","url":"https://fgw.weihai.gov.cn/art/2026/8/14/art_53887_6549065.html","prices":{"92":7.75,"95":8.31,"diesel":7.36}},
+    {"publishedDate":"2026-08-28","effectiveDate":"2026-08-29","url":"https://fgw.weihai.gov.cn/art/2026/8/28/art_53887_6574748.html","prices":{"92":8.05,"95":8.63,"diesel":7.67}},
+    {"publishedDate":"2026-09-11","effectiveDate":"2026-09-12","url":"https://fgw.weihai.gov.cn/art/2026/9/11/art_53887_6608405.html","prices":{"92":8.26,"95":8.86,"diesel":7.88}},
+    {"publishedDate":"2026-09-24","effectiveDate":"2026-09-25","url":"https://fgw.weihai.gov.cn/art/2026/9/24/art_53887_6642605.html","originalUrl":"http://fgw.shandong.gov.cn/art/2026/9/24/art_91082_10515706.html","prices":{"92":8.57,"95":9.20,"diesel":8.21}}
+  ]
+}

@@ -1,0 +1,192 @@
+{
+  "id": "henan",
+  "name": "河南",
+  "sourceName": "河南省发展和改革委员会",
+  "priceScope": "河南省国VIB车用乙醇汽油和国VI车用柴油最高零售价格（元/升）；加油站可在最高价以内自主定价。",
+  "allowedHostnames": [
+    "fgw.henan.gov.cn"
+  ],
+  "checkedAt": "2026-09-29",
+  "notices": [
+    {
+      "publishedDate": "2026-01-20",
+      "effectiveDate": "2026-01-21",
+      "url": "https://fgw.henan.gov.cn/2026/01-20/3311818.html",
+      "prices": {
+        "92": 6.78,
+        "95": 7.24,
+        "diesel": 6.39
+      }
+    },
+    {
+      "publishedDate": "2026-02-03",
+      "effectiveDate": "2026-02-04",
+      "url": "https://fgw.henan.gov.cn/2026/02-03/3321407.html",
+      "prices": {
+        "92": 6.94,
+        "95": 7.41,
+        "diesel": 6.56
+      }
+    },
+    {
+      "publishedDate": "2026-02-24",
+      "effectiveDate": "2026-02-25",
+      "url": "https://fgw.henan.gov.cn/2026/02-24/3327922.html",
+      "prices": {
+        "92": 7.08,
+        "95": 7.56,
+        "diesel": 6.71
+      }
+    },
+    {
+      "publishedDate": "2026-03-09",
+      "effectiveDate": "2026-03-10",
+      "url": "https://fgw.henan.gov.cn/2026/03-09/3332658.html",
+      "prices": {
+        "92": 7.64,
+        "95": 8.16,
+        "diesel": 7.28
+      }
+    },
+    {
+      "publishedDate": "2026-03-23",
+      "effectiveDate": "2026-03-24",
+      "url": "https://fgw.henan.gov.cn/2026/03-23/3336526.html",
+      "prices": {
+        "92": 8.58,
+        "95": 9.16,
+        "diesel": 8.24
+      }
+    },
+    {
+      "publishedDate": "2026-04-07",
+      "effectiveDate": "2026-04-08",
+      "url": "https://fgw.henan.gov.cn/2026/04-07/3340733.html",
+      "prices": {
+        "92": 8.91,
+        "95": 9.52,
+        "diesel": 8.59
+      }
+    },
+    {
+      "publishedDate": "2026-04-21",
+      "effectiveDate": "2026-04-22",
+      "url": "https://fgw.henan.gov.cn/2026/04-21/3344571.html",
+      "prices": {
+        "92": 8.47,
+        "95": 9.04,
+        "diesel": 8.13
+      }
+    },
+    {
+      "publishedDate": "2026-05-08",
+      "effectiveDate": "2026-05-09",
+      "url": "https://fgw.henan.gov.cn/2026/05-08/3349410.html",
+      "prices": {
+        "92": 8.72,
+        "95": 9.32,
+        "diesel": 8.4
+      }
+    },
+    {
+      "publishedDate": "2026-05-21",
+      "effectiveDate": "2026-05-22",
+      "url": "https://fgw.henan.gov.cn/2026/05-21/3357054.html",
+      "prices": {
+        "92": 8.79,
+        "95": 9.38,
+        "diesel": 8.46
+      }
+    },
+    {
+      "publishedDate": "2026-06-04",
+      "effectiveDate": "2026-06-05",
+      "url": "https://fgw.henan.gov.cn/2026/06-04/3362458.html",
+      "prices": {
+        "92": 8.36,
+        "95": 8.93,
+        "diesel": 8.02
+      }
+    },
+    {
+      "publishedDate": "2026-06-18",
+      "effectiveDate": "2026-06-19",
+      "url": "https://fgw.henan.gov.cn/2026/06-18/3367331.html",
+      "prices": {
+        "92": 7.95,
+        "95": 8.49,
+        "diesel": 7.6
+      }
+    },
+    {
+      "publishedDate": "2026-07-03",
+      "effectiveDate": "2026-07-04",
+      "url": "https://fgw.henan.gov.cn/2026/07-03/3372354.html",
+      "prices": {
+        "92": 7.18,
+        "95": 7.67,
+        "diesel": 6.81
+      }
+    },
+    {
+      "publishedDate": "2026-07-17",
+      "effectiveDate": "2026-07-18",
+      "url": "https://fgw.henan.gov.cn/2026/07-17/3376846.html",
+      "prices": {
+        "92": 7.43,
+        "95": 7.93,
+        "diesel": 7.06
+      }
+    },
+    {
+      "publishedDate": "2026-07-31",
+      "effectiveDate": "2026-08-01",
+      "url": "https://fgw.henan.gov.cn/2026/07-31/3381372.html",
+      "prices": {
+        "92": 7.98,
+        "95": 8.52,
+        "diesel": 7.62
+      }
+    },
+    {
+      "publishedDate": "2026-08-14",
+      "effectiveDate": "2026-08-15",
+      "url": "https://fgw.henan.gov.cn/2026/08-14/3399241.html",
+      "prices": {
+        "92": 7.79,
+        "95": 8.32,
+        "diesel": 7.43
+      }
+    },
+    {
+      "publishedDate": "2026-08-28",
+      "effectiveDate": "2026-08-29",
+      "url": "https://fgw.henan.gov.cn/2026/08-28/3408739.html",
+      "prices": {
+        "92": 8.09,
+        "95": 8.64,
+        "diesel": 7.74
+      }
+    },
+    {
+      "publishedDate": "2026-09-11",
+      "effectiveDate": "2026-09-12",
+      "url": "https://fgw.henan.gov.cn/2026/09-11/3418685.html",
+      "prices": {
+        "92": 8.3,
+        "95": 8.87,
+        "diesel": 7.96
+      }
+    },
+    {
+      "publishedDate": "2026-09-24",
+      "effectiveDate": "2026-09-25",
+      "url": "https://fgw.henan.gov.cn/2026/09-24/3432590.html",
+      "prices": {
+        "92": 8.62,
+        "95": 9.21,
+        "diesel": 8.29
+      }
+    }
+  ]
+}

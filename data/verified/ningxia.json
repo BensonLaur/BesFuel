@@ -1,0 +1,30 @@
+{
+  "id": "ningxia",
+  "name": "宁夏",
+  "sourceName": "宁夏回族自治区发展和改革委员会",
+  "priceScope": "宁夏市场车用汽油、柴油最高零售价格（元/升）；加油站实付价可能不同。",
+  "allowedHostnames": [
+    "fzggw.nx.gov.cn"
+  ],
+  "checkedAt": "2026-09-29",
+  "notices": [
+    { "publishedDate": "2026-01-20", "effectiveDate": "2026-01-21", "url": "https://fzggw.nx.gov.cn/tzgg/202601/t20260120_5139675.html", "prices": { "92": 6.68, "95": 7.06, "diesel": 6.30 } },
+    { "publishedDate": "2026-02-03", "effectiveDate": "2026-02-04", "url": "https://fzggw.nx.gov.cn/tzgg/202602/t20260203_5158880.html", "prices": { "92": 6.84, "95": 7.23, "diesel": 6.47 } },
+    { "publishedDate": "2026-02-24", "effectiveDate": "2026-02-25", "url": "https://fzggw.nx.gov.cn/tzgg/202602/t20260224_5176468.html", "prices": { "92": 6.98, "95": 7.38, "diesel": 6.61 } },
+    { "publishedDate": "2026-03-09", "effectiveDate": "2026-03-10", "url": "https://fzggw.nx.gov.cn/tzgg/202603/t20260309_5188315.html", "prices": { "92": 7.54, "95": 7.96, "diesel": 7.18 } },
+    { "publishedDate": "2026-03-23", "effectiveDate": "2026-03-24", "url": "https://fzggw.nx.gov.cn/tzgg/202603/t20260323_5200148.html", "prices": { "92": 8.46, "95": 8.94, "diesel": 8.13 } },
+    { "publishedDate": "2026-04-07", "effectiveDate": "2026-04-08", "url": "https://fzggw.nx.gov.cn/tzgg/202604/t20260407_5211377.html", "prices": { "92": 8.79, "95": 9.29, "diesel": 8.47 } },
+    { "publishedDate": "2026-04-21", "effectiveDate": "2026-04-22", "url": "https://fzggw.nx.gov.cn/tzgg/202604/t20260421_5222490.html", "prices": { "92": 8.35, "95": 8.82, "diesel": 8.02 } },
+    { "publishedDate": "2026-05-08", "effectiveDate": "2026-05-09", "url": "https://fzggw.nx.gov.cn/tzgg/202605/t20260508_5234574.html", "prices": { "92": 8.61, "95": 9.09, "diesel": 8.28 } },
+    { "publishedDate": "2026-05-21", "effectiveDate": "2026-05-22", "url": "https://fzggw.nx.gov.cn/tzgg/202605/t20260521_5246277.html", "prices": { "92": 8.67, "95": 9.16, "diesel": 8.34 } },
+    { "publishedDate": "2026-06-04", "effectiveDate": "2026-06-05", "url": "https://fzggw.nx.gov.cn/tzgg/202606/t20260604_5256299.html", "prices": { "92": 8.25, "95": 8.72, "diesel": 7.91 } },
+    { "publishedDate": "2026-06-18", "effectiveDate": "2026-06-19", "url": "https://fzggw.nx.gov.cn/tzgg/202606/t20260618_5269354.html", "prices": { "92": 7.84, "95": 8.28, "diesel": 7.49 } },
+    { "publishedDate": "2026-07-03", "effectiveDate": "2026-07-04", "url": "https://fzggw.nx.gov.cn/tzgg/202607/t20260703_5281341.html", "prices": { "92": 7.08, "95": 7.48, "diesel": 6.72 } },
+    { "publishedDate": "2026-07-17", "effectiveDate": "2026-07-18", "url": "https://fzggw.nx.gov.cn/tzgg/202607/t20260717_5291940.html", "prices": { "92": 7.32, "95": 7.74, "diesel": 6.96 } },
+    { "publishedDate": "2026-07-31", "effectiveDate": "2026-08-01", "url": "https://fzggw.nx.gov.cn/tzgg/202607/t20260731_5303481.html", "prices": { "92": 7.87, "95": 8.31, "diesel": 7.52 } },
+    { "publishedDate": "2026-08-14", "effectiveDate": "2026-08-15", "url": "https://fzggw.nx.gov.cn/tzgg/202608/t20260814_5313437.html", "prices": { "92": 7.68, "95": 8.12, "diesel": 7.33 } },
+    { "publishedDate": "2026-08-28", "effectiveDate": "2026-08-29", "url": "https://fzggw.nx.gov.cn/tzgg/202608/t20260828_5325812.html", "prices": { "92": 7.98, "95": 8.43, "diesel": 7.64 } },
+    { "publishedDate": "2026-09-11", "postedDate": "2026-09-15", "effectiveDate": "2026-09-12", "url": "https://fzggw.nx.gov.cn/tzgg/202609/t20260915_5343467.html", "prices": { "92": 8.19, "95": 8.65, "diesel": 7.85 } },
+    { "publishedDate": "2026-09-24", "effectiveDate": "2026-09-25", "url": "https://fzggw.nx.gov.cn/tzgg/202609/t20260924_5357138.html", "prices": { "92": 8.50, "95": 8.98, "diesel": 8.18 } }
+  ]
+}

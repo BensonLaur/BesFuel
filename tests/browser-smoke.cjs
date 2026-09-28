@@ -27,9 +27,11 @@ let browser, socket, profile, server;
 async function main() {
   if (!fs.existsSync(edge)) throw new Error("Set BROWSER_PATH to a Chromium-based browser executable.");
   profile = fs.mkdtempSync(path.join(os.tmpdir(), "besfuel-smoke-"));
-  browser = spawn(edge, ["--headless=new", "--disable-gpu", "--no-first-run", "--no-default-browser-check",
+  const browserArgs = ["--headless=new", "--disable-gpu", "--no-first-run", "--no-default-browser-check",
     "--disable-background-networking", "--disable-extensions", "--remote-debugging-address=127.0.0.1",
-    "--remote-debugging-port=0", `--user-data-dir=${profile}`, "about:blank"], { stdio: "ignore", windowsHide: true });
+    "--remote-debugging-port=0", `--user-data-dir=${profile}`];
+  if (process.env.BESFUEL_BROWSER_PROXY) browserArgs.push(`--proxy-server=${process.env.BESFUEL_BROWSER_PROXY}`);
+  browser = spawn(edge, [...browserArgs, "about:blank"], { stdio: "ignore", windowsHide: true });
   let launchError;
   browser.on("error", error => { launchError = error; });
   let port;
