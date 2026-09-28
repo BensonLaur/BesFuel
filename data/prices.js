@@ -1,6 +1,6 @@
 // Generated from data/prices.json by scripts/update-guangdong.ps1.
 window.BESFUEL_DATA = {
-    "version":  1,
+    "version":  2,
     "checkedAt":  "2026-09-28",
     "regions":  {
                     "guangdong":  {
@@ -214,24 +214,26 @@ window.BESFUEL_DATA = {
                                                                                     }
                                                                                 ]
                                                                 }
-                                                 },
-                                      "nextAdjustment":  {
-                                                             "date":  "2026-10-15",
-                                                             "dateLabel":  "预计 2026-10-15 24:00",
-                                                             "sourceName":  "国家发展改革委调价规则与国务院放假安排",
-                                                             "sourceUrl":  "https://www.ndrc.gov.cn/xxgk/zcfb/tz/201601/W020190905506573420251.pdf",
-                                                             "holidaySourceUrl":  "https://www.beijing.gov.cn/cs/gncs/zcwj/202603/t20260327_4568275.html"
-                                                         },
-                                      "forecast":  {
-                                                       "direction":  "down",
-                                                       "amountPerLiter":  0.18,
-                                                       "description":  "预计下调约 0.18 元/升",
-                                                       "sourceName":  "团友网",
-                                                       "sourceUrl":  "https://www.tuanyou.net/yuanyou/bianhualv/814.html",
-                                                       "updatedAt":  "2026-09-28",
-                                                       "windowDate":  "2026-10-15",
-                                                       "workday":  1
-                                                   }
+                                                 }
                                   }
-                }
+                },
+    "nationalAdjustment":  {
+                               "nextAdjustment":  {
+                                                      "date":  "2026-10-15",
+                                                      "dateLabel":  "预计 2026-10-15 24:00",
+                                                      "sourceName":  "国家发展改革委调价规则与国务院放假安排",
+                                                      "sourceUrl":  "https://www.ndrc.gov.cn/xxgk/zcfb/tz/201601/W020190905506573420251.pdf",
+                                                      "holidaySourceUrl":  "https://www.beijing.gov.cn/cs/gncs/zcwj/202603/t20260327_4568275.html"
+                                                  },
+                               "forecast":  {
+                                                "direction":  "down",
+                                                "amountPerLiter":  0.18,
+                                                "description":  "预计下调约 0.18 元/升",
+                                                "sourceName":  "团友网",
+                                                "sourceUrl":  "https://www.tuanyou.net/yuanyou/bianhualv/814.html",
+                                                "updatedAt":  "2026-09-28",
+                                                "windowDate":  "2026-10-15",
+                                                "workday":  1
+                                            }
+                           }
 };

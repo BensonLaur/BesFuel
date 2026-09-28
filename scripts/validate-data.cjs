@@ -13,10 +13,33 @@ function validDate(value) {
 }
 
 function validateSnapshot(data) {
-  assert.equal(data.version, 1, "snapshot version");
+  assert.equal(data.version, 2, "snapshot version");
   assert.ok(validDate(data.checkedAt), "snapshot checkedAt");
+  const national = data.nationalAdjustment;
+  assert.ok(national && typeof national === "object", "national adjustment");
+  if (national.nextAdjustment?.date || national.nextAdjustment?.dateLabel) {
+    const next = national.nextAdjustment;
+    assert.ok(validDate(next.date) && next.dateLabel === `预计 ${next.date} 24:00`, "national adjustment date");
+    assert.ok(next.sourceName &&
+      next.sourceUrl === "https://www.ndrc.gov.cn/xxgk/zcfb/tz/201601/W020190905506573420251.pdf" &&
+      next.holidaySourceUrl === "https://www.beijing.gov.cn/cs/gncs/zcwj/202603/t20260327_4568275.html",
+    "national adjustment sources");
+  }
+  if (national.forecast?.description) {
+    const forecast = national.forecast;
+    assert.ok(forecast.sourceName && validDate(forecast.updatedAt) &&
+      forecast.updatedAt <= data.checkedAt && forecast.windowDate === national.nextAdjustment?.date &&
+      /^https:\/\/www\.tuanyou\.net\/yuanyou\/bianhualv\/\d+\.html$/.test(forecast.sourceUrl),
+    "national forecast source and date");
+    assert.ok(["up", "down"].includes(forecast.direction) && Number.isFinite(forecast.amountPerLiter) &&
+      forecast.amountPerLiter > 0 && forecast.amountPerLiter <= 5 && Number.isInteger(forecast.workday) &&
+      forecast.workday >= 1 && forecast.workday <= 10 &&
+      forecast.description === `预计${forecast.direction === "up" ? "上调" : "下调"}约 ${forecast.amountPerLiter.toFixed(2)} 元/升`,
+    "national forecast values");
+  }
   assert.ok(data.regions && typeof data.regions === "object" && Object.keys(data.regions).length, "regions");
   for (const [key, region] of Object.entries(data.regions)) {
+    assert.ok(!Object.hasOwn(region, "nextAdjustment") && !Object.hasOwn(region, "forecast"), `${key}: shared adjustment must not be duplicated`);
     assert.ok(region.name && region.priceScope && region.effectiveLabel, `${key}: label and scope`);
     assert.ok(validDate(region.checkedAt), `${key}: checkedAt`);
     assert.ok(region.checkedAt <= data.checkedAt, `${key}: region checkedAt cannot exceed snapshot date`);
@@ -37,29 +60,6 @@ function validateSnapshot(data) {
       if (entry.price !== null) {
         assert.ok(entry.history.length, `${key}/${grade}: priced grade needs history`);
         assert.equal(entry.price, entry.history.at(-1).price, `${key}/${grade}: latest history price`);
-      }
-    }
-    if (region.nextAdjustment?.date || region.nextAdjustment?.dateLabel) {
-      const next = region.nextAdjustment;
-      assert.ok(validDate(next.date) && next.dateLabel === `预计 ${next.date} 24:00`, `${key}: adjustment date`);
-      assert.ok(next.sourceName && /^https:\/\//.test(next.sourceUrl) && /^https:\/\//.test(next.holidaySourceUrl), `${key}: adjustment source`);
-      if (key === "guangdong") {
-        assert.equal(next.sourceUrl, "https://www.ndrc.gov.cn/xxgk/zcfb/tz/201601/W020190905506573420251.pdf", "Guangdong adjustment rule source");
-        assert.equal(next.holidaySourceUrl, "https://www.beijing.gov.cn/cs/gncs/zcwj/202603/t20260327_4568275.html", "Guangdong holiday source");
-      }
-    }
-    if (region.forecast?.description) {
-      const forecast = region.forecast;
-      assert.ok(forecast.sourceName && /^https:\/\//.test(forecast.sourceUrl) && validDate(forecast.updatedAt) &&
-        forecast.updatedAt <= data.checkedAt && forecast.windowDate === region.nextAdjustment?.date,
-      `${key}: forecast source and date`);
-      assert.ok(["up", "down"].includes(forecast.direction) && Number.isFinite(forecast.amountPerLiter) &&
-        forecast.amountPerLiter > 0 && forecast.amountPerLiter <= 5 && Number.isInteger(forecast.workday) &&
-        forecast.workday >= 1 && forecast.workday <= 10 &&
-        forecast.description === `预计${forecast.direction === "up" ? "上调" : "下调"}约 ${forecast.amountPerLiter.toFixed(2)} 元/升`,
-      `${key}: forecast values`);
-      if (key === "guangdong") {
-        assert.match(forecast.sourceUrl, /^https:\/\/www\.tuanyou\.net\/yuanyou\/bianhualv\/\d+\.html$/, "Guangdong market source");
       }
     }
     if (key === "guangdong") {

@@ -32,12 +32,15 @@ test("rejects missing official provenance and duplicate historical dates", () =>
 
 test("forecast and adjustment need their own dated sources", () => {
   const snapshot = clone();
-  snapshot.regions.guangdong.forecast.sourceUrl = "https://example.com/forecast";
-  assert.throws(() => validateSnapshot(snapshot), /market source/);
-  snapshot.regions.guangdong.forecast.sourceUrl = "https://www.tuanyou.net/yuanyou/bianhualv/814.html";
-  snapshot.regions.guangdong.forecast.windowDate = "2026-10-29";
-  assert.throws(() => validateSnapshot(snapshot), /forecast source and date/);
-  snapshot.regions.guangdong.forecast.windowDate = "2026-10-15";
-  snapshot.regions.guangdong.nextAdjustment.holidaySourceUrl = null;
-  assert.throws(() => validateSnapshot(snapshot), /adjustment source/);
+  snapshot.nationalAdjustment.forecast.sourceUrl = "https://example.com/forecast";
+  assert.throws(() => validateSnapshot(snapshot), /national forecast source and date/);
+  snapshot.nationalAdjustment.forecast.sourceUrl = "https://www.tuanyou.net/yuanyou/bianhualv/814.html";
+  snapshot.nationalAdjustment.forecast.windowDate = "2026-10-29";
+  assert.throws(() => validateSnapshot(snapshot), /national forecast source and date/);
+  snapshot.nationalAdjustment.forecast.windowDate = "2026-10-15";
+  snapshot.nationalAdjustment.nextAdjustment.holidaySourceUrl = null;
+  assert.throws(() => validateSnapshot(snapshot), /national adjustment sources/);
+  snapshot.nationalAdjustment.nextAdjustment.holidaySourceUrl = "https://www.beijing.gov.cn/cs/gncs/zcwj/202603/t20260327_4568275.html";
+  snapshot.regions.guangdong.forecast = snapshot.nationalAdjustment.forecast;
+  assert.throws(() => validateSnapshot(snapshot), /shared adjustment must not be duplicated/);
 });

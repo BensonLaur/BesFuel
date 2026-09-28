@@ -11,7 +11,8 @@
     freshness: $("freshness"), source: $("price-source"), sourceNote: $("source-note"), syncNote: $("sync-note"),
     nextWindow: $("next-window"), windowDetail: $("window-detail"),
     windowRuleSource: $("window-rule-source"), windowHolidaySource: $("window-holiday-source"),
-    prediction: $("prediction"), predictionDetail: $("prediction-detail"), predictionSource: $("prediction-source"),
+    prediction: $("prediction-text"), predictionArrow: $("prediction-arrow"),
+    predictionDetail: $("prediction-detail"), predictionSource: $("prediction-source"),
     distance: $("distance"), consumption: $("consumption"), tripPrice: $("trip-price"),
     restorePrice: $("restore-price"), priceMode: $("price-mode"),
     perKm: $("per-km"), total: $("trip-total"), calcNote: $("calc-note"),
@@ -65,9 +66,9 @@
   }
 
   function showAdjustment() {
-    const region = selectedRegion();
-    const windowData = region.nextAdjustment || {};
-    const forecast = region.forecast || {};
+    const national = data.nationalAdjustment || {};
+    const windowData = national.nextAdjustment || {};
+    const forecast = national.forecast || {};
     const today = Object.fromEntries(new Intl.DateTimeFormat("en-GB", {
       timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit"
     }).formatToParts(new Date()).map(part => [part.type, part.value]));
@@ -85,6 +86,11 @@
     // A stored forecast must disappear when its cycle changes or its calculation day gets old.
     const forecastReady = windowReady && forecast.description && forecast.windowDate === windowData.date && age >= 0 && age <= 2;
     ui.prediction.textContent = forecastReady ? forecast.description : "暂无近期可靠预估";
+    ui.predictionArrow.hidden = !forecastReady || !["up", "down"].includes(forecast.direction);
+    if (!ui.predictionArrow.hidden) {
+      ui.predictionArrow.textContent = forecast.direction === "up" ? "↑" : "↓";
+      ui.predictionArrow.className = `prediction-arrow ${forecast.direction}`;
+    }
     ui.predictionDetail.textContent = forecastReady
       ? `${forecast.sourceName} · ${forecast.updatedAt} · 第 ${forecast.workday} 个工作日；仅供参考`
       : forecast.updatedAt ? "上次预测已过期，等待新一期市场数据" : "市场预测与正式价格分开显示";
@@ -266,7 +272,7 @@
       const response = await fetch("data/prices.json", { cache: "no-store" });
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const fresh = await response.json();
-      if (fresh.version !== 1 || !fresh.regions || !fresh.regions[ui.region.value]) throw new Error("数据格式不正确");
+      if (fresh.version !== 2 || !fresh.nationalAdjustment || !fresh.regions || !fresh.regions[ui.region.value]) throw new Error("数据格式不正确");
       if (fresh.checkedAt < data.checkedAt) {
         ui.syncNote.textContent = "站点数据文件较旧，继续显示已加载的快照。";
         return;
@@ -283,6 +289,7 @@
     }
   }
 
+  // A cached v1 script can still show prices until the fresh v2 JSON arrives.
   if (!data?.regions || !calc) {
     ui.priceDetail.textContent = "本地数据未能加载，请检查 data/prices.js 和 lib/calc.js。";
     return;

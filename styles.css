@@ -55,6 +55,11 @@ a { color: inherit; }
 .adjustment-pair > div + div { padding-left: 18px; border-left: 1px solid #e0eae1; }
 .adjustment-pair span { color: #718779; font-size: 12px; }
 .adjustment-pair strong { font-size: 18px; line-height: 1.3; }
+.prediction-value { display: inline-flex; align-items: baseline; gap: 7px; }
+.prediction-arrow { flex: none; font-size: 24px; line-height: 1; font-weight: 800; }
+.prediction-arrow.down { color: #21815b; }
+.prediction-arrow.up { color: #bf5248; }
+.prediction-arrow[hidden] { display: none; }
 .adjustment-pair small { color: #8a9c8e; font-size: 11px; line-height: 1.5; }
 .adjustment-sources { display: flex; flex-wrap: wrap; gap: 4px 10px; }
 .adjustment-sources a { color: #287651; text-underline-offset: 3px; }
