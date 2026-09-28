@@ -1,0 +1,75 @@
+name: 核对广东油价并发布 Pages
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '0 0 * * *' # 北京时间每天 08:00；GitHub 定时任务可能延迟。
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+  actions: read
+
+concurrency:
+  group: besfuel-pages
+  cancel-in-progress: false
+
+jobs:
+  update-and-deploy:
+    runs-on: windows-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+      - name: 抓取并校验广东官方公告
+        shell: pwsh
+        run: |
+          powershell -NoProfile -File .\scripts\update-guangdong.ps1
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm run validate:data
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: 运行测试和浏览器检查
+        shell: pwsh
+        run: |
+          npm test
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm run test:updater
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm run smoke
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: 记录有变化的可信快照
+        shell: pwsh
+        run: |
+          git add data/prices.json data/prices.js
+          git diff --cached --quiet
+          if ($LASTEXITCODE -eq 0) { exit 0 }
+          if ($LASTEXITCODE -ne 1) { exit $LASTEXITCODE }
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'chore(data): 核对广东官方油价'
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          git push origin HEAD:main
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: 准备静态站点
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force public/data, public/lib, public/resources/support | Out-Null
+          Copy-Item index.html, styles.css, app.js public/
+          Copy-Item data/prices.json, data/prices.js public/data/
+          Copy-Item lib/calc.js public/lib/
+          Copy-Item resources/support/wechat.png, resources/support/alipay.png public/resources/support/
+          New-Item -ItemType File public/.nojekyll | Out-Null
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: public
+      - name: 发布 GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

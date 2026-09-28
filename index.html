@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f7f4">
+  <meta name="description" content="BesFuel：查看当地参考油价、调价信息与历史趋势，计算每公里和本次行程的油费。">
+  <title>BesFuel · 油价随行</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="data/prices.js"></script>
+  <script defer src="lib/calc.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="BesFuel 首页">
+        <span class="brand-mark" aria-hidden="true">B<span class="brand-drop"></span></span>
+        <span class="brand-name">BesFuel<small>油价随行</small></span>
+      </a>
+      <div class="header-controls">
+        <label class="select-wrap location-select"><span>地区</span>
+          <select id="region" aria-label="选择地区"></select>
+        </label>
+        <label class="select-wrap grade-select"><span>油号</span>
+          <select id="grade" aria-label="选择油号">
+            <option value="92">92 号汽油</option>
+            <option value="95">95 号汽油</option>
+            <option value="98">98 号汽油</option>
+            <option value="diesel">0 号柴油</option>
+          </select>
+        </label>
+      </div>
+    </header>
+
+    <main>
+      <div class="page-intro">
+        <p class="eyebrow">把每一程算明白</p>
+        <h1>油价、趋势和油费，<br><span>一眼看清。</span></h1>
+        <p>选好常用油号，输入这次里程，就知道每公里和全程要花多少。</p>
+      </div>
+
+      <div class="dashboard-grid">
+        <section class="price-card" aria-labelledby="price-heading">
+          <div class="card-topline">
+            <div>
+              <p class="card-kicker">已收录省级参考油价</p>
+              <h2 id="price-heading"><span id="region-label">广东</span><span id="grade-label">92 号汽油</span></h2>
+            </div>
+            <span class="price-status" id="freshness">核对中</span>
+          </div>
+          <div class="main-price"><strong id="current-price">—</strong><span>元 / 升</span></div>
+          <p class="price-detail" id="price-detail">正在读取本地参考数据…</p>
+          <p class="sync-note" id="sync-note" aria-live="polite">准备检查数据快照…</p>
+          <div class="price-card-bottom">
+            <div><span>执行时间</span><strong id="effective-time">—</strong></div>
+            <div><span>数据来源</span><a id="price-source" href="#data-notes" target="_blank" rel="noopener noreferrer">查看来源 ↗</a></div>
+          </div>
+        </section>
+
+        <section class="adjustment-card card" aria-labelledby="adjustment-heading">
+          <div class="section-heading"><div><p class="card-kicker">下一轮变化</p><h2 id="adjustment-heading">调价观察</h2></div><span class="section-icon" aria-hidden="true">↗</span></div>
+          <div class="adjustment-pair">
+            <div><span>下次调价窗口</span><strong id="next-window">待核实</strong><small id="window-detail">以主管部门公告为准</small></div>
+            <div><span>涨跌预估</span><strong id="prediction">暂无可靠预估</strong><small id="prediction-detail">预测会与正式价格分开显示</small></div>
+          </div>
+          <p class="card-footnote">正式调整与市场预测分别标注来源和更新时间。</p>
+        </section>
+
+        <section class="trip-card card" aria-labelledby="trip-heading">
+          <div class="section-heading"><div><p class="card-kicker">随手算一程</p><h2 id="trip-heading">本次行程油费</h2></div><span class="trip-icon" aria-hidden="true">↗</span></div>
+          <div class="form-grid">
+            <label class="field"><span>本次里程</span><div class="input-shell"><input id="distance" type="number" inputmode="decimal" min="0" step="any" placeholder="例如 9" autocomplete="off"><span>公里</span></div></label>
+            <label class="field"><span>平均油耗</span><div class="input-shell"><input id="consumption" type="number" inputmode="decimal" min="0" step="any" value="9" autocomplete="off"><span>升/百公里</span></div></label>
+          </div>
+          <div class="price-input-heading"><label for="trip-price">计算采用的油价</label><button id="restore-price" class="text-button" type="button" hidden>恢复参考价</button></div>
+          <div class="input-shell price-input-shell"><input id="trip-price" type="number" inputmode="decimal" min="0" step="any" placeholder="输入实际加油价" autocomplete="off"><span>元/升</span></div>
+          <p class="input-hint" id="price-mode">默认采用本地收录的参考价，可改成加油站实际价格。</p>
+          <div class="results" aria-live="polite">
+            <div class="result"><span>每公里油费</span><strong id="per-km">—</strong><small>元 / 公里</small></div>
+            <div class="result result-total"><span>本次总油费</span><strong id="trip-total">—</strong><small>元</small></div>
+          </div>
+          <p class="calc-note" id="calc-note">输入里程后显示全程油费。</p>
+          <button class="support-trigger" id="open-support" type="button" aria-haspopup="dialog">⛽ 给 BesFuel 加点油 <span aria-hidden="true">↗</span></button>
+        </section>
+
+        <section class="history-card card" aria-labelledby="history-heading">
+          <div class="section-heading"><div><p class="card-kicker">有据可查</p><h2 id="history-heading">历史油价</h2></div><span class="chart-unit">元 / 升</span></div>
+          <div class="chart-wrap" id="chart-wrap" role="img" aria-label="历史油价图"></div>
+          <div class="chart-meta"><span id="history-range">—</span><span id="history-count">—</span></div>
+          <p class="card-footnote" id="history-note">只绘制已核实的历史价格，不使用示意数据。</p>
+        </section>
+      </div>
+
+      <section class="data-notes" id="data-notes" aria-labelledby="notes-heading">
+        <h2 id="notes-heading">关于这些数字</h2>
+        <p id="source-note">参考价并非加油站实时成交价。页面会显示数据来源和日期；超过更新期限时会提醒核对。</p>
+        <p>油费按“百公里油耗 × 每升油价 ÷ 100”计算每公里成本，再乘以行程里程；结果仅含燃油，不含停车费、过路费。</p>
+      </section>
+    </main>
+    <footer class="site-footer"><span>BesFuel · 油价随行</span><span>为每一程，留一笔明白账。</span></footer>
+  </div>
+  <dialog class="support-dialog" id="support-dialog" aria-labelledby="support-title">
+    <div class="support-head">
+      <div><p class="card-kicker">自愿支持</p><h2 id="support-title">给 BesFuel 加点油</h2></div>
+      <button class="support-close" id="close-support" type="button" aria-label="关闭支持卡片">×</button>
+    </div>
+    <div class="fuel-meter" aria-hidden="true"><span></span></div>
+    <p class="support-description">如果它帮你算清了一程油费，欢迎自愿支持开发与维护。金额由你在支付应用中决定；所有功能始终免费。</p>
+    <div class="support-methods" aria-label="选择收款方式">
+      <button type="button" class="support-method" data-method="wechat" aria-pressed="true">微信</button>
+      <button type="button" class="support-method" data-method="alipay" aria-pressed="false">支付宝</button>
+    </div>
+    <div class="support-image-wrap"><img id="support-image" src="resources/support/wechat.png" alt="微信收款原图，收款主体 Benson(**城)" width="1266" height="1749"></div>
+    <p class="support-instruction">电脑上可用手机扫码。手机上请保存原图，再在微信或支付宝中从相册识别；付款前请核对收款人。</p>
+    <div class="support-actions">
+      <a id="support-open-image" href="resources/support/wechat.png" target="_blank" rel="noopener noreferrer">打开原图 ↗</a>
+      <a id="support-save-image" href="resources/support/wechat.png" download="BesFuel-wechat.png">保存原图 ↓</a>
+    </div>
+  </dialog>
+</body>
+</html>

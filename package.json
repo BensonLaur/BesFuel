@@ -1,0 +1,15 @@
+{
+  "name": "besfuel",
+  "version": "0.1.0",
+  "private": true,
+  "description": "油价与出行油费单页看板",
+  "scripts": {
+    "test": "node --test tests/*.test.cjs",
+    "test:updater": "powershell -NoProfile -File tests/update-failure.ps1",
+    "validate:data": "node scripts/validate-data.cjs",
+    "smoke": "node tests/browser-smoke.cjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,231 @@
+{
+    "version":  1,
+    "checkedAt":  "2026-09-28",
+    "regions":  {
+                    "guangdong":  {
+                                      "name":  "广东",
+                                      "priceScope":  "广东省公布的全省最高销售价格；加油站实际成交价可能不同。",
+                                      "checkedAt":  "2026-09-28",
+                                      "source":  {
+                                                     "name":  "广东省发展和改革委员会",
+                                                     "url":  "https://drc.gd.gov.cn/ywgg/content/post_4960317.html"
+                                                 },
+                                      "effectiveLabel":  "2026-09-24 24:00 起",
+                                      "grades":  {
+                                                     "92":  {
+                                                                "price":  8.63,
+                                                                "history":  [
+                                                                                {
+                                                                                    "date":  "2026-04-22",
+                                                                                    "price":  8.48,
+                                                                                    "sourceUrl":  "https://drc.gd.gov.cn/ywgg/content/post_4887426.html"
+                                                                                },
+                                                                                {
+                                                                                    "date":  "2026-05-09",
+                                                                                    "price":  8.73,
+                                                                                    "sourceUrl":  "https://drc.gd.gov.cn/ywgg/content/post_4893989.html"
+                                                                                },
+                                                                                {
+                                                                                    "date":  "2026-05-22",
+                                                                                    "price":  8.79,
+                                                                                    "sourceUrl":  "https://drc.gd.gov.cn/ywgg/content/post_4899814.html"
+                                                                                },
+                                                                                {
+                                                                                    "date":  "2026-06-05",
+                                                                                    "price":  8.37,
+                                                                                    "sourceUrl":  "https://drc.gd.gov.cn/ywgg/content/post_4906702.html"
+                                                                                },
+                                                                                {
+                                                                                    "date":  "2026-06-19",
+                                                                                    "price":  7.96,
+                                                                                    "sourceUrl":  "https://drc.gd.gov.cn/ywgg/content/post_4913643.html"
+                                                                                },
+                                                                                {
+                                                                                    "date":  "2026-07-04",
+                                                                                    "price":  7.2,
+                                                                                    "sourceUrl":  "https://drc.gd.gov.cn/ywgg/content/post_4919965.html"
+                                                                                },
+                                                                                {
+                                                                                    "date":  "2026-07-18",
+                                                                                    "price":  7.44,
+                                                                                    "sourceUrl":  "https://drc.gd.gov.cn/ywgg/content/post_4926317.html"
+                                                                                },
+                                                                                {
+                                                                                    "date":  "2026-08-01",
+                                                                                    "price":  7.99,
+                                                                                    "sourceUrl":  "https://drc.gd.gov.cn/ywgg/content/post_4936355.html"
+                                                                                },
+                                                                                {
+                                                                                    "date":  "2026-08-15",
+                                                                                    "price":  7.8,
+                                                                                    "sourceUrl":  "https://drc.gd.gov.cn/ywgg/content/post_4942632.html"
+                                                                                },
+                                                                                {
+                                                                                    "date":  "2026-08-29",
+                                                                                    "price":  8.1,
+                                                                                    "sourceUrl":  "https://drc.gd.gov.cn/ywgg/content/post_4948264.html"
+                                                                                },
+                                                                                {
+                                                                                    "date":  "2026-09-12",
+                                                                                    "price":  8.31,
+                                                                                    "sourceUrl":  "https://drc.gd.gov.cn/ywgg/content/post_4954694.html"
+                                                                                },
+                                                                                {
+                                                                                    "date":  "2026-09-25",
+                                                                                    "price":  8.63,
+                                                                                    "sourceUrl":  "https://drc.gd.gov.cn/ywgg/content/post_4960317.html"
+                                                                                }
+                                                                            ]
+                                                            },
+                                                     "95":  {
+                                                                "price":  9.35,
+                                                                "history":  [
+                                                                                {
+                                                                                    "date":  "2026-04-22",
+                                                                                    "price":  9.18,
+                                                                                    "sourceUrl":  "https://drc.gd.gov.cn/ywgg/content/post_4887426.html"
+                                                                                },
+                                                                                {
+                                                                                    "date":  "2026-05-09",
+                                                                                    "price":  9.46,
+                                                                                    "sourceUrl":  "https://drc.gd.gov.cn/ywgg/content/post_4893989.html"
+                                                                                },
+                                                                                {
+                                                                                    "date":  "2026-05-22",
+                                                                                    "price":  9.53,
+                                                                                    "sourceUrl":  "https://drc.gd.gov.cn/ywgg/content/post_4899814.html"
+                                                                                },
+                                                                                {
+                                                                                    "date":  "2026-06-05",
+                                                                                    "price":  9.07,
+                                                                                    "sourceUrl":  "https://drc.gd.gov.cn/ywgg/content/post_4906702.html"
+                                                                                },
+                                                                                {
+                                                                                    "date":  "2026-06-19",
+                                                                                    "price":  8.62,
+                                                                                    "sourceUrl":  "https://drc.gd.gov.cn/ywgg/content/post_4913643.html"
+                                                                                },
+                                                                                {
+                                                                                    "date":  "2026-07-04",
+                                                                                    "price":  7.8,
+                                                                                    "sourceUrl":  "https://drc.gd.gov.cn/ywgg/content/post_4919965.html"
+                                                                                },
+                                                                                {
+                                                                                    "date":  "2026-07-18",
+                                                                                    "price":  8.06,
+                                                                                    "sourceUrl":  "https://drc.gd.gov.cn/ywgg/content/post_4926317.html"
+                                                                                },
+                                                                                {
+                                                                                    "date":  "2026-08-01",
+                                                                                    "price":  8.65,
+                                                                                    "sourceUrl":  "https://drc.gd.gov.cn/ywgg/content/post_4936355.html"
+                                                                                },
+                                                                                {
+                                                                                    "date":  "2026-08-15",
+                                                                                    "price":  8.45,
+                                                                                    "sourceUrl":  "https://drc.gd.gov.cn/ywgg/content/post_4942632.html"
+                                                                                },
+                                                                                {
+                                                                                    "date":  "2026-08-29",
+                                                                                    "price":  8.78,
+                                                                                    "sourceUrl":  "https://drc.gd.gov.cn/ywgg/content/post_4948264.html"
+                                                                                },
+                                                                                {
+                                                                                    "date":  "2026-09-12",
+                                                                                    "price":  9,
+                                                                                    "sourceUrl":  "https://drc.gd.gov.cn/ywgg/content/post_4954694.html"
+                                                                                },
+                                                                                {
+                                                                                    "date":  "2026-09-25",
+                                                                                    "price":  9.35,
+                                                                                    "sourceUrl":  "https://drc.gd.gov.cn/ywgg/content/post_4960317.html"
+                                                                                }
+                                                                            ]
+                                                            },
+                                                     "98":  {
+                                                                "price":  null,
+                                                                "history":  [
+
+                                                                            ]
+                                                            },
+                                                     "diesel":  {
+                                                                    "price":  8.31,
+                                                                    "history":  [
+                                                                                    {
+                                                                                        "date":  "2026-04-22",
+                                                                                        "price":  8.15,
+                                                                                        "sourceUrl":  "https://drc.gd.gov.cn/ywgg/content/post_4887426.html"
+                                                                                    },
+                                                                                    {
+                                                                                        "date":  "2026-05-09",
+                                                                                        "price":  8.41,
+                                                                                        "sourceUrl":  "https://drc.gd.gov.cn/ywgg/content/post_4893989.html"
+                                                                                    },
+                                                                                    {
+                                                                                        "date":  "2026-05-22",
+                                                                                        "price":  8.47,
+                                                                                        "sourceUrl":  "https://drc.gd.gov.cn/ywgg/content/post_4899814.html"
+                                                                                    },
+                                                                                    {
+                                                                                        "date":  "2026-06-05",
+                                                                                        "price":  8.04,
+                                                                                        "sourceUrl":  "https://drc.gd.gov.cn/ywgg/content/post_4906702.html"
+                                                                                    },
+                                                                                    {
+                                                                                        "date":  "2026-06-19",
+                                                                                        "price":  7.62,
+                                                                                        "sourceUrl":  "https://drc.gd.gov.cn/ywgg/content/post_4913643.html"
+                                                                                    },
+                                                                                    {
+                                                                                        "date":  "2026-07-04",
+                                                                                        "price":  6.83,
+                                                                                        "sourceUrl":  "https://drc.gd.gov.cn/ywgg/content/post_4919965.html"
+                                                                                    },
+                                                                                    {
+                                                                                        "date":  "2026-07-18",
+                                                                                        "price":  7.08,
+                                                                                        "sourceUrl":  "https://drc.gd.gov.cn/ywgg/content/post_4926317.html"
+                                                                                    },
+                                                                                    {
+                                                                                        "date":  "2026-08-01",
+                                                                                        "price":  7.64,
+                                                                                        "sourceUrl":  "https://drc.gd.gov.cn/ywgg/content/post_4936355.html"
+                                                                                    },
+                                                                                    {
+                                                                                        "date":  "2026-08-15",
+                                                                                        "price":  7.45,
+                                                                                        "sourceUrl":  "https://drc.gd.gov.cn/ywgg/content/post_4942632.html"
+                                                                                    },
+                                                                                    {
+                                                                                        "date":  "2026-08-29",
+                                                                                        "price":  7.76,
+                                                                                        "sourceUrl":  "https://drc.gd.gov.cn/ywgg/content/post_4948264.html"
+                                                                                    },
+                                                                                    {
+                                                                                        "date":  "2026-09-12",
+                                                                                        "price":  7.98,
+                                                                                        "sourceUrl":  "https://drc.gd.gov.cn/ywgg/content/post_4954694.html"
+                                                                                    },
+                                                                                    {
+                                                                                        "date":  "2026-09-25",
+                                                                                        "price":  8.31,
+                                                                                        "sourceUrl":  "https://drc.gd.gov.cn/ywgg/content/post_4960317.html"
+                                                                                    }
+                                                                                ]
+                                                                }
+                                                 },
+                                      "nextAdjustment":  {
+                                                             "dateLabel":  null,
+                                                             "sourceName":  null,
+                                                             "sourceUrl":  null
+                                                         },
+                                      "forecast":  {
+                                                       "direction":  null,
+                                                       "description":  null,
+                                                       "sourceName":  null,
+                                                       "sourceUrl":  null,
+                                                       "updatedAt":  null
+                                                   }
+                                  }
+                }
+}
