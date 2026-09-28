@@ -29,7 +29,7 @@ function importVerified(data, record) {
     }
   }
   for (const notice of record.notices || []) {
-    for (const field of ["imageUrl", "pdfUrl"]) {
+    for (const field of ["imageUrl", "dieselImageUrl", "pdfUrl"]) {
       if (notice[field]) {
         assert.ok(officialUrl(notice[field], record.allowedHostnames), `${record.id}: official ${field}`);
       }

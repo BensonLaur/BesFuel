@@ -342,4 +342,13 @@
   });
   refresh();
   checkPublishedSnapshot();
+  let renderedDay = chinaDate();
+  setInterval(() => {
+    const today = chinaDate();
+    if (today !== renderedDay) {
+      renderedDay = today;
+      // Seasonal prices and forecasts can expire while a tab stays open.
+      refresh(true);
+    }
+  }, 60_000);
 })();

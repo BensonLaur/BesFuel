@@ -1,0 +1,23 @@
+{
+  "id": "jiangsu",
+  "name": "江苏",
+  "sourceName": "江苏省发展和改革委员会",
+  "priceScope": "江苏省汽、柴油最高零售价格（元/升）",
+  "allowedHostnames": ["fzggw.jiangsu.gov.cn"],
+  "unit": "元/升",
+  "checkedAt": "2026-09-28",
+  "notices": [
+    {
+      "publishedDate": "2026-09-11",
+      "effectiveDate": "2026-09-12",
+      "url": "https://fzggw.jiangsu.gov.cn/art/2026/9/11/art_284_11828542.html",
+      "prices": { "92": 8.26, "95": 8.79, "diesel": 7.93 }
+    },
+    {
+      "publishedDate": "2026-09-24",
+      "effectiveDate": "2026-09-25",
+      "url": "https://fzggw.jiangsu.gov.cn/art/2026/9/24/art_284_11834860.html",
+      "prices": { "92": 8.58, "95": 9.12, "diesel": 8.26 }
+    }
+  ]
+}

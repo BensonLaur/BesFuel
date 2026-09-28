@@ -1,0 +1,34 @@
+{
+  "id": "sichuan-zone2",
+  "name": "四川第二价区",
+  "sourceName": "四川省发展和改革委员会",
+  "priceScope": "四川省二价区：阿坝州汶川县、理县、茂县以及凉山州、攀枝花市行政区域的汽柴油最高零售价格（元/升）；其他地区不适用。",
+  "allowedHostnames": [
+    "fgw.sc.gov.cn"
+  ],
+  "unit": "元/升",
+  "checkedAt": "2026-09-28",
+  "notices": [
+    {
+      "publishedDate": "2026-08-28",
+      "effectiveDate": "2026-08-29",
+      "url": "https://fgw.sc.gov.cn/sfgw/tzgg/2026/8/28/28103485ce8d49d596240543521fd65a.shtml",
+      "attachmentUrl": "https://fgw.sc.gov.cn/sfgw/tzgg/2026/8/28/28103485ce8d49d596240543521fd65a/files/%E5%9B%9B%E5%B7%9D%E7%9C%81%E6%B1%BD%E3%80%81%E6%9F%B4%E6%B2%B9%E6%9C%80%E9%AB%98%E6%89%B9%E5%8F%91%E9%9B%B6%E5%94%AE%E4%BB%B7%E6%A0%BC%E8%A1%A8.docx",
+      "prices": { "92": 8.25, "95": 8.82, "diesel": 7.88 }
+    },
+    {
+      "publishedDate": "2026-09-11",
+      "effectiveDate": "2026-09-12",
+      "url": "https://fgw.sc.gov.cn/sfgw/tzgg/2026/9/11/63154fcdc1bb430cb38de18de6a535b9.shtml",
+      "attachmentUrl": "https://fgw.sc.gov.cn/sfgw/tzgg/2026/9/11/63154fcdc1bb430cb38de18de6a535b9/files/%E5%9B%9B%E5%B7%9D%E7%9C%81%E6%B1%BD%E3%80%81%E6%9F%B4%E6%B2%B9%E6%9C%80%E9%AB%98%E6%89%B9%E5%8F%91%E9%9B%B6%E5%94%AE%E4%BB%B7%E6%A0%BC%E8%A1%A8.docx",
+      "prices": { "92": 8.46, "95": 9.04, "diesel": 8.10 }
+    },
+    {
+      "publishedDate": "2026-09-24",
+      "effectiveDate": "2026-09-25",
+      "url": "https://fgw.sc.gov.cn/sfgw/tzgg/2026/9/24/cf670f9f0e5f454b9ca534012c091993.shtml",
+      "attachmentUrl": "https://fgw.sc.gov.cn/sfgw/tzgg/2026/9/24/cf670f9f0e5f454b9ca534012c091993/files/%E5%9B%9B%E5%B7%9D%E7%9C%81%E6%B1%BD%E3%80%81%E6%9F%B4%E6%B2%B9%E6%9C%80%E9%AB%98%E6%89%B9%E5%8F%91%E9%9B%B6%E5%94%AE%E4%BB%B7%E6%A0%BC%E8%A1%A8.docx",
+      "prices": { "92": 8.78, "95": 9.38, "diesel": 8.42 }
+    }
+  ]
+}

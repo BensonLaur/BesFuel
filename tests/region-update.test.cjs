@@ -79,4 +79,7 @@ test("manual imports reject tonne-only prices and attachments outside the offici
   const jilin = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "data", "verified", "jilin.json"), "utf8"));
   jilin.notices[0].pdfUrl = "https://example.com/notice.pdf";
   assert.throws(() => importVerified(snapshot, jilin), /official pdfUrl/);
+  const guizhou = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "data", "verified", "guizhou-zone1.json"), "utf8"));
+  guizhou.notices[0].dieselImageUrl = "https://example.com/diesel.png";
+  assert.throws(() => importVerified(snapshot, guizhou), /official dieselImageUrl/);
 });

@@ -1,0 +1,97 @@
+{
+  "id": "guizhou-zone3",
+  "name": "贵州第三价区",
+  "sourceName": "贵州省发展和改革委员会",
+  "priceScope": "贵州省三价区：遵义、六盘水、铜仁、黔东南、黔西南、毕节的汽柴油最高零售价格（元/升）；其他地区不适用。",
+  "allowedHostnames": [
+    "fgw.guizhou.gov.cn"
+  ],
+  "unit": "元/升",
+  "checkedAt": "2026-09-28",
+  "notices": [
+    {
+      "publishedDate": "2026-07-03",
+      "effectiveDate": "2026-07-04",
+      "url": "https://fgw.guizhou.gov.cn/fggz/tzgg/202607/t20260703_90584884.html",
+      "imageUrl": "https://fgw.guizhou.gov.cn/fggz/tzgg/202607/W020260703567179768317.png",
+      "dieselImageUrl": "https://fgw.guizhou.gov.cn/fggz/tzgg/202607/W020260703567179924825.png",
+      "prices": {
+        "92": 7.37,
+        "95": 7.79,
+        "diesel": 6.99
+      }
+    },
+    {
+      "publishedDate": "2026-07-17",
+      "effectiveDate": "2026-07-18",
+      "url": "https://fgw.guizhou.gov.cn/fggz/tzgg/202607/t20260717_90631983.html",
+      "imageUrl": "https://fgw.guizhou.gov.cn/fggz/tzgg/202607/W020260717362045455852.png",
+      "dieselImageUrl": "https://fgw.guizhou.gov.cn/fggz/tzgg/202607/W020260717362045501354.png",
+      "prices": {
+        "92": 7.61,
+        "95": 8.04,
+        "diesel": 7.24
+      }
+    },
+    {
+      "publishedDate": "2026-07-31",
+      "effectiveDate": "2026-08-01",
+      "url": "https://fgw.guizhou.gov.cn/fggz/tzgg/202607/t20260731_90682015.html",
+      "imageUrl": "https://fgw.guizhou.gov.cn/fggz/tzgg/202607/W020260731547995687979.png",
+      "dieselImageUrl": "https://fgw.guizhou.gov.cn/fggz/tzgg/202607/W020260731547995744541.png",
+      "prices": {
+        "92": 8.16,
+        "95": 8.62,
+        "diesel": 7.8
+      }
+    },
+    {
+      "publishedDate": "2026-08-14",
+      "effectiveDate": "2026-08-15",
+      "url": "https://fgw.guizhou.gov.cn/fggz/tzgg/202608/t20260814_90734639.html",
+      "imageUrl": "https://fgw.guizhou.gov.cn/fggz/tzgg/202608/W020260814574209807099.png",
+      "dieselImageUrl": "https://fgw.guizhou.gov.cn/fggz/tzgg/202608/W020260814574209879106.png",
+      "prices": {
+        "92": 7.98,
+        "95": 8.43,
+        "diesel": 7.61
+      }
+    },
+    {
+      "publishedDate": "2026-08-28",
+      "effectiveDate": "2026-08-29",
+      "url": "https://fgw.guizhou.gov.cn/fggz/tzgg/202608/t20260828_90795280.html",
+      "imageUrl": "https://fgw.guizhou.gov.cn/fggz/tzgg/202608/W020260828594441234991.png",
+      "dieselImageUrl": "https://fgw.guizhou.gov.cn/fggz/tzgg/202608/W020260828594441288309.png",
+      "prices": {
+        "92": 8.28,
+        "95": 8.75,
+        "diesel": 7.92
+      }
+    },
+    {
+      "publishedDate": "2026-09-11",
+      "effectiveDate": "2026-09-12",
+      "url": "https://fgw.guizhou.gov.cn/fggz/tzgg/202609/t20260911_90863721.html",
+      "imageUrl": "https://fgw.guizhou.gov.cn/fggz/tzgg/202609/W020260911580240487738.png",
+      "dieselImageUrl": "https://fgw.guizhou.gov.cn/fggz/tzgg/202609/W020260911580240518379.png",
+      "prices": {
+        "92": 8.49,
+        "95": 8.97,
+        "diesel": 8.13
+      }
+    },
+    {
+      "publishedDate": "2026-09-24",
+      "effectiveDate": "2026-09-25",
+      "url": "https://fgw.guizhou.gov.cn/fggz/tzgg/202609/t20260924_90940085.html",
+      "imageUrl": "https://fgw.guizhou.gov.cn/fggz/tzgg/202609/W020260924615407188434.png",
+      "dieselImageUrl": "https://fgw.guizhou.gov.cn/fggz/tzgg/202609/W020260924615407308738.png",
+      "prices": {
+        "92": 8.81,
+        "95": 9.3,
+        "diesel": 8.46
+      }
+    }
+  ]
+}
