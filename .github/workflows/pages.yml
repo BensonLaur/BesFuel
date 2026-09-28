@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
   schedule:
-    - cron: '0 0 * * *' # 北京时间每天 08:00；GitHub 定时任务可能延迟。
+    - cron: '0 2,12 * * *' # 北京时间每天 10:00、20:00；GitHub 定时任务可能延迟。
   workflow_dispatch:
 
 permissions:
@@ -28,7 +28,7 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: '22'
-      - name: 抓取并校验广东官方公告
+      - name: 抓取广东官方公告并核对下一轮信息
         shell: pwsh
         run: |
           powershell -NoProfile -File .\scripts\update-guangdong.ps1

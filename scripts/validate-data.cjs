@@ -39,11 +39,28 @@ function validateSnapshot(data) {
         assert.equal(entry.price, entry.history.at(-1).price, `${key}/${grade}: latest history price`);
       }
     }
-    if (region.nextAdjustment?.dateLabel) {
-      assert.ok(region.nextAdjustment.sourceName && /^https:\/\//.test(region.nextAdjustment.sourceUrl), `${key}: adjustment source`);
+    if (region.nextAdjustment?.date || region.nextAdjustment?.dateLabel) {
+      const next = region.nextAdjustment;
+      assert.ok(validDate(next.date) && next.dateLabel === `预计 ${next.date} 24:00`, `${key}: adjustment date`);
+      assert.ok(next.sourceName && /^https:\/\//.test(next.sourceUrl) && /^https:\/\//.test(next.holidaySourceUrl), `${key}: adjustment source`);
+      if (key === "guangdong") {
+        assert.equal(next.sourceUrl, "https://www.ndrc.gov.cn/xxgk/zcfb/tz/201601/W020190905506573420251.pdf", "Guangdong adjustment rule source");
+        assert.equal(next.holidaySourceUrl, "https://www.beijing.gov.cn/cs/gncs/zcwj/202603/t20260327_4568275.html", "Guangdong holiday source");
+      }
     }
     if (region.forecast?.description) {
-      assert.ok(region.forecast.sourceName && /^https:\/\//.test(region.forecast.sourceUrl) && validDate(region.forecast.updatedAt), `${key}: forecast source and date`);
+      const forecast = region.forecast;
+      assert.ok(forecast.sourceName && /^https:\/\//.test(forecast.sourceUrl) && validDate(forecast.updatedAt) &&
+        forecast.updatedAt <= data.checkedAt && forecast.windowDate === region.nextAdjustment?.date,
+      `${key}: forecast source and date`);
+      assert.ok(["up", "down"].includes(forecast.direction) && Number.isFinite(forecast.amountPerLiter) &&
+        forecast.amountPerLiter > 0 && forecast.amountPerLiter <= 5 && Number.isInteger(forecast.workday) &&
+        forecast.workday >= 1 && forecast.workday <= 10 &&
+        forecast.description === `预计${forecast.direction === "up" ? "上调" : "下调"}约 ${forecast.amountPerLiter.toFixed(2)} 元/升`,
+      `${key}: forecast values`);
+      if (key === "guangdong") {
+        assert.match(forecast.sourceUrl, /^https:\/\/www\.tuanyou\.net\/yuanyou\/bianhualv\/\d+\.html$/, "Guangdong market source");
+      }
     }
     if (key === "guangdong") {
       assert.equal(region.name, "广东", "Guangdong display name");

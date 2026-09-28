@@ -10,7 +10,8 @@
     price: $("current-price"), priceDetail: $("price-detail"), effective: $("effective-time"),
     freshness: $("freshness"), source: $("price-source"), sourceNote: $("source-note"), syncNote: $("sync-note"),
     nextWindow: $("next-window"), windowDetail: $("window-detail"),
-    prediction: $("prediction"), predictionDetail: $("prediction-detail"),
+    windowRuleSource: $("window-rule-source"), windowHolidaySource: $("window-holiday-source"),
+    prediction: $("prediction"), predictionDetail: $("prediction-detail"), predictionSource: $("prediction-source"),
     distance: $("distance"), consumption: $("consumption"), tripPrice: $("trip-price"),
     restorePrice: $("restore-price"), priceMode: $("price-mode"),
     perKm: $("per-km"), total: $("trip-total"), calcNote: $("calc-note"),
@@ -67,13 +68,28 @@
     const region = selectedRegion();
     const windowData = region.nextAdjustment || {};
     const forecast = region.forecast || {};
-    ui.nextWindow.textContent = windowData.dateLabel || "待核实";
-    ui.windowDetail.textContent = windowData.dateLabel
-      ? `来源：${windowData.sourceName || "待注明"}` : "以主管部门公告为准";
-    ui.prediction.textContent = forecast.description || "暂无可靠预估";
-    ui.predictionDetail.textContent = forecast.description
-      ? `预测来源：${forecast.sourceName || "待注明"} · ${forecast.updatedAt || "时间待注明"}`
-      : "预测会与正式价格分开显示";
+    const today = Object.fromEntries(new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit"
+    }).formatToParts(new Date()).map(part => [part.type, part.value]));
+    const todayIso = `${today.year}-${today.month}-${today.day}`;
+    const windowReady = /^\d{4}-\d{2}-\d{2}$/.test(windowData.date || "") && windowData.date >= todayIso;
+    ui.nextWindow.textContent = windowReady ? windowData.dateLabel : windowData.date ? "待重新核实" : "待核实";
+    ui.windowDetail.textContent = windowReady
+      ? "按每 10 个工作日及调休安排推算，并非正式调价公告"
+      : windowData.date ? "上轮预计窗口已过，请等待新一期公告" : "以主管部门公告为准";
+    for (const [link, url] of [[ui.windowRuleSource, windowData.sourceUrl], [ui.windowHolidaySource, windowData.holidaySourceUrl]]) {
+      link.hidden = !windowReady || !/^https:\/\//.test(url || "");
+      if (!link.hidden) link.href = url;
+    }
+    const age = (Date.parse(`${todayIso}T00:00:00Z`) - Date.parse(`${forecast.updatedAt}T00:00:00Z`)) / 86400000;
+    // A stored forecast must disappear when its cycle changes or its calculation day gets old.
+    const forecastReady = windowReady && forecast.description && forecast.windowDate === windowData.date && age >= 0 && age <= 2;
+    ui.prediction.textContent = forecastReady ? forecast.description : "暂无近期可靠预估";
+    ui.predictionDetail.textContent = forecastReady
+      ? `${forecast.sourceName} · ${forecast.updatedAt} · 第 ${forecast.workday} 个工作日；仅供参考`
+      : forecast.updatedAt ? "上次预测已过期，等待新一期市场数据" : "市场预测与正式价格分开显示";
+    ui.predictionSource.hidden = !forecastReady || !/^https:\/\//.test(forecast.sourceUrl || "");
+    if (!ui.predictionSource.hidden) ui.predictionSource.href = forecast.sourceUrl;
   }
 
   function syncTripPrice() {

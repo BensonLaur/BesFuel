@@ -10,6 +10,14 @@ const { calculate } = require("../lib/calc.js");
 const root = path.resolve(__dirname, "..");
 const snapshot = JSON.parse(fs.readFileSync(path.join(root, "data", "prices.json"), "utf8"));
 const guangdong = snapshot.regions.guangdong;
+const dateParts = Object.fromEntries(new Intl.DateTimeFormat("en-GB", {
+  timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit"
+}).formatToParts(new Date()).map(part => [part.type, part.value]));
+const todayIso = `${dateParts.year}-${dateParts.month}-${dateParts.day}`;
+const forecastAge = (Date.parse(`${todayIso}T00:00:00Z`) - Date.parse(`${guangdong.forecast.updatedAt}T00:00:00Z`)) / 86400000;
+const windowFresh = Boolean(guangdong.nextAdjustment.date && guangdong.nextAdjustment.date >= todayIso);
+const forecastFresh = Boolean(windowFresh && guangdong.forecast.description &&
+  guangdong.forecast.windowDate === guangdong.nextAdjustment.date && forecastAge >= 0 && forecastAge <= 2);
 const expectedTotal = price => calculate("9", "9", String(price)).total.toFixed(2);
 const edge = process.env.BROWSER_PATH || path.join(process.env["PROGRAMFILES(X86)"] || "", "Microsoft", "Edge", "Application", "msedge.exe");
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -83,6 +91,11 @@ async function main() {
     await delay(100);
   }
   assert.equal(await evaluate("document.getElementById('current-price').textContent"), guangdong.grades["92"].price.toFixed(2));
+  assert.equal(await evaluate("document.getElementById('next-window').textContent"), windowFresh ? guangdong.nextAdjustment.dateLabel : guangdong.nextAdjustment.date ? "待重新核实" : "待核实");
+  assert.equal(await evaluate("document.getElementById('prediction').textContent"), forecastFresh ? guangdong.forecast.description : "暂无近期可靠预估");
+  assert.equal(await evaluate("document.getElementById('prediction-source').hidden"), !forecastFresh);
+  if (forecastFresh) assert.equal(await evaluate("document.getElementById('prediction-source').href"), guangdong.forecast.sourceUrl);
+  assert.equal(await evaluate("document.getElementById('window-rule-source').hidden"), !windowFresh);
   assert.equal(await evaluate("document.getElementById('region-label').textContent"), "广东");
   assert.equal(await evaluate("document.getElementById('region').selectedOptions[0].textContent"), "广东");
   assert.equal(await evaluate("document.querySelectorAll('.chart-point').length"), guangdong.grades["92"].history.length);
@@ -120,7 +133,7 @@ async function main() {
   assert.ok(await evaluate("document.getElementById('chart-wrap').textContent.includes('暂无')"));
   assert.equal(await evaluate("document.querySelectorAll('.chart-hit').length"), 0);
   assert.equal(await evaluate("document.querySelectorAll('.chart-latest-line').length"), 0);
-  assert.equal(await evaluate("document.getElementById('prediction').textContent"), "暂无可靠预估");
+  assert.equal(await evaluate("document.getElementById('prediction').textContent"), forecastFresh ? guangdong.forecast.description : "暂无近期可靠预估");
   assert.ok(await evaluate("document.getElementById('sync-note').textContent.includes('本地模式')"));
   await evaluate("document.getElementById('open-support').focus(); document.getElementById('open-support').click()");
   assert.ok(await evaluate("document.getElementById('support-dialog').open"));
@@ -168,6 +181,7 @@ async function main() {
     const region = structuredClone(window.BESFUEL_DATA.regions.guangdong);
     region.name = '示例地区';
     region.grades['92'].price = 7.77;
+    region.forecast.updatedAt = '2026-01-01';
     window.BESFUEL_DATA.regions.example = region;
     const select = document.getElementById('region');
     select.add(new Option(region.name, 'example'));
@@ -177,6 +191,8 @@ async function main() {
   await setValue("grade", "92", "change");
   assert.equal(await evaluate("document.getElementById('current-price').textContent"), "7.77");
   assert.equal(await evaluate("document.getElementById('region').selectedOptions[0].textContent"), "示例地区");
+  assert.equal(await evaluate("document.getElementById('prediction').textContent"), "暂无近期可靠预估");
+  assert.ok(await evaluate("document.getElementById('prediction-source').hidden"));
   assert.equal(await evaluate("document.getElementById('trip-total').textContent"), expectedTotal(7.77));
   server = http.createServer((request, response) => {
     const pathname = new URL(request.url, "http://localhost").pathname;

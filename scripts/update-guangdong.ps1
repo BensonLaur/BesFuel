@@ -116,6 +116,37 @@ $region.effectiveLabel = $latest.published.ToString('yyyy-MM-dd', $culture) + ' 
 $region.checkedAt = $chinaToday.ToString('yyyy-MM-dd', $culture)
 $data.checkedAt = $region.checkedAt
 
+$publishedDate = $latest.published.ToString('yyyy-MM-dd', $culture)
+$nextWindowDate = & node (Join-Path $PSScriptRoot 'next-window.cjs') $publishedDate $region.checkedAt
+if ($LASTEXITCODE -ne 0) { throw '调价窗口计算失败，现有数据保持不变。' }
+$region.nextAdjustment = [pscustomobject]@{
+    date = if ($nextWindowDate) { $nextWindowDate } else { $null }
+    dateLabel = if ($nextWindowDate) { "预计 $nextWindowDate 24:00" } else { $null }
+    sourceName = if ($nextWindowDate) { '国家发展改革委调价规则与国务院放假安排' } else { $null }
+    sourceUrl = if ($nextWindowDate) { 'https://www.ndrc.gov.cn/xxgk/zcfb/tz/201601/W020190905506573420251.pdf' } else { $null }
+    holidaySourceUrl = if ($nextWindowDate) { 'https://www.beijing.gov.cn/cs/gncs/zcwj/202603/t20260327_4568275.html' } else { $null }
+}
+if ($region.forecast.windowDate -ne $nextWindowDate) {
+    $region.forecast = [pscustomobject]@{
+        direction = $null; amountPerLiter = $null; description = $null; sourceName = $null
+        sourceUrl = $null; updatedAt = $null; windowDate = $null; workday = $null
+    }
+}
+if ($nextWindowDate) {
+    $marketResult = & node (Join-Path $PSScriptRoot 'read-market-forecast.cjs') $nextWindowDate $region.checkedAt
+    if ($LASTEXITCODE -eq 0 -and $marketResult) {
+        try {
+            $market = $marketResult | ConvertFrom-Json
+            if ($market.forecast) { $region.forecast = $market.forecast }
+            else { Write-Warning "市场预测本次未更新：$($market.error)；原预测保留并由页面按日期判断是否过期。" }
+        } catch {
+            Write-Warning '市场预测格式异常；原预测保留并由页面按日期判断是否过期。'
+        }
+    } else {
+        Write-Warning '市场预测读取失败；原预测保留并由页面按日期判断是否过期。'
+    }
+}
+
 $jsonText = $data | ConvertTo-Json -Depth 30
 $jsText = "// Generated from data/prices.json by scripts/update-guangdong.ps1.`nwindow.BESFUEL_DATA = $jsonText;"
 $jsonTemporary = Join-Path $dataDirectory '.prices.json.tmp'

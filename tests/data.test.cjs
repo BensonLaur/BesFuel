@@ -32,9 +32,12 @@ test("rejects missing official provenance and duplicate historical dates", () =>
 
 test("forecast and adjustment need their own dated sources", () => {
   const snapshot = clone();
-  snapshot.regions.guangdong.forecast.description = "预计上涨";
+  snapshot.regions.guangdong.forecast.sourceUrl = "https://example.com/forecast";
+  assert.throws(() => validateSnapshot(snapshot), /market source/);
+  snapshot.regions.guangdong.forecast.sourceUrl = "https://www.tuanyou.net/yuanyou/bianhualv/814.html";
+  snapshot.regions.guangdong.forecast.windowDate = "2026-10-29";
   assert.throws(() => validateSnapshot(snapshot), /forecast source and date/);
-  snapshot.regions.guangdong.forecast.description = null;
-  snapshot.regions.guangdong.nextAdjustment.dateLabel = "某日";
+  snapshot.regions.guangdong.forecast.windowDate = "2026-10-15";
+  snapshot.regions.guangdong.nextAdjustment.holidaySourceUrl = null;
   assert.throws(() => validateSnapshot(snapshot), /adjustment source/);
 });

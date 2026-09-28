@@ -56,6 +56,9 @@ a { color: inherit; }
 .adjustment-pair span { color: #718779; font-size: 12px; }
 .adjustment-pair strong { font-size: 18px; line-height: 1.3; }
 .adjustment-pair small { color: #8a9c8e; font-size: 11px; line-height: 1.5; }
+.adjustment-sources { display: flex; flex-wrap: wrap; gap: 4px 10px; }
+.adjustment-sources a { color: #287651; text-underline-offset: 3px; }
+.adjustment-sources [hidden] { display: none; }
 .card-footnote { margin: 21px 0 0; color: #839589; font-size: 11px; line-height: 1.6; }
 .trip-card, .history-card { min-height: 340px; }
 .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 24px; }
