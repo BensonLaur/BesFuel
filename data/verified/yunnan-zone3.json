@@ -1,0 +1,97 @@
+{
+  "id": "yunnan-zone3",
+  "name": "云南·昭通、红河、文山、大理",
+  "sourceName": "云南省发展和改革委员会",
+  "priceScope": "云南省发改委各地区汽柴油最高零售价格表中昭通、红河、文山、大理四州市所在价格组（元/升）；乡镇加价规则和加油站实付价以当地公告为准。",
+  "allowedHostnames": [
+    "yndrc.yn.gov.cn"
+  ],
+  "unit": "元/升",
+  "checkedAt": "2026-09-28",
+  "notices": [
+    {
+      "publishedDate": "2026-04-21",
+      "effectiveDate": "2026-04-22",
+      "url": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0421/26483.html",
+      "pdfUrl": "https://yndrc.yn.gov.cn/uploadfile/s2/2026/0421/20260421053829404.pdf",
+      "prices": { "92": 8.76, "95": 9.39, "diesel": 8.38 }
+    },
+    {
+      "publishedDate": "2026-05-08",
+      "effectiveDate": "2026-05-09",
+      "url": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0508/26664.html",
+      "pdfUrl": "https://yndrc.yn.gov.cn/uploadfile/s2/2026/0508/20260508040331641.pdf",
+      "prices": { "92": 9.01, "95": 9.67, "diesel": 8.65 }
+    },
+    {
+      "publishedDate": "2026-05-21",
+      "effectiveDate": "2026-05-22",
+      "url": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0521/26865.html",
+      "pdfUrl": "https://yndrc.yn.gov.cn/uploadfile/s2/2026/0521/20260521051612767.pdf",
+      "prices": { "92": 9.07, "95": 9.73, "diesel": 8.70 }
+    },
+    {
+      "publishedDate": "2026-06-04",
+      "effectiveDate": "2026-06-05",
+      "url": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0604/27148.html",
+      "pdfUrl": "https://yndrc.yn.gov.cn/uploadfile/s2/2026/0604/20260604042913485.pdf",
+      "prices": { "92": 8.65, "95": 9.28, "diesel": 8.27 }
+    },
+    {
+      "publishedDate": "2026-06-18",
+      "effectiveDate": "2026-06-19",
+      "url": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0618/27348.html",
+      "pdfUrl": "https://yndrc.yn.gov.cn/uploadfile/s2/2026/0618/20260618063847843.pdf",
+      "prices": { "92": 8.24, "95": 8.83, "diesel": 7.85 }
+    },
+    {
+      "publishedDate": "2026-07-03",
+      "effectiveDate": "2026-07-04",
+      "url": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0703/27531.html",
+      "pdfUrl": "https://yndrc.yn.gov.cn/uploadfile/s2/2026/0703/20260703052537333.pdf",
+      "prices": { "92": 7.48, "95": 8.01, "diesel": 7.07 }
+    },
+    {
+      "publishedDate": "2026-07-17",
+      "effectiveDate": "2026-07-18",
+      "url": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0717/27713.html",
+      "pdfUrl": "https://yndrc.yn.gov.cn/uploadfile/s2/2026/0717/20260717050707312.pdf",
+      "prices": { "92": 7.72, "95": 8.27, "diesel": 7.32 }
+    },
+    {
+      "publishedDate": "2026-07-31",
+      "effectiveDate": "2026-08-01",
+      "url": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0731/27865.html",
+      "pdfUrl": "https://yndrc.yn.gov.cn/uploadfile/s2/2026/0731/20260731052133586.pdf",
+      "prices": { "92": 8.27, "95": 8.86, "diesel": 7.88 }
+    },
+    {
+      "publishedDate": "2026-08-14",
+      "effectiveDate": "2026-08-15",
+      "url": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0814/28031.html",
+      "pdfUrl": "https://yndrc.yn.gov.cn/uploadfile/s2/2026/0814/20260814040524151.pdf",
+      "prices": { "92": 8.08, "95": 8.67, "diesel": 7.69 }
+    },
+    {
+      "publishedDate": "2026-08-28",
+      "effectiveDate": "2026-08-29",
+      "url": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0828/28227.html",
+      "pdfUrl": "https://yndrc.yn.gov.cn/uploadfile/s2/2026/0828/20260828054452405.pdf",
+      "prices": { "92": 8.38, "95": 8.99, "diesel": 8.00 }
+    },
+    {
+      "publishedDate": "2026-09-11",
+      "effectiveDate": "2026-09-12",
+      "url": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0911/28416.html",
+      "pdfUrl": "https://yndrc.yn.gov.cn/uploadfile/s2/2026/0911/20260911040605431.pdf",
+      "prices": { "92": 8.59, "95": 9.21, "diesel": 8.21 }
+    },
+    {
+      "publishedDate": "2026-09-24",
+      "effectiveDate": "2026-09-25",
+      "url": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html",
+      "pdfUrl": "https://yndrc.yn.gov.cn/uploadfile/s2/2026/0924/20260924055055206.pdf",
+      "prices": { "92": 8.91, "95": 9.55, "diesel": 8.54 }
+    }
+  ]
+}

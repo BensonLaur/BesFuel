@@ -3889,6 +3889,1451 @@ window.BESFUEL_DATA = {
           ]
         }
       }
+    },
+    "yunnan-kunming": {
+      "name": "云南·昆明",
+      "priceScope": "云南省昆明地区（第一价区）汽、柴油最高零售价格（元/升）",
+      "checkedAt": "2026-09-28",
+      "source": {
+        "name": "云南省发展和改革委员会",
+        "url": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+      },
+      "effectiveLabel": "2026-09-24 24:00 起",
+      "grades": {
+        "92": {
+          "price": 8.76,
+          "history": [
+            {
+              "date": "2025-08-27",
+              "price": 7.26,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_0826/23066.html"
+            },
+            {
+              "date": "2025-10-14",
+              "price": 7.2,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_1013/23768.html"
+            },
+            {
+              "date": "2025-10-28",
+              "price": 6.99,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_1027/23979.html"
+            },
+            {
+              "date": "2025-11-11",
+              "price": 7.09,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_1110/24185.html"
+            },
+            {
+              "date": "2025-11-25",
+              "price": 7.03,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_1124/24393.html"
+            },
+            {
+              "date": "2025-12-09",
+              "price": 6.99,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_1208/24607.html"
+            },
+            {
+              "date": "2025-12-23",
+              "price": 6.85,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_1222/24806.html"
+            },
+            {
+              "date": "2026-01-21",
+              "price": 6.92,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0120/25238.html"
+            },
+            {
+              "date": "2026-02-04",
+              "price": 7.08,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0203/25428.html"
+            },
+            {
+              "date": "2026-02-25",
+              "price": 7.22,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0224/25643.html"
+            },
+            {
+              "date": "2026-03-10",
+              "price": 7.78,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0309/25830.html"
+            },
+            {
+              "date": "2026-03-24",
+              "price": 8.71,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0323/25994.html"
+            },
+            {
+              "date": "2026-04-08",
+              "price": 9.05,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0407/26142.html"
+            },
+            {
+              "date": "2026-04-22",
+              "price": 8.61,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0421/26483.html"
+            },
+            {
+              "date": "2026-05-09",
+              "price": 8.86,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0508/26664.html"
+            },
+            {
+              "date": "2026-05-22",
+              "price": 8.92,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0521/26865.html"
+            },
+            {
+              "date": "2026-06-05",
+              "price": 8.5,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0604/27148.html"
+            },
+            {
+              "date": "2026-06-19",
+              "price": 8.09,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0618/27348.html"
+            },
+            {
+              "date": "2026-07-04",
+              "price": 7.32,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0703/27531.html"
+            },
+            {
+              "date": "2026-07-18",
+              "price": 7.56,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0717/27713.html"
+            },
+            {
+              "date": "2026-08-01",
+              "price": 8.12,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0731/27865.html"
+            },
+            {
+              "date": "2026-08-15",
+              "price": 7.93,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0814/28031.html"
+            },
+            {
+              "date": "2026-08-29",
+              "price": 8.23,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0828/28227.html"
+            },
+            {
+              "date": "2026-09-12",
+              "price": 8.44,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0911/28416.html"
+            },
+            {
+              "date": "2026-09-25",
+              "price": 8.76,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+            }
+          ]
+        },
+        "95": {
+          "price": 9.4,
+          "history": [
+            {
+              "date": "2025-08-27",
+              "price": 7.79,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_0826/23066.html"
+            },
+            {
+              "date": "2025-10-14",
+              "price": 7.73,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_1013/23768.html"
+            },
+            {
+              "date": "2025-10-28",
+              "price": 7.5,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_1027/23979.html"
+            },
+            {
+              "date": "2025-11-11",
+              "price": 7.61,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_1110/24185.html"
+            },
+            {
+              "date": "2025-11-25",
+              "price": 7.55,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_1124/24393.html"
+            },
+            {
+              "date": "2025-12-09",
+              "price": 7.5,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_1208/24607.html"
+            },
+            {
+              "date": "2025-12-23",
+              "price": 7.35,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_1222/24806.html"
+            },
+            {
+              "date": "2026-01-21",
+              "price": 7.43,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0120/25238.html"
+            },
+            {
+              "date": "2026-02-04",
+              "price": 7.6,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0203/25428.html"
+            },
+            {
+              "date": "2026-02-25",
+              "price": 7.75,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0224/25643.html"
+            },
+            {
+              "date": "2026-03-10",
+              "price": 8.35,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0309/25830.html"
+            },
+            {
+              "date": "2026-03-24",
+              "price": 9.35,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0323/25994.html"
+            },
+            {
+              "date": "2026-04-08",
+              "price": 9.71,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0407/26142.html"
+            },
+            {
+              "date": "2026-04-22",
+              "price": 9.24,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0421/26483.html"
+            },
+            {
+              "date": "2026-05-09",
+              "price": 9.51,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0508/26664.html"
+            },
+            {
+              "date": "2026-05-22",
+              "price": 9.58,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0521/26865.html"
+            },
+            {
+              "date": "2026-06-05",
+              "price": 9.12,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0604/27148.html"
+            },
+            {
+              "date": "2026-06-19",
+              "price": 8.68,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0618/27348.html"
+            },
+            {
+              "date": "2026-07-04",
+              "price": 7.86,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0703/27531.html"
+            },
+            {
+              "date": "2026-07-18",
+              "price": 8.12,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0717/27713.html"
+            },
+            {
+              "date": "2026-08-01",
+              "price": 8.71,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0731/27865.html"
+            },
+            {
+              "date": "2026-08-15",
+              "price": 8.51,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0814/28031.html"
+            },
+            {
+              "date": "2026-08-29",
+              "price": 8.84,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0828/28227.html"
+            },
+            {
+              "date": "2026-09-12",
+              "price": 9.06,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0911/28416.html"
+            },
+            {
+              "date": "2026-09-25",
+              "price": 9.4,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+            }
+          ]
+        },
+        "98": {
+          "price": null,
+          "history": []
+        },
+        "diesel": {
+          "price": 8.37,
+          "history": [
+            {
+              "date": "2025-08-27",
+              "price": 6.83,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_0826/23066.html"
+            },
+            {
+              "date": "2025-10-14",
+              "price": 6.77,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_1013/23768.html"
+            },
+            {
+              "date": "2025-10-28",
+              "price": 6.56,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_1027/23979.html"
+            },
+            {
+              "date": "2025-11-11",
+              "price": 6.66,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_1110/24185.html"
+            },
+            {
+              "date": "2025-11-25",
+              "price": 6.6,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_1124/24393.html"
+            },
+            {
+              "date": "2025-12-09",
+              "price": 6.56,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_1208/24607.html"
+            },
+            {
+              "date": "2025-12-23",
+              "price": 6.41,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_1222/24806.html"
+            },
+            {
+              "date": "2026-01-21",
+              "price": 6.49,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0120/25238.html"
+            },
+            {
+              "date": "2026-02-04",
+              "price": 6.65,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0203/25428.html"
+            },
+            {
+              "date": "2026-02-25",
+              "price": 6.8,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0224/25643.html"
+            },
+            {
+              "date": "2026-03-10",
+              "price": 7.37,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0309/25830.html"
+            },
+            {
+              "date": "2026-03-24",
+              "price": 8.32,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0323/25994.html"
+            },
+            {
+              "date": "2026-04-08",
+              "price": 8.66,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0407/26142.html"
+            },
+            {
+              "date": "2026-04-22",
+              "price": 8.21,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0421/26483.html"
+            },
+            {
+              "date": "2026-05-09",
+              "price": 8.47,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0508/26664.html"
+            },
+            {
+              "date": "2026-05-22",
+              "price": 8.53,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0521/26865.html"
+            },
+            {
+              "date": "2026-06-05",
+              "price": 8.1,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0604/27148.html"
+            },
+            {
+              "date": "2026-06-19",
+              "price": 7.68,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0618/27348.html"
+            },
+            {
+              "date": "2026-07-04",
+              "price": 6.9,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0703/27531.html"
+            },
+            {
+              "date": "2026-07-18",
+              "price": 7.15,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0717/27713.html"
+            },
+            {
+              "date": "2026-08-01",
+              "price": 7.71,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0731/27865.html"
+            },
+            {
+              "date": "2026-08-15",
+              "price": 7.52,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0814/28031.html"
+            },
+            {
+              "date": "2026-08-29",
+              "price": 7.83,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0828/28227.html"
+            },
+            {
+              "date": "2026-09-12",
+              "price": 8.04,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0911/28416.html"
+            },
+            {
+              "date": "2026-09-25",
+              "price": 8.37,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+            }
+          ]
+        }
+      }
+    },
+    "yunnan-zone2": {
+      "name": "云南第二价区",
+      "priceScope": "云南省第二价区（曲靖、楚雄、玉溪）汽、柴油最高零售价格（元/升）；县城及国省道加油站原则上执行同价区价格，乡镇站点可按规定地区差加价，实付价可能不同。",
+      "checkedAt": "2026-09-28",
+      "source": {
+        "name": "云南省发展和改革委员会",
+        "url": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+      },
+      "effectiveLabel": "2026-09-24 24:00 起",
+      "grades": {
+        "92": {
+          "price": 8.83,
+          "history": [
+            {
+              "date": "2026-04-22",
+              "price": 8.68,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0421/26483.html"
+            },
+            {
+              "date": "2026-05-09",
+              "price": 8.94,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0508/26664.html"
+            },
+            {
+              "date": "2026-05-22",
+              "price": 9,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0521/26865.html"
+            },
+            {
+              "date": "2026-06-05",
+              "price": 8.58,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0604/27148.html"
+            },
+            {
+              "date": "2026-06-19",
+              "price": 8.16,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0618/27348.html"
+            },
+            {
+              "date": "2026-07-04",
+              "price": 7.4,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0703/27531.html"
+            },
+            {
+              "date": "2026-07-18",
+              "price": 7.64,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0717/27713.html"
+            },
+            {
+              "date": "2026-08-01",
+              "price": 8.19,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0731/27865.html"
+            },
+            {
+              "date": "2026-08-15",
+              "price": 8.01,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0814/28031.html"
+            },
+            {
+              "date": "2026-08-29",
+              "price": 8.31,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0828/28227.html"
+            },
+            {
+              "date": "2026-09-12",
+              "price": 8.52,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0911/28416.html"
+            },
+            {
+              "date": "2026-09-25",
+              "price": 8.83,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+            }
+          ]
+        },
+        "95": {
+          "price": 9.48,
+          "history": [
+            {
+              "date": "2026-04-22",
+              "price": 9.31,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0421/26483.html"
+            },
+            {
+              "date": "2026-05-09",
+              "price": 9.59,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0508/26664.html"
+            },
+            {
+              "date": "2026-05-22",
+              "price": 9.65,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0521/26865.html"
+            },
+            {
+              "date": "2026-06-05",
+              "price": 9.2,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0604/27148.html"
+            },
+            {
+              "date": "2026-06-19",
+              "price": 8.76,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0618/27348.html"
+            },
+            {
+              "date": "2026-07-04",
+              "price": 7.94,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0703/27531.html"
+            },
+            {
+              "date": "2026-07-18",
+              "price": 8.2,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0717/27713.html"
+            },
+            {
+              "date": "2026-08-01",
+              "price": 8.79,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0731/27865.html"
+            },
+            {
+              "date": "2026-08-15",
+              "price": 8.59,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0814/28031.html"
+            },
+            {
+              "date": "2026-08-29",
+              "price": 8.91,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0828/28227.html"
+            },
+            {
+              "date": "2026-09-12",
+              "price": 9.14,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0911/28416.html"
+            },
+            {
+              "date": "2026-09-25",
+              "price": 9.48,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+            }
+          ]
+        },
+        "98": {
+          "price": null,
+          "history": []
+        },
+        "diesel": {
+          "price": 8.45,
+          "history": [
+            {
+              "date": "2026-04-22",
+              "price": 8.3,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0421/26483.html"
+            },
+            {
+              "date": "2026-05-09",
+              "price": 8.56,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0508/26664.html"
+            },
+            {
+              "date": "2026-05-22",
+              "price": 8.62,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0521/26865.html"
+            },
+            {
+              "date": "2026-06-05",
+              "price": 8.19,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0604/27148.html"
+            },
+            {
+              "date": "2026-06-19",
+              "price": 7.77,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0618/27348.html"
+            },
+            {
+              "date": "2026-07-04",
+              "price": 6.99,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0703/27531.html"
+            },
+            {
+              "date": "2026-07-18",
+              "price": 7.23,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0717/27713.html"
+            },
+            {
+              "date": "2026-08-01",
+              "price": 7.79,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0731/27865.html"
+            },
+            {
+              "date": "2026-08-15",
+              "price": 7.6,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0814/28031.html"
+            },
+            {
+              "date": "2026-08-29",
+              "price": 7.91,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0828/28227.html"
+            },
+            {
+              "date": "2026-09-12",
+              "price": 8.12,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0911/28416.html"
+            },
+            {
+              "date": "2026-09-25",
+              "price": 8.45,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+            }
+          ]
+        }
+      }
+    },
+    "yunnan-zone4": {
+      "name": "云南·普洱、保山、丽江",
+      "priceScope": "云南省第四价区（普洱、保山、丽江）汽、柴油最高零售价格（元/升）",
+      "checkedAt": "2026-09-28",
+      "source": {
+        "name": "云南省发展和改革委员会",
+        "url": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+      },
+      "effectiveLabel": "2026-09-24 24:00 起",
+      "grades": {
+        "92": {
+          "price": 8.99,
+          "history": [
+            {
+              "date": "2025-08-27",
+              "price": 7.49,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_0826/23066.html"
+            },
+            {
+              "date": "2025-10-14",
+              "price": 7.43,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_1013/23768.html"
+            },
+            {
+              "date": "2025-10-28",
+              "price": 7.21,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_1027/23979.html"
+            },
+            {
+              "date": "2025-11-11",
+              "price": 7.31,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_1110/24185.html"
+            },
+            {
+              "date": "2025-11-25",
+              "price": 7.26,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_1124/24393.html"
+            },
+            {
+              "date": "2025-12-09",
+              "price": 7.21,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_1208/24607.html"
+            },
+            {
+              "date": "2025-12-23",
+              "price": 7.08,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_1222/24806.html"
+            },
+            {
+              "date": "2026-01-21",
+              "price": 7.15,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0120/25238.html"
+            },
+            {
+              "date": "2026-02-04",
+              "price": 7.31,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0203/25428.html"
+            },
+            {
+              "date": "2026-02-25",
+              "price": 7.45,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0224/25643.html"
+            },
+            {
+              "date": "2026-03-10",
+              "price": 8.01,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0309/25830.html"
+            },
+            {
+              "date": "2026-03-24",
+              "price": 8.94,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0323/25994.html"
+            },
+            {
+              "date": "2026-04-08",
+              "price": 9.28,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0407/26142.html"
+            },
+            {
+              "date": "2026-04-22",
+              "price": 8.83,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0421/26483.html"
+            },
+            {
+              "date": "2026-05-09",
+              "price": 9.09,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0508/26664.html"
+            },
+            {
+              "date": "2026-05-22",
+              "price": 9.15,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0521/26865.html"
+            },
+            {
+              "date": "2026-06-05",
+              "price": 8.73,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0604/27148.html"
+            },
+            {
+              "date": "2026-06-19",
+              "price": 8.31,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0618/27348.html"
+            },
+            {
+              "date": "2026-07-04",
+              "price": 7.55,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0703/27531.html"
+            },
+            {
+              "date": "2026-07-18",
+              "price": 7.79,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0717/27713.html"
+            },
+            {
+              "date": "2026-08-01",
+              "price": 8.34,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0731/27865.html"
+            },
+            {
+              "date": "2026-08-15",
+              "price": 8.16,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0814/28031.html"
+            },
+            {
+              "date": "2026-08-29",
+              "price": 8.46,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0828/28227.html"
+            },
+            {
+              "date": "2026-09-12",
+              "price": 8.67,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0911/28416.html"
+            },
+            {
+              "date": "2026-09-25",
+              "price": 8.99,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+            }
+          ]
+        },
+        "95": {
+          "price": 9.63,
+          "history": [
+            {
+              "date": "2025-08-27",
+              "price": 8.02,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_0826/23066.html"
+            },
+            {
+              "date": "2025-10-14",
+              "price": 7.96,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_1013/23768.html"
+            },
+            {
+              "date": "2025-10-28",
+              "price": 7.73,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_1027/23979.html"
+            },
+            {
+              "date": "2025-11-11",
+              "price": 7.84,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_1110/24185.html"
+            },
+            {
+              "date": "2025-11-25",
+              "price": 7.78,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_1124/24393.html"
+            },
+            {
+              "date": "2025-12-09",
+              "price": 7.73,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_1208/24607.html"
+            },
+            {
+              "date": "2025-12-23",
+              "price": 7.58,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_1222/24806.html"
+            },
+            {
+              "date": "2026-01-21",
+              "price": 7.66,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0120/25238.html"
+            },
+            {
+              "date": "2026-02-04",
+              "price": 7.83,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0203/25428.html"
+            },
+            {
+              "date": "2026-02-25",
+              "price": 7.98,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0224/25643.html"
+            },
+            {
+              "date": "2026-03-10",
+              "price": 8.58,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0309/25830.html"
+            },
+            {
+              "date": "2026-03-24",
+              "price": 9.58,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0323/25994.html"
+            },
+            {
+              "date": "2026-04-08",
+              "price": 9.95,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0407/26142.html"
+            },
+            {
+              "date": "2026-04-22",
+              "price": 9.47,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0421/26483.html"
+            },
+            {
+              "date": "2026-05-09",
+              "price": 9.74,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0508/26664.html"
+            },
+            {
+              "date": "2026-05-22",
+              "price": 9.81,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0521/26865.html"
+            },
+            {
+              "date": "2026-06-05",
+              "price": 9.36,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0604/27148.html"
+            },
+            {
+              "date": "2026-06-19",
+              "price": 8.91,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0618/27348.html"
+            },
+            {
+              "date": "2026-07-04",
+              "price": 8.09,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0703/27531.html"
+            },
+            {
+              "date": "2026-07-18",
+              "price": 8.35,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0717/27713.html"
+            },
+            {
+              "date": "2026-08-01",
+              "price": 8.94,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0731/27865.html"
+            },
+            {
+              "date": "2026-08-15",
+              "price": 8.74,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0814/28031.html"
+            },
+            {
+              "date": "2026-08-29",
+              "price": 9.07,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0828/28227.html"
+            },
+            {
+              "date": "2026-09-12",
+              "price": 9.29,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0911/28416.html"
+            },
+            {
+              "date": "2026-09-25",
+              "price": 9.63,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+            }
+          ]
+        },
+        "98": {
+          "price": null,
+          "history": []
+        },
+        "diesel": {
+          "price": 8.62,
+          "history": [
+            {
+              "date": "2025-08-27",
+              "price": 7.09,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_0826/23066.html"
+            },
+            {
+              "date": "2025-10-14",
+              "price": 7.03,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_1013/23768.html"
+            },
+            {
+              "date": "2025-10-28",
+              "price": 6.81,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_1027/23979.html"
+            },
+            {
+              "date": "2025-11-11",
+              "price": 6.91,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_1110/24185.html"
+            },
+            {
+              "date": "2025-11-25",
+              "price": 6.86,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_1124/24393.html"
+            },
+            {
+              "date": "2025-12-09",
+              "price": 6.81,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_1208/24607.html"
+            },
+            {
+              "date": "2025-12-23",
+              "price": 6.67,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2025/jiageyushoufei_1222/24806.html"
+            },
+            {
+              "date": "2026-01-21",
+              "price": 6.74,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0120/25238.html"
+            },
+            {
+              "date": "2026-02-04",
+              "price": 6.91,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0203/25428.html"
+            },
+            {
+              "date": "2026-02-25",
+              "price": 7.05,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0224/25643.html"
+            },
+            {
+              "date": "2026-03-10",
+              "price": 7.63,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0309/25830.html"
+            },
+            {
+              "date": "2026-03-24",
+              "price": 8.58,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0323/25994.html"
+            },
+            {
+              "date": "2026-04-08",
+              "price": 8.92,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0407/26142.html"
+            },
+            {
+              "date": "2026-04-22",
+              "price": 8.47,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0421/26483.html"
+            },
+            {
+              "date": "2026-05-09",
+              "price": 8.73,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0508/26664.html"
+            },
+            {
+              "date": "2026-05-22",
+              "price": 8.79,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0521/26865.html"
+            },
+            {
+              "date": "2026-06-05",
+              "price": 8.36,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0604/27148.html"
+            },
+            {
+              "date": "2026-06-19",
+              "price": 7.94,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0618/27348.html"
+            },
+            {
+              "date": "2026-07-04",
+              "price": 7.16,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0703/27531.html"
+            },
+            {
+              "date": "2026-07-18",
+              "price": 7.4,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0717/27713.html"
+            },
+            {
+              "date": "2026-08-01",
+              "price": 7.96,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0731/27865.html"
+            },
+            {
+              "date": "2026-08-15",
+              "price": 7.78,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0814/28031.html"
+            },
+            {
+              "date": "2026-08-29",
+              "price": 8.08,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0828/28227.html"
+            },
+            {
+              "date": "2026-09-12",
+              "price": 8.3,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0911/28416.html"
+            },
+            {
+              "date": "2026-09-25",
+              "price": 8.62,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+            }
+          ]
+        }
+      }
+    },
+    "yunnan-zone5": {
+      "name": "云南第五价区",
+      "priceScope": "云南省第五价区（西双版纳、德宏、迪庆、怒江、临沧）汽、柴油最高零售价格（元/升）；加油站实付价可能不同。",
+      "checkedAt": "2026-09-28",
+      "source": {
+        "name": "云南省发展和改革委员会",
+        "url": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+      },
+      "effectiveLabel": "2026-09-24 24:00 起",
+      "grades": {
+        "92": {
+          "price": 9.05,
+          "history": [
+            {
+              "date": "2026-04-22",
+              "price": 8.89,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0421/26483.html"
+            },
+            {
+              "date": "2026-05-09",
+              "price": 9.15,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0508/26664.html"
+            },
+            {
+              "date": "2026-05-22",
+              "price": 9.21,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0521/26865.html"
+            },
+            {
+              "date": "2026-06-05",
+              "price": 8.79,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0604/27148.html"
+            },
+            {
+              "date": "2026-06-19",
+              "price": 8.38,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0618/27348.html"
+            },
+            {
+              "date": "2026-07-04",
+              "price": 7.61,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0703/27531.html"
+            },
+            {
+              "date": "2026-07-18",
+              "price": 7.85,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0717/27713.html"
+            },
+            {
+              "date": "2026-08-01",
+              "price": 8.4,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0731/27865.html"
+            },
+            {
+              "date": "2026-08-15",
+              "price": 8.22,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0814/28031.html"
+            },
+            {
+              "date": "2026-08-29",
+              "price": 8.52,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0828/28227.html"
+            },
+            {
+              "date": "2026-09-12",
+              "price": 8.73,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0911/28416.html"
+            },
+            {
+              "date": "2026-09-25",
+              "price": 9.05,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+            }
+          ]
+        },
+        "95": {
+          "price": 9.69,
+          "history": [
+            {
+              "date": "2026-04-22",
+              "price": 9.53,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0421/26483.html"
+            },
+            {
+              "date": "2026-05-09",
+              "price": 9.8,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0508/26664.html"
+            },
+            {
+              "date": "2026-05-22",
+              "price": 9.87,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0521/26865.html"
+            },
+            {
+              "date": "2026-06-05",
+              "price": 9.42,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0604/27148.html"
+            },
+            {
+              "date": "2026-06-19",
+              "price": 8.97,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0618/27348.html"
+            },
+            {
+              "date": "2026-07-04",
+              "price": 8.15,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0703/27531.html"
+            },
+            {
+              "date": "2026-07-18",
+              "price": 8.41,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0717/27713.html"
+            },
+            {
+              "date": "2026-08-01",
+              "price": 9,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0731/27865.html"
+            },
+            {
+              "date": "2026-08-15",
+              "price": 8.8,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0814/28031.html"
+            },
+            {
+              "date": "2026-08-29",
+              "price": 9.13,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0828/28227.html"
+            },
+            {
+              "date": "2026-09-12",
+              "price": 9.35,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0911/28416.html"
+            },
+            {
+              "date": "2026-09-25",
+              "price": 9.69,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+            }
+          ]
+        },
+        "98": {
+          "price": null,
+          "history": []
+        },
+        "diesel": {
+          "price": 8.69,
+          "history": [
+            {
+              "date": "2026-04-22",
+              "price": 8.53,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0421/26483.html"
+            },
+            {
+              "date": "2026-05-09",
+              "price": 8.8,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0508/26664.html"
+            },
+            {
+              "date": "2026-05-22",
+              "price": 8.86,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0521/26865.html"
+            },
+            {
+              "date": "2026-06-05",
+              "price": 8.43,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0604/27148.html"
+            },
+            {
+              "date": "2026-06-19",
+              "price": 8.01,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0618/27348.html"
+            },
+            {
+              "date": "2026-07-04",
+              "price": 7.22,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0703/27531.html"
+            },
+            {
+              "date": "2026-07-18",
+              "price": 7.47,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0717/27713.html"
+            },
+            {
+              "date": "2026-08-01",
+              "price": 8.03,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0731/27865.html"
+            },
+            {
+              "date": "2026-08-15",
+              "price": 7.84,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0814/28031.html"
+            },
+            {
+              "date": "2026-08-29",
+              "price": 8.15,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0828/28227.html"
+            },
+            {
+              "date": "2026-09-12",
+              "price": 8.36,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0911/28416.html"
+            },
+            {
+              "date": "2026-09-25",
+              "price": 8.69,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+            }
+          ]
+        }
+      }
+    },
+    "yunnan-zone3": {
+      "name": "云南·昭通、红河、文山、大理",
+      "priceScope": "云南省发改委各地区汽柴油最高零售价格表中昭通、红河、文山、大理四州市所在价格组（元/升）；乡镇加价规则和加油站实付价以当地公告为准。",
+      "checkedAt": "2026-09-28",
+      "source": {
+        "name": "云南省发展和改革委员会",
+        "url": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+      },
+      "effectiveLabel": "2026-09-24 24:00 起",
+      "grades": {
+        "92": {
+          "price": 8.91,
+          "history": [
+            {
+              "date": "2026-04-22",
+              "price": 8.76,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0421/26483.html"
+            },
+            {
+              "date": "2026-05-09",
+              "price": 9.01,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0508/26664.html"
+            },
+            {
+              "date": "2026-05-22",
+              "price": 9.07,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0521/26865.html"
+            },
+            {
+              "date": "2026-06-05",
+              "price": 8.65,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0604/27148.html"
+            },
+            {
+              "date": "2026-06-19",
+              "price": 8.24,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0618/27348.html"
+            },
+            {
+              "date": "2026-07-04",
+              "price": 7.48,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0703/27531.html"
+            },
+            {
+              "date": "2026-07-18",
+              "price": 7.72,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0717/27713.html"
+            },
+            {
+              "date": "2026-08-01",
+              "price": 8.27,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0731/27865.html"
+            },
+            {
+              "date": "2026-08-15",
+              "price": 8.08,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0814/28031.html"
+            },
+            {
+              "date": "2026-08-29",
+              "price": 8.38,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0828/28227.html"
+            },
+            {
+              "date": "2026-09-12",
+              "price": 8.59,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0911/28416.html"
+            },
+            {
+              "date": "2026-09-25",
+              "price": 8.91,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+            }
+          ]
+        },
+        "95": {
+          "price": 9.55,
+          "history": [
+            {
+              "date": "2026-04-22",
+              "price": 9.39,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0421/26483.html"
+            },
+            {
+              "date": "2026-05-09",
+              "price": 9.67,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0508/26664.html"
+            },
+            {
+              "date": "2026-05-22",
+              "price": 9.73,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0521/26865.html"
+            },
+            {
+              "date": "2026-06-05",
+              "price": 9.28,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0604/27148.html"
+            },
+            {
+              "date": "2026-06-19",
+              "price": 8.83,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0618/27348.html"
+            },
+            {
+              "date": "2026-07-04",
+              "price": 8.01,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0703/27531.html"
+            },
+            {
+              "date": "2026-07-18",
+              "price": 8.27,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0717/27713.html"
+            },
+            {
+              "date": "2026-08-01",
+              "price": 8.86,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0731/27865.html"
+            },
+            {
+              "date": "2026-08-15",
+              "price": 8.67,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0814/28031.html"
+            },
+            {
+              "date": "2026-08-29",
+              "price": 8.99,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0828/28227.html"
+            },
+            {
+              "date": "2026-09-12",
+              "price": 9.21,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0911/28416.html"
+            },
+            {
+              "date": "2026-09-25",
+              "price": 9.55,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+            }
+          ]
+        },
+        "98": {
+          "price": null,
+          "history": []
+        },
+        "diesel": {
+          "price": 8.54,
+          "history": [
+            {
+              "date": "2026-04-22",
+              "price": 8.38,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0421/26483.html"
+            },
+            {
+              "date": "2026-05-09",
+              "price": 8.65,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0508/26664.html"
+            },
+            {
+              "date": "2026-05-22",
+              "price": 8.7,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0521/26865.html"
+            },
+            {
+              "date": "2026-06-05",
+              "price": 8.27,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0604/27148.html"
+            },
+            {
+              "date": "2026-06-19",
+              "price": 7.85,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0618/27348.html"
+            },
+            {
+              "date": "2026-07-04",
+              "price": 7.07,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0703/27531.html"
+            },
+            {
+              "date": "2026-07-18",
+              "price": 7.32,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0717/27713.html"
+            },
+            {
+              "date": "2026-08-01",
+              "price": 7.88,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0731/27865.html"
+            },
+            {
+              "date": "2026-08-15",
+              "price": 7.69,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0814/28031.html"
+            },
+            {
+              "date": "2026-08-29",
+              "price": 8,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0828/28227.html"
+            },
+            {
+              "date": "2026-09-12",
+              "price": 8.21,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0911/28416.html"
+            },
+            {
+              "date": "2026-09-25",
+              "price": 8.54,
+              "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+            }
+          ]
+        }
+      }
     }
   },
   "nationalAdjustment": {

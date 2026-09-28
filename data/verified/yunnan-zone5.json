@@ -1,0 +1,145 @@
+{
+  "id": "yunnan-zone5",
+  "name": "云南第五价区",
+  "sourceName": "云南省发展和改革委员会",
+  "priceScope": "云南省第五价区（西双版纳、德宏、迪庆、怒江、临沧）汽、柴油最高零售价格（元/升）；加油站实付价可能不同。",
+  "scopeSourceUrl": "https://www.ynnh.gov.cn/info/35613/196476.htm",
+  "allowedHostnames": [
+    "yndrc.yn.gov.cn"
+  ],
+  "checkedAt": "2026-09-28",
+  "notices": [
+    {
+      "publishedDate": "2026-04-21",
+      "effectiveDate": "2026-04-22",
+      "url": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0421/26483.html",
+      "pdfUrl": "https://yndrc.yn.gov.cn/uploadfile/s2/2026/0421/20260421053829404.pdf",
+      "prices": {
+        "92": 8.89,
+        "95": 9.53,
+        "diesel": 8.53
+      }
+    },
+    {
+      "publishedDate": "2026-05-08",
+      "effectiveDate": "2026-05-09",
+      "url": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0508/26664.html",
+      "pdfUrl": "https://yndrc.yn.gov.cn/uploadfile/s2/2026/0508/20260508040331641.pdf",
+      "prices": {
+        "92": 9.15,
+        "95": 9.8,
+        "diesel": 8.8
+      }
+    },
+    {
+      "publishedDate": "2026-05-21",
+      "effectiveDate": "2026-05-22",
+      "url": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0521/26865.html",
+      "pdfUrl": "https://yndrc.yn.gov.cn/uploadfile/s2/2026/0521/20260521051612767.pdf",
+      "prices": {
+        "92": 9.21,
+        "95": 9.87,
+        "diesel": 8.86
+      }
+    },
+    {
+      "publishedDate": "2026-06-04",
+      "effectiveDate": "2026-06-05",
+      "url": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0604/27148.html",
+      "pdfUrl": "https://yndrc.yn.gov.cn/uploadfile/s2/2026/0604/20260604042913485.pdf",
+      "prices": {
+        "92": 8.79,
+        "95": 9.42,
+        "diesel": 8.43
+      }
+    },
+    {
+      "publishedDate": "2026-06-18",
+      "effectiveDate": "2026-06-19",
+      "url": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0618/27348.html",
+      "pdfUrl": "https://yndrc.yn.gov.cn/uploadfile/s2/2026/0618/20260618063847843.pdf",
+      "prices": {
+        "92": 8.38,
+        "95": 8.97,
+        "diesel": 8.01
+      }
+    },
+    {
+      "publishedDate": "2026-07-03",
+      "effectiveDate": "2026-07-04",
+      "url": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0703/27531.html",
+      "pdfUrl": "https://yndrc.yn.gov.cn/uploadfile/s2/2026/0703/20260703052537333.pdf",
+      "prices": {
+        "92": 7.61,
+        "95": 8.15,
+        "diesel": 7.22
+      }
+    },
+    {
+      "publishedDate": "2026-07-17",
+      "effectiveDate": "2026-07-18",
+      "url": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0717/27713.html",
+      "pdfUrl": "https://yndrc.yn.gov.cn/uploadfile/s2/2026/0717/20260717050707312.pdf",
+      "prices": {
+        "92": 7.85,
+        "95": 8.41,
+        "diesel": 7.47
+      }
+    },
+    {
+      "publishedDate": "2026-07-31",
+      "effectiveDate": "2026-08-01",
+      "url": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0731/27865.html",
+      "pdfUrl": "https://yndrc.yn.gov.cn/uploadfile/s2/2026/0731/20260731052133586.pdf",
+      "prices": {
+        "92": 8.4,
+        "95": 9.0,
+        "diesel": 8.03
+      }
+    },
+    {
+      "publishedDate": "2026-08-14",
+      "effectiveDate": "2026-08-15",
+      "url": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0814/28031.html",
+      "pdfUrl": "https://yndrc.yn.gov.cn/uploadfile/s2/2026/0814/20260814040524151.pdf",
+      "prices": {
+        "92": 8.22,
+        "95": 8.8,
+        "diesel": 7.84
+      }
+    },
+    {
+      "publishedDate": "2026-08-28",
+      "effectiveDate": "2026-08-29",
+      "url": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0828/28227.html",
+      "pdfUrl": "https://yndrc.yn.gov.cn/uploadfile/s2/2026/0828/20260828054452405.pdf",
+      "prices": {
+        "92": 8.52,
+        "95": 9.13,
+        "diesel": 8.15
+      }
+    },
+    {
+      "publishedDate": "2026-09-11",
+      "effectiveDate": "2026-09-12",
+      "url": "https://yndrc.yn.gov.cn/html/2026/jiageyushoufei_0911/28416.html",
+      "pdfUrl": "https://yndrc.yn.gov.cn/uploadfile/s2/2026/0911/20260911040605431.pdf",
+      "prices": {
+        "92": 8.73,
+        "95": 9.35,
+        "diesel": 8.36
+      }
+    },
+    {
+      "publishedDate": "2026-09-24",
+      "effectiveDate": "2026-09-25",
+      "url": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html",
+      "pdfUrl": "https://yndrc.yn.gov.cn/uploadfile/s2/2026/0924/20260924055055206.pdf",
+      "prices": {
+        "92": 9.05,
+        "95": 9.69,
+        "diesel": 8.69
+      }
+    }
+  ]
+}
