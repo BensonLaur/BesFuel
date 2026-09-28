@@ -174,7 +174,7 @@ async function main() {
   if (process.env.BESFUEL_DEPLOY_URL) {
     await send("Page.navigate", { url: process.env.BESFUEL_DEPLOY_URL });
     for (let attempt = 0; attempt < 100; attempt++) {
-      if (await evaluate("document.getElementById('region-label')?.textContent") === "广东") break;
+      if (await evaluate("(() => { const value = document.getElementById('current-price')?.textContent; return value && value !== '—' && Number.isFinite(Number(value)); })()")) break;
       await delay(100);
     }
     assert.equal(await evaluate("document.getElementById('region-label').textContent"), "广东");
