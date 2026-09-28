@@ -109,6 +109,7 @@ a { color: inherit; }
 .chart-empty { max-width: 260px; padding: 16px; color: #819587; font-size: 13px; line-height: 1.7; text-align: center; }
 .chart-meta { display: flex; justify-content: space-between; gap: 10px; margin-top: 9px; color: #8b9b8e; font-size: 11px; }
 .chart-grid { stroke: #e3ebe4; stroke-width: 1; }
+.chart-latest-line { stroke: #91ad9c; stroke-width: 1; stroke-dasharray: 4 5; opacity: .75; }
 .chart-path { fill: none; stroke: #2b7955; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
 .chart-point { fill: #2b7955; stroke: #fff; stroke-width: 2; }
 .chart-point.active { fill: #124f37; stroke: #f4bd63; stroke-width: 4; }

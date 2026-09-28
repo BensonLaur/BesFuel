@@ -87,6 +87,7 @@ async function main() {
   assert.equal(await evaluate("document.getElementById('region').selectedOptions[0].textContent"), "广东");
   assert.equal(await evaluate("document.querySelectorAll('.chart-point').length"), guangdong.grades["92"].history.length);
   assert.equal(await evaluate("document.querySelectorAll('.chart-hit').length"), guangdong.grades["92"].history.length);
+  assert.ok(await evaluate("(() => { const line = document.querySelector('.chart-latest-line'); const point = [...document.querySelectorAll('.chart-point')].at(-1); return line && point && line.getAttribute('y1') === point.getAttribute('cy') && line.getAttribute('y2') === point.getAttribute('cy'); })()"), "latest price line must align with the latest point");
   await evaluate("document.querySelectorAll('.chart-hit')[3].dispatchEvent(new PointerEvent('pointerenter', { pointerType: 'mouse' }))");
   assert.equal(await evaluate("document.querySelector('.chart-tooltip').textContent"), `${guangdong.grades["92"].history[3].date} 生效${guangdong.grades["92"].history[3].price.toFixed(2)} 元/升`);
   await evaluate("document.querySelectorAll('.chart-hit')[3].dispatchEvent(new PointerEvent('pointerleave', { pointerType: 'mouse' }))");
@@ -107,6 +108,7 @@ async function main() {
   assert.equal(await evaluate("document.getElementById('trip-total').textContent"), expectedTotal(guangdong.grades["92"].price));
   await setValue("grade", "95", "change");
   assert.equal(await evaluate("document.getElementById('current-price').textContent"), guangdong.grades["95"].price.toFixed(2));
+  assert.ok(await evaluate("document.querySelector('.chart-latest-line').getAttribute('y1') === [...document.querySelectorAll('.chart-point')].at(-1).getAttribute('cy')"), "latest price line must follow the selected grade");
   assert.equal(await evaluate("document.getElementById('trip-total').textContent"), expectedTotal(guangdong.grades["95"].price));
   await evaluate("document.querySelectorAll('.chart-hit')[0].focus()");
   assert.ok(await evaluate(`document.querySelector('.chart-tooltip').textContent.includes(${JSON.stringify(guangdong.grades["95"].history[0].price.toFixed(2))})`));
@@ -117,6 +119,7 @@ async function main() {
   assert.equal(await evaluate("document.getElementById('trip-total').textContent"), "8.10");
   assert.ok(await evaluate("document.getElementById('chart-wrap').textContent.includes('暂无')"));
   assert.equal(await evaluate("document.querySelectorAll('.chart-hit').length"), 0);
+  assert.equal(await evaluate("document.querySelectorAll('.chart-latest-line').length"), 0);
   assert.equal(await evaluate("document.getElementById('prediction').textContent"), "暂无可靠预估");
   assert.ok(await evaluate("document.getElementById('sync-note').textContent.includes('本地模式')"));
   await evaluate("document.getElementById('open-support').focus(); document.getElementById('open-support').click()");

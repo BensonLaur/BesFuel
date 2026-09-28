@@ -123,6 +123,7 @@
 
     const width = 440, height = 190, left = 42, right = 17, top = 27, bottom = 30;
     const values = history.map(item => item.price);
+    const last = history[history.length - 1];
     const low = Math.min(...values), high = Math.max(...values);
     const padding = Math.max(.12, (high - low) * .25);
     const min = Math.max(0, low - padding), max = high + padding;
@@ -135,6 +136,7 @@
       svg.append(svgElement("line", { x1: left, y1: yy, x2: width - right, y2: yy, class: "chart-grid" }));
       svg.append(svgElement("text", { x: 3, y: yy + 3, class: "chart-text" }, value.toFixed(2)));
     }
+    svg.append(svgElement("line", { x1: left, y1: y(last.price), x2: width - right, y2: y(last.price), class: "chart-latest-line" }));
     const guide = svgElement("line", { x1: 0, x2: 0, y1: top, y2: height - bottom, class: "chart-guide" });
     svg.append(guide);
     if (history.length > 1) {
@@ -144,7 +146,6 @@
     }
     const points = history.map((item, index) => svgElement("circle", { cx: x(index), cy: y(item.price), r: index === history.length - 1 ? 5 : 3.5, class: "chart-point" }));
     points.forEach(point => svg.append(point));
-    const last = history[history.length - 1];
     svg.append(svgElement("text", { x: x(history.length - 1), y: Math.max(18, y(last.price) - 12), "text-anchor": "middle", class: "chart-value" }, last.price.toFixed(2)));
     svg.append(svgElement("text", { x: x(0), y: height - 8, "text-anchor": "middle", class: "chart-text" }, history[0].date.slice(5)));
     if (history.length > 1) svg.append(svgElement("text", { x: x(history.length - 1), y: height - 8, "text-anchor": "middle", class: "chart-text" }, last.date.slice(5)));
@@ -205,7 +206,7 @@
     ui.historyRange.textContent = history.length === 1 ? history[0].date : `${history[0].date} 至 ${last.date}`;
     ui.historyNote.textContent = history.length === 1
       ? "轻点或聚焦节点可查看日期和价格；至少两次调价记录才能形成趋势。"
-      : "悬停、轻点或聚焦节点可查看调价日期和价格；阶梯线表示价格保持不变。";
+      : "浅色横虚线标出最新价；悬停、轻点或聚焦节点可查看调价日期和价格。";
   }
 
   function refresh(preserveTripPrice = false) {
