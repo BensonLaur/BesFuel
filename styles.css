@@ -90,6 +90,7 @@ a { color: inherit; }
 @keyframes fuel-fill { to { transform: scaleX(1); } }
 .support-description, .support-instruction { color: #617b69; font-size: 12px; line-height: 1.65; }
 .support-description { margin: 15px 0; }
+.support-source-link { display: block; width: fit-content; margin-top: 6px; color: #216b47; font-weight: 700; text-underline-offset: 3px; }
 .support-methods { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .support-method { padding: 9px; border: 1px solid #d9e7db; border-radius: 10px; background: #fff; color: #52705d; font-size: 13px; }
 .support-method[aria-pressed="true"] { border-color: #2d8054; background: #edf7ef; color: #1d6843; font-weight: 700; }
