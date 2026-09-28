@@ -100,13 +100,22 @@ a { color: inherit; }
 .support-actions a { color: #216b47; font-size: 12px; font-weight: 650; text-underline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) { .support-dialog[open] .fuel-meter span { animation-duration: 0.01ms; } }
 .chart-unit { color: #899d8f; font-size: 11px; }
-.chart-wrap { display: flex; align-items: center; justify-content: center; height: 206px; margin-top: 15px; overflow: hidden; border-radius: 10px; background: #fbfcfb; }
+.chart-wrap { position: relative; display: flex; align-items: center; justify-content: center; height: 206px; margin-top: 15px; overflow: hidden; border-radius: 10px; background: #fbfcfb; }
 .chart-wrap svg { display: block; width: 100%; height: 100%; }
+.chart-tooltip { position: absolute; top: 6px; left: clamp(84px, var(--tooltip-x), calc(100% - 84px)); z-index: 2; display: flex; align-items: baseline; gap: 8px; padding: 7px 10px; transform: translateX(-50%); border-radius: 8px; background: #164d37; box-shadow: 0 4px 13px #1d463528; color: #fff; font-size: 11px; white-space: nowrap; pointer-events: none; }
+.chart-tooltip[hidden] { display: none; }
+.chart-tooltip strong { font-size: 14px; font-variant-numeric: tabular-nums; }
 .chart-empty { max-width: 260px; padding: 16px; color: #819587; font-size: 13px; line-height: 1.7; text-align: center; }
 .chart-meta { display: flex; justify-content: space-between; gap: 10px; margin-top: 9px; color: #8b9b8e; font-size: 11px; }
 .chart-grid { stroke: #e3ebe4; stroke-width: 1; }
 .chart-path { fill: none; stroke: #2b7955; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
 .chart-point { fill: #2b7955; stroke: #fff; stroke-width: 2; }
+.chart-point.active { fill: #124f37; stroke: #f4bd63; stroke-width: 4; }
+.chart-guide { display: none; stroke: #71a98a; stroke-width: 1.5; stroke-dasharray: 4 4; }
+.chart-guide.active { display: block; }
+.chart-hit-layer { position: absolute; inset: 0; z-index: 1; display: flex; }
+.chart-hit { flex: none; height: 100%; padding: 0; border: 0; background: transparent; cursor: crosshair; }
+.chart-hit:focus-visible { outline: none; }
 .chart-text { fill: #7e9282; font-size: 10px; font-family: inherit; }
 .chart-value { fill: #236746; font-size: 13px; font-weight: 700; font-family: inherit; }
 .data-notes { max-width: 850px; padding: 28px 0 8px; }

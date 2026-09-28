@@ -20,6 +20,7 @@
     supportSaveImage: $("support-save-image")
   };
   let manualTripPrice = false;
+  let hideHistoryPoint = () => {};
 
   function readPreference(key) {
     try { return localStorage.getItem(key); } catch (_) { return null; }
@@ -106,6 +107,7 @@
     const history = (selectedGrade()?.history || [])
       .filter(item => /^\d{4}-\d{2}-\d{2}$/.test(item.date) && Number.isFinite(item.price) && item.price >= 0)
       .sort((a, b) => a.date.localeCompare(b.date));
+    hideHistoryPoint = () => {};
     ui.chart.replaceChildren();
     ui.historyCount.textContent = `${history.length} 条已核实记录`;
     if (!history.length) {
@@ -133,22 +135,77 @@
       svg.append(svgElement("line", { x1: left, y1: yy, x2: width - right, y2: yy, class: "chart-grid" }));
       svg.append(svgElement("text", { x: 3, y: yy + 3, class: "chart-text" }, value.toFixed(2)));
     }
+    const guide = svgElement("line", { x1: 0, x2: 0, y1: top, y2: height - bottom, class: "chart-guide" });
+    svg.append(guide);
     if (history.length > 1) {
       let path = `M ${x(0)} ${y(history[0].price)}`;
       for (let i = 1; i < history.length; i++) path += ` H ${x(i)} V ${y(history[i].price)}`;
       svg.append(svgElement("path", { d: path, class: "chart-path" }));
     }
-    history.forEach((item, index) => svg.append(svgElement("circle", { cx: x(index), cy: y(item.price), r: index === history.length - 1 ? 5 : 3.5, class: "chart-point" })));
+    const points = history.map((item, index) => svgElement("circle", { cx: x(index), cy: y(item.price), r: index === history.length - 1 ? 5 : 3.5, class: "chart-point" }));
+    points.forEach(point => svg.append(point));
     const last = history[history.length - 1];
     svg.append(svgElement("text", { x: x(history.length - 1), y: Math.max(18, y(last.price) - 12), "text-anchor": "middle", class: "chart-value" }, last.price.toFixed(2)));
     svg.append(svgElement("text", { x: x(0), y: height - 8, "text-anchor": "middle", class: "chart-text" }, history[0].date.slice(5)));
     if (history.length > 1) svg.append(svgElement("text", { x: x(history.length - 1), y: height - 8, "text-anchor": "middle", class: "chart-text" }, last.date.slice(5)));
-    ui.chart.append(svg);
+    const tooltip = document.createElement("div");
+    tooltip.className = "chart-tooltip";
+    tooltip.hidden = true;
+    tooltip.setAttribute("aria-hidden", "true");
+    const tooltipDate = document.createElement("span");
+    const tooltipPrice = document.createElement("strong");
+    tooltip.append(tooltipDate, tooltipPrice);
+    const hitLayer = document.createElement("div");
+    hitLayer.className = "chart-hit-layer";
+    const hits = [];
+    const clearPoint = () => {
+      tooltip.hidden = true;
+      guide.classList.remove("active");
+      points.forEach(point => point.classList.remove("active"));
+    };
+    hideHistoryPoint = clearPoint;
+    function showPoint(index) {
+      const item = history[index];
+      tooltipDate.textContent = `${item.date} 生效`;
+      tooltipPrice.textContent = `${item.price.toFixed(2)} 元/升`;
+      tooltip.style.setProperty("--tooltip-x", `${x(index) / width * 100}%`);
+      tooltip.hidden = false;
+      guide.setAttribute("x1", String(x(index)));
+      guide.setAttribute("x2", String(x(index)));
+      guide.classList.add("active");
+      points.forEach((point, pointIndex) => point.classList.toggle("active", pointIndex === index));
+    }
+    // Full-height slices make closely spaced price nodes easy to reach on touch screens.
+    history.forEach((item, index) => {
+      const start = index === 0 ? 0 : (x(index - 1) + x(index)) / 2;
+      const end = index === history.length - 1 ? width : (x(index) + x(index + 1)) / 2;
+      const hit = document.createElement("button");
+      hit.type = "button";
+      hit.className = "chart-hit";
+      hit.tabIndex = index === 0 ? 0 : -1;
+      hit.style.width = `${(end - start) / width * 100}%`;
+      hit.setAttribute("aria-label", `${gradeNames[ui.grade.value]}，${item.date} 生效，${item.price.toFixed(2)} 元每升`);
+      hit.addEventListener("pointerenter", event => { if (event.pointerType !== "touch") showPoint(index); });
+      hit.addEventListener("pointerleave", event => {
+        if (event.pointerType !== "touch" && !ui.chart.contains(document.activeElement)) clearPoint();
+      });
+      hit.addEventListener("focus", () => showPoint(index));
+      hit.addEventListener("blur", event => { if (!ui.chart.contains(event.relatedTarget)) clearPoint(); });
+      hit.addEventListener("click", () => { hit.focus(); showPoint(index); });
+      hit.addEventListener("keydown", event => {
+        if (event.key === "Escape") { clearPoint(); hit.blur(); return; }
+        const next = event.key === "ArrowRight" ? index + 1 : event.key === "ArrowLeft" ? index - 1 : -1;
+        if (next >= 0 && next < hits.length) { event.preventDefault(); hits[next].focus(); }
+      });
+      hits.push(hit);
+      hitLayer.append(hit);
+    });
+    ui.chart.append(svg, hitLayer, tooltip);
     ui.chart.setAttribute("aria-label", `${gradeNames[ui.grade.value]}，从 ${history[0].date} 到 ${last.date}，共 ${history.length} 条价格记录；最新 ${last.price.toFixed(2)} 元每升`);
     ui.historyRange.textContent = history.length === 1 ? history[0].date : `${history[0].date} 至 ${last.date}`;
     ui.historyNote.textContent = history.length === 1
-      ? "目前仅收录一次已核实价格；至少两次调价记录才能形成趋势。"
-      : "阶梯线表示调价后价格保持不变，所有节点均来自已核实记录。";
+      ? "轻点或聚焦节点可查看日期和价格；至少两次调价记录才能形成趋势。"
+      : "悬停、轻点或聚焦节点可查看调价日期和价格；阶梯线表示价格保持不变。";
   }
 
   function refresh(preserveTripPrice = false) {
@@ -231,6 +288,7 @@
     showCalculation();
   });
   ui.restorePrice.addEventListener("click", syncTripPrice);
+  document.addEventListener("pointerdown", event => { if (!ui.chart.contains(event.target)) hideHistoryPoint(); });
   $("open-support").addEventListener("click", () => {
     selectSupportMethod("wechat");
     ui.supportDialog.showModal();

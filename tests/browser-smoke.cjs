@@ -77,6 +77,7 @@ async function main() {
   await send("Network.emulateNetworkConditions", { offline: true, latency: 0, downloadThroughput: -1, uploadThroughput: -1 });
   await send("Emulation.setDeviceMetricsOverride", { width: 390, height: 1500, deviceScaleFactor: 1, mobile: true });
   await send("Page.navigate", { url: pathToFileURL(path.join(root, "index.html")).href });
+  await send("Page.bringToFront");
   for (let attempt = 0; attempt < 50; attempt++) {
     if (await evaluate("document.getElementById('current-price')?.textContent") === guangdong.grades["92"].price.toFixed(2)) break;
     await delay(100);
@@ -85,22 +86,42 @@ async function main() {
   assert.equal(await evaluate("document.getElementById('region-label').textContent"), "广东");
   assert.equal(await evaluate("document.getElementById('region').selectedOptions[0].textContent"), "广东");
   assert.equal(await evaluate("document.querySelectorAll('.chart-point').length"), guangdong.grades["92"].history.length);
+  assert.equal(await evaluate("document.querySelectorAll('.chart-hit').length"), guangdong.grades["92"].history.length);
+  await evaluate("document.querySelectorAll('.chart-hit')[3].dispatchEvent(new PointerEvent('pointerenter', { pointerType: 'mouse' }))");
+  assert.equal(await evaluate("document.querySelector('.chart-tooltip').textContent"), `${guangdong.grades["92"].history[3].date} 生效${guangdong.grades["92"].history[3].price.toFixed(2)} 元/升`);
+  await evaluate("document.querySelectorAll('.chart-hit')[3].dispatchEvent(new PointerEvent('pointerleave', { pointerType: 'mouse' }))");
+  assert.ok(await evaluate("document.querySelector('.chart-tooltip').hidden"));
+  await evaluate("document.querySelectorAll('.chart-hit')[0].focus()");
+  assert.ok(await evaluate(`document.querySelector('.chart-tooltip').textContent.includes(${JSON.stringify(guangdong.grades["92"].history[0].date)})`));
+  await send("Input.dispatchKeyEvent", { type: "keyDown", key: "ArrowRight", code: "ArrowRight", windowsVirtualKeyCode: 39 });
+  await send("Input.dispatchKeyEvent", { type: "keyUp", key: "ArrowRight", code: "ArrowRight", windowsVirtualKeyCode: 39 });
+  assert.equal(await evaluate("document.activeElement.getAttribute('class')"), "chart-hit");
+  assert.ok(await evaluate(`document.querySelector('.chart-tooltip').textContent.includes(${JSON.stringify(guangdong.grades["92"].history[1].date)})`));
+  await evaluate("document.querySelectorAll('.chart-hit')[6].dispatchEvent(new PointerEvent('pointerenter', { pointerType: 'touch' }))");
+  await evaluate("document.querySelectorAll('.chart-hit')[6].click()");
+  assert.ok(await evaluate(`document.querySelector('.chart-tooltip').textContent.includes(${JSON.stringify(guangdong.grades["92"].history[6].date)})`));
+  await evaluate("document.body.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true, pointerType: 'touch' }))");
+  assert.ok(await evaluate("document.querySelector('.chart-tooltip').hidden"));
   await setValue("distance", "9", "input");
   assert.equal(await evaluate("document.getElementById('per-km').textContent"), calculate("9", "9", String(guangdong.grades["92"].price)).perKm.toFixed(2));
   assert.equal(await evaluate("document.getElementById('trip-total').textContent"), expectedTotal(guangdong.grades["92"].price));
   await setValue("grade", "95", "change");
   assert.equal(await evaluate("document.getElementById('current-price').textContent"), guangdong.grades["95"].price.toFixed(2));
   assert.equal(await evaluate("document.getElementById('trip-total').textContent"), expectedTotal(guangdong.grades["95"].price));
+  await evaluate("document.querySelectorAll('.chart-hit')[0].focus()");
+  assert.ok(await evaluate(`document.querySelector('.chart-tooltip').textContent.includes(${JSON.stringify(guangdong.grades["95"].history[0].price.toFixed(2))})`));
   await setValue("grade", "98", "change");
   assert.equal(await evaluate("document.getElementById('current-price').textContent"), "—");
   assert.equal(await evaluate("document.getElementById('trip-total').textContent"), "—");
   await setValue("trip-price", "10", "input");
   assert.equal(await evaluate("document.getElementById('trip-total').textContent"), "8.10");
   assert.ok(await evaluate("document.getElementById('chart-wrap').textContent.includes('暂无')"));
+  assert.equal(await evaluate("document.querySelectorAll('.chart-hit').length"), 0);
   assert.equal(await evaluate("document.getElementById('prediction').textContent"), "暂无可靠预估");
   assert.ok(await evaluate("document.getElementById('sync-note').textContent.includes('本地模式')"));
   await evaluate("document.getElementById('open-support').focus(); document.getElementById('open-support').click()");
   assert.ok(await evaluate("document.getElementById('support-dialog').open"));
+  assert.equal(await evaluate("document.querySelector('.support-description').textContent"), "BesFuel 所有功能完全免费，且没有任何广告，完全由作者用爱发电。如果你喜欢 BesFuel，欢迎自愿打赏，非常感谢！");
   await waitForSupportImage();
   assert.ok(await evaluate("document.getElementById('support-image').naturalWidth > 0"));
   await evaluate("document.querySelector('[data-method=alipay]').click()");
@@ -113,6 +134,9 @@ async function main() {
   assert.equal(await evaluate("document.getElementById('trip-total').textContent"), "8.10");
   await send("Emulation.setDeviceMetricsOverride", { width: 320, height: 800, deviceScaleFactor: 1, mobile: true });
   assert.ok(await evaluate("document.documentElement.scrollWidth <= 320"), "320px mobile viewport must not scroll horizontally");
+  await setValue("grade", "92", "change");
+  await evaluate("document.querySelectorAll('.chart-hit')[0].click()");
+  assert.ok(await evaluate("(() => { const box = document.querySelector('.chart-tooltip').getBoundingClientRect(); return box.left >= 0 && box.right <= innerWidth; })()"), "history tooltip must fit 320px viewport");
   await evaluate("document.getElementById('open-support').click()");
   assert.ok(await evaluate("document.getElementById('support-dialog').getBoundingClientRect().right <= 320"), "support dialog must fit 320px viewport");
   await send("Input.dispatchKeyEvent", { type: "keyDown", key: "Escape", code: "Escape", windowsVirtualKeyCode: 27 });
@@ -124,11 +148,15 @@ async function main() {
   assert.deepEqual(errors, []);
   if (process.env.BESFUEL_SCREENSHOT) {
     await setValue("grade", "92", "change");
+    const target = path.parse(process.env.BESFUEL_SCREENSHOT);
     const screenshot = await send("Page.captureScreenshot", { format: "png", captureBeyondViewport: true });
     fs.writeFileSync(process.env.BESFUEL_SCREENSHOT, Buffer.from(screenshot.data, "base64"));
+    await evaluate("document.querySelectorAll('.chart-hit')[6].dispatchEvent(new PointerEvent('pointerenter', { pointerType: 'mouse' }))");
+    const historyScreenshot = await send("Page.captureScreenshot", { format: "png", captureBeyondViewport: true });
+    fs.writeFileSync(path.join(target.dir, `${target.name}-history${target.ext}`), Buffer.from(historyScreenshot.data, "base64"));
+    await evaluate("document.querySelectorAll('.chart-hit')[6].dispatchEvent(new PointerEvent('pointerleave', { pointerType: 'mouse' }))");
     await evaluate("document.getElementById('open-support').click()");
     const supportScreenshot = await send("Page.captureScreenshot", { format: "png", captureBeyondViewport: false });
-    const target = path.parse(process.env.BESFUEL_SCREENSHOT);
     fs.writeFileSync(path.join(target.dir, `${target.name}-support${target.ext}`), Buffer.from(supportScreenshot.data, "base64"));
     await evaluate("document.getElementById('close-support').click()");
   }
@@ -187,13 +215,16 @@ async function main() {
     }
     assert.equal(await evaluate("document.getElementById('region-label').textContent"), "广东");
     assert.ok(await evaluate("Number.isFinite(Number(document.getElementById('current-price').textContent))"));
+    assert.ok(await evaluate("document.querySelectorAll('.chart-hit').length > 0"));
+    await evaluate("document.querySelectorAll('.chart-hit')[1].dispatchEvent(new PointerEvent('pointerenter', { pointerType: 'mouse' }))");
+    assert.ok(await evaluate("document.querySelector('.chart-tooltip').textContent.includes('元/升')"));
     await evaluate("document.getElementById('open-support').click()");
     await waitForSupportImage();
     assert.ok(await evaluate("document.getElementById('support-image').naturalWidth > 0"), "published original image must load");
     assert.ok(await evaluate("document.documentElement.scrollWidth <= innerWidth"), "published mobile viewport must fit");
   }
   assert.deepEqual(errors, []);
-  console.log("Browser smoke passed: mobile and desktop layout, region and grade linkage, support dialog, missing data, manual price, and background snapshot update.");
+  console.log("Browser smoke passed: mobile and desktop layout, history hover/touch/keyboard, region and grade linkage, support dialog, missing data, manual price, and background snapshot update.");
 }
 
 main().catch(error => { console.error(error); process.exitCode = 1; }).finally(async () => {
