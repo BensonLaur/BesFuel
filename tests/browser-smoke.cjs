@@ -165,7 +165,7 @@ async function main() {
   assert.ok(await evaluate("document.getElementById('sync-note').textContent.includes('本地模式')"));
   await evaluate("document.getElementById('open-support').focus(); document.getElementById('open-support').click()");
   assert.ok(await evaluate("document.getElementById('support-dialog').open"));
-  assert.equal(await evaluate("document.querySelector('.support-description').textContent"), "BesFuel 所有功能完全开源（查看 GitHub 源代码 ↗）、免费，且没有任何广告，完全由作者用爱发电。如果你喜欢 BesFuel，欢迎自愿打赏，非常感谢！");
+  assert.equal(await evaluate("document.querySelector('.support-description').textContent"), "BesFuel 所有功能完全开源（查看 GitHub 源代码 ↗）、免费，且没有任何广告，完全由作者用爱发电。如果你喜欢 BesFuel，欢迎自愿打赏，支持它继续完善。非常感谢！");
   assert.deepEqual(await evaluate("(() => { const link = document.querySelector('.support-source-link'); return [link.href, link.target, link.rel, link.textContent]; })()"), ["https://github.com/BensonLaur/BesFuel", "_blank", "noopener noreferrer", "查看 GitHub 源代码 ↗"]);
   await waitForSupportImage();
   assert.ok(await evaluate("document.getElementById('support-image').naturalWidth > 0"));
