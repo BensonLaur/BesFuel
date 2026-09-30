@@ -1122,7 +1122,7 @@ window.BESFUEL_DATA = {
     "shanghai": {
       "name": "上海",
       "priceScope": "上海市车用汽、柴油最高零售价格（元/升）",
-      "checkedAt": "2026-09-29",
+      "checkedAt": "2026-09-30",
       "source": {
         "name": "上海市发展和改革委员会",
         "url": "https://fgw.sh.gov.cn/fgw_jggl/20260924/9346a0fd85d74075a9431f83f365cef8.html"
@@ -9665,13 +9665,13 @@ window.BESFUEL_DATA = {
     },
     "forecast": {
       "direction": "down",
-      "amountPerLiter": 0.16,
-      "description": "预计下调约 0.16 元/升",
+      "amountPerLiter": 0.19,
+      "description": "预计下调约 0.19 元/升",
       "sourceName": "团友网",
-      "sourceUrl": "https://www.tuanyou.net/yuanyou/bianhualv/815.html",
-      "updatedAt": "2026-09-29",
+      "sourceUrl": "https://www.tuanyou.net/yuanyou/bianhualv/816.html",
+      "updatedAt": "2026-09-30",
       "windowDate": "2026-10-15",
-      "workday": 2
+      "workday": 3
     }
   }
 };
