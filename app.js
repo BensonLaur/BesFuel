@@ -13,6 +13,7 @@
     nextWindow: $("next-window"), windowDetail: $("window-detail"),
     windowRuleSource: $("window-rule-source"), windowHolidaySource: $("window-holiday-source"),
     prediction: $("prediction-text"), predictionArrow: $("prediction-arrow"),
+    predictionLabel: $("prediction-label"), predictionValue: $("prediction"), predictionStatus: $("prediction-status"),
     predictionDetail: $("prediction-detail"), predictionSource: $("prediction-source"),
     distance: $("distance"), consumption: $("consumption"), tripPrice: $("trip-price"),
     restorePrice: $("restore-price"), priceMode: $("price-mode"),
@@ -97,17 +98,21 @@
       if (!link.hidden) link.href = url;
     }
     const age = (Date.parse(`${todayIso}T00:00:00Z`) - Date.parse(`${forecast.updatedAt}T00:00:00Z`)) / 86400000;
-    // A stored forecast must disappear when its cycle changes or its calculation day gets old.
-    const forecastReady = windowReady && forecast.description && forecast.windowDate === windowData.date && age >= 0 && age <= 2;
-    ui.prediction.textContent = forecastReady ? forecast.description : "暂无近期可靠预估";
-    ui.predictionArrow.hidden = !forecastReady || !["up", "down"].includes(forecast.direction);
+    // Keep a dated reference within its cycle; freshness only controls its emphasis.
+    const forecastReady = Boolean(windowReady && forecast.description && forecast.windowDate === windowData.date && age >= 0);
+    const forecastStale = forecastReady && age > 2;
+    ui.predictionLabel.textContent = forecastStale ? "本轮最近估算 · 全国参考" : "市场估算 · 全国参考";
+    ui.prediction.textContent = forecastReady ? forecast.description : "暂无本轮可靠预估";
+    ui.predictionValue.classList.toggle("stale", forecastStale);
+    ui.predictionStatus.hidden = !forecastStale;
+    ui.predictionArrow.hidden = !forecastReady || forecastStale || !["up", "down"].includes(forecast.direction);
     if (!ui.predictionArrow.hidden) {
       ui.predictionArrow.textContent = forecast.direction === "up" ? "↑" : "↓";
       ui.predictionArrow.className = `prediction-arrow ${forecast.direction}`;
     }
     ui.predictionDetail.textContent = forecastReady
-      ? `${forecast.sourceName} · ${forecast.updatedAt} · 第 ${forecast.workday} 个工作日；仅供参考`
-      : forecast.updatedAt ? "上次预测已过期，等待新一期市场数据" : "市场预测与正式价格分开显示";
+      ? `${forecast.sourceName} · ${forecast.updatedAt} 计算 · 第 ${forecast.workday} 个工作日${forecastStale ? "" : "；仅供参考"}`
+      : "等待本轮市场估算，正式价格以官方公告为准";
     ui.predictionSource.hidden = !forecastReady || !/^https:\/\//.test(forecast.sourceUrl || "");
     if (!ui.predictionSource.hidden) ui.predictionSource.href = forecast.sourceUrl;
   }

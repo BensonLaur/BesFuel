@@ -137,8 +137,17 @@ if ($nextWindowDate) {
     if ($LASTEXITCODE -eq 0 -and $marketResult) {
         try {
             $market = $marketResult | ConvertFrom-Json
-            if ($market.forecast) { $data.nationalAdjustment.forecast = $market.forecast }
-            else { Write-Warning "市场预测本次未更新：$($market.error)；原预测保留并由页面按日期判断是否过期。" }
+            if ($market.forecast) {
+                # A cached source must not replace a newer estimate from the same cycle.
+                if ($data.nationalAdjustment.forecast.updatedAt -and
+                    $market.forecast.updatedAt -lt $data.nationalAdjustment.forecast.updatedAt) {
+                    Write-Warning '来源返回了更早的市场估算，保留本轮较新的可信预测。'
+                } else {
+                    $data.nationalAdjustment.forecast = $market.forecast
+                    Write-Output ("市场估算已核对，计算日期：" + $market.forecast.updatedAt + '；页面按计算日期标注时效。')
+                }
+            }
+            else { Write-Warning "市场预测获取或校验失败：$($market.error)；保留本轮可信预测及原计算日期。" }
         } catch {
             Write-Warning '市场预测格式异常；原预测保留并由页面按日期判断是否过期。'
         }

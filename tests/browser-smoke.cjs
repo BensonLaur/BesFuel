@@ -6,6 +6,7 @@ const path = require("node:path");
 const { spawn } = require("node:child_process");
 const { pathToFileURL } = require("node:url");
 const { calculate } = require("../lib/calc.js");
+const { readDevToolsPort } = require("./helpers/browser-port.cjs");
 
 const root = path.resolve(__dirname, "..");
 const snapshot = JSON.parse(fs.readFileSync(path.join(root, "data", "prices.json"), "utf8"));
@@ -17,8 +18,9 @@ const dateParts = Object.fromEntries(new Intl.DateTimeFormat("en-GB", {
 const todayIso = `${dateParts.year}-${dateParts.month}-${dateParts.day}`;
 const forecastAge = (Date.parse(`${todayIso}T00:00:00Z`) - Date.parse(`${national.forecast.updatedAt}T00:00:00Z`)) / 86400000;
 const windowFresh = Boolean(national.nextAdjustment.date && national.nextAdjustment.date >= todayIso);
-const forecastFresh = Boolean(windowFresh && national.forecast.description &&
-  national.forecast.windowDate === national.nextAdjustment.date && forecastAge >= 0 && forecastAge <= 2);
+const forecastVisible = Boolean(windowFresh && national.forecast.description &&
+  national.forecast.windowDate === national.nextAdjustment.date && forecastAge >= 0);
+const forecastFresh = forecastVisible && forecastAge <= 2;
 const expectedTotal = price => calculate("9", "9", String(price)).total.toFixed(2);
 const edge = process.env.BROWSER_PATH || path.join(process.env["PROGRAMFILES(X86)"] || "", "Microsoft", "Edge", "Application", "msedge.exe");
 const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -35,13 +37,14 @@ async function main() {
   let launchError;
   browser.on("error", error => { launchError = error; });
   let port;
+  const activePort = path.join(profile, "DevToolsActivePort");
   for (let attempt = 0; attempt < 100; attempt++) {
     if (launchError) throw launchError;
-    const activePort = path.join(profile, "DevToolsActivePort");
-    if (fs.existsSync(activePort)) { port = Number(fs.readFileSync(activePort, "utf8").split(/\r?\n/)[0]); break; }
+    port = readDevToolsPort(activePort);
+    if (port !== null) break;
     await delay(100);
   }
-  if (!port) throw new Error("Browser debugging endpoint did not start.");
+  if (!port) throw new Error("Browser debugging endpoint did not become ready within 10 seconds (DevToolsActivePort).");
   const targets = await (await fetch(`http://127.0.0.1:${port}/json/list`)).json();
   const page = targets.find(target => target.type === "page");
   socket = new WebSocket(page.webSocketDebuggerUrl);
@@ -95,11 +98,12 @@ async function main() {
   }
   assert.equal(await evaluate("document.getElementById('current-price').textContent"), guangdong.grades["92"].price.toFixed(2));
   assert.equal(await evaluate("document.getElementById('next-window').textContent"), windowFresh ? national.nextAdjustment.dateLabel : national.nextAdjustment.date ? "待重新核实" : "待核实");
-  assert.equal(await evaluate("document.getElementById('prediction-text').textContent"), forecastFresh ? national.forecast.description : "暂无近期可靠预估");
+  assert.equal(await evaluate("document.getElementById('prediction-text').textContent"), forecastVisible ? national.forecast.description : "暂无本轮可靠预估");
   assert.equal(await evaluate("document.getElementById('prediction-arrow').hidden"), !forecastFresh);
   if (forecastFresh) assert.equal(await evaluate("document.getElementById('prediction-arrow').textContent"), national.forecast.direction === "up" ? "↑" : "↓");
-  assert.equal(await evaluate("document.getElementById('prediction-source').hidden"), !forecastFresh);
-  if (forecastFresh) assert.equal(await evaluate("document.getElementById('prediction-source').href"), national.forecast.sourceUrl);
+  assert.equal(await evaluate("document.getElementById('prediction-source').hidden"), !forecastVisible);
+  if (forecastVisible) assert.equal(await evaluate("document.getElementById('prediction-source').href"), national.forecast.sourceUrl);
+  assert.equal(await evaluate("document.getElementById('prediction-status').hidden"), !forecastVisible || forecastFresh);
   assert.equal(await evaluate("document.getElementById('window-rule-source').hidden"), !windowFresh);
   assert.equal(await evaluate("document.getElementById('region-label').textContent"), "广东");
   assert.equal(await evaluate("document.getElementById('region').selectedOptions[0].textContent"), "广东");
@@ -161,7 +165,7 @@ async function main() {
   assert.ok(await evaluate("document.getElementById('chart-wrap').textContent.includes('暂无')"));
   assert.equal(await evaluate("document.querySelectorAll('.chart-hit').length"), 0);
   assert.equal(await evaluate("document.querySelectorAll('.chart-latest-line').length"), 0);
-  assert.equal(await evaluate("document.getElementById('prediction-text').textContent"), forecastFresh ? national.forecast.description : "暂无近期可靠预估");
+  assert.equal(await evaluate("document.getElementById('prediction-text').textContent"), forecastVisible ? national.forecast.description : "暂无本轮可靠预估");
   assert.ok(await evaluate("document.getElementById('sync-note').textContent.includes('本地模式')"));
   await evaluate("document.getElementById('open-support').focus(); document.getElementById('open-support').click()");
   assert.ok(await evaluate("document.getElementById('support-dialog').open"));
@@ -218,25 +222,80 @@ async function main() {
   await setValue("grade", "92", "change");
   assert.equal(await evaluate("document.getElementById('current-price').textContent"), "7.77");
   assert.equal(await evaluate("document.getElementById('region').selectedOptions[0].textContent"), "示例地区");
-  assert.equal(await evaluate("document.getElementById('prediction-text').textContent"), forecastFresh ? national.forecast.description : "暂无近期可靠预估");
+  assert.equal(await evaluate("document.getElementById('prediction-text').textContent"), forecastVisible ? national.forecast.description : "暂无本轮可靠预估");
   await evaluate(`(() => {
+    const OriginalDate = Date;
+    window.forecastTestDay = '2026-10-02';
+    window.Date = class extends OriginalDate {
+      constructor(...args) { super(...(args.length ? args : [window.forecastTestDay + 'T12:00:00+08:00'])); }
+      static now() { return new OriginalDate(window.forecastTestDay + 'T12:00:00+08:00').getTime(); }
+    };
     const national = window.BESFUEL_DATA.nationalAdjustment;
-    const future = new Date(Date.now() + 30 * 86400000).toISOString().slice(0, 10);
-    national.nextAdjustment.date = future;
-    national.nextAdjustment.dateLabel = '预计 ' + future + ' 24:00';
-    national.forecast.windowDate = future;
-    national.forecast.updatedAt = ${JSON.stringify(todayIso)};
-    national.forecast.direction = 'up';
-    national.forecast.description = '预计上调约 0.18 元/升';
+    national.nextAdjustment.date = '2026-10-15';
+    national.nextAdjustment.dateLabel = '预计 2026-10-15 24:00';
+    national.forecast = {
+      windowDate: '2026-10-15', updatedAt: '2026-09-30', workday: 3,
+      direction: 'down', amountPerLiter: 0.19, description: '预计下调约 0.19 元/升',
+      sourceName: '团友网', sourceUrl: 'https://www.tuanyou.net/yuanyou/bianhualv/816.html'
+    };
+    document.getElementById('region').dispatchEvent(new Event('change', { bubbles: true }));
+  })()`);
+  assert.equal(await evaluate("document.getElementById('prediction-arrow').textContent"), "↓");
+  assert.equal(await evaluate("document.getElementById('prediction-arrow').hidden"), false);
+  assert.equal(await evaluate("document.getElementById('prediction-status').hidden"), true);
+  assert.equal(await evaluate("document.getElementById('prediction-label').textContent"), "市场估算 · 全国参考");
+  for (const day of ['2026-10-03', '2026-10-06', '2026-10-15']) {
+    await evaluate(`window.forecastTestDay = ${JSON.stringify(day)}; document.getElementById('region').dispatchEvent(new Event('change', { bubbles: true }))`);
+    assert.equal(await evaluate("document.getElementById('prediction-text').textContent"), "预计下调约 0.19 元/升");
+    assert.equal(await evaluate("document.getElementById('prediction-label').textContent"), "本轮最近估算 · 全国参考");
+    assert.equal(await evaluate("document.getElementById('prediction-detail').textContent"), "团友网 · 2026-09-30 计算 · 第 3 个工作日");
+    assert.equal(await evaluate("document.getElementById('prediction-status').hidden"), false);
+    assert.equal(await evaluate("document.getElementById('prediction-status').textContent"), "已超过两天，等待本轮更新；仅作历史参考");
+    assert.ok(await evaluate("document.getElementById('prediction').classList.contains('stale') && document.getElementById('prediction-arrow').hidden"));
+    assert.equal(await evaluate("document.getElementById('prediction-source').hidden"), false);
+    assert.equal(await evaluate("document.getElementById('prediction-source').href"), "https://www.tuanyou.net/yuanyou/bianhualv/816.html");
+  }
+  await evaluate("window.forecastTestDay = '2026-10-06'; document.getElementById('region').dispatchEvent(new Event('change', { bubbles: true }))");
+  for (const width of [320, 750, 1280]) {
+    await send("Emulation.setDeviceMetricsOverride", { width, height: 1000, deviceScaleFactor: 1, mobile: width < 600 });
+    assert.ok(await evaluate("document.documentElement.scrollWidth <= innerWidth"), `stale forecast must fit ${width}px viewport`);
+    if (process.env.BESFUEL_SCREENSHOT) {
+      const target = path.parse(process.env.BESFUEL_SCREENSHOT);
+      const clip = await evaluate("(() => { const box = document.querySelector('.adjustment-card').getBoundingClientRect(); return { x: box.left + scrollX, y: box.top + scrollY, width: box.width, height: box.height, scale: 1 }; })()");
+      const screenshot = await send("Page.captureScreenshot", { format: "png", captureBeyondViewport: true, clip });
+      fs.writeFileSync(path.join(target.dir, `${target.name}-forecast-${width}${target.ext}`), Buffer.from(screenshot.data, "base64"));
+    }
+  }
+  // An ended window, a changed cycle, missing dates and future estimates cannot act as this cycle's reference.
+  for (const mutation of [
+    "window.forecastTestDay = '2026-10-16'",
+    "window.forecastTestDay = '2026-10-06'; window.BESFUEL_DATA.nationalAdjustment.nextAdjustment.date = '2026-10-29'",
+    "window.BESFUEL_DATA.nationalAdjustment.nextAdjustment.date = '2026-10-15'; window.BESFUEL_DATA.nationalAdjustment.forecast.updatedAt = null",
+    "window.BESFUEL_DATA.nationalAdjustment.forecast.updatedAt = 'invalid'",
+    "window.BESFUEL_DATA.nationalAdjustment.forecast.updatedAt = '2026-10-07'"
+  ]) {
+    await evaluate(`${mutation}; document.getElementById('region').dispatchEvent(new Event('change', { bubbles: true }))`);
+    assert.equal(await evaluate("document.getElementById('prediction-text').textContent"), "暂无本轮可靠预估");
+    assert.ok(await evaluate("document.getElementById('prediction-arrow').hidden && document.getElementById('prediction-source').hidden && document.getElementById('prediction-status').hidden"));
+    assert.equal(await evaluate("document.getElementById('prediction').classList.contains('stale')"), false);
+  }
+  await evaluate(`(() => {
+    const forecast = window.BESFUEL_DATA.nationalAdjustment.forecast;
+    forecast.updatedAt = '2026-10-06';
+    forecast.direction = 'up';
+    forecast.description = '预计上调约 0.18 元/升';
     document.getElementById('region').dispatchEvent(new Event('change', { bubbles: true }));
   })()`);
   assert.equal(await evaluate("document.getElementById('prediction-arrow').textContent"), "↑");
   assert.ok(await evaluate("document.getElementById('prediction-arrow').classList.contains('up')"));
   assert.equal(await evaluate("document.getElementById('prediction-text').textContent"), "预计上调约 0.18 元/升");
-  await evaluate("window.BESFUEL_DATA.nationalAdjustment.forecast.updatedAt = '2026-01-01'; document.getElementById('region').dispatchEvent(new Event('change', { bubbles: true }))");
-  assert.equal(await evaluate("document.getElementById('prediction-text').textContent"), "暂无近期可靠预估");
-  assert.ok(await evaluate("document.getElementById('prediction-arrow').hidden && document.getElementById('prediction-source').hidden"));
+  assert.equal(await evaluate("document.getElementById('prediction-arrow').hidden"), false);
+  assert.ok(await evaluate("document.getElementById('prediction-status').hidden && !document.getElementById('prediction').classList.contains('stale')"));
+  await evaluate("window.BESFUEL_DATA.nationalAdjustment.forecast = {}; document.getElementById('region').dispatchEvent(new Event('change', { bubbles: true }))");
+  assert.equal(await evaluate("document.getElementById('prediction-text').textContent"), "暂无本轮可靠预估");
+  assert.equal(await evaluate("document.getElementById('prediction-source').hidden"), true);
   assert.equal(await evaluate("document.getElementById('trip-total').textContent"), expectedTotal(7.77));
+  await send("Emulation.setDeviceMetricsOverride", { width: 390, height: 1500, deviceScaleFactor: 1, mobile: true });
   server = http.createServer((request, response) => {
     const pathname = new URL(request.url, "http://localhost").pathname;
     const allowed = new Map([["/", "index.html"], ["/index.html", "index.html"], ["/styles.css", "styles.css"],

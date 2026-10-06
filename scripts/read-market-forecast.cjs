@@ -16,11 +16,13 @@ function parseHome(html, expectedWindow, today) {
   const window = html.match(/下次调价：\s*(\d{4}-\d{2}-\d{2})/);
   if (!row || !link || !window || window[1] !== expectedWindow) throw new Error("forecast fields do not match the next window");
   const updatedAt = `${row[5]}-${row[6].padStart(2, "0")}-${row[7].padStart(2, "0")}`;
-  const age = (Date.parse(`${today}T00:00:00Z`) - Date.parse(`${updatedAt}T00:00:00Z`)) / 86400000;
   const amount = Number(row[3]);
   const workday = Number(row[4]);
-  if (!isValidDate(updatedAt) || age < 0 || age > 2 || amount <= 0 || amount > 5 || workday < 1 || workday > 10) {
-    throw new Error("forecast is stale or outside safe bounds");
+  // Holidays can leave the current cycle's latest estimate older than two days.
+  // Its calculation date stays unchanged so the page can mark it as stale.
+  if (!isValidDate(updatedAt) || updatedAt > today || updatedAt > expectedWindow || expectedWindow < today ||
+      amount <= 0 || amount > 5 || workday < 1 || workday > 10) {
+    throw new Error("forecast dates or values are outside safe bounds");
   }
   return {
     direction: row[2] === "涨" ? "up" : "down",
