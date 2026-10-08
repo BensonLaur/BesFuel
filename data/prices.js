@@ -9665,13 +9665,13 @@ window.BESFUEL_DATA = {
     },
     "forecast": {
       "direction": "down",
-      "amountPerLiter": 0.19,
-      "description": "预计下调约 0.19 元/升",
+      "amountPerLiter": 0.27,
+      "description": "预计下调约 0.27 元/升",
       "sourceName": "团友网",
-      "sourceUrl": "https://www.tuanyou.net/yuanyou/bianhualv/816.html",
-      "updatedAt": "2026-09-30",
+      "sourceUrl": "https://www.tuanyou.net/yuanyou/bianhualv/817.html",
+      "updatedAt": "2026-10-08",
       "windowDate": "2026-10-15",
-      "workday": 3
+      "workday": 4
     }
   }
 };
