@@ -9664,13 +9664,13 @@
     },
     "forecast": {
       "direction": "down",
-      "amountPerLiter": 0.23,
-      "description": "预计下调约 0.23 元/升",
+      "amountPerLiter": 0.21,
+      "description": "预计下调约 0.21 元/升",
       "sourceName": "团友网",
-      "sourceUrl": "https://www.tuanyou.net/yuanyou/bianhualv/819.html",
-      "updatedAt": "2026-10-10",
+      "sourceUrl": "https://www.tuanyou.net/yuanyou/bianhualv/820.html",
+      "updatedAt": "2026-10-12",
       "windowDate": "2026-10-15",
-      "workday": 6
+      "workday": 7
     }
   }
 }
