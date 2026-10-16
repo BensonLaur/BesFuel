@@ -115,3 +115,48 @@ test("rejects national adjustment data duplicated in a region", () => {
   snapshot.regions.guangdong.forecast = snapshot.nationalAdjustment.forecast;
   assert.throws(() => validateSnapshot(snapshot), /shared adjustment must not be duplicated/);
 });
+
+function snapshotWithNotice(kind = "unchanged") {
+  const snapshot = clone();
+  const region = snapshot.regions.guangdong;
+  const published = new Date(`${region.grades["92"].history.at(-1).date}T00:00:00Z`);
+  published.setUTCDate(published.getUTCDate() - 1);
+  region.latestNotice = {
+    date: kind === "unchanged" ? region.checkedAt : published.toISOString().slice(0, 10),
+    kind,
+    title: kind === "unchanged" ? "成品油价格不作调整" : "成品油价格调整",
+    sourceUrl: kind === "unchanged" ? "https://drc.gd.gov.cn/ywgg/content/post_9999999.html" : region.source.url
+  };
+  return snapshot;
+}
+
+test("latest official notice is optional and separate from the price's effective date", () => {
+  const legacy = clone();
+  delete legacy.regions.guangdong.latestNotice;
+  assert.doesNotThrow(() => validateSnapshot(legacy));
+  for (const kind of ["adjusted", "unchanged"]) {
+    assert.doesNotThrow(() => validateSnapshot(snapshotWithNotice(kind)));
+  }
+});
+
+test("rejects unverified notice sources, missing titles and invalid or future dates", () => {
+  for (const patch of [
+    { sourceUrl: "https://example.com/notice" }, { sourceUrl: "https://drc.gd.gov.cn/other" },
+    { title: "" }, { kind: "unknown" }, { date: "invalid" }, { date: "9999-12-31" }
+  ]) {
+    const snapshot = snapshotWithNotice();
+    Object.assign(snapshot.regions.guangdong.latestNotice, patch);
+    assert.throws(() => validateSnapshot(snapshot), /latest official notice|latest notice source/);
+  }
+});
+
+test("rejects notices that contradict the trusted price source or chronology", () => {
+  const adjusted = snapshotWithNotice("adjusted");
+  adjusted.regions.guangdong.latestNotice.sourceUrl = "https://drc.gd.gov.cn/ywgg/content/post_9999999.html";
+  assert.throws(() => validateSnapshot(adjusted), /adjusted notice matches price source/);
+  for (const kind of ["adjusted", "unchanged"]) {
+    const snapshot = snapshotWithNotice(kind);
+    snapshot.regions.guangdong.latestNotice.date = "2000-01-01";
+    assert.throws(() => validateSnapshot(snapshot), /notice and price chronology/);
+  }
+});

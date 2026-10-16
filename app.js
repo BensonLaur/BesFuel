@@ -10,6 +10,7 @@
     price: $("current-price"), priceDetail: $("price-detail"), effective: $("effective-time"),
     freshness: $("freshness"), source: $("price-source"), conversionSource: $("conversion-source"),
     sourceNote: $("source-note"), syncNote: $("sync-note"),
+    latestNotice: $("latest-notice"), latestNoticeSource: $("latest-notice-source"),
     nextWindow: $("next-window"), windowDetail: $("window-detail"),
     windowRuleSource: $("window-rule-source"), windowHolidaySource: $("window-holiday-source"),
     prediction: $("prediction-text"), predictionArrow: $("prediction-arrow"),
@@ -76,6 +77,19 @@
     if (region.conversionSource) ui.conversionSource.href = region.conversionSource.url;
     const checkedAt = region.checkedAt || data.checkedAt;
     ui.sourceNote.textContent = `${region.source.name}，数据核对日期：${checkedAt}。${region.priceScope}本站不会将历史快照称为实时价格。`;
+    const notice = region.latestNotice;
+    ui.latestNotice.hidden = !notice;
+    ui.latestNoticeSource.textContent = "";
+    ui.latestNoticeSource.removeAttribute("href");
+    ui.latestNoticeSource.removeAttribute("title");
+    if (notice) {
+      const summary = notice.kind === "unchanged"
+        ? `本轮不作调整${price !== null ? "，继续执行当前价格" : expired ? "；折算系数仍待复核" : "；该油号暂无已核实报价"}`
+        : "本轮价格调整";
+      ui.latestNoticeSource.textContent = `${notice.date} · ${summary} ↗`;
+      ui.latestNoticeSource.href = notice.sourceUrl;
+      ui.latestNoticeSource.title = notice.title;
+    }
 
     const age = snapshotAgeDays();
     ui.freshness.classList.toggle("stale", age === null || age > 3);
@@ -254,6 +268,10 @@
       ? "轻点或聚焦节点可查看日期和价格；至少两次调价记录才能形成趋势。"
       : "浅色横虚线标出最新价；悬停、轻点或聚焦节点可查看调价日期和价格。" +
         (historyGaps.length ? ` 历史缺口：${historyGaps.map(gap => gap.date).join("、")} 缺完整价格，阶梯线在这些日期断开。` : "");
+    const notice = selectedRegion().latestNotice;
+    if (notice?.kind === "unchanged") {
+      ui.historyNote.textContent += ` ${notice.date} 官方公告本轮不作调整；图中保留价格生效节点。`;
+    }
   }
 
   function refresh(preserveTripPrice = false) {

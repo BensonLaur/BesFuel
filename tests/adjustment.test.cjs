@@ -11,6 +11,11 @@ test("2026 holiday and makeup day move the ten-workday window to October 15", ()
   assert.equal(nextWindowAfter("2026-12-31", "2026-12-31"), null);
 });
 
+test("unchanged official rounds provide the next-window anchor just like price changes", () => {
+  assert.equal(nextWindowAfter("2026-10-15", "2026-10-16"), "2026-10-29");
+  assert.equal(nextWindowAfter("2026-10-29", "2026-10-30"), "2026-11-12");
+});
+
 const home = `<table><tr><td>原油变化率</td><td>下轮油价预测</td><td>工作日</td><td>当前计算日</td></tr>
 <tr><td><b>-4.70%</b></td><td><b><font>降0.18元/升</font></b></td><td>1</td>
 <td><a href="/yuanyou/bianhualv/814.html">2026年9月28日</a></td></tr></table>

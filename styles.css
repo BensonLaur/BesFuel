@@ -49,6 +49,9 @@ a { color: inherit; }
 .price-card-bottom span { color: #b7d8c3; font-size: 11px; }
 .price-card-bottom strong, .price-card-bottom a { font-size: 12px; font-weight: 570; }
 .price-card-bottom a { text-underline-offset: 3px; }
+.latest-notice { margin: 16px 0 0; padding-top: 14px; border-top: 1px solid #ffffff38; font-size: 12px; line-height: 1.7; overflow-wrap: anywhere; }
+.latest-notice span { display: block; margin-bottom: 3px; color: #b7d8c3; font-size: 11px; }
+.latest-notice a { text-underline-offset: 3px; }
 .section-heading h2 { margin: 6px 0 0; font-size: 22px; line-height: 1.25; letter-spacing: -.035em; }
 .adjustment-pair { display: grid; grid-template-columns: 1fr 1fr; margin-top: 31px; }
 .adjustment-pair > div { display: flex; flex-direction: column; gap: 7px; min-width: 0; }

@@ -78,6 +78,15 @@ function validateSnapshot(data, hostOverrides = {}) {
       `${key}: official conversion source`);
     }
     assert.ok(region.source?.name && isOfficialUrl(region.source.url, hosts), `${key}: current official source`);
+    if (region.latestNotice !== undefined) {
+      const notice = region.latestNotice;
+      assert.ok(notice && validDate(notice.date) && notice.date <= region.checkedAt &&
+        ["adjusted", "unchanged"].includes(notice.kind) && typeof notice.title === "string" && notice.title.trim() &&
+        isOfficialUrl(notice.sourceUrl, hosts), `${key}: latest official notice`);
+      if (notice.kind === "adjusted") {
+        assert.equal(notice.sourceUrl, region.source.url, `${key}: adjusted notice matches price source`);
+      }
+    }
     assert.ok(region.grades && typeof region.grades === "object", `${key}: grades`);
     for (const grade of ["92", "95", "98", "diesel"]) {
       const entry = region.grades[grade];
@@ -121,6 +130,14 @@ function validateSnapshot(data, hostOverrides = {}) {
       assert.equal(region.name, "广东", "Guangdong display name");
       assert.match(region.source.url, officialNotice, "Guangdong current official source");
       const latest = region.grades["92"].history.at(-1);
+      if (region.latestNotice) {
+        const notice = region.latestNotice;
+        assert.match(notice.sourceUrl, officialNotice, "Guangdong latest notice source");
+        const published = new Date(`${latest.date}T00:00:00Z`);
+        published.setUTCDate(published.getUTCDate() - 1);
+        assert.ok(notice.kind === "adjusted" ? notice.date === published.toISOString().slice(0, 10) :
+          notice.date >= latest.date, "Guangdong notice and price chronology");
+      }
       for (const grade of ["92", "95", "diesel"]) {
         const point = region.grades[grade].history.at(-1);
         assert.equal(point.date, latest.date, `Guangdong ${grade}: effective date`);

@@ -44,6 +44,7 @@ try {
     # Exercise forecast updates with official and market responses controlled locally.
     # Keep the real snapshot formatter and validator so both published files are checked.
     $nodeExecutable = (Get-Command node -CommandType Application | Select-Object -First 1).Source
+    $data.regions.guangdong.PSObject.Properties.Remove('latestNotice')
     $marketWindow = '2026-10-15'
     $data.nationalAdjustment.nextAdjustment.date = $marketWindow
     $data.nationalAdjustment.nextAdjustment.dateLabel = "预计 $marketWindow 24:00"
@@ -123,3 +124,4 @@ try {
         Remove-Item -LiteralPath $resolved -Recurse -Force
     }
 }
+& (Join-Path $PSScriptRoot 'guangdong-notices.ps1')

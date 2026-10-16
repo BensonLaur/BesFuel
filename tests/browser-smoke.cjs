@@ -107,6 +107,11 @@ async function main() {
   assert.equal(await evaluate("document.getElementById('window-rule-source').hidden"), !windowFresh);
   assert.equal(await evaluate("document.getElementById('region-label').textContent"), "广东");
   assert.equal(await evaluate("document.getElementById('region').selectedOptions[0].textContent"), "广东");
+  assert.equal(await evaluate("document.getElementById('latest-notice').hidden"), !guangdong.latestNotice);
+  if (guangdong.latestNotice) {
+    assert.equal(await evaluate("document.getElementById('latest-notice-source').href"), guangdong.latestNotice.sourceUrl);
+    assert.ok(await evaluate(`document.getElementById('latest-notice-source').textContent.includes(${JSON.stringify(guangdong.latestNotice.date)})`));
+  }
   assert.equal(await evaluate("document.querySelectorAll('.chart-point').length"), guangdong.grades["92"].history.length);
   assert.equal(await evaluate("document.querySelectorAll('.chart-hit').length"), guangdong.grades["92"].history.length);
   assert.ok(await evaluate("(() => { const line = document.querySelector('.chart-latest-line'); const point = [...document.querySelectorAll('.chart-point')].at(-1); return line && point && line.getAttribute('y1') === point.getAttribute('cy') && line.getAttribute('y2') === point.getAttribute('cy'); })()"), "latest price line must align with the latest point");
@@ -209,6 +214,53 @@ async function main() {
     fs.writeFileSync(path.join(target.dir, `${target.name}-support${target.ext}`), Buffer.from(supportScreenshot.data, "base64"));
     await evaluate("document.getElementById('close-support').click()");
   }
+  // An unchanged decision is separate from price history, future estimates and the selected grade.
+  await setValue("region", "guangdong", "change");
+  await setValue("grade", "92", "change");
+  await evaluate(`(() => {
+    const region = window.BESFUEL_DATA.regions.guangdong;
+    window.savedLatestNotice = region.latestNotice;
+    region.latestNotice = {
+      date: '2026-10-15', kind: 'unchanged', title: '2026年10月15日成品油价格不作调整',
+      sourceUrl: 'https://drc.gd.gov.cn/ywgg/content/post_4967003.html'
+    };
+    document.getElementById('region').dispatchEvent(new Event('change', { bubbles: true }));
+  })()`);
+  assert.equal(await evaluate("document.getElementById('latest-notice-source').textContent"), "2026-10-15 · 本轮不作调整，继续执行当前价格 ↗");
+  assert.equal(await evaluate("document.getElementById('effective-time').textContent"), guangdong.effectiveLabel);
+  assert.equal(await evaluate("document.getElementById('current-price').textContent"), guangdong.grades["92"].price.toFixed(2));
+  assert.equal(await evaluate("document.querySelectorAll('.chart-point').length"), guangdong.grades["92"].history.length);
+  assert.ok(await evaluate("document.getElementById('history-note').textContent.includes('本轮不作调整')"));
+  for (const width of [320, 750, 1280]) {
+    await send("Emulation.setDeviceMetricsOverride", { width, height: 1000, deviceScaleFactor: 1, mobile: width < 600 });
+    assert.ok(await evaluate("document.documentElement.scrollWidth <= innerWidth"), `latest notice must fit ${width}px viewport`);
+    if (process.env.BESFUEL_SCREENSHOT) {
+      const target = path.parse(process.env.BESFUEL_SCREENSHOT);
+      const clip = await evaluate("(() => { const box = document.querySelector('.price-card').getBoundingClientRect(); return { x: box.left + scrollX, y: box.top + scrollY, width: box.width, height: box.height, scale: 1 }; })()");
+      const screenshot = await send("Page.captureScreenshot", { format: "png", captureBeyondViewport: true, clip });
+      fs.writeFileSync(path.join(target.dir, `${target.name}-notice-${width}${target.ext}`), Buffer.from(screenshot.data, "base64"));
+    }
+  }
+  await evaluate("window.BESFUEL_DATA.regions.guangdong.priceValidThrough = '2000-01-01'; document.getElementById('region').dispatchEvent(new Event('change', { bubbles: true }))");
+  assert.equal(await evaluate("document.getElementById('current-price').textContent"), "—");
+  assert.ok(await evaluate("document.getElementById('latest-notice-source').textContent.includes('折算系数仍待复核')"));
+  await evaluate("delete window.BESFUEL_DATA.regions.guangdong.priceValidThrough");
+  await setValue("grade", "98", "change");
+  assert.ok(await evaluate("document.getElementById('latest-notice-source').textContent.includes('该油号暂无已核实报价')"));
+  assert.ok(await evaluate("!document.getElementById('latest-notice-source').textContent.includes('继续执行当前价格')"));
+  await setValue("grade", "92", "change");
+  await setValue("region", "hebei", "change");
+  assert.equal(await evaluate("document.getElementById('latest-notice').hidden"), true);
+  assert.equal(await evaluate("document.getElementById('latest-notice-source').hasAttribute('href')"), false);
+  await setValue("region", "guangdong", "change");
+  assert.equal(await evaluate("document.getElementById('latest-notice').hidden"), false);
+  await evaluate("window.BESFUEL_DATA.regions.guangdong.latestNotice.kind = 'adjusted'; document.getElementById('region').dispatchEvent(new Event('change', { bubbles: true }))");
+  assert.ok(await evaluate("document.getElementById('latest-notice-source').textContent.includes('本轮价格调整')"));
+  assert.ok(await evaluate("!document.getElementById('history-note').textContent.includes('本轮不作调整')"));
+  await evaluate("delete window.BESFUEL_DATA.regions.guangdong.latestNotice; document.getElementById('region').dispatchEvent(new Event('change', { bubbles: true }))");
+  assert.equal(await evaluate("document.getElementById('latest-notice').hidden"), true);
+  await evaluate("if (window.savedLatestNotice) window.BESFUEL_DATA.regions.guangdong.latestNotice = window.savedLatestNotice");
+  await send("Emulation.setDeviceMetricsOverride", { width: 390, height: 1500, deviceScaleFactor: 1, mobile: true });
   await evaluate(`(() => {
     const region = structuredClone(window.BESFUEL_DATA.regions.guangdong);
     region.name = '示例地区';
