@@ -1037,7 +1037,7 @@ window.BESFUEL_DATA = {
     "jilin": {
       "name": "吉林",
       "priceScope": "吉林省成品油最高零售价格（元/升）；92、95 号乙醇汽油和 0 号车用柴油",
-      "checkedAt": "2026-10-15",
+      "checkedAt": "2026-10-16",
       "source": {
         "name": "吉林省发展和改革委员会",
         "url": "https://jldrc.jl.gov.cn/ztzl/nyzyjg/202609/t20260924_3672674.html"
