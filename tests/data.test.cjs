@@ -9,6 +9,34 @@ const jsonPath = path.join(root, "data/prices.json");
 const jsPath = path.join(root, "data/prices.js");
 const clone = () => JSON.parse(fs.readFileSync(jsonPath, "utf8"));
 
+function snapshotWithForecast() {
+  const snapshot = clone();
+  const window = new Date(`${snapshot.checkedAt}T00:00:00Z`);
+  window.setUTCDate(window.getUTCDate() + 14);
+  const windowDate = window.toISOString().slice(0, 10);
+  // Build a complete national fixture: the live snapshot may have no forecast after a cycle change.
+  snapshot.nationalAdjustment = {
+    nextAdjustment: {
+      date: windowDate,
+      dateLabel: `预计 ${windowDate} 24:00`,
+      sourceName: "国家发展改革委调价规则与国务院放假安排",
+      sourceUrl: "https://www.ndrc.gov.cn/xxgk/zcfb/tz/201601/W020190905506573420251.pdf",
+      holidaySourceUrl: "https://www.beijing.gov.cn/cs/gncs/zcwj/202603/t20260327_4568275.html"
+    },
+    forecast: {
+      direction: "down",
+      amountPerLiter: 0.18,
+      description: "预计下调约 0.18 元/升",
+      sourceName: "团友网",
+      sourceUrl: "https://www.tuanyou.net/yuanyou/bianhualv/814.html",
+      updatedAt: snapshot.checkedAt,
+      windowDate,
+      workday: 1
+    }
+  };
+  return snapshot;
+}
+
 test("published JSON and offline fallback agree on the official snapshot", () => {
   const snapshot = validateFiles(jsonPath, jsPath);
   assert.equal(snapshot.regions.guangdong.grades["98"].price, null);
@@ -39,17 +67,51 @@ test("other regions also require their own official host for current and histori
   assert.throws(() => validateSnapshot(history), /hebei\/92: official historical source/);
 });
 
-test("forecast and adjustment need their own dated sources", () => {
-  const snapshot = clone();
-  snapshot.nationalAdjustment.forecast.sourceUrl = "https://example.com/forecast";
-  assert.throws(() => validateSnapshot(snapshot), /national forecast source and date/);
-  snapshot.nationalAdjustment.forecast.sourceUrl = "https://www.tuanyou.net/yuanyou/bianhualv/814.html";
-  snapshot.nationalAdjustment.forecast.windowDate = "2026-10-29";
-  assert.throws(() => validateSnapshot(snapshot), /national forecast source and date/);
-  snapshot.nationalAdjustment.forecast.windowDate = "2026-10-15";
-  snapshot.nationalAdjustment.nextAdjustment.holidaySourceUrl = null;
-  assert.throws(() => validateSnapshot(snapshot), /national adjustment sources/);
-  snapshot.nationalAdjustment.nextAdjustment.holidaySourceUrl = "https://www.beijing.gov.cn/cs/gncs/zcwj/202603/t20260327_4568275.html";
+test("accepts a sourced forecast for the current adjustment window", () => {
+  assert.doesNotThrow(() => validateSnapshot(snapshotWithForecast()));
+});
+
+test("accepts an empty forecast after a cycle change or unavailable market estimate", () => {
+  for (const forecast of [
+    {},
+    {
+      direction: null, amountPerLiter: null, description: null, sourceName: null,
+      sourceUrl: null, updatedAt: null, windowDate: null, workday: null
+    }
+  ]) {
+    const snapshot = snapshotWithForecast();
+    snapshot.nationalAdjustment.forecast = forecast;
+    assert.doesNotThrow(() => validateSnapshot(snapshot));
+  }
+});
+
+test("rejects a forecast with an invalid source, date or adjustment window", () => {
+  const mutations = [
+    forecast => { forecast.sourceUrl = "https://example.com/forecast"; },
+    forecast => { forecast.sourceName = null; },
+    forecast => { forecast.updatedAt = null; },
+    forecast => { forecast.updatedAt = "invalid"; },
+    (forecast, snapshot) => { forecast.updatedAt = snapshot.nationalAdjustment.nextAdjustment.date; },
+    forecast => { forecast.windowDate = forecast.updatedAt; }
+  ];
+  for (const mutate of mutations) {
+    const snapshot = snapshotWithForecast();
+    mutate(snapshot.nationalAdjustment.forecast, snapshot);
+    assert.throws(() => validateSnapshot(snapshot), /national forecast source and date/);
+  }
+});
+
+test("adjustment rules need their own sources even without a forecast", () => {
+  for (const hasForecast of [true, false]) {
+    const snapshot = snapshotWithForecast();
+    if (!hasForecast) snapshot.nationalAdjustment.forecast = {};
+    snapshot.nationalAdjustment.nextAdjustment.holidaySourceUrl = null;
+    assert.throws(() => validateSnapshot(snapshot), /national adjustment sources/);
+  }
+});
+
+test("rejects national adjustment data duplicated in a region", () => {
+  const snapshot = snapshotWithForecast();
   snapshot.regions.guangdong.forecast = snapshot.nationalAdjustment.forecast;
   assert.throws(() => validateSnapshot(snapshot), /shared adjustment must not be duplicated/);
 });
