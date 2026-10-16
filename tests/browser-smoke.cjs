@@ -6,6 +6,7 @@ const path = require("node:path");
 const { spawn } = require("node:child_process");
 const { pathToFileURL } = require("node:url");
 const { calculate } = require("../lib/calc.js");
+const { buildHistory } = require("../lib/history.js");
 const { readDevToolsPort } = require("./helpers/browser-port.cjs");
 
 const root = path.resolve(__dirname, "..");
@@ -112,8 +113,10 @@ async function main() {
     assert.equal(await evaluate("document.getElementById('latest-notice-source').href"), guangdong.latestNotice.sourceUrl);
     assert.ok(await evaluate(`document.getElementById('latest-notice-source').textContent.includes(${JSON.stringify(guangdong.latestNotice.date)})`));
   }
-  assert.equal(await evaluate("document.querySelectorAll('.chart-point').length"), guangdong.grades["92"].history.length);
-  assert.equal(await evaluate("document.querySelectorAll('.chart-hit').length"), guangdong.grades["92"].history.length);
+  const initialHistory = buildHistory(guangdong, "92", todayIso);
+  assert.equal(await evaluate("document.querySelectorAll('.chart-point').length"), initialHistory.points.length);
+  assert.equal(await evaluate("document.querySelectorAll('.chart-hit').length"), initialHistory.points.length);
+  assert.ok(await evaluate(`document.getElementById('history-range').textContent.endsWith(${JSON.stringify(initialHistory.points.at(-1).date)})`));
   assert.ok(await evaluate("(() => { const line = document.querySelector('.chart-latest-line'); const point = [...document.querySelectorAll('.chart-point')].at(-1); return line && point && line.getAttribute('y1') === point.getAttribute('cy') && line.getAttribute('y2') === point.getAttribute('cy'); })()"), "latest price line must align with the latest point");
   await evaluate("document.querySelectorAll('.chart-hit')[3].dispatchEvent(new PointerEvent('pointerenter', { pointerType: 'mouse' }))");
   assert.equal(await evaluate("document.querySelector('.chart-tooltip').textContent"), `${guangdong.grades["92"].history[3].date} 生效${guangdong.grades["92"].history[3].price.toFixed(2)} 元/升`);
@@ -135,7 +138,7 @@ async function main() {
     await setValue("region", key, "change");
     assert.equal(await evaluate("document.getElementById('region-label').textContent"), region.name);
     assert.equal(await evaluate("document.getElementById('current-price').textContent"), region.grades["92"].price.toFixed(2));
-    assert.equal(await evaluate("document.querySelectorAll('.chart-point').length"), region.grades["92"].history.length);
+    assert.equal(await evaluate("document.querySelectorAll('.chart-point').length"), buildHistory(region, "92", todayIso).points.length);
     assert.equal(await evaluate("document.getElementById('next-window').textContent"), windowFresh ? national.nextAdjustment.dateLabel : national.nextAdjustment.date ? "待重新核实" : "待核实");
   }
   if (snapshot.regions["shaanxi-xian"]) {
@@ -229,16 +232,31 @@ async function main() {
   assert.equal(await evaluate("document.getElementById('latest-notice-source').textContent"), "2026-10-15 · 本轮不作调整，继续执行当前价格 ↗");
   assert.equal(await evaluate("document.getElementById('effective-time').textContent"), guangdong.effectiveLabel);
   assert.equal(await evaluate("document.getElementById('current-price').textContent"), guangdong.grades["92"].price.toFixed(2));
-  assert.equal(await evaluate("document.querySelectorAll('.chart-point').length"), guangdong.grades["92"].history.length);
-  assert.ok(await evaluate("document.getElementById('history-note').textContent.includes('本轮不作调整')"));
+  assert.equal(await evaluate("document.querySelectorAll('.chart-point').length"), guangdong.grades["92"].history.length + 1);
+  assert.ok(await evaluate("document.getElementById('history-range').textContent.endsWith('2026-10-15')"));
+  assert.equal(await evaluate("document.getElementById('history-count').textContent"), `${guangdong.grades["92"].history.length} 条价格记录 · 1 条不调整公告`);
+  assert.ok(await evaluate("document.querySelector('.chart-value').textContent.includes('不调整')"));
+  assert.ok(await evaluate("document.getElementById('history-note').textContent.includes('空心节点')"));
+  await evaluate("[...document.querySelectorAll('.chart-hit')].at(-1).click()");
+  assert.equal(await evaluate("document.querySelector('.chart-tooltip').textContent"), `2026-10-15 不作调整${guangdong.grades["92"].price.toFixed(2)} 元/升`);
+  assert.ok(await evaluate("[...document.querySelectorAll('.chart-hit')].at(-1).getAttribute('aria-label').includes('不作调整')"));
+  await send("Input.dispatchKeyEvent", { type: "keyDown", key: "ArrowLeft", code: "ArrowLeft", windowsVirtualKeyCode: 37 });
+  assert.ok(await evaluate("document.querySelector('.chart-tooltip').textContent.includes('生效')"));
+  await send("Input.dispatchKeyEvent", { type: "keyDown", key: "ArrowRight", code: "ArrowRight", windowsVirtualKeyCode: 39 });
+  assert.ok(await evaluate("document.querySelector('.chart-tooltip').textContent.includes('不作调整')"));
   for (const width of [320, 750, 1280]) {
     await send("Emulation.setDeviceMetricsOverride", { width, height: 1000, deviceScaleFactor: 1, mobile: width < 600 });
     assert.ok(await evaluate("document.documentElement.scrollWidth <= innerWidth"), `latest notice must fit ${width}px viewport`);
+    await evaluate("[...document.querySelectorAll('.chart-hit')].at(-1).click()");
+    assert.ok(await evaluate("(() => { const chart = document.getElementById('chart-wrap').getBoundingClientRect(); const tip = document.querySelector('.chart-tooltip').getBoundingClientRect(); return tip.left >= chart.left && tip.right <= chart.right; })()"), `unchanged tooltip must fit ${width}px chart`);
     if (process.env.BESFUEL_SCREENSHOT) {
       const target = path.parse(process.env.BESFUEL_SCREENSHOT);
       const clip = await evaluate("(() => { const box = document.querySelector('.price-card').getBoundingClientRect(); return { x: box.left + scrollX, y: box.top + scrollY, width: box.width, height: box.height, scale: 1 }; })()");
       const screenshot = await send("Page.captureScreenshot", { format: "png", captureBeyondViewport: true, clip });
       fs.writeFileSync(path.join(target.dir, `${target.name}-notice-${width}${target.ext}`), Buffer.from(screenshot.data, "base64"));
+      const chartClip = await evaluate("(() => { const box = document.querySelector('.history-card').getBoundingClientRect(); return { x: box.left + scrollX, y: box.top + scrollY, width: box.width, height: box.height, scale: 1 }; })()");
+      const chartScreenshot = await send("Page.captureScreenshot", { format: "png", captureBeyondViewport: true, clip: chartClip });
+      fs.writeFileSync(path.join(target.dir, `${target.name}-chart-${width}${target.ext}`), Buffer.from(chartScreenshot.data, "base64"));
     }
   }
   await evaluate("window.BESFUEL_DATA.regions.guangdong.priceValidThrough = '2000-01-01'; document.getElementById('region').dispatchEvent(new Event('change', { bubbles: true }))");
@@ -256,7 +274,8 @@ async function main() {
   assert.equal(await evaluate("document.getElementById('latest-notice').hidden"), false);
   await evaluate("window.BESFUEL_DATA.regions.guangdong.latestNotice.kind = 'adjusted'; document.getElementById('region').dispatchEvent(new Event('change', { bubbles: true }))");
   assert.ok(await evaluate("document.getElementById('latest-notice-source').textContent.includes('本轮价格调整')"));
-  assert.ok(await evaluate("!document.getElementById('history-note').textContent.includes('本轮不作调整')"));
+  assert.equal(await evaluate("document.querySelectorAll('.chart-point').length"), guangdong.grades["92"].history.length);
+  assert.ok(await evaluate(`document.getElementById('history-range').textContent.endsWith(${JSON.stringify(guangdong.grades["92"].history.at(-1).date)})`));
   await evaluate("delete window.BESFUEL_DATA.regions.guangdong.latestNotice; document.getElementById('region').dispatchEvent(new Event('change', { bubbles: true }))");
   assert.equal(await evaluate("document.getElementById('latest-notice').hidden"), true);
   await evaluate("if (window.savedLatestNotice) window.BESFUEL_DATA.regions.guangdong.latestNotice = window.savedLatestNotice");
@@ -351,7 +370,7 @@ async function main() {
   server = http.createServer((request, response) => {
     const pathname = new URL(request.url, "http://localhost").pathname;
     const allowed = new Map([["/", "index.html"], ["/index.html", "index.html"], ["/styles.css", "styles.css"],
-      ["/app.js", "app.js"], ["/data/prices.js", "data/prices.js"], ["/lib/calc.js", "lib/calc.js"]]);
+      ["/app.js", "app.js"], ["/data/prices.js", "data/prices.js"], ["/lib/calc.js", "lib/calc.js"], ["/lib/history.js", "lib/history.js"]]);
     if (pathname === "/data/prices.json") {
       const snapshot = JSON.parse(fs.readFileSync(path.join(root, "data", "prices.json"), "utf8"));
       snapshot.regions.guangdong.grades["92"].price = Number((guangdong.grades["92"].price + .07).toFixed(2));
@@ -390,6 +409,20 @@ async function main() {
     assert.equal(await evaluate("document.getElementById('region-label').textContent"), "广东");
     assert.ok(await evaluate("Number.isFinite(Number(document.getElementById('current-price').textContent))"));
     assert.ok(await evaluate("document.querySelectorAll('.chart-hit').length > 0"));
+    const liveRegion = await evaluate("window.BESFUEL_DATA.regions.guangdong");
+    const liveHistory = buildHistory(liveRegion, "92", todayIso);
+    assert.ok(await evaluate(`document.getElementById('history-range').textContent.endsWith(${JSON.stringify(liveHistory.points.at(-1).date)})`));
+    assert.equal(await evaluate("document.querySelectorAll('.chart-point').length"), liveHistory.points.length);
+    if (liveHistory.noticeCount) {
+      await evaluate("[...document.querySelectorAll('.chart-hit')].at(-1).click()");
+      assert.ok(await evaluate("document.querySelector('.chart-tooltip').textContent.includes('不作调整')"));
+      if (process.env.BESFUEL_SCREENSHOT) {
+        const target = path.parse(process.env.BESFUEL_SCREENSHOT);
+        const clip = await evaluate("(() => { const box = document.querySelector('.history-card').getBoundingClientRect(); return { x: box.left + scrollX, y: box.top + scrollY, width: box.width, height: box.height, scale: 1 }; })()");
+        const screenshot = await send("Page.captureScreenshot", { format: "png", captureBeyondViewport: true, clip });
+        fs.writeFileSync(path.join(target.dir, `${target.name}-live-chart${target.ext}`), Buffer.from(screenshot.data, "base64"));
+      }
+    }
     await evaluate("document.querySelectorAll('.chart-hit')[1].dispatchEvent(new PointerEvent('pointerenter', { pointerType: 'mouse' }))");
     assert.ok(await evaluate("document.querySelector('.chart-tooltip').textContent.includes('元/升')"));
     await evaluate("document.getElementById('open-support').click()");

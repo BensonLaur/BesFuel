@@ -116,15 +116,16 @@ a { color: inherit; }
 .chart-unit { color: #899d8f; font-size: 11px; }
 .chart-wrap { position: relative; display: flex; align-items: center; justify-content: center; height: 206px; margin-top: 15px; overflow: hidden; border-radius: 10px; background: #fbfcfb; }
 .chart-wrap svg { display: block; width: 100%; height: 100%; }
-.chart-tooltip { position: absolute; top: 6px; left: clamp(84px, var(--tooltip-x), calc(100% - 84px)); z-index: 2; display: flex; align-items: baseline; gap: 8px; padding: 7px 10px; transform: translateX(-50%); border-radius: 8px; background: #164d37; box-shadow: 0 4px 13px #1d463528; color: #fff; font-size: 11px; white-space: nowrap; pointer-events: none; }
+.chart-tooltip { position: absolute; top: 6px; left: clamp(var(--tooltip-half-width, 84px), var(--tooltip-x), calc(100% - var(--tooltip-half-width, 84px))); z-index: 2; display: flex; align-items: baseline; flex-wrap: wrap; justify-content: center; gap: 3px 8px; width: max-content; max-width: calc(100% - 12px); padding: 7px 10px; transform: translateX(-50%); border-radius: 8px; background: #164d37; box-shadow: 0 4px 13px #1d463528; color: #fff; font-size: 11px; white-space: nowrap; pointer-events: none; }
 .chart-tooltip[hidden] { display: none; }
 .chart-tooltip strong { font-size: 14px; font-variant-numeric: tabular-nums; }
 .chart-empty { max-width: 260px; padding: 16px; color: #819587; font-size: 13px; line-height: 1.7; text-align: center; }
-.chart-meta { display: flex; justify-content: space-between; gap: 10px; margin-top: 9px; color: #8b9b8e; font-size: 11px; }
+.chart-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 5px 10px; margin-top: 9px; color: #8b9b8e; font-size: 11px; }
 .chart-grid { stroke: #e3ebe4; stroke-width: 1; }
 .chart-latest-line { stroke: #91ad9c; stroke-width: 1; stroke-dasharray: 4 5; opacity: .75; }
 .chart-path { fill: none; stroke: #2b7955; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
 .chart-point { fill: #2b7955; stroke: #fff; stroke-width: 2; }
+.chart-point.unchanged { fill: #fff; stroke: #2b7955; }
 .chart-point.active { fill: #124f37; stroke: #f4bd63; stroke-width: 4; }
 .chart-guide { display: none; stroke: #71a98a; stroke-width: 1.5; stroke-dasharray: 4 4; }
 .chart-guide.active { display: block; }

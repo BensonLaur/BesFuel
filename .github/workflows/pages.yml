@@ -70,7 +70,7 @@ jobs:
           New-Item -ItemType Directory -Force public/data, public/lib, public/resources/support | Out-Null
           Copy-Item index.html, styles.css, app.js public/
           Copy-Item data/prices.json, data/prices.js public/data/
-          Copy-Item lib/calc.js public/lib/
+          Copy-Item lib/calc.js, lib/history.js public/lib/
           Copy-Item resources/support/wechat.png, resources/support/alipay.png public/resources/support/
           New-Item -ItemType File public/.nojekyll | Out-Null
       - uses: actions/configure-pages@v5

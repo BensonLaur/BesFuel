@@ -159,13 +159,12 @@
   }
 
   function showHistory() {
-    const history = (selectedGrade()?.history || [])
-      .filter(item => /^\d{4}-\d{2}-\d{2}$/.test(item.date) && Number.isFinite(item.price) && item.price >= 0)
-      .sort((a, b) => a.date.localeCompare(b.date));
+    const { points: history, priceCount, noticeCount } = window.BesFuelHistory.buildHistory(selectedRegion(), ui.grade.value, chinaDate());
     const historyGaps = selectedRegion().historyGaps || [];
     hideHistoryPoint = () => {};
     ui.chart.replaceChildren();
-    ui.historyCount.textContent = `${history.length} 条已核实记录`;
+    const recordSummary = noticeCount ? `${priceCount} 条价格记录 · ${noticeCount} 条不调整公告` : `${priceCount} 条已核实记录`;
+    ui.historyCount.textContent = recordSummary;
     if (!history.length) {
       const empty = document.createElement("p");
       empty.className = "chart-empty";
@@ -204,9 +203,9 @@
       }
       svg.append(svgElement("path", { d: path, class: "chart-path" }));
     }
-    const points = history.map((item, index) => svgElement("circle", { cx: x(index), cy: y(item.price), r: index === history.length - 1 ? 5 : 3.5, class: "chart-point" }));
+    const points = history.map((item, index) => svgElement("circle", { cx: x(index), cy: y(item.price), r: index === history.length - 1 ? 5 : 3.5, class: `chart-point${item.kind === "unchanged" ? " unchanged" : ""}` }));
     points.forEach(point => svg.append(point));
-    svg.append(svgElement("text", { x: x(history.length - 1), y: Math.max(18, y(last.price) - 12), "text-anchor": "middle", class: "chart-value" }, last.price.toFixed(2)));
+    svg.append(svgElement("text", { x: x(history.length - 1), y: Math.max(18, y(last.price) - 12), "text-anchor": last.kind === "unchanged" ? "end" : "middle", class: "chart-value" }, `${last.price.toFixed(2)}${last.kind === "unchanged" ? " · 不调整" : ""}`));
     svg.append(svgElement("text", { x: x(0), y: height - 8, "text-anchor": "middle", class: "chart-text" }, history[0].date.slice(5)));
     if (history.length > 1) svg.append(svgElement("text", { x: x(history.length - 1), y: height - 8, "text-anchor": "middle", class: "chart-text" }, last.date.slice(5)));
     const tooltip = document.createElement("div");
@@ -227,10 +226,11 @@
     hideHistoryPoint = clearPoint;
     function showPoint(index) {
       const item = history[index];
-      tooltipDate.textContent = `${item.date} 生效`;
+      tooltipDate.textContent = `${item.date} ${item.kind === "unchanged" ? "不作调整" : "生效"}`;
       tooltipPrice.textContent = `${item.price.toFixed(2)} 元/升`;
       tooltip.style.setProperty("--tooltip-x", `${x(index) / width * 100}%`);
       tooltip.hidden = false;
+      tooltip.style.setProperty("--tooltip-half-width", `${tooltip.getBoundingClientRect().width / 2 + 6}px`);
       guide.setAttribute("x1", String(x(index)));
       guide.setAttribute("x2", String(x(index)));
       guide.classList.add("active");
@@ -245,7 +245,7 @@
       hit.className = "chart-hit";
       hit.tabIndex = index === 0 ? 0 : -1;
       hit.style.width = `${(end - start) / width * 100}%`;
-      hit.setAttribute("aria-label", `${gradeNames[ui.grade.value]}，${item.date} 生效，${item.price.toFixed(2)} 元每升`);
+      hit.setAttribute("aria-label", `${gradeNames[ui.grade.value]}，${item.date} ${item.kind === "unchanged" ? "不作调整" : "生效"}，${item.price.toFixed(2)} 元每升`);
       hit.addEventListener("pointerenter", event => { if (event.pointerType !== "touch") showPoint(index); });
       hit.addEventListener("pointerleave", event => {
         if (event.pointerType !== "touch" && !ui.chart.contains(document.activeElement)) clearPoint();
@@ -262,15 +262,14 @@
       hitLayer.append(hit);
     });
     ui.chart.append(svg, hitLayer, tooltip);
-    ui.chart.setAttribute("aria-label", `${gradeNames[ui.grade.value]}，从 ${history[0].date} 到 ${last.date}，共 ${history.length} 条价格记录；最新 ${last.price.toFixed(2)} 元每升${historyGaps.length ? `；其中 ${historyGaps.length} 处历史缺口` : ""}`);
+    ui.chart.setAttribute("aria-label", `${gradeNames[ui.grade.value]}，从 ${history[0].date} 到 ${last.date}，${recordSummary}；最新 ${last.price.toFixed(2)} 元每升${historyGaps.length ? `；其中 ${historyGaps.length} 处历史缺口` : ""}`);
     ui.historyRange.textContent = history.length === 1 ? history[0].date : `${history[0].date} 至 ${last.date}`;
     ui.historyNote.textContent = history.length === 1
       ? "轻点或聚焦节点可查看日期和价格；至少两次调价记录才能形成趋势。"
-      : "浅色横虚线标出最新价；悬停、轻点或聚焦节点可查看调价日期和价格。" +
+      : "浅色横虚线标出最新价；悬停、轻点或聚焦节点可查看日期、价格和公告结论。" +
         (historyGaps.length ? ` 历史缺口：${historyGaps.map(gap => gap.date).join("、")} 缺完整价格，阶梯线在这些日期断开。` : "");
-    const notice = selectedRegion().latestNotice;
-    if (notice?.kind === "unchanged") {
-      ui.historyNote.textContent += ` ${notice.date} 官方公告本轮不作调整；图中保留价格生效节点。`;
+    if (noticeCount) {
+      ui.historyNote.textContent += ` 空心节点为 ${last.date} 官方不调整公告；价格执行时间保持不变。`;
     }
   }
 
