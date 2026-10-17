@@ -8940,7 +8940,7 @@ window.BESFUEL_DATA = {
     "xinjiang-karamay-main": {
       "name": "新疆·克拉玛依（克拉玛依、白碱滩、乌尔禾）",
       "priceScope": "克拉玛依市克拉玛依区、白碱滩区、乌尔禾区各加油站成品油最高零售价格（元/升）；实付价可能不同。",
-      "checkedAt": "2026-10-16",
+      "checkedAt": "2026-10-17",
       "source": {
         "name": "克拉玛依市发展和改革委员会",
         "url": "https://www.klmy.gov.cn/klmys/c100186/202609/12cf558ed5584d25b75d1f4e709f8746.shtml"
