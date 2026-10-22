@@ -136,6 +136,9 @@ async function main() {
   await send("Input.dispatchKeyEvent", { type: "keyUp", key: "End", code: "End", windowsVirtualKeyCode: 35 });
   assert.ok(await evaluate(`document.querySelector('.crude-tooltip').textContent.includes(${JSON.stringify(brentQuote.date)})`));
   await evaluate("document.querySelector('.crude-hit').dispatchEvent(new PointerEvent('pointerenter', { pointerType: 'mouse' }))");
+  await send("Emulation.setDeviceMetricsOverride", { width: 391, height: 1500, deviceScaleFactor: 1, mobile: true });
+  await evaluate("new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))");
+  assert.equal(await evaluate("document.activeElement.className"), "crude-hit", "chart resize preserves keyboard focus");
   await send("Input.dispatchKeyEvent", { type: "keyDown", key: "End", code: "End", windowsVirtualKeyCode: 35 });
   await send("Input.dispatchKeyEvent", { type: "keyUp", key: "End", code: "End", windowsVirtualKeyCode: 35 });
   assert.ok(await evaluate(`document.querySelector('.crude-tooltip').textContent.includes(${JSON.stringify(brentQuote.date)})`));

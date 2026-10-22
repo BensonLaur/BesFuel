@@ -21,6 +21,7 @@
   }
   function drawChart(view, name) {
     const chart = $("crude-chart");
+    const focusedDate = chart.querySelector(".crude-hit:focus")?.dataset.date;
     chart.replaceChildren();
     clearPoint = () => {};
     const points = view.points;
@@ -85,6 +86,7 @@
       const end = index === points.length - 1 ? width : (x(index) + x(index + 1)) / 2;
       const hit = document.createElement("button");
       hit.type = "button"; hit.className = "crude-hit";
+      hit.dataset.date = point.date;
       hit.style.left = `${start / width * 100}%`; hit.style.width = `${(end - start) / width * 100}%`;
       hit.tabIndex = index === points.length - 1 ? 0 : -1;
       hit.setAttribute("aria-label", `${name}，${point.date}，${point.price.toFixed(2)} 美元每桶，${point.kind === "intraday" ? "盘中快照" : "已完成日线"}`);
@@ -107,6 +109,11 @@
     });
     chart.append(svg, hitLayer, tooltip);
     chart.setAttribute("aria-label", `${name}，${points[0].date} 至 ${latest.date}，${points.length} 个参考点；最新 ${latest.price.toFixed(2)} 美元每桶`);
+    // Resize and snapshot refresh replace the buttons; retain keyboard selection by date.
+    if (focusedDate) {
+      const index = points.findIndex(point => point.date === focusedDate);
+      hits[index < 0 ? hits.length - 1 : index].focus({ preventScroll: true });
+    }
   }
 
   function render() {
