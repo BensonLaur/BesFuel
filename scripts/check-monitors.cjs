@@ -1,6 +1,8 @@
 const fs = require("node:fs");
 const path = require("node:path");
 const { chinaDate, makeReader, officialUrl, writeSnapshot } = require("./update-regions.cjs");
+const { failureResult } = require("./source-errors.cjs");
+const { reportHealth } = require("./source-health.cjs");
 
 const root = path.resolve(__dirname, "..");
 const monitorDirectory = path.join(__dirname, "monitors");
@@ -26,7 +28,7 @@ async function checkMonitors({ modules, data, reader = makeReader } = {}) {
         latest.requiresManualCoefficientReview === true || priceChanged;
       results.push({ id: monitor.id, ok: true, latest, stored: Boolean(stored), needsReview });
     } catch (error) {
-      results.push({ id: monitor.id, ok: false, error: error.message });
+      results.push(failureResult(monitor.id, error));
     }
   }
   return results;
@@ -60,16 +62,7 @@ if (require.main === module) {
           `${result.id}: 新公告需人工核价：${result.latest.url}`);
       else console.log(`${result.id}: 最新公告与人工核价快照一致`);
     }
-    if (process.env.GITHUB_STEP_SUMMARY && results.length) {
-      const lines = ["### 人工核价地区公告监测", "", ...results.map(result =>
-        `- ${result.id}: ${!result.ok ? `监测失败：${result.error}` :
-          result.latest.requiresManualCoefficientReview ?
-            `折算系数需人工复核：${result.latest.coefficientNoticeUrl}` :
-            result.latest.requiresManualLiterReview && !result.stored ?
-              `官方每升价待人工核实：${result.latest.url}` : result.needsReview ?
-                `新公告待核价：${result.latest.url}` : "公告与快照一致"}`), ""];
-      fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join("\n"), "utf8");
-    }
+    reportHealth("人工核价地区公告监测", results);
   }).catch(error => { console.error(error); process.exitCode = 1; });
 }
 

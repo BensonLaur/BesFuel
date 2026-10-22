@@ -29,10 +29,12 @@ function chinaDate() {
 function officialArticleUrl(reference) {
   const url = new URL(reference, LIST_URL);
   const path = url.pathname.match(ARTICLE_PATH);
-  if (url.protocol !== 'https:' || url.hostname !== HOSTNAME || url.port || url.username ||
+  if (!['http:', 'https:'].includes(url.protocol) || url.hostname !== HOSTNAME || url.port || url.username ||
       url.password || url.search || url.hash || !path || path[1] !== path[2].slice(0, 6)) {
     throw new Error(`西藏昌都价区：公告不是预期的自治区发改委地址：${url.href}`);
   }
+  // 官网列表含 HTTP 旧链接；校验后统一通过 HTTPS 读取并保持快照来源一致。
+  url.protocol = 'https:';
   const pathDate = validDate(`${path[2].slice(0, 4)}-${path[2].slice(4, 6)}-${path[2].slice(6)}`, '公告路径日期');
   return { url: url.href, pathDate };
 }

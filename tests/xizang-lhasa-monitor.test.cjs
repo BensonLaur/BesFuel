@@ -90,3 +90,16 @@ test('audited history keeps the five-city zone and the delayed June notice', () 
   assert.equal(data.regions['xizang-lhasa'].grades.diesel.price, 8.83);
   assert.equal(data.regions['xizang-lhasa'].grades['92'].history.length, 12);
 });
+
+test('normalizes official HTTP article links without weakening host or port validation', async () => {
+  const original = readers();
+  const getText = async url => {
+    const body = await original.getText(url);
+    return url === listUrl ? body.replace(/https:\/\/drc\.xizang\.gov\.cn/g, 'http://drc.xizang.gov.cn') : body;
+  };
+  assert.equal((await monitor.collect({ getText })).url, articleUrl);
+  for (const href of [articleUrl.replace('https:', 'ftp:'), articleUrl.replace('drc.xizang.gov.cn', 'drc.xizang.gov.cn:8443'),
+    articleUrl.replace('drc.xizang.gov.cn', 'user:password@drc.xizang.gov.cn')]) {
+    await assert.rejects(monitor.collect({ ...readers({ href }) }), /不是预期/);
+  }
+});

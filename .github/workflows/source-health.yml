@@ -1,0 +1,38 @@
+name: 验证地区数据来源
+
+on:
+  push:
+    branches: [codex/region-source-recovery]
+    paths:
+      - 'scripts/**'
+      - 'tests/**'
+      - '.github/workflows/source-health.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: windows-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+      - name: 测试来源校验与故障隔离
+        shell: pwsh
+        run: npm test
+      - name: 只读核对所有来源并诊断失败请求
+        shell: pwsh
+        run: node scripts/audit-sources.cjs --probe-curl --output="$env:RUNNER_TEMP/besfuel-source-health.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: source-health
+          path: ${{ runner.temp }}/besfuel-source-health.json
+          if-no-files-found: warn
+          retention-days: 14

@@ -22,10 +22,12 @@ function nextDate(value) {
 
 function officialArticleUrl(reference, base) {
   const url = new URL(reference, base);
-  if (url.protocol !== 'https:' || url.hostname !== HOSTNAME || url.username || url.password ||
+  if (!['http:', 'https:'].includes(url.protocol) || url.hostname !== HOSTNAME || url.port || url.username || url.password ||
       url.search || url.hash || !ARTICLE_PATH.test(url.pathname)) {
     throw new Error(`西藏阿里价区：公告不是预期的自治区发改委地址：${url.href}`);
   }
+  // 官网列表含 HTTP 旧链接；校验后统一通过 HTTPS 读取并保持快照来源一致。
+  url.protocol = 'https:';
   return url.href;
 }
 

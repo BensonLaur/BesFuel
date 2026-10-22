@@ -116,3 +116,16 @@ test('12 signed official notices retain Changdu prices, effective dates and sour
   assert.equal(imported.grades.diesel.price, 9.03);
   assert.equal(imported.grades['92'].history.length, 12);
 });
+
+test('normalizes official HTTP article links without weakening host or port validation', async () => {
+  const original = reader();
+  const getText = async url => {
+    const body = await original.getText(url);
+    return url === LIST ? body.replace(/https:\/\/drc\.xizang\.gov\.cn/g, 'http://drc.xizang.gov.cn') : body;
+  };
+  assert.equal((await monitor.collect({ getText, today: '2026-10-16' })).url, NEXT);
+  for (const href of [NEXT.replace('https:', 'ftp:'), NEXT.replace('drc.xizang.gov.cn', 'drc.xizang.gov.cn:8443'),
+    NEXT.replace('drc.xizang.gov.cn', 'user:password@drc.xizang.gov.cn')]) {
+    await assert.rejects(monitor.collect({ ...reader({ href }), today: '2026-10-16' }), /不是预期/);
+  }
+});

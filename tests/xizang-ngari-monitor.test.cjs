@@ -97,3 +97,16 @@ test('12 audited Ali periods import as an independent price zone', () => {
   assert.equal(data.regions['xizang-ngari'].grades['95'].history.length, 12);
   assert.equal(data.regions['xizang-ngari'].name, '西藏·阿里价区');
 });
+
+test('normalizes official HTTP article links without weakening host or port validation', async () => {
+  const original = readers();
+  const getText = async url => {
+    const body = await original.getText(url);
+    return url === listUrl ? body.replace(/https:\/\/drc\.xizang\.gov\.cn/g, 'http://drc.xizang.gov.cn') : body;
+  };
+  assert.equal((await monitor.collect({ getText })).url, articleUrl);
+  for (const href of [articleUrl.replace('https:', 'ftp:'), articleUrl.replace('drc.xizang.gov.cn', 'drc.xizang.gov.cn:8443'),
+    articleUrl.replace('drc.xizang.gov.cn', 'user:password@drc.xizang.gov.cn')]) {
+    await assert.rejects(monitor.collect({ ...readers({ href }) }), /不是预期/);
+  }
+});

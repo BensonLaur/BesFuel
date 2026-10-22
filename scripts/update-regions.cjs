@@ -2,6 +2,8 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
 const { validateSnapshot, validateFiles } = require("./validate-data.cjs");
+const { requestError, failureResult } = require("./source-errors.cjs");
+const { reportHealth } = require("./source-health.cjs");
 
 const root = path.resolve(__dirname, "..");
 const sourceDirectory = path.join(__dirname, "sources");
@@ -30,22 +32,40 @@ function officialUrl(value, hosts) {
     !url.username && !url.password;
 }
 
-function makeReader(hosts) {
-  const cache = new Map();
-  async function getBuffer(url, depth = 0) {
+function makeReader(hosts, { cache = new Map(), fetcher = fetch, timeoutMs = 20000, onRequest = () => {} } = {}) {
+  async function request(url, visited = new Set()) {
     if (!officialUrl(url, hosts)) throw new Error(`非允许的官方地址：${url}`);
-    if (depth > 3) throw new Error(`重定向过多：${url}`);
-    if (!cache.has(url)) cache.set(url, (async () => {
-      const response = await fetch(url, { redirect: "manual", signal: AbortSignal.timeout(20000) });
+    if (visited.has(url) || visited.size > 3) throw new Error(`重定向循环或过多：${url}`);
+    visited.add(url);
+    const started = Date.now();
+    try {
+      const response = await fetcher(url, { redirect: "manual", signal: AbortSignal.timeout(timeoutMs) });
       if ([301, 302, 303, 307, 308].includes(response.status)) {
         const next = new URL(response.headers.get("location"), url).href;
-        return getBuffer(next, depth + 1);
+        await response.body?.cancel();
+        return await request(next, visited);
       }
-      if (!response.ok) throw new Error(`HTTP ${response.status}：${url}`);
+      if (!response.ok) {
+        await response.body?.cancel();
+        const error = new Error(`HTTP ${response.status}`);
+        error.status = response.status;
+        throw error;
+      }
       const buffer = Buffer.from(await response.arrayBuffer());
       if (buffer.length > 5_000_000) throw new Error(`官方文件过大：${url}`);
+      onRequest({ url, ok: true, status: response.status, elapsedMs: Date.now() - started });
       return { buffer, contentType: response.headers.get("content-type") || "", url };
-    })());
+    } catch (error) {
+      const failure = requestError(error, url, Date.now() - started);
+      onRequest({ ok: false, ...failure.details });
+      throw failure;
+    }
+  }
+  async function getBuffer(url) {
+    // Validate before consulting a shared cache; another region's host grant
+    // must never authorize this reader to follow an off-host URL.
+    if (!officialUrl(url, hosts)) throw new Error(`非允许的官方地址：${url}`);
+    if (!cache.has(url)) cache.set(url, request(url));
     return cache.get(url);
   }
   async function getText(url) {
@@ -168,7 +188,7 @@ async function updateAll({ sources, initial, today = chinaDate(), reader = makeR
       Object.assign(data, next);
       results.push({ id: source.id, ok: true, count: notices.length });
     } catch (error) {
-      results.push({ id: source.id, ok: false, error: error.message });
+      results.push(failureResult(source.id, error));
     }
   }
   return { data, results };
@@ -179,6 +199,7 @@ if (require.main === module) {
     if (results.some(result => result.ok)) writeSnapshot(data);
     for (const result of results) console.log(result.ok ?
       `${result.id}: 核对 ${result.count} 条官方公告` : `${result.id}: 保留旧数据；${result.error}`);
+    reportHealth("地区自动采集", results);
     // Each source is independent: one unavailable site must not block other prices or Pages.
   }).catch(error => { console.error(error); process.exitCode = 1; });
 }
