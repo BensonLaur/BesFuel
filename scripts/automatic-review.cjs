@@ -89,6 +89,8 @@ async function main() {
   const initial = JSON.parse(fs.readFileSync(path.join(root, "data/prices.json"), "utf8"));
   const result = await runAutomatic({ bundle, initial });
   writeSnapshot(result.data);
+  if (bundle) console.log(`采用 FC 地区快照：${bundle.generatedAt}；采集代码：${bundle.revision}`);
+  reportHealth("FC 地区自动采集", result.sources);
   reportHealth("自动核价后的 FC 公告检查", result.monitors);
   reportHealth("海南、江西官方价表自动采集", result.direct);
   const reportFile = process.env.BESFUEL_REVIEW_REPORT || path.join(root, ".automatic-review.json");

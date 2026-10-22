@@ -102,10 +102,6 @@ jobs:
             # The runner otherwise propagates the child process exit code after this fallback.
             exit 0
           }
-      - name: 合并 FC 已核验地区结果
-        if: vars.BESFUEL_FC_ENABLED == 'true'
-        shell: pwsh
-        run: node scripts/import-cloud.cjs "$env:RUNNER_TEMP/fc-regions/fc-regions.json"
       - name: 核对已接入地区（FC 尚未启用）
         if: vars.BESFUEL_FC_ENABLED != 'true'
         shell: pwsh

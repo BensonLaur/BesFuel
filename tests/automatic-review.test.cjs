@@ -6,9 +6,26 @@ const path = require("node:path");
 const { discover, parseArticle } = require("../scripts/automatic-tables.cjs");
 const { acceptMonitor, runAutomatic } = require("../scripts/automatic-review.cjs");
 const { planAlerts, deliver } = require("../scripts/review-alerts.cjs");
+const { loadModules, adapterDigest } = require("../scripts/cloud-bundle.cjs");
+const { counts } = require("../scripts/source-health.cjs");
+const { publicHttpFallback } = require("../scripts/publish-reader.cjs");
 const snapshot = require("../data/prices.json");
 const fixture = id => fs.readFileSync(path.join(__dirname, "fixtures/automatic", id + ".html"), "utf8");
 const record = id => require(`../data/verified/${id}.json`);
+
+test("public HTTP fallback is host-scoped and never bypasses a certificate failure", async () => {
+  let reason = { category: "timeout", causes: [] }, called = [];
+  const reader = publicHttpFallback({ getText: async () => { throw Object.assign(Error("failed"), { details: reason }); } },
+    { getText: async url => { called.push(url); return "official page"; } });
+  assert.equal(await reader.getText("https://plan.hainan.gov.cn/"), "official page");
+  assert.deepEqual(called, ["http://plan.hainan.gov.cn/"]);
+  await assert.rejects(reader.getText("https://example.com/"));
+  reason = { category: "network", causes: [{ message: "schannel certificate validation failed" }] };
+  await assert.rejects(reader.getText("https://drc.jiangxi.gov.cn/"));
+  reason = { category: "tls", causes: [] };
+  await assert.rejects(reader.getText("https://drc.jiangxi.gov.cn/"));
+  assert.equal(called.length, 1);
+});
 
 test("official HTML fixtures retain retail columns, dates and Hainan surcharge", () => {
   for (const id of ["hainan", "jiangxi"]) {
@@ -72,6 +89,22 @@ test("a failed direct source retains its price and check date", async () => {
   const result = await runAutomatic({ initial: before, reader: () => ({ getText: async () => { throw Error("offline"); } }) });
   assert.deepEqual(result.data, before);
   assert.equal(result.direct.filter(item => !item.ok).length, 2);
+});
+test("a matching Hunan announcement cannot refresh its date if XLS verification fails", async () => {
+  const initial = structuredClone(snapshot);
+  initial.regions.hunan.checkedAt = "2026-09-25";
+  const sources = loadModules("sources").map(m => ({ id: m.id, ok: false, error: "offline" }));
+  const monitors = loadModules("monitors").map(m => m.id === "hunan" ?
+    { id: m.id, ok: true, needsReview: false, latest: record("hunan").notices.at(-1) } :
+    { id: m.id, ok: false, error: "offline" });
+  const now = new Date().toISOString();
+  const bundle = { format: "besfuel-regions-v1", adapterDigest: adapterDigest(), revision: "a".repeat(40),
+    startedAt: now, generatedAt: now, sources, monitors, counts: { sources: counts(sources), monitors: counts(monitors) } };
+  const reader = () => ({ getBuffer: async () => { throw Error("attachment unavailable"); },
+    getText: async () => { throw Error("offline"); } });
+  const result = await runAutomatic({ bundle, initial, reader });
+  assert.deepEqual(result.data.regions.hunan, initial.regions.hunan);
+  assert.equal(result.monitors.find(m => m.id === "hunan").ok, false);
 });
 const failure = { id: "hainan", ok: false, error: "timeout", failure: { category: "timeout", url: "https://plan.hainan.gov.cn/" } };
 const report = results => ({ version: 1, results });

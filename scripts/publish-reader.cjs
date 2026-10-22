@@ -38,7 +38,24 @@ async function windowsCurl(url, options = {}) {
   }
 }
 function publishingReader(hosts) {
-  return makeReader(hosts, { timeoutMs: 23000, fetcher: (url, options) =>
+  const primary = makeReader(hosts, { timeoutMs: 23000, fetcher: (url, options) =>
     new URL(url).hostname === "drc.jiangxi.gov.cn" ? windowsCurl(url, options) : fetchOfficial(url, options) });
+  return publicHttpFallback(primary, makeReader(hosts));
 }
-module.exports = { publishingReader, windowsCurl };
+function publicHttpFallback(primary, fallback) {
+  return Object.fromEntries(["getText", "getBuffer"].map(method => [method, async url => {
+    try { return await primary[method](url); }
+    catch (error) {
+      const parsed = new URL(url);
+      // Both portals also publish the same public notices on HTTP. Only a
+      // connection failure can use it; certificate failures are never bypassed.
+      if (parsed.protocol !== "https:" || !["plan.hainan.gov.cn", "drc.jiangxi.gov.cn"].includes(parsed.hostname) ||
+        !["timeout", "network"].includes(error.details?.category) ||
+        error.details?.causes?.some(cause => /cert|ssl|tls|schannel/i.test(`${cause.code} ${cause.message}`))) throw error;
+      parsed.protocol = "http:";
+      console.log(`尝试官网同时提供的 HTTP 公告入口：${parsed.href}`);
+      return fallback[method](parsed.href);
+    }
+  }]));
+}
+module.exports = { publishingReader, windowsCurl, publicHttpFallback };
