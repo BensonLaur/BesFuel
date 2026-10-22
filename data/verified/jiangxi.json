@@ -1,0 +1,41 @@
+{
+  "id": "jiangxi",
+  "name": "江西",
+  "sourceName": "江西省发展和改革委员会",
+  "priceScope": "江西省汽、柴油最高零售价格（元/升），含消费税、增值税、城建税和教育费附加。",
+  "allowedHostnames": [
+    "drc.jiangxi.gov.cn"
+  ],
+  "unit": "元/升",
+  "checkedAt": "2026-10-23",
+  "review": {
+    "method": "直接读取省发改委两期公告，核对元/升列及生效日期，并与石城县政府转载现行价表交叉核对。",
+    "corroborationUrl": "https://www.shicheng.gov.cn/scxxxgk/sc88242/202609/7708c7b9482b4a27939fe62388a14403.shtml",
+    "updateMode": "人工核价；尚未接入定时采集或公告监测。",
+    "transport": "Windows curl；保持证书验证，未降低 Node TLS 安全设置。"
+  },
+  "notices": [
+    {
+      "publishedDate": "2026-09-11",
+      "effectiveDate": "2026-09-12",
+      "url": "https://drc.jiangxi.gov.cn/jxsfzhggwyh/col/col14590/content/content_2098331399481798656.html",
+      "sourceSha256": "aa814390496f45501e09e1e870699ecba8b990bb5c26dd049a4d04a53c9df18a",
+      "prices": {
+        "92": 8.25,
+        "95": 8.86,
+        "diesel": 8.02
+      }
+    },
+    {
+      "publishedDate": "2026-09-24",
+      "effectiveDate": "2026-09-25",
+      "url": "https://drc.jiangxi.gov.cn/jxsfzhggwyh/col/col14590/content/content_2103031466130223104.html",
+      "sourceSha256": "d08c36e861e7dc03711436b947b534ce1a8dd3d28478989416b5fcb2cb847445",
+      "prices": {
+        "92": 8.56,
+        "95": 9.19,
+        "diesel": 8.35
+      }
+    }
+  ]
+}

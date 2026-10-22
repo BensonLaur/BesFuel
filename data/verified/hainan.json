@@ -1,0 +1,50 @@
+{
+  "id": "hainan",
+  "name": "海南",
+  "sourceName": "海南省发展和改革委员会",
+  "priceScope": "海南省汽、柴油最高零售价格（元/升）。汽油每升含 1.05 元车辆通行附加费，0 号柴油未含车辆通行附加费。",
+  "allowedHostnames": [
+    "plan.hainan.gov.cn"
+  ],
+  "unit": "元/升",
+  "checkedAt": "2026-10-23",
+  "review": {
+    "method": "直接读取省发改委三期公告，逐行核对元/升列、生效日期及车辆通行附加费附注。",
+    "updateMode": "人工核价；尚未接入定时采集或公告监测。"
+  },
+  "notices": [
+    {
+      "publishedDate": "2026-08-28",
+      "effectiveDate": "2026-08-29",
+      "url": "https://plan.hainan.gov.cn/sfgw/gzdt/202608/8c64d9dd42d24757abc703cf5c9f8bda.shtml",
+      "sourceSha256": "c91ad69c2ce5c1e78b101a4b3427c2f34a62ae4125d2a82040cda9cbb8847f2f",
+      "prices": {
+        "92": 9.2,
+        "95": 9.77,
+        "diesel": 7.84
+      }
+    },
+    {
+      "publishedDate": "2026-09-11",
+      "effectiveDate": "2026-09-12",
+      "url": "https://plan.hainan.gov.cn/sfgw/gzdt/202609/ba12201191c647469886855af62e63f1.shtml",
+      "sourceSha256": "5982fc2b7a412d1ce59c6dcb4cef9c7d26d71097ed80bd88b7c6dd41b96a1f1c",
+      "prices": {
+        "92": 9.41,
+        "95": 9.99,
+        "diesel": 8.06
+      }
+    },
+    {
+      "publishedDate": "2026-09-24",
+      "effectiveDate": "2026-09-25",
+      "url": "https://plan.hainan.gov.cn/sfgw/gzdt/202609/eb7e43c31255456180ea976f43182290.shtml",
+      "sourceSha256": "fe61bf1cfeddfdd51cd7de23635789a25c077edb87fdec928b0bec37f17d5303",
+      "prices": {
+        "92": 9.72,
+        "95": 10.33,
+        "diesel": 8.39
+      }
+    }
+  ]
+}
