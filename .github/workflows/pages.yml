@@ -93,6 +93,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) {
             Write-Warning '广东公告核对失败；保留此前可信快照。'
             '广东：本次核对失败，已保留此前可信价格和核对日期。' | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append -Encoding utf8
+            # The runner otherwise propagates the child process exit code after this fallback.
+            exit 0
           }
       - name: 合并 FC 已核验地区结果
         if: vars.BESFUEL_FC_ENABLED == 'true'
