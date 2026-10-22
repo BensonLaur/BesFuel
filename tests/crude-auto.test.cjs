@@ -86,6 +86,9 @@ test("Yahoo rejects wrong metadata, malformed prices, future timestamps and ambi
   const empty = yahoo("wti");
   for (const key of ["open", "close", "high", "low"]) empty.chart.result[0].indicators.quote[0][key][3] = null;
   assert.equal(parseYahooResponse(empty, "wti", now).history.length, 99);
+  const missingClose = yahoo("wti");
+  missingClose.chart.result[0].indicators.quote[0].close[99] = null;
+  assert.throws(() => parseYahooResponse(missingClose, "wti", now), /2026-10-16 日线 OHLC 字段缺失/);
   assert.throws(() => parseYahooResponse({ chart: { result: null, error: { code: "Unauthorized" } } }, "wti", now));
 });
 

@@ -82,7 +82,7 @@ test("manual source switches replace both whole curves and subsequent updates re
   assert.equal(next.snapshot.series.wti.sourceName, "新浪财经");
   assert.ok(urls.every(url => new URL(url).hostname === "stock2.finance.sina.com.cn"));
   const restored = await updateSnapshot(next.snapshot, { provider: "eastmoney", now, reader });
-  assert.deepEqual(restored.snapshot, previous);
+  assert.deepEqual(restored.snapshot, { ...previous, usage: "third-party-reference" });
   const revised = sinaBody().replace('"close":"95"', '"close":"96"');
   const correction = await updateSnapshot(next.snapshot, { now, reader: async () => revised });
   assert.equal(correction.failures.length, 2);
@@ -228,7 +228,7 @@ test("generated JSON and local script agree, use pure CRLF and detect a damaged 
   } finally { fs.rmSync(dir, { recursive: true, force: true }); }
 });
 
-test("the checked-in local preview has a valid matching fallback script", () => {
+test("the checked-in crude snapshot has a valid matching fallback script", () => {
   const data = validateFiles();
   assert.ok(data.series.wti.history.length > 90);
   assert.ok(data.series.brent.history.length > 90);

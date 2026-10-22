@@ -9,7 +9,7 @@ const { calculate } = require("../lib/calc.js");
 const { buildHistory } = require("../lib/history.js");
 const { readDevToolsPort } = require("./helpers/browser-port.cjs");
 
-const root = path.resolve(__dirname, "..");
+const root = path.resolve(process.env.BESFUEL_SITE_DIR || path.join(__dirname, ".."));
 const snapshot = JSON.parse(fs.readFileSync(path.join(root, "data", "prices.json"), "utf8"));
 const crudeSnapshot = JSON.parse(fs.readFileSync(path.join(root, "data", "crude-prices.json"), "utf8"));
 const crudeModel = require("../lib/crude.js");
@@ -627,6 +627,19 @@ async function main() {
     await waitForSupportImage();
     assert.ok(await evaluate("document.getElementById('support-image').naturalWidth > 0"), "published original image must load");
     assert.ok(await evaluate("document.documentElement.scrollWidth <= innerWidth"), "published mobile viewport must fit");
+    await evaluate("document.getElementById('close-support').click()");
+    await evaluate("document.getElementById('open-crude').click()");
+    for (let attempt = 0; attempt < 100; attempt++) {
+      if (await evaluate("document.querySelectorAll('.crude-hit').length > 0")) break;
+      await delay(100);
+    }
+    assert.equal(await evaluate("document.getElementById('crude-dialog').open"), true);
+    assert.ok(await evaluate("document.querySelectorAll('.crude-hit').length > 10"), "published crude curve must render");
+    const liveCrude = await evaluate("window.BESFUEL_CRUDE_DATA");
+    crudeModel.validateSnapshot(liveCrude);
+    assert.equal(await evaluate("document.getElementById('crude-source').textContent"),
+      crudeModel.providers[crudeModel.providerId(liveCrude.series.wti)].displayName + " ↗");
+    assert.ok(await evaluate("document.getElementById('crude-dialog').scrollWidth <= document.getElementById('crude-dialog').clientWidth"));
   }
   assert.deepEqual(errors, []);
   console.log("Browser smoke passed: mobile and desktop layout, history hover/touch/keyboard, region and grade linkage, support dialog, missing data, manual price, and background snapshot update.");

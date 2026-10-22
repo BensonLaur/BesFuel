@@ -4,11 +4,7 @@ const path = require("node:path");
 const http = require("node:http");
 const root = path.resolve(__dirname, "..");
 const port = Number(process.env.BESFUEL_PREVIEW_PORT || 4173);
-const files = new Set([
-  "index.html", "styles.css", "app.js", "crude-ui.js", "lib/calc.js", "lib/history.js", "lib/crude.js",
-  "data/prices.json", "data/prices.js", "data/crude-prices.json", "data/crude-prices.js",
-  "resources/support/wechat.png", "resources/support/alipay.png"
-]);
+const files = new Set(require("./build-site.cjs").siteFiles);
 const types = { ".html": "text/html", ".js": "application/javascript", ".json": "application/json", ".css": "text/css", ".png": "image/png" };
 const server = http.createServer((request, response) => {
   if (!["GET", "HEAD"].includes(request.method)) { response.writeHead(405).end(); return; }

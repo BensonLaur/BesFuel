@@ -1,8 +1,8 @@
-// Generated from data/crude-prices.json; local preview only.
+// Generated from data/crude-prices.json; third-party data is not covered by the code license.
 window.BESFUEL_CRUDE_DATA = {
   "version": 1,
-  "usage": "local-preview",
-  "updatedAt": "2026-10-19T03:06:16.754Z",
+  "usage": "third-party-reference",
+  "updatedAt": "2026-10-22T12:04:22.996Z",
   "series": {
     "wti": {
       "name": "WTI 原油",
@@ -12,20 +12,8 @@ window.BESFUEL_CRUDE_DATA = {
       "currency": "USD",
       "unit": "barrel",
       "basis": "continuous-futures-daily",
-      "fetchedAt": "2026-10-19T03:06:16.754Z",
+      "fetchedAt": "2026-10-22T12:04:22.996Z",
       "history": [
-        {
-          "date": "2026-01-12",
-          "price": 59.84
-        },
-        {
-          "date": "2026-01-13",
-          "price": 61.1
-        },
-        {
-          "date": "2026-01-14",
-          "price": 61.02
-        },
         {
           "date": "2026-01-15",
           "price": 59.17
@@ -809,11 +797,23 @@ window.BESFUEL_CRUDE_DATA = {
         {
           "date": "2026-10-16",
           "price": 99.04
+        },
+        {
+          "date": "2026-10-19",
+          "price": 98.24
+        },
+        {
+          "date": "2026-10-20",
+          "price": 98.18
+        },
+        {
+          "date": "2026-10-21",
+          "price": 97.71
         }
       ],
       "intraday": {
-        "date": "2026-10-19",
-        "price": 97.55
+        "date": "2026-10-22",
+        "price": 99.42
       }
     },
     "brent": {
@@ -824,20 +824,8 @@ window.BESFUEL_CRUDE_DATA = {
       "currency": "USD",
       "unit": "barrel",
       "basis": "continuous-futures-daily",
-      "fetchedAt": "2026-10-19T03:06:16.754Z",
+      "fetchedAt": "2026-10-22T12:04:22.996Z",
       "history": [
-        {
-          "date": "2026-01-12",
-          "price": 64.3
-        },
-        {
-          "date": "2026-01-13",
-          "price": 65.46
-        },
-        {
-          "date": "2026-01-14",
-          "price": 65.39
-        },
         {
           "date": "2026-01-15",
           "price": 63.87
@@ -1621,18 +1609,30 @@ window.BESFUEL_CRUDE_DATA = {
         {
           "date": "2026-10-16",
           "price": 109.95
+        },
+        {
+          "date": "2026-10-19",
+          "price": 109.18
+        },
+        {
+          "date": "2026-10-20",
+          "price": 109.16
+        },
+        {
+          "date": "2026-10-21",
+          "price": 110.02
         }
       ],
       "intraday": {
-        "date": "2026-10-19",
-        "price": 107.96
+        "date": "2026-10-22",
+        "price": 112.03
       }
     }
   },
   "collection": {
     "mode": "auto",
     "outcome": "updated",
-    "checkedAt": "2026-10-19T03:06:16.754Z",
+    "checkedAt": "2026-10-22T12:04:22.996Z",
     "activeProvider": "eastmoney",
     "attempts": [
       {

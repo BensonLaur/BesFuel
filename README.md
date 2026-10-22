@@ -25,6 +25,7 @@
 - 展示已接入地区或价区的 92、95 号汽油及 0 号柴油官方参考价，并附公告来源和核对日期；缺少可靠价格时明确显示缺价。
 - 根据已核实的公告绘制历史阶梯趋势图，支持鼠标、触摸和键盘查看节点日期与价格。
 - 分开显示已生效地区价格、推算的下次调价窗口和第三方全国市场估算；本轮估算超过两天后保留数值、日期和来源，弱化显示并标注仅作历史参考，跨周期后隐藏。
+- 在“调价观察”中打开原油趋势参考，查看 WTI、布伦特近期走势、盘中快照、实际来源和采集时间。
 - 根据里程、油耗和每升油价计算行程成本。所有功能免费；自愿支持入口仅在点击后显示。
 
 ## 数据说明
@@ -35,9 +36,9 @@
 
 ## 开发与验证
 
-本地预览新增“原油趋势参考”：在“调价观察”右上角打开，切换 WTI／布伦特及近 1／3／6 个月走势。运行 `npm run preview` 后访问 `http://127.0.0.1:4173/`，或直接打开 `index.html`。页面读取本站快照，`file://` 可离线查看；盘中记录与已完成日线分别展示。运行 `npm run update:crude` 更新原油快照，`npm run validate:crude` 校验 JSON 与离线副本。当前为本地验证版本，第三方行情的公开展示及再发布条件尚待确认，尚未接入线上定时采集和 Pages 打包。
+“原油趋势参考”：在“调价观察”右上角打开，切换 WTI／布伦特及近 1／3／6 个月走势。运行 `npm run preview` 后访问 `http://127.0.0.1:4173/`，或直接打开 `index.html`。页面读取本站快照，`file://` 可离线查看；盘中记录与已完成日线分别展示。运行 `npm run update:crude` 更新原油快照，`npm run validate:crude` 校验 JSON 与离线副本。原油采集接入现有 Pages 工作流，在北京时间每天 10:00、20:00 运行；`npm run build` 生成包含原油功能的 `public/` 站点并校验两套快照。第三方行情不属于代码的 MIT 许可，详见 [使用边界](docs/RIGHTS.md)。
 
-`npm run update:crude` 每次按 **Eastmoney → Yahoo Finance → Sina Finance** 自动选择来源；两个品种均通过校验才整体更新，主源恢复后自动优先使用主源。全部失败保留原价格和采集时间，仅记录本次检查失败，页面显示提示。`npm run update:crude -- --check` 只检查、不改快照。需要单独测试时运行 `npm run check:crude-yahoo` 或 `npm run check:crude-backup`，手动指定来源用 `--source=eastmoney/yahoo/sina`。Yahoo 在本机需显式配置 `BESFUEL_YAHOO_PROXY` 才能使用现有本地代理；不改 Windows 系统代理。Yahoo 的 NYMEX 布伦特期货和 Sina 的 CFD 均与主源口径有别，页面会显示来源、价格口径及切换提示。使用步骤和晚上待验证事项见 [原油来源与自动切换](docs/CRUDE_SOURCES.md)。
+`npm run update:crude` 每次按 **Eastmoney → Yahoo Finance → Sina Finance** 自动选择来源；两个品种均通过校验才整体更新，主源恢复后自动优先使用主源。全部失败保留原价格和采集时间，仅记录本次检查失败，页面显示提示。`npm run update:crude -- --check` 只检查、不改快照。需要单独测试时运行 `npm run check:crude-yahoo` 或 `npm run check:crude-backup`，手动指定来源用 `--source=eastmoney/yahoo/sina`。Yahoo 在本机可显式配置 `BESFUEL_YAHOO_PROXY` 使用现有本地代理；不改 Windows 系统代理。Yahoo 的 NYMEX 布伦特期货和 Sina 的 CFD 均与主源口径有别，页面会显示来源、价格口径及切换提示。2026-10-22 早间 Actions 实测中 Eastmoney、Sina 均通过；Yahoo 可直连，但本次因历史收盘字段缺失被拒绝，自动模式会继续尝试 Sina。使用步骤和运行证据见 [原油来源与自动切换](docs/CRUDE_SOURCES.md)。
 
 直接使用页面不需要 Node.js。运行验证脚本建议使用与 CI 相同的 Node.js 22；`npm run test:updater` 需要 PowerShell，`npm run smoke` 默认使用 Windows Edge，也可通过 `BROWSER_PATH` 指定 Chromium 浏览器。
 
@@ -45,6 +46,8 @@
 npm test
 npm run test:updater
 npm run validate:data
+npm run validate:crude
+npm run build
 npm run smoke
 ```
 

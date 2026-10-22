@@ -127,7 +127,10 @@ function parseYahooResponse(payload, id, fetchedAt) {
     // Yahoo sometimes includes empty sessions. Do not turn missing prices into zero.
     if (values.every(value => value === null)) return null;
     const [open, price, high, low] = values;
-    if (!values.every(Number.isFinite) || low <= 0 || high > 500 ||
+    if (!values.every(Number.isFinite)) {
+      throw new Error(`${id}: Yahoo ${new Date(time * 1000).toISOString().slice(0, 10)} 日线 OHLC 字段缺失或非数值`);
+    }
+    if (low <= 0 || high > 500 ||
         low > Math.min(open, price) + 0.000001 || high < Math.max(open, price) - 0.000001) {
       throw new Error(`${id}: Yahoo 日线开高低收无效`);
     }
@@ -219,7 +222,7 @@ async function updateSnapshot(previous, { reader = fetchSource, now = new Date()
   Object.keys(model.definitions).forEach((id, index) => {
     series[id] = results[index].value.incoming;
   });
-  const snapshot = { version: 1, usage: "local-preview", updatedAt: fetchedAt, series };
+  const snapshot = { version: 1, usage: "third-party-reference", updatedAt: fetchedAt, series };
   model.validateSnapshot(snapshot, now);
   return { snapshot, failures: [], updated: true };
 }
@@ -271,7 +274,7 @@ function validateFiles(jsonFile = jsonPath, scriptFile = scriptPath) {
 function writeSnapshot(snapshot, jsonFile = jsonPath, scriptFile = scriptPath) {
   model.validateSnapshot(snapshot);
   const json = crlf(JSON.stringify(snapshot, null, 2));
-  const script = crlf(`// Generated from data/crude-prices.json; local preview only.\nwindow.BESFUEL_CRUDE_DATA = ${JSON.stringify(snapshot, null, 2)};`);
+  const script = crlf(`// Generated from data/crude-prices.json; third-party data is not covered by the code license.\nwindow.BESFUEL_CRUDE_DATA = ${JSON.stringify(snapshot, null, 2)};`);
   const files = [jsonFile, scriptFile];
   const backups = files.map(file => fs.existsSync(file) ? fs.readFileSync(file) : null);
   let writing = false;

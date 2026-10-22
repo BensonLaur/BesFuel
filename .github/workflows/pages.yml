@@ -1,4 +1,4 @@
-name: 核对官方油价并发布 Pages
+name: 核对油价和原油趋势并发布 Pages
 
 on:
   push:
@@ -20,6 +20,7 @@ concurrency:
 jobs:
   update-and-deploy:
     runs-on: windows-latest
+    timeout-minutes: 30
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -42,37 +43,38 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           npm run validate:data
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-      - name: 运行测试和浏览器检查
+      - name: 更新原油趋势与备用来源状态
+        shell: pwsh
+        env:
+          BESFUEL_YAHOO_PROXY: ''
+        run: |
+          npm run update:crude:ci
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: 运行测试并检查站点产物
         shell: pwsh
         run: |
           npm test
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           npm run test:updater
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm run build
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $env:BESFUEL_SITE_DIR = Join-Path $PWD 'public'
           npm run smoke
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - name: 记录有变化的可信快照
         shell: pwsh
         run: |
-          git add data/prices.json data/prices.js
+          git add data/prices.json data/prices.js data/crude-prices.json data/crude-prices.js
           git diff --cached --quiet
           if ($LASTEXITCODE -eq 0) { exit 0 }
           if ($LASTEXITCODE -ne 1) { exit $LASTEXITCODE }
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'chore(data): 核对已接入地区官方油价'
+          git commit -m 'chore(data): 核对官方油价与原油趋势'
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           git push origin HEAD:main
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-      - name: 准备静态站点
-        shell: pwsh
-        run: |
-          New-Item -ItemType Directory -Force public/data, public/lib, public/resources/support | Out-Null
-          Copy-Item index.html, styles.css, app.js public/
-          Copy-Item data/prices.json, data/prices.js public/data/
-          Copy-Item lib/calc.js, lib/history.js public/lib/
-          Copy-Item resources/support/wechat.png, resources/support/alipay.png public/resources/support/
-          New-Item -ItemType File public/.nojekyll | Out-Null
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:
