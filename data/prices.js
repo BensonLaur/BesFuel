@@ -9779,10 +9779,10 @@ window.BESFUEL_DATA = {
     "zhejiang": {
       "name": "浙江",
       "priceScope": "浙江省公布的成品油最高零售价格（元/升）；已核公告未列省内分价区。",
-      "checkedAt": "2026-09-29",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "浙江省发展和改革委员会",
-        "url": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_ed9666e8c2204d60b9207d75412e7cee.html"
+        "url": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_fa840097ac1b42fea2caf5bf35e71bdf.html"
       },
       "effectiveLabel": "2026-09-24 24:00 起",
       "grades": {
@@ -9982,6 +9982,103 @@ window.BESFUEL_DATA = {
               "date": "2026-09-25",
               "price": 8.28,
               "sourceUrl": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_ed9666e8c2204d60b9207d75412e7cee.html"
+            }
+          ]
+        }
+      },
+      "latestNotice": {
+        "kind": "unchanged",
+        "date": "2026-10-15",
+        "title": "浙江省成品油价格不作调整",
+        "sourceUrl": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_fa840097ac1b42fea2caf5bf35e71bdf.html"
+      }
+    },
+    "hunan": {
+      "name": "湖南",
+      "priceScope": "湖南省成品油全省统一最高零售价格（元/升）。",
+      "checkedAt": "2026-10-23",
+      "source": {
+        "name": "湖南省发展和改革委员会",
+        "url": "https://fgw.hunan.gov.cn/fgw/jggb11/202609/t20260924_34071920.html"
+      },
+      "effectiveLabel": "2026-09-24 24:00 起",
+      "grades": {
+        "92": {
+          "price": 8.55,
+          "history": [
+            {
+              "date": "2026-08-15",
+              "price": 7.73,
+              "sourceUrl": "https://fgw.hunan.gov.cn/fgw/jggb11/202608/t20260814_34045097.html"
+            },
+            {
+              "date": "2026-08-29",
+              "price": 8.03,
+              "sourceUrl": "https://fgw.hunan.gov.cn/fgw/jggb11/202608/t20260828_34052561.html"
+            },
+            {
+              "date": "2026-09-12",
+              "price": 8.24,
+              "sourceUrl": "https://fgw.hunan.gov.cn/fgw/jggb11/202609/t20260911_34062136.html"
+            },
+            {
+              "date": "2026-09-25",
+              "price": 8.55,
+              "sourceUrl": "https://fgw.hunan.gov.cn/fgw/jggb11/202609/t20260924_34071920.html"
+            }
+          ]
+        },
+        "95": {
+          "price": 9.09,
+          "history": [
+            {
+              "date": "2026-08-15",
+              "price": 8.22,
+              "sourceUrl": "https://fgw.hunan.gov.cn/fgw/jggb11/202608/t20260814_34045097.html"
+            },
+            {
+              "date": "2026-08-29",
+              "price": 8.54,
+              "sourceUrl": "https://fgw.hunan.gov.cn/fgw/jggb11/202608/t20260828_34052561.html"
+            },
+            {
+              "date": "2026-09-12",
+              "price": 8.76,
+              "sourceUrl": "https://fgw.hunan.gov.cn/fgw/jggb11/202609/t20260911_34062136.html"
+            },
+            {
+              "date": "2026-09-25",
+              "price": 9.09,
+              "sourceUrl": "https://fgw.hunan.gov.cn/fgw/jggb11/202609/t20260924_34071920.html"
+            }
+          ]
+        },
+        "98": {
+          "price": null,
+          "history": []
+        },
+        "diesel": {
+          "price": 8.37,
+          "history": [
+            {
+              "date": "2026-08-15",
+              "price": 7.52,
+              "sourceUrl": "https://fgw.hunan.gov.cn/fgw/jggb11/202608/t20260814_34045097.html"
+            },
+            {
+              "date": "2026-08-29",
+              "price": 7.83,
+              "sourceUrl": "https://fgw.hunan.gov.cn/fgw/jggb11/202608/t20260828_34052561.html"
+            },
+            {
+              "date": "2026-09-12",
+              "price": 8.04,
+              "sourceUrl": "https://fgw.hunan.gov.cn/fgw/jggb11/202609/t20260911_34062136.html"
+            },
+            {
+              "date": "2026-09-25",
+              "price": 8.37,
+              "sourceUrl": "https://fgw.hunan.gov.cn/fgw/jggb11/202609/t20260924_34071920.html"
             }
           ]
         }

@@ -1,0 +1,71 @@
+{
+  "id": "hunan",
+  "name": "湖南",
+  "sourceName": "湖南省发展和改革委员会",
+  "priceScope": "湖南省成品油全省统一最高零售价格（元/升）。",
+  "allowedHostnames": [
+    "fgw.hunan.gov.cn"
+  ],
+  "unit": "元/升",
+  "checkedAt": "2026-10-23",
+  "review": {
+    "method": "逐项核对官方 XLS 的品名、零售最高价（元/升）列、两位小数格式及全省统一价和生效日期附注。",
+    "sheet": "Sheet0",
+    "priceCells": {
+      "92": "D6",
+      "95": "D7",
+      "diesel": "D8"
+    },
+    "numberFormat": "0.00_ "
+  },
+  "notices": [
+    {
+      "publishedDate": "2026-08-14",
+      "effectiveDate": "2026-08-15",
+      "url": "https://fgw.hunan.gov.cn/fgw/jggb11/202608/t20260814_34045097.html",
+      "attachmentUrl": "https://fgw.hunan.gov.cn/fgw/jggb11/202608/34045097/files/544d8b755d9a45b0b8c74f870fee52e7.xls",
+      "attachmentSha256": "cdd5ce6ad75ef83e744f3475d52c19bb670e7dea394924de75379cd07cfcdfa1",
+      "prices": {
+        "92": 7.73,
+        "95": 8.22,
+        "diesel": 7.52
+      }
+    },
+    {
+      "publishedDate": "2026-08-28",
+      "effectiveDate": "2026-08-29",
+      "url": "https://fgw.hunan.gov.cn/fgw/jggb11/202608/t20260828_34052561.html",
+      "attachmentUrl": "https://fgw.hunan.gov.cn/fgw/jggb11/202608/34052561/files/14375ad810a34092acfc29f1b21014b6.xls",
+      "attachmentSha256": "bb3af0fe03e6a2dda4630d4e61466adbf81b08deca30d2ac82df38b6b570db95",
+      "prices": {
+        "92": 8.03,
+        "95": 8.54,
+        "diesel": 7.83
+      }
+    },
+    {
+      "publishedDate": "2026-09-11",
+      "effectiveDate": "2026-09-12",
+      "url": "https://fgw.hunan.gov.cn/fgw/jggb11/202609/t20260911_34062136.html",
+      "attachmentUrl": "https://fgw.hunan.gov.cn/fgw/jggb11/202609/34062136/files/681918a8adac4e7eb760e2ac49e42b2f.xls",
+      "attachmentSha256": "f03b7e0cd04655fd178d686c5fbb53ba80949c4cea818e030f10da70d88bc6b6",
+      "prices": {
+        "92": 8.24,
+        "95": 8.76,
+        "diesel": 8.04
+      }
+    },
+    {
+      "publishedDate": "2026-09-24",
+      "effectiveDate": "2026-09-25",
+      "url": "https://fgw.hunan.gov.cn/fgw/jggb11/202609/t20260924_34071920.html",
+      "attachmentUrl": "https://fgw.hunan.gov.cn/fgw/jggb11/202609/34071920/files/5fdb67cd78114f4c9200bd30218a600a.xls",
+      "attachmentSha256": "ecc6999dad03d5a9a88b8db82d1f95c897c62207277c4e8f15097f0099da8f70",
+      "prices": {
+        "92": 8.55,
+        "95": 9.09,
+        "diesel": 8.37
+      }
+    }
+  ]
+}

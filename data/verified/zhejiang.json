@@ -7,7 +7,7 @@
     "fzggw.zj.gov.cn"
   ],
   "unit": "元/升",
-  "checkedAt": "2026-09-29",
+  "checkedAt": "2026-10-23",
   "notices": [
     {
       "publishedDate": "2026-04-21",
@@ -129,5 +129,16 @@
         "diesel": 8.28
       }
     }
-  ]
+  ],
+  "latestNotice": {
+    "kind": "unchanged",
+    "date": "2026-10-15",
+    "title": "浙江省成品油价格不作调整",
+    "sourceUrl": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_fa840097ac1b42fea2caf5bf35e71bdf.html",
+    "priceSourceUrl": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_ed9666e8c2204d60b9207d75412e7cee.html"
+  },
+  "review": {
+    "checkedAt": "2026-10-23",
+    "conclusion": "10 月 15 日公告明确自 9 月 24 日调价以来本次不作调整，继续采用 9 月 24 日价表的 92/95/0 号元/升价格。价格生效日期和历史节点不变。"
+  }
 }

@@ -5,7 +5,7 @@
   "allowedHostnames": [
     "fgw.ln.gov.cn"
   ],
-  "checkedAt": "2026-09-28",
+  "checkedAt": "2026-10-23",
   "unit": "元/吨",
   "priceScope": "辽宁省汽、柴油最高零售价格（元/吨）。官网公告未列元/升，不能直接用于元/升油费计算。",
   "notices": [
@@ -53,5 +53,14 @@
       },
       "requiresManualLiterReview": true
     }
-  ]
+  ],
+  "review": {
+    "status": "missing-official-liter-price",
+    "checkedAt": "2026-10-23",
+    "method": "逐页核对省发改委 9 月 24 日两页 PDF：价表单位为元/吨，备注明确柴油标准品为 0 号柴油；10 月 15 日一页 PDF 明确不调整。",
+    "priceNoticeSha256": "587cef24a87850535ba3c5fb60e13f44d6190a5c6af6702aa2233abbcb58f8d1",
+    "unchangedNoticeUrl": "https://fgw.ln.gov.cn/fgw/articleFileDir/2026-10/15/58db1b267bf944cc8495de0dafd59502/2026101516380589611.pdf",
+    "unchangedNoticeSha256": "e220217e7bb63ef18dc4002a8412baa87a2166add075e5dca0065b7392b371c6",
+    "missingEvidence": "尚未查得当期 92/95/0 号官方元/升价表或适用的辽宁吨升折算系数，保留吨价记录，不导入每升价。"
+  }
 }

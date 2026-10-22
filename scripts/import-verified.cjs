@@ -30,14 +30,30 @@ function importVerified(data, record) {
     }
   }
   for (const notice of record.notices || []) {
-    for (const field of ["imageUrl", "dieselImageUrl", "pdfUrl"]) {
+    for (const field of ["imageUrl", "dieselImageUrl", "pdfUrl", "attachmentUrl"]) {
       if (notice[field]) {
         assert.ok(officialUrl(notice[field], record.allowedHostnames), `${record.id}: official ${field}`);
       }
     }
   }
   const copy = structuredClone(data);
-  mergeRegion(copy, record, record.notices, record.checkedAt);
+  const notices = [...record.notices];
+  if (record.latestNotice) {
+    const notice = record.latestNotice;
+    const date = new Date(`${notice.date}T00:00:00Z`);
+    assert.ok(notice.kind === "unchanged" && Number.isFinite(date.getTime()) &&
+      date.toISOString().slice(0, 10) === notice.date && notice.date <= record.checkedAt &&
+      notice.priceSourceUrl === notices.at(-1)?.url &&
+      officialUrl(notice.sourceUrl, record.allowedHostnames) &&
+      typeof notice.title === "string" && notice.title.trim(), `${record.id}: reviewed unchanged notice`);
+    notices.latestNotice = { kind: notice.kind, date: notice.date,
+      title: notice.title, sourceUrl: notice.sourceUrl };
+  }
+  mergeRegion(copy, record, notices, record.checkedAt);
+  if (record.latestNotice) {
+    // Current evidence is the reviewed no-change notice; original price dates and table links remain in history.
+    copy.regions[record.id].source.url = record.latestNotice.sourceUrl;
+  }
   if (record.historyGaps) {
     assert.ok(Array.isArray(record.historyGaps), `${record.id}: historyGaps`);
     copy.regions[record.id].historyGaps = record.historyGaps.map(gap => {
