@@ -89,6 +89,18 @@ test("shared request cache deduplicates zones but never grants another region's 
   await assert.rejects(foreign.getText(url), /非允许的官方地址/);
 });
 
+test("cached redirects remain isolated between different official host grants", async () => {
+  const cache = new Map(), other = "other.example.gov.cn";
+  let calls = 0;
+  const options = { cache, fetcher: async target => {
+    calls++;
+    return target === url ? new Response(null, { status: 302, headers: { location: `https://${other}/article` } }) : new Response("official");
+  } };
+  assert.equal(await makeReader([host, other], options).getText(url), "official");
+  await assert.rejects(makeReader([host], options).getText(url), /非允许的官方地址/);
+  assert.equal(calls, 3);
+});
+
 test("read-only audit separates failures from manual review without changing the supplied snapshot", async () => {
   const initial = { checkedAt: "2026-09-29", regions: {} }, before = structuredClone(initial);
   const report = await auditSources({ sources: [], initial, summaryFile: "", monitors: [

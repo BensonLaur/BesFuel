@@ -66,8 +66,11 @@ function makeReader(hosts, { cache = new Map(), fetcher = fetchOfficial, timeout
     // Validate before consulting a shared cache; another region's host grant
     // must never authorize this reader to follow an off-host URL.
     if (!officialUrl(url, hosts)) throw new Error(`非允许的官方地址：${url}`);
-    if (!cache.has(url)) cache.set(url, request(url));
-    return cache.get(url);
+    // Redirect chains are authorized by the whole host set, so readers with
+    // different grants cannot share a previously followed redirect result.
+    const key = JSON.stringify([...new Set(hosts)].sort()) + "\n" + url;
+    if (!cache.has(key)) cache.set(key, request(url));
+    return cache.get(key);
   }
   async function getText(url) {
     const response = await getBuffer(url);
