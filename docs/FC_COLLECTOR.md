@@ -112,6 +112,8 @@ Actions 取数任务单独运行，不绑定 `github-pages` environment。此仓
 
 ## 维护与排障
 
+2026-10-23 自动核价升级：新版代码包在保持原 11 个适配器及 32 个监测器基础上，额外获取海南、江西 HTML 价表和湖南原始 XLS。上传新版 ZIP 后，沿用原数组启动命令、环境变量、角色和定时器，用 `{}` 测试一次；返回结果应新增 `counts.extra`，`total: 3`、`passed: 3`、`failed: 0`，且 `storage.written: true`。发布端可读取旧版快照，但三组新增国内取数需部署后才能验收；详见 [自动核验](AUTO_REVIEW.md)。
+
 - 官网规则变更后重新打包并部署 FC，再启用新的仓库校验规则；摘要中的“采集代码与仓库校验规则不一致”意味着两端代码需要同步。
 - `AccessDenied`：检查所选函数角色或 OIDC 角色，以及 Bucket 名、前缀和授权策略。
 - `OSS 尚未生成地区快照`：先执行正式 FC 函数，确认 `storage.written` 和 Bucket 内的结果对象。

@@ -4,8 +4,11 @@ const path = require("node:path");
 const net = require("node:net");
 const { collectBundle } = require("../../scripts/cloud-bundle.cjs");
 const { createStore } = require("../../scripts/cloud-storage.cjs");
+const { collectExtras } = require("../../scripts/cloud-extra.cjs");
+const { counts } = require("../../scripts/source-health.cjs");
 
-async function execute(event, context, { store, collect = collectBundle, revision } = {}) {
+async function execute(event, context, { store, collect = collectBundle,
+  collectExtra = collect === collectBundle ? collectExtras : null, revision } = {}) {
   if (Buffer.isBuffer(event) || typeof event === "string") event = JSON.parse(String(event));
   if (!event || typeof event !== "object" || Array.isArray(event)) throw new Error("无效的 FC 事件");
   // Only console/API and timer events are accepted. No public HTTP collection endpoint.
@@ -16,9 +19,14 @@ async function execute(event, context, { store, collect = collectBundle, revisio
   net.setDefaultAutoSelectFamilyAttemptTimeout(2000);
   const buildRevision = revision || fs.readFileSync(path.join(__dirname, "REVISION"), "utf8").trim();
   const bundle = await collect({ revision: buildRevision });
+  if (collectExtra) {
+    bundle.extra = await collectExtra(bundle);
+    bundle.generatedAt = new Date().toISOString();
+  }
   const stored = await destination.publish(bundle);
-  const result = { generatedAt: bundle.generatedAt, counts: bundle.counts,
-    healthy: !bundle.counts.sources.failed && !bundle.counts.monitors.failed, storage: stored };
+  const extraCounts = bundle.extra ? counts(bundle.extra.results) : null;
+  const result = { generatedAt: bundle.generatedAt, counts: { ...bundle.counts, ...(extraCounts ? { extra: extraCounts } : {}) },
+    healthy: !bundle.counts.sources.failed && !bundle.counts.monitors.failed && !extraCounts?.failed, storage: stored };
   // A partial collection is still a useful complete report. The consumer keeps
   // failed regions unchanged and emits their errors, without rerunning every site.
   console.log(JSON.stringify(result));

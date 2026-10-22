@@ -10,6 +10,7 @@ const { reportHealth } = require("./source-health.cjs");
 const { collectTable } = require("./automatic-tables.cjs");
 const { publishingReader } = require("./publish-reader.cjs");
 const { readHunan } = require("./automatic-hunan.cjs");
+const { validateExtras } = require("./cloud-extra.cjs");
 const root = path.resolve(__dirname, "..");
 
 // Only these audited adapters already enforce the retail/litre column and all
@@ -47,12 +48,19 @@ function acceptParsedMonitors(bundle, initial, options = {}) {
 }
 async function runAutomatic({ bundle, initial, today = chinaDate(), reader = publishingReader } = {}) {
   const replay = bundle ? acceptParsedMonitors(bundle, initial) : { data: structuredClone(initial), sources: [], monitors: [] };
+  const extra = bundle ? validateExtras(bundle) : null;
   let data = replay.data;
   const direct = [];
   const hunan = replay.monitors.find(item => item.id === "hunan");
   if (hunan?.ok) {
     try {
-      const record = recordFor("hunan"), latest = await readHunan(hunan.latest, reader(record.allowedHostnames));
+      const record = recordFor("hunan"), relay = extra?.get("hunan");
+      if (relay && !relay.ok) throw Object.assign(new Error(relay.error), { details: relay.failure });
+      const attachmentReader = relay ? { getBuffer: async url => {
+        assert.equal(url, relay.url, "湖南附件请求与证据不符");
+        return { buffer: Buffer.from(relay.base64, "base64") };
+      } } : reader(record.allowedHostnames);
+      const latest = await readHunan(hunan.latest, attachmentReader);
       assert.ok(initial.regions.hunan.checkedAt <= chinaDate(new Date(bundle.startedAt)), "湖南核对日期回退");
       assert.ok(Date.parse(latest.publishedDate) - Date.parse(data.regions.hunan.checkedAt) <= 3 * 86400000, "湖南公告检查中断，需补齐历史");
       const next = structuredClone(data);
@@ -66,14 +74,17 @@ async function runAutomatic({ bundle, initial, today = chinaDate(), reader = pub
   }
   for (const id of ["hainan", "jiangxi"]) {
     try {
-      const record = recordFor(id), notices = await collectTable(record, reader(record.allowedHostnames), today);
-      assert.ok(data.regions[id]?.checkedAt <= today, "拒绝核对日期回退");
+      const record = recordFor(id), relay = extra?.get(id);
+      if (relay && !relay.ok) throw Object.assign(new Error(relay.error), { details: relay.failure });
+      const notices = relay ? relay.notices : await collectTable(record, reader(record.allowedHostnames), today);
+      const checkedAt = relay ? chinaDate(new Date(bundle.startedAt)) : today;
+      assert.ok(data.regions[id]?.checkedAt <= checkedAt, "拒绝核对日期回退");
       const history = data.regions[id].grades["92"].history;
       assert.ok(notices.some(notice => history.some(point => point.date === notice.effectiveDate)), "官网近期列表与已核历史无交集，需补齐历史");
       const next = structuredClone(data);
-      mergeRegion(next, record, notices, today);
+      mergeRegion(next, record, notices, checkedAt);
       data = next;
-      direct.push({ id, ok: true, automatic: true, count: notices.length, latest: notices.at(-1) });
+      direct.push({ id, ok: true, automatic: true, transport: relay ? "FC" : "GitHub", count: notices.length, latest: notices.at(-1) });
     } catch (error) { direct.push(failureResult(id, error)); }
   }
   validateSnapshot(data);

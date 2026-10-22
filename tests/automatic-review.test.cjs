@@ -9,6 +9,8 @@ const { planAlerts, deliver } = require("../scripts/review-alerts.cjs");
 const { loadModules, adapterDigest } = require("../scripts/cloud-bundle.cjs");
 const { counts } = require("../scripts/source-health.cjs");
 const { publicHttpFallback } = require("../scripts/publish-reader.cjs");
+const { validateExtras, extraDigest } = require("../scripts/cloud-extra.cjs");
+const crypto = require("node:crypto");
 const snapshot = require("../data/prices.json");
 const fixture = id => fs.readFileSync(path.join(__dirname, "fixtures/automatic", id + ".html"), "utf8");
 const record = id => require(`../data/verified/${id}.json`);
@@ -105,6 +107,25 @@ test("a matching Hunan announcement cannot refresh its date if XLS verification 
   const result = await runAutomatic({ bundle, initial, reader });
   assert.deepEqual(result.data.regions.hunan, initial.regions.hunan);
   assert.equal(result.monitors.find(m => m.id === "hunan").ok, false);
+});
+test("optional domestic evidence validates digest, complete sources and attachment integrity", () => {
+  const bytes = Buffer.from("d0cf11e0a1b11ae100010203", "hex");
+  const hunan = record("hunan").notices.at(-1);
+  const bundle = { startedAt: "2026-10-22T16:31:00.000Z", monitors: [{ id: "hunan", ok: true, latest: hunan }],
+    extra: { version: 1, digest: extraDigest(), results: [
+      { id: "hainan", ok: true, notices: record("hainan").notices },
+      { id: "jiangxi", ok: true, notices: record("jiangxi").notices },
+      { id: "hunan", ok: true, url: hunan.attachmentUrl, base64: bytes.toString("base64"),
+        sha256: crypto.createHash("sha256").update(bytes).digest("hex") }
+    ] } };
+  assert.equal(validateExtras(bundle).size, 3);
+  assert.equal(validateExtras({}), null);
+  for (const change of [b => { b.extra.digest = "bad"; }, b => { b.extra.results.pop(); },
+    b => { b.extra.results[2].base64 = Buffer.from("changed").toString("base64"); },
+    b => { b.extra.results[0].notices[0].prices["92"] = 11390; },
+    b => { b.extra.results[2].url = "https://example.com/file.xls"; }]) {
+    const bad = structuredClone(bundle); change(bad); assert.throws(() => validateExtras(bad));
+  }
 });
 const failure = { id: "hainan", ok: false, error: "timeout", failure: { category: "timeout", url: "https://plan.hainan.gov.cn/" } };
 const report = results => ({ version: 1, results });
