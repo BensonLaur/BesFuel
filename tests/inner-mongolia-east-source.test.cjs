@@ -91,3 +91,18 @@ test('rejects a misplaced zone heading, missing scope, missing diesel, or change
 test('keeps the future notice unpublished until it is effective', async () => {
   await assert.rejects(source.collect({ ...readers(), today: '2026-09-24' }), /没有已生效/);
 });
+
+test('verifies unchanged announcements without replacing the price table', async () => {
+  const title = '2026年10月15日国内成品油价格不作调整';
+  const noticeUrl = 'https://fgw.nmg.gov.cn/ywgz/jfgz/cpyjg/202610/t20261015_2965106.html';
+  const entry = `<li><a href="./202610/t20261015_2965106.html" title="${title}">${title}</a><span>2026-10-15</span></li>`;
+  const body = `<meta name="ArticleTitle" content="${title}"><meta name="ContentSource" content="内蒙古自治区发展和改革委员会">
+    <p>发布时间：2026-10-15 15:32</p><p>本次汽、柴油价格不作调整。</p>`;
+  const original = readers();
+  const collect = html => source.collect({ today: '2026-10-22', getText: async requested =>
+    requested === listUrl ? entry + list() : requested === noticeUrl ? html : original.getText(requested) });
+  const result = await collect(body);
+  assert.equal(result.at(-1).effectiveDate, '2026-09-25');
+  assert.equal(result.latestNotice.sourceUrl, noticeUrl);
+  await assert.rejects(collect(body.replace('本次汽、柴油价格不作调整', '本次汽、柴油价格上调')), /不调整公告/);
+});

@@ -14,7 +14,11 @@ permissions:
 
 jobs:
   audit:
-    runs-on: windows-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-latest]
     timeout-minutes: 25
     steps:
       - uses: actions/checkout@v6
@@ -28,11 +32,11 @@ jobs:
         run: npm test
       - name: 只读核对所有来源并诊断失败请求
         shell: pwsh
-        run: node scripts/audit-sources.cjs --probe-curl --output="$env:RUNNER_TEMP/besfuel-source-health.json"
+        run: node scripts/audit-sources.cjs --output="$env:RUNNER_TEMP/besfuel-source-health.json"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: source-health
+          name: source-health-${{ matrix.os }}
           path: ${{ runner.temp }}/besfuel-source-health.json
           if-no-files-found: warn
           retention-days: 14

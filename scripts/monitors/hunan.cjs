@@ -1,12 +1,12 @@
 'use strict';
 
 const HOSTNAME = 'fgw.hunan.gov.cn';
-const LIST_URL = `https://${HOSTNAME}/fgw/xxgk_70899/gzdtf/gzdt/newxxgklist.html`;
+const LIST_URL = `https://${HOSTNAME}/fgw/jggb11/newxxgklist.html`;
 const TITLE = /^关于调整成品油价格的通知[（(](\d{4})年(\d{1,2})月(\d{1,2})日[）)]$/;
-const ARTICLE_PATH = /^\/fgw\/(?:xxgk_70899\/gzdtf\/gzdt|jggb11)\/(\d{6})\/t(\d{8})_(\d+)\.html$/;
+const ARTICLE_PATH = /^\/fgw\/(?:xxgk_70899\/(?:gzdtf\/gzdt|tzgg)|jggb11)\/(\d{6})\/t(\d{8})_(\d+)\.html$/;
 
 function compact(html) {
-  return html.replace(/<[^>]*>/g, '')
+  return html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '').replace(/<[^>]*>/g, '')
     .replace(/&(?:nbsp|ensp|emsp|#160|#x[aA]0);/gi, '')
     .replace(/[\s\u00a0\u2000-\u200b\u3000]/g, '');
 }
@@ -39,9 +39,11 @@ function officialArticle(reference, titleDate) {
 
 function entriesFromList(html) {
   const entries = [];
-  for (const anchor of html.matchAll(/<a\b([^>]*)>([\s\S]{0,300}?)<\/a>/gi)) {
-    const title = compact(anchor[2]);
+  for (const anchor of html.matchAll(/<a\b([^>]*)>([\s\S]{0,2000}?)<\/a>/gi)) {
+    const title = compact(anchor[2].replace(/<small\b[^>]*>[\s\S]*?<\/small>/gi, ''));
     if (!title.startsWith('关于调整成品油价格的通知')) continue;
+    const label = anchor[1].match(/\btitle\s*=\s*["']([^"']+)["']/i)?.[1];
+    if (label && compact(label) !== title) throw new Error('湖南油价公告：列表标题与正文标签冲突');
     const titleMatch = title.match(TITLE);
     if (!titleMatch) throw new Error(`湖南油价公告：未知油价公告标题：${title}`);
     const date = validDate(`${titleMatch[1]}-${titleMatch[2].padStart(2, '0')}-${titleMatch[3].padStart(2, '0')}`, '标题日期');
@@ -73,7 +75,7 @@ function inspectArticle(html, entry) {
   const text = compact(html);
   const [year, month, day] = entry.publishedDate.split('-');
   const title = `关于调整成品油价格的通知(${year}年${Number(month)}月${Number(day)}日)`;
-  if (!text.includes(title) || !text.includes(`发布日期：${entry.publishedDate}`) ||
+  if (!text.includes(title) || !new RegExp(`(?:发布|发文)日期：${entry.publishedDate}`).test(text) ||
       !text.includes('湖南省发展和改革委员会') ||
       !text.includes(`汽、柴油价格自${year}年${Number(month)}月${Number(day)}日24时起执行`) ||
       !text.includes('汽、柴油零售仍实行最高价格管理') ||

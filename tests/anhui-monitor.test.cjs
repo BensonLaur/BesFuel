@@ -80,3 +80,11 @@ test('18 official notices import as chronological audited history', () => {
   assert.equal(region.grades['92'].history.length, 18);
   assert.equal(region.grades['92'].history[0].date, '2026-01-21');
 });
+
+test('accepts the current article layout while rejecting conflicting metadata', async () => {
+  const page = article('2026-09-24').replace('class="newstitle"', 'class="ls-article-title"')
+    .replace('发布日期：', '发布时间：').replace('信息来源：', '来源：');
+  const read = body => reader({ [listUrl]: list([{ url: oldUrl, date: '2026-09-24' }]), [oldUrl]: body });
+  assert.equal((await monitor.collect({ getText: read(page) })).prices['92'], 8.64);
+  await assert.rejects(monitor.collect({ getText: read(page + '<meta name="PubDate" content="2026-09-23 15:49">') }), /元数据冲突/);
+});

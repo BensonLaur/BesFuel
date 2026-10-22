@@ -1,4 +1,5 @@
 'use strict';
+const { unchangedTitle, parseUnchanged } = require('../nmg-unchanged.cjs');
 
 const HOSTNAME = 'fgw.nmg.gov.cn';
 const LIST_URL = 'https://fgw.nmg.gov.cn/ywgz/jfgz/cpyjg/index.html';
@@ -65,7 +66,7 @@ function listing(html) {
     if (!anchor || !date) throw new Error('内蒙古西部价区：官网列表条目结构变化');
     const title = anchor[2].trim();
     if (!title.includes('成品油价格')) continue;
-    if (!NOTICE_TITLE.test(title)) throw new Error(`内蒙古西部价区：未知油价公告标题：${title}`);
+    if (!NOTICE_TITLE.test(title) && !unchangedTitle(title)) throw new Error(`内蒙古西部价区：未知油价公告标题：${title}`);
     const publishedDate = validDate(date[1], '列表日期');
     const url = officialUrl(anchor[1]);
     const path = new URL(url).pathname.match(ARTICLE_PATH);
@@ -73,7 +74,7 @@ function listing(html) {
         path[2] !== publishedDate.replace(/-/g, '')) {
       throw new Error(`内蒙古西部价区：公告路径与列表日期不符：${url}`);
     }
-    entries.push({ title, publishedDate, url });
+    entries.push({ title, publishedDate, url, ...(unchangedTitle(title) ? { unchanged: true } : {}) });
   }
   if (!entries.length) throw new Error('内蒙古西部价区：官网列表没有油价公告');
   for (let index = 1; index < entries.length; index += 1) {
@@ -165,12 +166,14 @@ module.exports = {
   async collect({ getText, today = chinaDate() } = {}) {
     if (typeof getText !== 'function') throw new TypeError('内蒙古西部价区：需要官方网页读取器');
     const asOf = validDate(today, '核对日期');
-    const recent = listing(await getText(LIST_URL))
-      .filter(entry => nextDate(entry.publishedDate) <= asOf)
-      .slice(0, 12).reverse();
+    const candidates = listing(await getText(LIST_URL)).filter(entry => nextDate(entry.publishedDate) <= asOf);
+    const recent = candidates.filter(entry => !entry.unchanged).slice(0, 12).reverse();
     if (!recent.length) throw new Error('内蒙古西部价区：官网列表没有已生效调价公告');
     const notices = [];
     for (const entry of recent) notices.push(article(await getText(entry.url), entry));
+    for (const entry of candidates.filter(item => item.unchanged && item.publishedDate > recent.at(-1).publishedDate).reverse()) {
+      notices.latestNotice = parseUnchanged(await getText(entry.url), entry);
+    }
     return notices;
   },
   article,

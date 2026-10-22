@@ -17,9 +17,10 @@ function errorChain(error) {
 function requestError(error, url, elapsedMs) {
   if (error.details) return error;
   const causes = errorChain(error);
-  const codes = causes.map(item => item.code || item.name).join(" ");
+  const codes = causes.map(item => `${item.code} ${item.name}`).join(" ");
   const category = error.status ? "http" : /CERT|SSL|TLS/.test(codes) ? "tls" :
-    /ENOTFOUND|EAI_AGAIN/.test(codes) ? "dns" : /TIMEOUT|TimeoutError|AbortError/.test(codes) ? "timeout" : "network";
+    /ENOTFOUND|EAI_AGAIN/.test(codes) ? "dns" : /TIMEOUT|TimeoutError|AbortError/.test(codes) ? "timeout" :
+      /非允许的官方地址|重定向循环|官方文件过大/.test(error.message) ? "validation" : "network";
   const detail = causes.map(item => `${item.code || item.name}: ${item.message}`).join(" ← ");
   const wrapped = new Error(`[${category}] ${url}；${elapsedMs}ms；${detail}`, { cause: error });
   wrapped.details = { category, url, elapsedMs, status: error.status || null, causes };

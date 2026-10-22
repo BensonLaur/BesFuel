@@ -82,11 +82,17 @@ function parsePrices(html) {
 }
 
 function parseArticle(html, entry) {
-  const title = html.match(/<h1 class="newstitle">([^<]+)<\/h1>/i)?.[1]?.trim();
-  const published = html.match(/发布日期：\s*(\d{4}-\d{2}-\d{2})\s+\d{2}:\d{2}/)?.[1];
+  const title = html.match(/<h1 class="(?:newstitle|ls-article-title)">([^<]+)<\/h1>/i)?.[1]?.trim();
+  const published = html.match(/发布(?:日期|时间)：\s*(\d{4}-\d{2}-\d{2})\s+\d{2}:\d{2}/)?.[1];
   if (title !== TITLE || !published || validDate(published, '正文日期') !== entry.publishedDate ||
-      !/信息来源：省发展改革委/.test(html)) {
+      !/(?:信息)?来源：省发展改革委/.test(html)) {
     throw new Error(`安徽油价公告：正文标题、来源或发布日期与列表不符：${entry.url}`);
+  }
+  for (const [name, expected] of [['ArticleTitle', TITLE], ['PubDate', published], ['ContentSource', '省发展改革委']]) {
+    const value = html.match(new RegExp(`<meta name="${name}" content="([^"]+)"`))?.[1];
+    if (value && (name === 'PubDate' ? value.slice(0, 10) : value) !== expected) {
+      throw new Error(`安徽油价公告：正文与元数据冲突：${entry.url}`);
+    }
   }
   const text = cellText(html);
   const [year, month, day] = entry.publishedDate.split('-').map(Number);

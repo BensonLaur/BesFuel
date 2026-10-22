@@ -92,3 +92,16 @@ test('rejects nonofficial URLs, altered metadata, missing effective date and bro
     }), message);
   }
 });
+
+test('verifies unchanged notices without inventing a 24-hour price table', async () => {
+  const title = '浙江省成品油价格不作调整', date = '2026-10-15';
+  const conclusion = '本次汽、柴油价格不作调整。浙江省发展和改革委员会2026年10月15日';
+  const page = article({ title, date, effectiveText: conclusion }).replace(/<table>[\s\S]*?<\/table>/, '');
+  const collect = body => monitor.collect({ getText: reader(listing({ title, date }), body), today: '2026-10-22' });
+  const result = await collect(page);
+  assert.equal(result.kind, 'unchanged');
+  assert.equal('prices' in result, false);
+  await assert.rejects(collect(page.replace('本次汽、柴油价格不作调整', '本次汽、柴油价格待定')), /不调整结论/);
+  await assert.rejects(collect(page.replace('委员会2026年10月15日', '委员会2026年10月14日')), /落款日期/);
+  await assert.rejects(collect(page + '本次汽、柴油价格上调'), /不调整结论/);
+});

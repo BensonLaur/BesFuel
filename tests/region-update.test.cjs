@@ -73,6 +73,25 @@ test("official URL allowlist excludes unrelated and credential-bearing hosts", (
   assert.equal(officialUrl("https://user@official.example.gov.cn/notice", source.allowedHostnames), false);
 });
 
+test("unchanged rounds advance notice metadata without changing price history", async () => {
+  const first = await updateAll({ sources: [source], initial: snapshot, today: "2026-09-28", reader: () => ({}) });
+  const unchanged = { ...source, async collect() {
+    const rows = await source.collect();
+    rows.latestNotice = { date: "2026-10-15", kind: "unchanged", title: "成品油价格不作调整", sourceUrl: "https://official.example.gov.cn/unchanged" };
+    return rows;
+  } };
+  const next = await updateAll({ sources: [unchanged], initial: first.data, today: "2026-10-22", reader: () => ({}) });
+  assert.equal(next.results[0].ok, true);
+  const region = next.data.regions.example;
+  assert.equal(region.latestNotice.date, "2026-10-15");
+  assert.deepEqual(region.grades, first.data.regions.example.grades);
+  assert.deepEqual(region.source, first.data.regions.example.source);
+  assert.equal(region.effectiveLabel, first.data.regions.example.effectiveLabel);
+  const missing = await updateAll({ sources: [source], initial: next.data, today: "2026-10-22", reader: () => ({}) });
+  assert.equal(missing.results[0].ok, false);
+  assert.deepEqual(missing.data, next.data);
+});
+
 test("manual imports reject tonne-only prices and attachments outside the official host", () => {
   const tonne = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "data", "verified", "liaoning.json"), "utf8"));
   assert.throws(() => importVerified(snapshot, tonne), /仅元\/升核价记录/);

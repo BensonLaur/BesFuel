@@ -4,6 +4,7 @@ const path = require("node:path");
 const { validateSnapshot, validateFiles } = require("./validate-data.cjs");
 const { requestError, failureResult } = require("./source-errors.cjs");
 const { reportHealth } = require("./source-health.cjs");
+const { fetchOfficial } = require("./source-transport.cjs");
 
 const root = path.resolve(__dirname, "..");
 const sourceDirectory = path.join(__dirname, "sources");
@@ -32,7 +33,7 @@ function officialUrl(value, hosts) {
     !url.username && !url.password;
 }
 
-function makeReader(hosts, { cache = new Map(), fetcher = fetch, timeoutMs = 20000, onRequest = () => {} } = {}) {
+function makeReader(hosts, { cache = new Map(), fetcher = fetchOfficial, timeoutMs = 20000, onRequest = () => {} } = {}) {
   async function request(url, visited = new Set()) {
     if (!officialUrl(url, hosts)) throw new Error(`非允许的官方地址：${url}`);
     if (visited.has(url) || visited.size > 3) throw new Error(`重定向循环或过多：${url}`);
@@ -76,6 +77,11 @@ function makeReader(hosts, { cache = new Map(), fetcher = fetch, timeoutMs = 200
     return new TextDecoder(charset).decode(response.buffer);
   }
   return { getText, getBuffer };
+}
+
+function makeReaderFactory() {
+  const cache = new Map();
+  return hosts => makeReader(hosts, { cache });
 }
 
 function validateNotices(source, notices, today) {
@@ -136,6 +142,15 @@ function mergeRegion(data, source, notices, today, hostOverrides = {}) {
   region.checkedAt = today;
   region.source = { name: source.sourceName, url: latest.url };
   region.effectiveLabel = `${latest.publishedDate} 24:00 起`;
+  if (notices.latestNotice) {
+    assert.ok(notices.latestNotice.kind === "unchanged" && notices.latestNotice.date >= latest.effectiveDate &&
+      (!prior?.latestNotice || notices.latestNotice.date >= prior.latestNotice.date), `${source.id}: 拒绝不调整公告回退`);
+    region.latestNotice = structuredClone(notices.latestNotice);
+  } else if (region.latestNotice && latest.publishedDate >= region.latestNotice.date) {
+    region.latestNotice = { kind: "adjusted", date: latest.publishedDate, title: `${source.name}成品油价格调整`, sourceUrl: latest.url };
+  } else if (region.latestNotice?.kind === "unchanged") {
+    throw new Error(`${source.id}: 官网列表缺少已核实的不调整公告`);
+  }
   if (source.conversion?.validThrough) {
     region.priceValidThrough = source.conversion.validThrough;
     region.conversionSource = {
@@ -173,7 +188,7 @@ function writeSnapshot(data, outputJson = jsonPath, outputScript = scriptPath) {
   }
 }
 
-async function updateAll({ sources, initial, today = chinaDate(), reader = makeReader } = {}) {
+async function updateAll({ sources, initial, today = chinaDate(), reader = makeReaderFactory() } = {}) {
   const data = structuredClone(initial || JSON.parse(fs.readFileSync(jsonPath, "utf8")));
   const modules = sources || (fs.existsSync(sourceDirectory) ?
     fs.readdirSync(sourceDirectory).filter(name => name.endsWith(".cjs")).sort()
@@ -204,4 +219,4 @@ if (require.main === module) {
   }).catch(error => { console.error(error); process.exitCode = 1; });
 }
 
-module.exports = { chinaDate, officialUrl, makeReader, validateNotices, mergeRegion, updateAll, writeSnapshot };
+module.exports = { chinaDate, officialUrl, makeReader, makeReaderFactory, validateNotices, mergeRegion, updateAll, writeSnapshot };

@@ -1,13 +1,13 @@
 const fs = require("node:fs");
 const path = require("node:path");
-const { chinaDate, makeReader, officialUrl, writeSnapshot } = require("./update-regions.cjs");
+const { chinaDate, makeReaderFactory, officialUrl, writeSnapshot } = require("./update-regions.cjs");
 const { failureResult } = require("./source-errors.cjs");
 const { reportHealth } = require("./source-health.cjs");
 
 const root = path.resolve(__dirname, "..");
 const monitorDirectory = path.join(__dirname, "monitors");
 
-async function checkMonitors({ modules, data, reader = makeReader } = {}) {
+async function checkMonitors({ modules, data, reader = makeReaderFactory() } = {}) {
   const monitors = modules || (fs.existsSync(monitorDirectory) ?
     fs.readdirSync(monitorDirectory).filter(name => name.endsWith(".cjs")).sort()
       .map(name => require(path.join(monitorDirectory, name))) : []);

@@ -2,7 +2,28 @@ const assert = require("node:assert/strict");
 const test = require("node:test");
 const { makeReader } = require("../scripts/update-regions.cjs");
 const { auditSources } = require("../scripts/audit-sources.cjs");
+const { fetchOfficial } = require("../scripts/source-transport.cjs");
 const host = "official.example.gov.cn", url = `https://${host}/notices/`;
+
+test("request-header compatibility is scoped and TLS fallback only handles the verified Hunan error", async () => {
+  await fetchOfficial("https://fzggw.jiangsu.gov.cn/notice", {}, { fetcher: async (_, options) => {
+    assert.match(options.headers["User-Agent"], /^BesFuel\//);
+    return new Response("official");
+  } });
+  await fetchOfficial(url, {}, { fetcher: async (_, options) => {
+    assert.equal(options.headers, undefined);
+    return new Response("official");
+  } });
+  let fallbacks = 0;
+  const cause = Object.assign(new Error("bad curve"), { code: "ERR_SSL_BAD_ECPOINT" });
+  const fetcher = async () => { throw new TypeError("fetch failed", { cause }); };
+  const compatibilityFetcher = async () => { fallbacks++; return new Response("official"); };
+  assert.equal(await (await fetchOfficial("https://fgw.hunan.gov.cn/notice", {}, { fetcher, compatibilityFetcher })).text(), "official");
+  await assert.rejects(fetchOfficial(url, {}, { fetcher, compatibilityFetcher }), /fetch failed/);
+  cause.code = "CERT_HAS_EXPIRED";
+  await assert.rejects(fetchOfficial("https://fgw.hunan.gov.cn/notice", {}, { fetcher, compatibilityFetcher }), /fetch failed/);
+  assert.equal(fallbacks, 1);
+});
 
 test("request failures retain URL and nested DNS, timeout and TLS causes", async () => {
   for (const [code, category] of [["ENOTFOUND", "dns"], ["UND_ERR_CONNECT_TIMEOUT", "timeout"], ["ERR_SSL_BAD_ECPOINT", "tls"]]) {
@@ -16,6 +37,24 @@ test("request failures retain URL and nested DNS, timeout and TLS causes", async
       return true;
     });
   }
+});
+
+test("transient resets retry once, while HTTP refusals and timeouts do not", async () => {
+  let calls = 0;
+  const reset = Object.assign(new Error("read ECONNRESET"), { code: "ECONNRESET" });
+  const recovered = await fetchOfficial(url, {}, { sleep: async () => {}, fetcher: async () => {
+    calls++;
+    if (calls === 1) throw reset;
+    return new Response("recovered");
+  } });
+  assert.equal(await recovered.text(), "recovered");
+  assert.equal(calls, 2);
+  calls = 0;
+  await assert.rejects(fetchOfficial(url, {}, { sleep: async () => {}, fetcher: async () => { calls++; throw reset; } }), /重试仍失败/);
+  assert.equal(calls, 2);
+  await fetchOfficial(url, {}, { fetcher: async () => new Response("denied", { status: 403 }), sleep: async () => assert.fail("no retry") });
+  await assert.rejects(fetchOfficial(url, {}, { fetcher: async () => { throw new DOMException("timed out", "TimeoutError"); },
+    sleep: async () => assert.fail("no retry") }), /timed out/);
 });
 
 test("HTTP refusal includes status and target without retrying or reading the denied body", async () => {

@@ -5,7 +5,7 @@ const { test } = require('node:test');
 const monitor = require('../scripts/monitors/hunan.cjs');
 const { checkMonitors } = require('../scripts/check-monitors.cjs');
 
-const LIST = 'https://fgw.hunan.gov.cn/fgw/xxgk_70899/gzdtf/gzdt/newxxgklist.html';
+const LIST = 'https://fgw.hunan.gov.cn/fgw/jggb11/newxxgklist.html';
 const NOTICE = 'https://fgw.hunan.gov.cn/fgw/xxgk_70899/gzdtf/gzdt/202609/t20260924_34071920.html';
 const XLS = 'https://fgw.hunan.gov.cn/fgw/xxgk_70899/gzdtf/gzdt/202609/34071920/files/5fdb67cd78114f4c9200bd30218a600a.xls';
 const FUTURE = 'https://fgw.hunan.gov.cn/fgw/xxgk_70899/gzdtf/gzdt/202610/t20261015_99999999.html';
@@ -70,4 +70,11 @@ test('unverified Hunan remains manual review instead of replacing a trusted snap
   assert.equal(results[0].stored, false);
   assert.equal(results[0].needsReview, true);
   assert.equal(results[0].latest.requiresManualLiterReview, true);
+});
+
+test('reads the price column card markup without executing its embedded scripts', async () => {
+  const base = reader(), title = '关于调整成品油价格的通知(2026年9月24日)';
+  const getText = async url => url === LIST ? `<a title="${title}" href="${NOTICE}">
+    <small><img src="icon.png">2026-09-24</small><span><script>${' '.repeat(400)}throw new Error('never execute')</script>${title}</span></a>` : (await base.getText(url)).replace('发布日期：', '发文日期：');
+  assert.equal((await monitor.collect({ getText, today: '2026-10-22' })).url, NOTICE);
 });

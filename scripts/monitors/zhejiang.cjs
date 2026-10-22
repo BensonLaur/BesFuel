@@ -91,8 +91,18 @@ function inspectArticle(html, entry) {
     throw new Error(`浙江油价公告：正文标题、栏目、来源或日期与列表不符：${entry.url}`);
   }
   const [year, month, day] = entry.publishedDate.split('-');
+  const text = compact(html);
+  if (entry.title.endsWith('不作调整')) {
+    // 不调整公告没有新的 24 时价表，须单独核对正文结论与落款日期。
+    if (!text.includes('本次汽、柴油价格不作调整') ||
+        !text.includes(`浙江省发展和改革委员会${year}年${Number(month)}月${Number(day)}日`) ||
+        /(?:本次|此次)汽、柴油价格(?:上调|下调|调整为)/.test(text)) {
+      throw new Error(`浙江油价公告：不调整结论或落款日期不符：${entry.url}`);
+    }
+    return { ...entry, kind: 'unchanged', requiresManualLiterReview: true };
+  }
   const effectiveText = new RegExp(`(?:${year}年)?${Number(month)}月${Number(day)}日24时起`);
-  if (!effectiveText.test(compact(html))) {
+  if (!effectiveText.test(text)) {
     throw new Error(`浙江油价公告：正文没有对应的 24 时生效日期：${entry.url}`);
   }
   let prices;

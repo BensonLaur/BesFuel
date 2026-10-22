@@ -1,4 +1,5 @@
 'use strict';
+const { unchangedTitle, parseUnchanged } = require('../nmg-unchanged.cjs');
 
 const HOSTNAME = 'fgw.nmg.gov.cn';
 const LIST_URL = 'https://fgw.nmg.gov.cn/ywgz/jfgz/cpyjg/index.html';
@@ -54,7 +55,7 @@ function listing(html) {
   for (const item of html.matchAll(/<li>\s*<a\s+href="([^"]+)"[^>]*\btitle="([^"]+)"[^>]*>[^<]*<\/a>\s*<span>(\d{4}-\d{2}-\d{2})<\/span>\s*<\/li>/gi)) {
     const title = item[2].trim();
     if (!title.includes('成品油价格')) continue;
-    if (!NOTICE_TITLE.test(title)) throw new Error(`内蒙古东部价区：未知油价公告标题：${title}`);
+    if (!NOTICE_TITLE.test(title) && !unchangedTitle(title)) throw new Error(`内蒙古东部价区：未知油价公告标题：${title}`);
     const publishedDate = validDate(item[3], '列表日期');
     const url = officialUrl(item[1]);
     const path = new URL(url).pathname.match(ARTICLE_PATH);
@@ -62,7 +63,7 @@ function listing(html) {
         path[2] !== publishedDate.replace(/-/g, '')) {
       throw new Error(`内蒙古东部价区：公告路径与列表日期不符：${url}`);
     }
-    entries.push({ title, publishedDate, url });
+    entries.push({ title, publishedDate, url, ...(unchangedTitle(title) ? { unchanged: true } : {}) });
   }
   const articleLinks = [...html.matchAll(/<a\s+href="\.\/\d{6}\/t\d{8}_\d+\.html"[^>]*>/gi)];
   if (articleLinks.length !== entries.length) {
@@ -138,11 +139,15 @@ module.exports = {
       if (prior && prior.url !== entry.url) throw new Error(`内蒙古东部价区：同日公告不唯一：${entry.publishedDate}`);
       byDate.set(entry.publishedDate, entry);
     }
-    const recent = [...byDate.values()].filter((entry) => nextDate(entry.publishedDate) <= asOf)
-      .sort((a, b) => a.publishedDate.localeCompare(b.publishedDate)).slice(-12);
+    const candidates = [...byDate.values()].filter((entry) => nextDate(entry.publishedDate) <= asOf)
+      .sort((a, b) => a.publishedDate.localeCompare(b.publishedDate));
+    const recent = candidates.filter(entry => !entry.unchanged).slice(-12);
     if (!recent.length) throw new Error('内蒙古东部价区：官网列表没有已生效调价公告');
     const notices = [];
     for (const entry of recent) notices.push(article(await getText(entry.url), entry));
+    for (const entry of candidates.filter(item => item.unchanged && item.publishedDate > recent.at(-1).publishedDate)) {
+      notices.latestNotice = parseUnchanged(await getText(entry.url), entry);
+    }
     return notices;
   },
   article,
