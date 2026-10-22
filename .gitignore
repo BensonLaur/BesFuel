@@ -3,3 +3,5 @@ public/
 *.tmp
 *.log
 *-support.png
+__pycache__/
+.automatic-review.json

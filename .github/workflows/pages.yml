@@ -69,6 +69,12 @@ jobs:
     needs: fetch-regions
     runs-on: windows-latest
     timeout-minutes: 30
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+      actions: read
+      issues: write
     env:
       NODE_OPTIONS: --network-family-autoselection-attempt-timeout=2000
     environment:
@@ -108,6 +114,23 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           npm run check:monitors
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - name: 安装经哈希校验的 XLS 读取器
+        run: python -m pip install --only-binary=:all: --require-hashes -r scripts/review-requirements.txt
+      - name: 自动核价并检查海南江西
+        shell: pwsh
+        env:
+          BESFUEL_REVIEW_REPORT: ${{ runner.temp }}/automatic-review.json
+          BESFUEL_FC_ENABLED: ${{ vars.BESFUEL_FC_ENABLED }}
+        run: |
+          if ($env:BESFUEL_FC_ENABLED -eq 'true') {
+            node scripts/automatic-review.cjs "$env:RUNNER_TEMP/fc-regions/fc-regions.json"
+          } else {
+            node scripts/automatic-review.cjs
+          }
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - name: 校验油价与浏览器快照一致
         run: npm run validate:data
       - name: 更新原油趋势与备用来源状态
@@ -122,6 +145,8 @@ jobs:
         run: |
           npm test
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -m unittest discover -s tests -p '*_test.py'
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           npm run test:updater
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           npm run build
@@ -129,10 +154,20 @@ jobs:
           $env:BESFUEL_SITE_DIR = Join-Path $PWD 'public'
           npm run smoke
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: 仅提醒需要处理的新异常
+        shell: pwsh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/review-alerts.cjs "$env:RUNNER_TEMP/automatic-review.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: automatic-review
+          path: ${{ runner.temp }}/automatic-review.json
+          retention-days: 14
       - name: 记录有变化的可信快照
         shell: pwsh
         run: |
-          git add data/prices.json data/prices.js data/crude-prices.json data/crude-prices.js
+          git add data/prices.json data/prices.js data/crude-prices.json data/crude-prices.js data/review-alert-state.json
           git diff --cached --quiet
           if ($LASTEXITCODE -eq 0) { exit 0 }
           if ($LASTEXITCODE -ne 1) { exit $LASTEXITCODE }

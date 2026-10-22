@@ -10,7 +10,7 @@
   "checkedAt": "2026-10-23",
   "review": {
     "method": "直接读取省发改委三期公告，逐行核对元/升列、生效日期及车辆通行附加费附注。",
-    "updateMode": "人工核价；尚未接入定时采集或公告监测。"
+    "updateMode": "初次人工核价；后续由 GitHub Actions 自动发现并校验官方 HTML 价表，失败时保留旧值。"
   },
   "notices": [
     {

@@ -1,0 +1,360 @@
+{
+  "sourceUrl": "https://fgw.hunan.gov.cn/fgw/jggb11/202609/34071920/files/5fdb67cd78114f4c9200bd30218a600a.xls",
+  "date": "2026-09-24",
+  "rows": 11,
+  "cols": 6,
+  "cells": [
+    [
+      {
+        "value": "附表：",
+        "ctype": 1,
+        "format": "General"
+      },
+      {
+        "value": "",
+        "ctype": 0,
+        "format": "General"
+      },
+      {
+        "value": "",
+        "ctype": 0,
+        "format": "General"
+      },
+      {
+        "value": "",
+        "ctype": 0,
+        "format": "General"
+      },
+      {
+        "value": "",
+        "ctype": 0,
+        "format": "General"
+      },
+      {
+        "value": "",
+        "ctype": 0,
+        "format": "General"
+      }
+    ],
+    [
+      {
+        "value": "湖南省成品油销售价格表",
+        "ctype": 1,
+        "format": "General"
+      },
+      {
+        "value": "",
+        "ctype": 6,
+        "format": "General"
+      },
+      {
+        "value": "",
+        "ctype": 6,
+        "format": "General"
+      },
+      {
+        "value": "",
+        "ctype": 6,
+        "format": "General"
+      },
+      {
+        "value": "",
+        "ctype": 6,
+        "format": "General"
+      },
+      {
+        "value": "",
+        "ctype": 6,
+        "format": "General"
+      }
+    ],
+    [
+      {
+        "value": "",
+        "ctype": 0,
+        "format": "General"
+      },
+      {
+        "value": "",
+        "ctype": 0,
+        "format": "General"
+      },
+      {
+        "value": "",
+        "ctype": 0,
+        "format": "General"
+      },
+      {
+        "value": "",
+        "ctype": 0,
+        "format": "General"
+      },
+      {
+        "value": "",
+        "ctype": 0,
+        "format": "General"
+      },
+      {
+        "value": "",
+        "ctype": 0,
+        "format": "General"
+      }
+    ],
+    [
+      {
+        "value": "品名型号",
+        "ctype": 1,
+        "format": "General"
+      },
+      {
+        "value": "品质比率",
+        "ctype": 1,
+        "format": "General"
+      },
+      {
+        "value": "零售最高价\n（元/吨）",
+        "ctype": 1,
+        "format": "General"
+      },
+      {
+        "value": "零售最高价\n（元/升）",
+        "ctype": 1,
+        "format": "General"
+      },
+      {
+        "value": "对零售企业批发最高价\n（元/吨）",
+        "ctype": 1,
+        "format": "General"
+      },
+      {
+        "value": "对民营批发企业供应最高价\n（元/吨）",
+        "ctype": 1,
+        "format": "General"
+      }
+    ],
+    [
+      {
+        "value": "89号汽油（VIB）",
+        "ctype": 1,
+        "format": "General"
+      },
+      {
+        "value": 100.0,
+        "ctype": 2,
+        "format": "General"
+      },
+      {
+        "value": 10755.0,
+        "ctype": 2,
+        "format": "0_ "
+      },
+      {
+        "value": 8.014157973174367,
+        "ctype": 2,
+        "format": "0.00_ "
+      },
+      {
+        "value": 10455.0,
+        "ctype": 2,
+        "format": "0_ "
+      },
+      {
+        "value": 10355.0,
+        "ctype": 2,
+        "format": "0_ "
+      }
+    ],
+    [
+      {
+        "value": "92号汽油（VIB）",
+        "ctype": 1,
+        "format": "General"
+      },
+      {
+        "value": 106.0,
+        "ctype": 2,
+        "format": "General"
+      },
+      {
+        "value": 11400.300000000001,
+        "ctype": 2,
+        "format": "0_ "
+      },
+      {
+        "value": 8.552363090772694,
+        "ctype": 2,
+        "format": "0.00_ "
+      },
+      {
+        "value": 11100.300000000001,
+        "ctype": 2,
+        "format": "0_ "
+      },
+      {
+        "value": 11000.300000000001,
+        "ctype": 2,
+        "format": "0_ "
+      }
+    ],
+    [
+      {
+        "value": "95号汽油（VIB）",
+        "ctype": 1,
+        "format": "General"
+      },
+      {
+        "value": 112.0,
+        "ctype": 2,
+        "format": "General"
+      },
+      {
+        "value": 12045.6,
+        "ctype": 2,
+        "format": "0_ "
+      },
+      {
+        "value": 9.091018867924529,
+        "ctype": 2,
+        "format": "0.00_ "
+      },
+      {
+        "value": 11745.6,
+        "ctype": 2,
+        "format": "0_ "
+      },
+      {
+        "value": 11645.6,
+        "ctype": 2,
+        "format": "0_ "
+      }
+    ],
+    [
+      {
+        "value": "0号车用柴油（VI)",
+        "ctype": 1,
+        "format": "General"
+      },
+      {
+        "value": 100.0,
+        "ctype": 2,
+        "format": "General"
+      },
+      {
+        "value": 9705.0,
+        "ctype": 2,
+        "format": "0_ "
+      },
+      {
+        "value": 8.373597929249353,
+        "ctype": 2,
+        "format": "0.00_ "
+      },
+      {
+        "value": 9405.0,
+        "ctype": 2,
+        "format": "0_ "
+      },
+      {
+        "value": 9305.0,
+        "ctype": 2,
+        "format": "0_ "
+      }
+    ],
+    [
+      {
+        "value": "注：1、此表价格为全省统一价，从2026年9月24日24时起执行。",
+        "ctype": 1,
+        "format": "@"
+      },
+      {
+        "value": "",
+        "ctype": 6,
+        "format": "@"
+      },
+      {
+        "value": "",
+        "ctype": 6,
+        "format": "@"
+      },
+      {
+        "value": "",
+        "ctype": 6,
+        "format": "@"
+      },
+      {
+        "value": "",
+        "ctype": 6,
+        "format": "@"
+      },
+      {
+        "value": "",
+        "ctype": 6,
+        "format": "@"
+      }
+    ],
+    [
+      {
+        "value": "       2、普通柴油（标准品）最高零售价格按照同阶段标准的车用柴油价格确定。",
+        "ctype": 1,
+        "format": "General"
+      },
+      {
+        "value": "",
+        "ctype": 6,
+        "format": "General"
+      },
+      {
+        "value": "",
+        "ctype": 6,
+        "format": "General"
+      },
+      {
+        "value": "",
+        "ctype": 6,
+        "format": "General"
+      },
+      {
+        "value": "",
+        "ctype": 6,
+        "format": "General"
+      },
+      {
+        "value": "",
+        "ctype": 6,
+        "format": "General"
+      }
+    ],
+    [
+      {
+        "value": "       3、表中汽油和柴油价格为符合第六阶段强制性国家标准VIB车用汽油和VI车用柴油价格。",
+        "ctype": 1,
+        "format": "General"
+      },
+      {
+        "value": "",
+        "ctype": 6,
+        "format": "General"
+      },
+      {
+        "value": "",
+        "ctype": 6,
+        "format": "General"
+      },
+      {
+        "value": "",
+        "ctype": 6,
+        "format": "General"
+      },
+      {
+        "value": "",
+        "ctype": 6,
+        "format": "General"
+      },
+      {
+        "value": "",
+        "ctype": 6,
+        "format": "General"
+      }
+    ]
+  ]
+}

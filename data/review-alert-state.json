@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "entries": {
+    "liaoning": {
+      "signature": "16681fe201cfa8e00b97ed1fb2707c3cfc1ae2b45b2f9e1c29301f4a76395663",
+      "consecutive": 1,
+      "alerted": true,
+      "lastRun": "baseline-2026-10-23"
+    }
+  }
+}

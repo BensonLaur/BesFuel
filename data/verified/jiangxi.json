@@ -11,7 +11,7 @@
   "review": {
     "method": "直接读取省发改委两期公告，核对元/升列及生效日期，并与石城县政府转载现行价表交叉核对。",
     "corroborationUrl": "https://www.shicheng.gov.cn/scxxxgk/sc88242/202609/7708c7b9482b4a27939fe62388a14403.shtml",
-    "updateMode": "人工核价；尚未接入定时采集或公告监测。",
+    "updateMode": "初次人工核价；后续由 GitHub Actions 自动发现并校验官方 HTML 价表，失败时保留旧值。",
     "transport": "Windows curl；保持证书验证，未降低 Node TLS 安全设置。"
   },
   "notices": [
