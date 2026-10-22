@@ -9990,7 +9990,8 @@ window.BESFUEL_DATA = {
         "kind": "unchanged",
         "date": "2026-10-15",
         "title": "浙江省成品油价格不作调整",
-        "sourceUrl": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_fa840097ac1b42fea2caf5bf35e71bdf.html"
+        "sourceUrl": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_fa840097ac1b42fea2caf5bf35e71bdf.html",
+        "priceSourceUrl": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_fa840097ac1b42fea2caf5bf35e71bdf.html"
       }
     },
     "hunan": {
