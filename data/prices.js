@@ -6,7 +6,7 @@ window.BESFUEL_DATA = {
     "guangdong": {
       "name": "广东",
       "priceScope": "广东省公布的全省最高销售价格；加油站实际成交价可能不同。",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "广东省发展和改革委员会",
         "url": "https://drc.gd.gov.cn/ywgg/content/post_4960317.html"
@@ -223,7 +223,7 @@ window.BESFUEL_DATA = {
     "hebei": {
       "name": "河北",
       "priceScope": "河北省汽、柴油最高零售价格（元/升）；加油站实际成交价可能不同。",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "河北省发展和改革委员会",
         "url": "https://hbdrc.hebei.gov.cn/gggs_980/202609/t20260924_139750.html"
@@ -314,7 +314,7 @@ window.BESFUEL_DATA = {
     "beijing": {
       "name": "北京",
       "priceScope": "北京市汽、柴油最高零售价格（元/升）",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "北京市发展和改革委员会",
         "url": "https://fgw.beijing.gov.cn/fgwzwgk/2024zcwj/bwqtwj/202609/t20260924_4879948.htm"
@@ -510,7 +510,7 @@ window.BESFUEL_DATA = {
     "shanxi": {
       "name": "山西",
       "priceScope": "山西省成品油最高零售价格（元/升）",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "山西省发展和改革委员会",
         "url": "https://fgw.shanxi.gov.cn/tzgg/202609/t20260924_10227169.shtml"
@@ -646,7 +646,7 @@ window.BESFUEL_DATA = {
     "tianjin": {
       "name": "天津",
       "priceScope": "天津市成品油最高零售价格（元/升）",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "天津市发展和改革委员会",
         "url": "https://fzgg.tj.gov.cn/xxfb/tzggx/202609/t20260924_7382724.html"
@@ -1128,7 +1128,7 @@ window.BESFUEL_DATA = {
     "shanghai": {
       "name": "上海",
       "priceScope": "上海市车用汽、柴油最高零售价格（元/升）",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "上海市发展和改革委员会",
         "url": "https://fgw.sh.gov.cn/fgw_jggl/20260924/9346a0fd85d74075a9431f83f365cef8.html"
@@ -1519,7 +1519,7 @@ window.BESFUEL_DATA = {
     "fujian": {
       "name": "福建",
       "priceScope": "福建省汽、柴油最高零售价格（元/升）",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "福建省发展和改革委员会",
         "url": "https://fgw.fujian.gov.cn/zfxxgkzl/zfxxgkml/yzdgkdqtxx/202609/t20260924_7218113.htm"
@@ -1910,7 +1910,7 @@ window.BESFUEL_DATA = {
     "guangxi": {
       "name": "广西",
       "priceScope": "广西市场成品油最高零售价格（元/升）",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "广西壮族自治区发展和改革委员会",
         "url": "http://fgw.gxzf.gov.cn/xwzx/xwfb/t28168631.shtml"
@@ -2540,7 +2540,7 @@ window.BESFUEL_DATA = {
     "guizhou-zone1": {
       "name": "贵州第一价区",
       "priceScope": "贵州省一价区：贵阳市云岩、南明、花溪、乌当、白云、观山湖六区的汽柴油最高零售价格（元/升）；其他市县不适用。",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "贵州省发展和改革委员会",
         "url": "https://fgw.guizhou.gov.cn/fggz/tzgg/202609/t20260924_90940085.html"
@@ -2676,7 +2676,7 @@ window.BESFUEL_DATA = {
     "guizhou-zone2": {
       "name": "贵州第二价区",
       "priceScope": "贵州省第二价区（安顺、黔南，以及贵阳市所属修文县、开阳县、息烽县、清镇市）汽、柴油最高零售价格（元/升）；按行政区划适用，实际成交价可能更低。",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "贵州省发展和改革委员会",
         "url": "https://fgw.guizhou.gov.cn/fggz/tzgg/202609/t20260924_90940085.html"
@@ -2872,7 +2872,7 @@ window.BESFUEL_DATA = {
     "jiangsu": {
       "name": "江苏",
       "priceScope": "江苏省汽、柴油最高零售价格（元/升）",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "江苏省发展和改革委员会",
         "url": "https://fzggw.jiangsu.gov.cn/art/2026/9/24/art_91435_11834861.html"
@@ -3248,7 +3248,7 @@ window.BESFUEL_DATA = {
     "guizhou-zone3": {
       "name": "贵州第三价区",
       "priceScope": "贵州省三价区：遵义、六盘水、铜仁、黔东南、黔西南、毕节的汽柴油最高零售价格（元/升）；其他地区不适用。",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "贵州省发展和改革委员会",
         "url": "https://fgw.guizhou.gov.cn/fggz/tzgg/202609/t20260924_90940085.html"
@@ -3384,7 +3384,7 @@ window.BESFUEL_DATA = {
     "sichuan-zone1": {
       "name": "四川第一价区",
       "priceScope": "四川省第一价区（二、三价区以外的其他地区）汽、柴油最高零售价格（元/升）；二价区含攀枝花、凉山和阿坝汶川、理县、茂县，三价区含甘孜及阿坝其余十县；加油站实付价可能不同。",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "四川省发展和改革委员会",
         "url": "https://fgw.sc.gov.cn/sfgw/tzgg/2026/9/24/cf670f9f0e5f454b9ca534012c091993.shtml"
@@ -3550,7 +3550,7 @@ window.BESFUEL_DATA = {
     "sichuan-zone2": {
       "name": "四川第二价区",
       "priceScope": "四川省二价区：阿坝州汶川县、理县、茂县以及凉山州、攀枝花市行政区域的汽柴油最高零售价格（元/升）；其他地区不适用。",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "四川省发展和改革委员会",
         "url": "https://fgw.sc.gov.cn/sfgw/tzgg/2026/9/24/cf670f9f0e5f454b9ca534012c091993.shtml"
@@ -3626,7 +3626,7 @@ window.BESFUEL_DATA = {
     "sichuan-zone3": {
       "name": "四川第三价区",
       "priceScope": "四川省第三价区（甘孜州，以及阿坝州除汶川县、理县、茂县以外的其他地区）汽、柴油最高零售价格（元/升）；加油站实付价可能不同。",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "四川省发展和改革委员会",
         "url": "https://fgw.sc.gov.cn/sfgw/tzgg/2026/9/24/cf670f9f0e5f454b9ca534012c091993.shtml"
@@ -3792,7 +3792,7 @@ window.BESFUEL_DATA = {
     "inner-mongolia-east": {
       "name": "内蒙古东部价区",
       "priceScope": "内蒙古自治区东部价区（呼伦贝尔市、兴安盟、通辽市、赤峰市、锡林郭勒盟）汽、柴油最高零售价格（元/升）；加油站实付价可能不同。",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "内蒙古自治区发展和改革委员会",
         "url": "https://fgw.nmg.gov.cn/ywgz/jfgz/cpyjg/202609/t20260924_2958605.html"
@@ -4009,7 +4009,7 @@ window.BESFUEL_DATA = {
     "inner-mongolia-west": {
       "name": "内蒙古西部价区",
       "priceScope": "内蒙古自治区西部价区（呼和浩特市、包头市、乌兰察布市、鄂尔多斯市、巴彦淖尔市、乌海市、阿拉善盟）汽、柴油最高零售价格（元/升）；加油站实付价可能不同。",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "内蒙古自治区发展和改革委员会",
         "url": "https://fgw.nmg.gov.cn/ywgz/jfgz/cpyjg/202609/t20260924_2958605.html"
@@ -4226,7 +4226,7 @@ window.BESFUEL_DATA = {
     "yunnan-kunming": {
       "name": "云南·昆明",
       "priceScope": "云南省昆明地区（第一价区）汽、柴油最高零售价格（元/升）",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "云南省发展和改革委员会",
         "url": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
@@ -4632,7 +4632,7 @@ window.BESFUEL_DATA = {
     "yunnan-zone2": {
       "name": "云南第二价区",
       "priceScope": "云南省第二价区（曲靖、楚雄、玉溪）汽、柴油最高零售价格（元/升）；县城及国省道加油站原则上执行同价区价格，乡镇站点可按规定地区差加价，实付价可能不同。",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "云南省发展和改革委员会",
         "url": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
@@ -4843,7 +4843,7 @@ window.BESFUEL_DATA = {
     "yunnan-zone4": {
       "name": "云南·普洱、保山、丽江",
       "priceScope": "云南省第四价区（普洱、保山、丽江）汽、柴油最高零售价格（元/升）",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "云南省发展和改革委员会",
         "url": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
@@ -5249,7 +5249,7 @@ window.BESFUEL_DATA = {
     "yunnan-zone5": {
       "name": "云南第五价区",
       "priceScope": "云南省第五价区（西双版纳、德宏、迪庆、怒江、临沧）汽、柴油最高零售价格（元/升）；加油站实付价可能不同。",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "云南省发展和改革委员会",
         "url": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
@@ -5460,7 +5460,7 @@ window.BESFUEL_DATA = {
     "yunnan-zone3": {
       "name": "云南·昭通、红河、文山、大理",
       "priceScope": "云南省发改委各地区汽柴油最高零售价格表中昭通、红河、文山、大理四州市所在价格组（元/升）；乡镇加价规则和加油站实付价以当地公告为准。",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "云南省发展和改革委员会",
         "url": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
@@ -5671,7 +5671,7 @@ window.BESFUEL_DATA = {
     "shaanxi-midnorth": {
       "name": "陕西中北部（西安市区外）",
       "priceScope": "陕西省汽油中北部价区与柴油“其他价区”的交集（不含西安市区）：中北部汽油与西安市区同价，0号柴油按其他价区单列；加油站实付价可能不同。",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "陕西省发展和改革委员会",
         "url": "https://sndrc.shaanxi.gov.cn/sy/xwxx/gggg/202609/t20260924_3698846.html"
@@ -5882,7 +5882,7 @@ window.BESFUEL_DATA = {
     "shaanxi-south": {
       "name": "陕西·陕南（汉中、安康、商洛）",
       "priceScope": "陕西省发改委公告的陕南汽油价区（汉中、安康、商洛）；0号柴油采用同一通告中西安市区以外的“其他价区”价格。均为最高零售价，加油站实付价可能不同。",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "陕西省发展和改革委员会",
         "url": "https://sndrc.shaanxi.gov.cn/sy/xwxx/gggg/202609/t20260924_3698846.html"
@@ -6093,7 +6093,7 @@ window.BESFUEL_DATA = {
     "shaanxi-xian": {
       "name": "陕西·西安市区",
       "priceScope": "汽油采用陕西中北部价区（西安市场）的最高零售价；0 号柴油仅采用西安市区价，省内其他市场柴油价不同。单位：元/升。",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "陕西省发展和改革委员会",
         "url": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202609/t20260924_3698846.html"
@@ -6481,7 +6481,7 @@ window.BESFUEL_DATA = {
     "qinghai-zone1": {
       "name": "青海第一价区",
       "priceScope": "青海省发改委价表中的第一价区汽、柴油最高零售价格（元/升）；价区所辖具体地区待省级正式划分文件复核，加油站实付价可能不同。",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "青海省发展和改革委员会",
         "url": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202609/t20260924_92769.html"
@@ -6692,7 +6692,7 @@ window.BESFUEL_DATA = {
     "qinghai-zone2": {
       "name": "青海·二价区",
       "priceScope": "青海省发改委价表中的第二价区汽、柴油最高零售价格（元/升）；价区所辖具体地区待省级正式划分文件复核，加油站实付价可能不同。",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "青海省发展和改革委员会",
         "url": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202609/t20260924_92769.html"
@@ -6903,7 +6903,7 @@ window.BESFUEL_DATA = {
     "qinghai-zone3": {
       "name": "青海·第三价区",
       "priceScope": "青海省发改委价表中的第三价区汽、柴油最高零售价格（元/升）；价区所辖具体地区待省级正式划分文件复核，加油站实付价可能不同。",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "青海省发展和改革委员会",
         "url": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202609/t20260924_92769.html"
@@ -7520,7 +7520,7 @@ window.BESFUEL_DATA = {
     "anhui": {
       "name": "安徽",
       "priceScope": "安徽省汽、柴油最高零售价格（元/升）；省发改委统一发布全省价格表，加油站实付价可能不同。",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "安徽省发展和改革委员会",
         "url": "https://fzggw.ah.gov.cn/ywdt/tzgg/150688401.html"
@@ -8243,7 +8243,7 @@ window.BESFUEL_DATA = {
     "henan": {
       "name": "河南",
       "priceScope": "河南省国VIB车用乙醇汽油和国VI车用柴油最高零售价格（元/升）；加油站可在最高价以内自主定价。",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "河南省发展和改革委员会",
         "url": "https://fgw.henan.gov.cn/2026/09-24/3432590.html"
@@ -9056,7 +9056,7 @@ window.BESFUEL_DATA = {
     "chongqing": {
       "name": "重庆",
       "priceScope": "重庆市公布的全市汽、柴油最高零售价格（元/升）；市发改委公告只有一张全市价表，未列区县价区；加油站实付价可能不同。",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "重庆市发展和改革委员会",
         "url": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202609/t20260924_16130868.html"
