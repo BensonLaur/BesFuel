@@ -53,6 +53,8 @@ npm run smoke
 
 运行 `npm run check:sources` 可只读检查真实官网来源；采集失败会非零退出，详细结果和网络限制见 [来源健康检查](docs/SOURCE_HEALTH.md)。
 
+地区采集可通过阿里云杭州 FC 执行，结果保存到私有 OSS，由 Actions 使用 OIDC 临时身份读取、校验并发布。部署包、最小权限和定时配置见 [FC 采集接入](docs/FC_COLLECTOR.md)。完成云端配置并启用 `BESFUEL_FC_ENABLED` 后切换；广东和原油继续使用原发布任务。
+
 更新地区价格和核验来源的方法见 [数据维护说明](docs/DATA.md)；部署流程与实现边界见 [实施方案](docs/IMPLEMENTATION_PLAN.md)。
 
 ## 项目结构

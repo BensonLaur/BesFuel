@@ -7,7 +7,20 @@ const { reportHealth } = require("./source-health.cjs");
 const root = path.resolve(__dirname, "..");
 const monitorDirectory = path.join(__dirname, "monitors");
 
-async function checkMonitors({ modules, data, reader = makeReaderFactory() } = {}) {
+function classifyMonitor(monitor, latest, snapshot) {
+  if (!officialUrl(latest?.url, monitor.allowedHostnames)) {
+    throw new Error("监测器返回了非官方公告地址");
+  }
+  const stored = snapshot.regions[monitor.id];
+  // Recompute against the publishing checkout: manual reviews can change after collection.
+  const priceChanged = Boolean(stored && latest.prices &&
+    ["92", "95", "diesel"].some(grade => latest.prices[grade] !== stored.grades?.[grade]?.price));
+  const needsReview = !stored || stored.source.url !== latest.url ||
+    latest.requiresManualCoefficientReview === true || priceChanged;
+  return { id: monitor.id, ok: true, latest, stored: Boolean(stored), needsReview };
+}
+
+async function checkMonitors({ modules, data, reader = makeReaderFactory(), today = chinaDate() } = {}) {
   const monitors = modules || (fs.existsSync(monitorDirectory) ?
     fs.readdirSync(monitorDirectory).filter(name => name.endsWith(".cjs")).sort()
       .map(name => require(path.join(monitorDirectory, name))) : []);
@@ -15,18 +28,8 @@ async function checkMonitors({ modules, data, reader = makeReaderFactory() } = {
   const results = [];
   for (const monitor of monitors) {
     try {
-      const latest = await monitor.collect({ ...reader(monitor.allowedHostnames), today: chinaDate() });
-      if (!officialUrl(latest?.url, monitor.allowedHostnames)) {
-        throw new Error("监测器返回了非官方公告地址");
-      }
-      const stored = snapshot.regions[monitor.id];
-      // A government page can be corrected in place without changing its URL.
-      const priceChanged = Boolean(stored && latest.prices &&
-        ["92", "95", "diesel"].some(grade =>
-          latest.prices[grade] !== stored.grades?.[grade]?.price));
-      const needsReview = !stored || stored.source.url !== latest.url ||
-        latest.requiresManualCoefficientReview === true || priceChanged;
-      results.push({ id: monitor.id, ok: true, latest, stored: Boolean(stored), needsReview });
+      const latest = await monitor.collect({ ...reader(monitor.allowedHostnames), today });
+      results.push(classifyMonitor(monitor, latest, snapshot));
     } catch (error) {
       results.push(failureResult(monitor.id, error));
     }
@@ -66,4 +69,4 @@ if (require.main === module) {
   }).catch(error => { console.error(error); process.exitCode = 1; });
 }
 
-module.exports = { checkMonitors, refreshMonitorDates };
+module.exports = { checkMonitors, refreshMonitorDates, classifyMonitor };

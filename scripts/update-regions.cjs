@@ -191,7 +191,7 @@ function writeSnapshot(data, outputJson = jsonPath, outputScript = scriptPath) {
   }
 }
 
-async function updateAll({ sources, initial, today = chinaDate(), reader = makeReaderFactory() } = {}) {
+async function updateAll({ sources, initial, today = chinaDate(), reader = makeReaderFactory(), includeNotices = false } = {}) {
   const data = structuredClone(initial || JSON.parse(fs.readFileSync(jsonPath, "utf8")));
   const modules = sources || (fs.existsSync(sourceDirectory) ?
     fs.readdirSync(sourceDirectory).filter(name => name.endsWith(".cjs")).sort()
@@ -204,7 +204,8 @@ async function updateAll({ sources, initial, today = chinaDate(), reader = makeR
       const notices = await source.collect({ ...reader(source.allowedHostnames), today });
       mergeRegion(next, source, notices, today, hostOverrides);
       Object.assign(data, next);
-      results.push({ id: source.id, ok: true, count: notices.length });
+      results.push({ id: source.id, ok: true, count: notices.length,
+        ...(includeNotices ? { notices: [...notices], latestNotice: notices.latestNotice || null } : {}) });
     } catch (error) {
       results.push(failureResult(source.id, error));
     }
