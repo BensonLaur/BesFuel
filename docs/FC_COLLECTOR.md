@@ -39,7 +39,7 @@ FC 通过同地域 OSS 内网地址写入；Actions 通过 HTTPS 公网地址读
 
 ## 部署正式函数
 
-探测函数 `besfuel-source-probe` 可以保留供诊断。在控制台选择创建 **Web 函数**，新建正式函数 `besfuel-collector`，使用代码包和自定义运行时 Debian 11，上传 `besfuel-fc-collector.zip`。Web 函数提供自定义启动命令；本任务通过控制台/API 和定时器调用，不创建 HTTP 触发器。[创建入口说明](https://help.aliyun.com/zh/functioncompute/creating-a-web-function)
+探测函数 `besfuel-source-probe` 可以保留供诊断。在控制台选择创建 **Web 函数**，新建正式函数 `besfuel-collector`，使用代码包和自定义运行时 Debian 11，上传 `besfuel-fc-collector.zip`。Web 函数提供自定义启动命令；本任务通过控制台/API 和定时器调用。控制台可能自动创建 HTTP 触发器 `defaultTrigger`，创建完成后在“触发器”页删除这一项。[创建入口说明](https://help.aliyun.com/zh/functioncompute/creating-a-web-function)
 
 | 配置 | 值 |
 | --- | --- |
@@ -48,22 +48,18 @@ FC 通过同地域 OSS 内网地址写入；Actions 通过 HTTPS 公网地址读
 | 最小实例数 / 单实例并发 | 0 / 1 |
 | 执行超时 | 900 秒 |
 | 监听端口 | 9000 |
-| 启动命令 | `/bin/bash` |
-| 启动参数 | 第一项 `-c`；第二项见下面的命令 |
+| 启动命令 | 数组模式，Command 仅一项 `/code/runtime/node` |
+| 启动参数 | Args 仅一项 `/code/cloud/fc/server.cjs` |
 | 函数角色 | `besfuel-fc-collector` |
 | 允许默认网卡访问公网 | 开启 |
 | VPC / NAS / OSS 挂载 | 不配置 |
-| HTTP 触发器 | 不创建 |
+| HTTP 触发器 | 删除控制台自动创建的 `defaultTrigger` |
 
-第二项启动参数：
-
-```sh
-chmod 755 /code/runtime/node && exec /code/runtime/node /code/cloud/fc/server.cjs
-```
+数组模式是逐项输入表单，每个输入框直接填写上述路径，不加引号或方括号。部署包已保留 Node.js 的可执行权限，直接启动即可。FC 会拼接 Command 和 Args；旧配置的 `bash -c` 脚本被拆分后会出现 `chmod: missing operand`。已上传 `aa04a48` 版本部署包时，只需修改启动配置，无需重新上传。[自定义运行时启动规则](https://help.aliyun.com/zh/functioncompute/principles-1)
 
 将 `fc-environment.json` 中的 Bucket 和地域填入函数环境变量。Debian 11 的临时角色凭证由 FC 注入 `ALIBABA_CLOUD_ACCESS_KEY_ID`、`ALIBABA_CLOUD_ACCESS_KEY_SECRET` 和 `ALIBABA_CLOUD_SECURITY_TOKEN`，无需手填密钥。程序兼容完整的旧版凭证请求头；请求头缺项时整体使用环境变量，避免混用不同会话的密钥和 Token。成功或异常通过 `x-fc-status` 告知平台。[自定义运行时调用协议](https://help.aliyun.com/zh/functioncompute/web-functions)、[Debian 11 凭证说明](https://help.aliyun.com/zh/functioncompute/context-and-log-format-1)、[系统环境变量](https://help.aliyun.com/zh/functioncompute/environment-variables)
 
-先用 `{}` 手动调用一次。返回 `storage.written: true` 后，确认 OSS 出现对应 `regions/...json`。`healthy: false` 表示部分官网本轮失败，具体失败仍保存在结果内；写入 OSS 本身失败则函数报错，不产生新的结果对象。
+先用 `{}` 手动调用一次；空测试请求会自动按 `{}` 处理。返回 `storage.written: true` 后，确认 OSS 出现对应 `regions/...json`。`healthy: false` 表示部分官网本轮失败，具体失败仍保存在结果内；写入 OSS 本身失败则函数报错，不产生新的结果对象。
 
 再添加定时触发器 `besfuel-regions-twice-daily`，触发消息 `{}`，表达式：
 

@@ -27,7 +27,8 @@ function configuration(accountId, bucket) {
     "deployment.json": { functionName: "besfuel-collector", region: "cn-hangzhou", runtime: "custom.debian11",
       memorySize: 512, cpu: 0.35, diskSize: 512, timeout: 900, instanceConcurrency: 1, minimumInstances: 0,
       role: `acs:ram::${accountId}:role/besfuel-fc-collector`,
-      customRuntimeConfig: { port: 9000, command: ["/bin/bash", "-c", "chmod 755 /code/runtime/node && exec /code/runtime/node /code/cloud/fc/server.cjs"] },
+      // FC joins command and args; direct execution avoids splitting a bash -c script.
+      customRuntimeConfig: { port: 9000, command: ["/code/runtime/node"], args: ["/code/cloud/fc/server.cjs"] },
       internetAccess: true, timer: { name: "besfuel-regions-twice-daily", cronExpression: "CRON_TZ=Asia/Shanghai 0 45 9,19 * * *", payload: "{}" },
       oss: { bucket, prefix, acl: "private", storageClass: "Standard", redundancy: "LRS", versioning: false, expireAfterDays: 7 } }
   };
