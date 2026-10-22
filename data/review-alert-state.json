@@ -3,9 +3,273 @@
   "entries": {
     "liaoning": {
       "signature": "16681fe201cfa8e00b97ed1fb2707c3cfc1ae2b45b2f9e1c29301f4a76395663",
-      "consecutive": 1,
+      "consecutive": 2,
       "alerted": true,
-      "lastRun": "baseline-2026-10-23"
+      "lastRun": "39829921687"
+    },
+    "beijing": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "fujian": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "guangxi": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "inner-mongolia-east": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "inner-mongolia-west": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "jiangsu": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "shanghai": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "shanxi": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "sichuan-zone1": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "sichuan-zone3": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "tianjin": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "anhui": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "chongqing": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "guizhou-zone1": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "guizhou-zone2": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "guizhou-zone3": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "hebei": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "heilongjiang-north": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "heilongjiang-south": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "henan": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "hunan": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "jilin": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "ningxia": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "qinghai-zone1": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "qinghai-zone2": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "qinghai-zone3": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "shaanxi-midnorth": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "shaanxi-south": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "shaanxi-xian": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "shandong": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "sichuan-zone2": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "xinjiang-dushanzi": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "xinjiang-karamay-main": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "xizang-changdu": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "xizang-lhasa": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "xizang-ngari": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "yunnan-kunming": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "yunnan-zone2": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "yunnan-zone3": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "yunnan-zone4": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "yunnan-zone5": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "zhejiang": {
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "hainan": {
+      "signature": "f2c762f2687384651bb71d5144aaa7ea2d4c89f3b4ef95893bb47a63fde9eb0e",
+      "consecutive": 1,
+      "alerted": false,
+      "lastRun": "39829921687"
+    },
+    "jiangxi": {
+      "signature": "383fa79922ceaca615ab414be18fae790a3541c6980ff5082cb33e1824d44831",
+      "consecutive": 1,
+      "alerted": false,
+      "lastRun": "39829921687"
     }
   }
 }
