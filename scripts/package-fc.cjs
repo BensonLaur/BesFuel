@@ -19,7 +19,7 @@ function build(output) {
   const stage = path.join(destination, "package");
   fs.mkdirSync(stage, { recursive: true });
   const files = ["package.json", "package-lock.json", "data/prices.json", "data/verified", "cloud/fc", "scripts/sources", "scripts/monitors",
-    ...["cloud-bundle", "cloud-storage", "cloud-extra", "automatic-tables", "source-health", "source-errors", "source-transport", "update-regions", "check-monitors", "validate-data", "nmg-unchanged"].map(name => `scripts/${name}.cjs`)];
+    ...["cloud-bundle", "cloud-storage", "cloud-extra", "cloud-evidence", "automatic-tables", "source-health", "source-errors", "source-transport", "update-regions", "check-monitors", "validate-data", "nmg-unchanged"].map(name => `scripts/${name}.cjs`)];
   for (const file of files) {
     const target = path.join(stage, file);
     fs.mkdirSync(path.dirname(target), { recursive: true });

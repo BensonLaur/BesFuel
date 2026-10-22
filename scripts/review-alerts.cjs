@@ -13,7 +13,8 @@ function problem(result) {
   const category = result.failure?.category || "validation";
   return { type: category, detail: category === "validation" ? result.error.slice(0, 500) :
     `官方来源持续访问失败（${category}${result.failure?.status ? ` ${result.failure.status}` : ""}）`,
-  url: result.failure?.url || "", immediate: category === "validation" };
+  url: result.failure?.url || result.latest?.url || "", immediate: category === "validation",
+  ...(category === "validation" && result.evidenceFingerprint ? { evidence: result.evidenceFingerprint } : {}) };
 }
 function planAlerts(report, previous, runKey) {
   assert.equal(report.version, 1, "核价报告格式异常");
@@ -24,7 +25,7 @@ function planAlerts(report, previous, runKey) {
     assert.match(result.id, /^[a-z][a-z0-9-]*$/);
     const current = problem(result), prior = state.entries[result.id];
     if (!current) {
-      if (prior?.alerted) actions.push({ id: result.id, kind: "resolve" });
+      if (prior?.alerted || prior?.openIssue) actions.push({ id: result.id, kind: "resolve" });
       state.entries[result.id] = { signature: null, consecutive: 0, alerted: false, lastRun: runKey };
       continue;
     }
@@ -32,6 +33,9 @@ function planAlerts(report, previous, runKey) {
     const same = prior?.signature === signature;
     const consecutive = same ? prior.consecutive + (prior.lastRun === runKey ? 0 : 1) : 1;
     const entry = { signature, consecutive, alerted: same ? prior.alerted : false, lastRun: runKey };
+    // A previous alert can still be open while a different transient error is
+    // awaiting its three-run threshold. Recovery must close that old issue too.
+    if (prior?.openIssue || prior?.alerted) entry.openIssue = true;
     if (!entry.alerted && (current.immediate || consecutive >= 3)) {
       actions.push({ id: result.id, kind: "alert", ...current, signature });
       entry.alerted = true;

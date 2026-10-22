@@ -11,6 +11,8 @@ const { collectTable } = require("./automatic-tables.cjs");
 const { publishingReader } = require("./publish-reader.cjs");
 const { readHunan } = require("./automatic-hunan.cjs");
 const { validateExtras } = require("./cloud-extra.cjs");
+const { applyDocuments } = require("./automatic-documents.cjs");
+const { GROUPS } = require("./cloud-evidence.cjs");
 const root = path.resolve(__dirname, "..");
 
 // Only these audited adapters already enforce the retail/litre column and all
@@ -42,7 +44,12 @@ function acceptParsedMonitors(bundle, initial, options = {}) {
     try {
       data = acceptMonitor(data, result, today);
       return { ...result, needsReview: false, automatic: true };
-    } catch (error) { return failureResult(result.id, error); }
+    } catch (error) {
+      data.regions[result.id] = structuredClone(initial.regions[result.id]);
+      const failed = failureResult(result.id, error);
+      failed.failure.url ||= result.latest?.url || "";
+      return failed;
+    }
   });
   return { data, sources: replay.sources, monitors: results };
 }
@@ -70,6 +77,7 @@ async function runAutomatic({ bundle, initial, today = chinaDate(), reader = pub
     } catch (error) {
       data.regions.hunan = structuredClone(initial.regions.hunan);
       Object.assign(hunan, failureResult("hunan", error));
+      hunan.failure.url ||= hunan.latest.url;
     }
   }
   for (const id of ["hainan", "jiangxi"]) {
@@ -87,8 +95,9 @@ async function runAutomatic({ bundle, initial, today = chinaDate(), reader = pub
       direct.push({ id, ok: true, automatic: true, transport: relay ? "FC" : "GitHub", count: notices.length, latest: notices.at(-1) });
     } catch (error) { direct.push(failureResult(id, error)); }
   }
-  validateSnapshot(data);
-  return { ...replay, data, direct };
+  const documents = bundle ? await applyDocuments(bundle, initial, data, replay.monitors) : { data, monitors: replay.monitors };
+  validateSnapshot(documents.data);
+  return { ...replay, ...documents, direct };
 }
 async function main() {
   const file = process.argv[2];
@@ -104,8 +113,13 @@ async function main() {
   reportHealth("FC 地区自动采集", result.sources);
   reportHealth("自动核价后的 FC 公告检查", result.monitors);
   reportHealth("海南、江西官方价表自动采集", result.direct);
+  const documentIds = Object.values(GROUPS).flat();
+  const automaticDocumentCount = result.monitors.filter(item => documentIds.includes(item.id) && item.automatic && item.ok).length;
+  console.log(bundle?.evidence ? `正文及附件自动核价：${automaticDocumentCount}/${documentIds.length} 个价区通过` :
+    "当前 FC 未提供第二轮原始附件；相关价区维持原公告监测，尚未启用新增自动核价。");
   const reportFile = process.env.BESFUEL_REVIEW_REPORT || path.join(root, ".automatic-review.json");
   fs.writeFileSync(reportFile, JSON.stringify({ version: 1, checkedAt: chinaDate(),
+    documentEvidenceReceived: Boolean(bundle?.evidence), automaticDocumentCount,
     results: [...result.sources, ...result.monitors, ...result.direct] }, null, 2));
 }
 if (require.main === module) main().catch(error => { console.error(error.message); process.exitCode = 1; });

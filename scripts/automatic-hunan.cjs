@@ -17,8 +17,14 @@ async function readHunan(latest, reader, execute = promisify(execFile)) {
   const directory = fs.mkdtempSync(path.join(os.tmpdir(), "besfuel-xls-")), file = path.join(directory, "prices.xls");
   try {
     fs.writeFileSync(file, buffer);
-    const result = await execute(process.env.BESFUEL_PYTHON || "python", [path.join(__dirname, "read-hunan-xls.py"), file, latest.publishedDate],
-      { windowsHide: true, timeout: 20000, maxBuffer: 10000, encoding: "utf8", env: { ...process.env, PYTHONIOENCODING: "utf-8" } });
+    let result;
+    try {
+      result = await execute(process.env.BESFUEL_PYTHON || "python", [path.join(__dirname, "read-hunan-xls.py"), file, latest.publishedDate],
+        { windowsHide: true, timeout: 20000, maxBuffer: 10000, encoding: "utf8", env: { ...process.env, PYTHONIOENCODING: "utf-8" } });
+    } catch (error) {
+      // Random temp paths must not turn one unresolved XLS error into new alerts.
+      throw new Error(`湖南 XLS 解析未通过：${String(error.stderr || error.code || error.name).replaceAll(directory, "<temp>").trim()}`);
+    }
     return { ...latest, prices: JSON.parse(result.stdout), requiresManualLiterReview: false,
       attachmentSha256: crypto.createHash("sha256").update(buffer).digest("hex") };
   } finally {
