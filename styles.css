@@ -139,6 +139,77 @@ a { color: inherit; }
 .data-notes p { margin: 7px 0; color: #798e7f; font-size: 12px; line-height: 1.7; }
 .site-footer { display: flex; justify-content: space-between; gap: 16px; padding: 25px 0 0; border-top: 1px solid #dbe7dd; color: #8a9c8d; font-size: 11px; }
 
+.crude-trigger { display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0; margin-top: 2px; padding: 8px 10px; border: 1px solid #dce9de; border-radius: 9px; background: #f4f8f4; color: #327353; font-size: 11px; font-weight: 600; }
+.crude-trigger:hover { background: #eaf4ed; border-color: #bad6c3; }
+.crude-trigger span { font-size: 14px; }
+.crude-dialog { width: min(860px, calc(100vw - 28px)); max-height: calc(100dvh - 36px); padding: 28px 30px 22px; overflow: auto; border: 1px solid #d7e6d9; border-radius: 23px; background: #fff; color: #18362e; box-shadow: 0 24px 90px #102e2240; }
+.crude-dialog::backdrop { background: #102e2275; backdrop-filter: blur(3px); }
+.crude-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.crude-head h2 { margin: 8px 0 0; font-size: 27px; letter-spacing: -.04em; }
+.crude-head .support-close { flex-shrink: 0; }
+.crude-description { margin: 10px 0 22px; color: #7b8f81; font-size: 12px; line-height: 1.6; }
+.crude-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.crude-switch { display: flex; gap: 4px; padding: 4px; border: 1px solid #e1ebe2; border-radius: 11px; background: #f4f7f3; }
+.crude-switch button { padding: 8px 15px; border: 0; border-radius: 7px; background: transparent; color: #7a8f7e; font-size: 13px; }
+.crude-switch button[aria-pressed="true"] { background: #fff; color: #19573c; box-shadow: 0 2px 6px #1d463510; font-weight: 700; }
+.crude-unit { color: #87988c; font-size: 11px; white-space: nowrap; }
+.crude-quote { display: flex; justify-content: space-between; align-items: center; gap: 18px; margin: 25px 0 8px; }
+.crude-quote > div:first-child { min-width: 0; }
+.crude-series-label { display: block; color: #6b8373; font-size: 12px; line-height: 1.7; }
+.crude-value-line { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px 14px; margin: 3px 0 5px; font-variant-numeric: tabular-nums; }
+.crude-value-line strong { color: #174c36; font-size: 48px; line-height: 1.15; letter-spacing: -.06em; }
+.crude-value-line > span { font-size: 14px; font-weight: 650; }
+.crude-value-line .up { color: #b45246; }
+.crude-value-line .down { color: #25815b; }
+.crude-quote p { margin: 0; color: #8a9a8e; font-size: 11px; }
+.crude-quote-time { display: flex; flex-shrink: 0; flex-direction: column; align-items: flex-end; gap: 7px; color: #829587; font-size: 11px; line-height: 1.5; text-align: right; }
+.crude-badge { padding: 4px 8px; border: 1px solid #d8e7dc; border-radius: 6px; color: #47795a; background: #f2f7f2; }
+.crude-badge.provisional { color: #8e713f; border-color: #eddfc4; background: #fcf8ee; }
+.crude-status { margin: 13px 0 6px; padding: 9px 11px; border-radius: 8px; background: #fbf5e9; color: #876d3f; font-size: 11px; line-height: 1.6; }
+.crude-status[hidden] { display: none; }
+.crude-chart { position: relative; height: 270px; margin-top: 12px; border-radius: 12px; background: #fcfdfb; overflow: hidden; }
+.crude-chart > svg { display: block; width: 100%; height: 100%; }
+.crude-grid { stroke: #e5ede4; stroke-width: 1; }
+.crude-axis { fill: #8c9b90; font-size: 10px; font-family: inherit; font-variant-numeric: tabular-nums; }
+.crude-line { fill: none; stroke: #328365; stroke-width: 2.3; stroke-linejoin: round; stroke-linecap: round; }
+.crude-line.provisional { stroke-dasharray: 4 5; }
+.crude-reference-line { stroke: #a5bfae; stroke-width: 1; stroke-dasharray: 3 5; opacity: .7; }
+.crude-endpoint { fill: #328365; stroke: #fff; stroke-width: 2; }
+.crude-endpoint.provisional { fill: #fff; stroke: #328365; }
+.crude-active-point { fill: #fff; stroke: #1f6c4c; stroke-width: 2.5; }
+.crude-guide { stroke: #7cab8e; stroke-width: 1; stroke-dasharray: 3 4; }
+.crude-hits { position: absolute; inset: 0; }
+.crude-hit { position: absolute; top: 0; height: 100%; padding: 0; border: 0; background: transparent; cursor: crosshair; }
+.crude-hit:focus-visible { outline: none; }
+.crude-tooltip { position: absolute; top: 4px; z-index: 2; max-width: 100%; padding: 7px 10px; border-radius: 7px; color: #fff; background: #1c563d; font-size: 11px; line-height: 1.5; pointer-events: none; box-shadow: 0 3px 10px #153a2620; }
+.crude-tooltip[hidden] { display: none; }
+.crude-chart-meta { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px 12px; margin: 11px 0 15px; color: #8b9b8e; font-size: 10px; line-height: 1.6; }
+.crude-legend-dot { display: inline-block; width: 6px; height: 6px; margin: 0 3px 1px 8px; border: 1px solid #328365; border-radius: 50%; background: #328365; }
+.crude-legend-dot.provisional { background: #fff; }
+.crude-periods { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; padding: 5px; border: 1px solid #e7eee5; border-radius: 11px; background: #f7f9f5; }
+.crude-periods button { padding: 10px 8px; border: 0; border-radius: 7px; background: transparent; color: #86968a; font-size: 12px; }
+.crude-periods button[aria-pressed="true"] { background: #e5f1e6; color: #2b6a47; font-weight: 700; }
+.crude-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-top: 20px; color: #8b9b8e; font-size: 11px; }
+.crude-bottom a, .crude-external a { color: #3f7958; text-underline-offset: 3px; }
+.crude-note { margin: 10px 0 0; color: #8a9a8d; font-size: 11px; line-height: 1.75; }
+.crude-external { display: flex; flex-wrap: wrap; gap: 5px 12px; margin-top: 16px; padding-top: 13px; border-top: 1px solid #e8eee7; color: #8b9b8e; font-size: 11px; }
+.crude-external small { font-size: inherit; }
+.crude-empty { display: grid; place-items: center; height: 100%; margin: 0; padding: 24px; color: #839589; font-size: 13px; line-height: 1.8; text-align: center; }
+@media (max-width: 600px) {
+  .crude-dialog { width: calc(100vw - 20px); max-height: calc(100dvh - 20px); padding: 20px 16px 18px; border-radius: 18px; }
+  .crude-head h2 { font-size: 23px; }
+  .crude-description { margin-bottom: 18px; font-size: 11px; }
+  .crude-quote { align-items: flex-start; flex-direction: column; gap: 12px; margin-top: 20px; }
+  .crude-quote-time { flex-direction: row; align-items: center; flex-wrap: wrap; gap: 5px 8px; text-align: left; font-size: 10px; }
+  .crude-value-line strong { font-size: 44px; }
+  .crude-value-line > span { font-size: 12px; }
+  .crude-chart { height: 235px; margin-top: 8px; }
+  .crude-chart-meta { margin-bottom: 12px; }
+  .crude-switch button { padding: 8px 11px; font-size: 12px; }
+  .crude-bottom { margin-top: 16px; }
+  .crude-trigger { padding: 7px 8px; font-size: 10px; }
+}
+
 @media (max-width: 800px) {
   .page-shell { max-width: 540px; padding: 18px 16px 25px; }
   .page-intro { padding: 42px 2px 27px; }

@@ -11,6 +11,9 @@ const { readDevToolsPort } = require("./helpers/browser-port.cjs");
 
 const root = path.resolve(__dirname, "..");
 const snapshot = JSON.parse(fs.readFileSync(path.join(root, "data", "prices.json"), "utf8"));
+const crudeSnapshot = JSON.parse(fs.readFileSync(path.join(root, "data", "crude-prices.json"), "utf8"));
+const crudeModel = require("../lib/crude.js");
+const alternateProvider = crudeModel.providers[crudeModel.providerId(crudeSnapshot.series.wti) === "sina" ? "eastmoney" : "sina"];
 const guangdong = snapshot.regions.guangdong;
 const national = snapshot.nationalAdjustment;
 const dateParts = Object.fromEntries(new Intl.DateTimeFormat("en-GB", {
@@ -113,6 +116,48 @@ async function main() {
     assert.equal(await evaluate("document.getElementById('latest-notice-source').href"), guangdong.latestNotice.sourceUrl);
     assert.ok(await evaluate(`document.getElementById('latest-notice-source').textContent.includes(${JSON.stringify(guangdong.latestNotice.date)})`));
   }
+  await evaluate("document.getElementById('open-crude').focus(); document.getElementById('open-crude').click()");
+  assert.equal(await evaluate("document.getElementById('crude-dialog').open"), true);
+  const crudeQuote = crudeSnapshot.series.wti.intraday || crudeSnapshot.series.wti.history.at(-1);
+  assert.equal(await evaluate("document.getElementById('crude-price').textContent"), crudeQuote.price.toFixed(2));
+  assert.ok(await evaluate(`document.getElementById('crude-asof').textContent.includes(${JSON.stringify(crudeQuote.date)})`));
+  assert.equal(await evaluate("document.querySelectorAll('#crude-dialog iframe').length"), 0);
+  assert.equal(await evaluate("document.querySelector('.crude-endpoint').classList.contains('provisional')"), Boolean(crudeSnapshot.series.wti.intraday));
+  const monthCount = await evaluate("document.querySelectorAll('.crude-hit').length");
+  await evaluate("document.querySelector('[data-crude-days=\"180\"]').click()");
+  assert.ok(await evaluate("document.querySelectorAll('.crude-hit').length") > monthCount);
+  await evaluate("document.querySelector('[data-crude-series=\"brent\"]').click()");
+  const brentQuote = crudeSnapshot.series.brent.intraday || crudeSnapshot.series.brent.history.at(-1);
+  assert.equal(await evaluate("document.getElementById('crude-price').textContent"), brentQuote.price.toFixed(2));
+  assert.equal(await evaluate("document.getElementById('crude-source').href"), crudeSnapshot.series.brent.sourceUrl);
+  await evaluate("document.querySelector('.crude-hit').focus()");
+  assert.ok(await evaluate("!document.querySelector('.crude-tooltip').hidden"));
+  await send("Input.dispatchKeyEvent", { type: "keyDown", key: "End", code: "End", windowsVirtualKeyCode: 35 });
+  await send("Input.dispatchKeyEvent", { type: "keyUp", key: "End", code: "End", windowsVirtualKeyCode: 35 });
+  assert.ok(await evaluate(`document.querySelector('.crude-tooltip').textContent.includes(${JSON.stringify(brentQuote.date)})`));
+  await evaluate("document.querySelector('.crude-hit').dispatchEvent(new PointerEvent('pointerenter', { pointerType: 'mouse' }))");
+  await send("Input.dispatchKeyEvent", { type: "keyDown", key: "End", code: "End", windowsVirtualKeyCode: 35 });
+  await send("Input.dispatchKeyEvent", { type: "keyUp", key: "End", code: "End", windowsVirtualKeyCode: 35 });
+  assert.ok(await evaluate(`document.querySelector('.crude-tooltip').textContent.includes(${JSON.stringify(brentQuote.date)})`));
+  await evaluate("document.querySelector('[data-crude-days=\"30\"]').click()");
+  for (const width of [320, 390, 1280]) {
+    await send("Emulation.setDeviceMetricsOverride", { width, height: 900, deviceScaleFactor: 1, mobile: width < 600 });
+    await delay(80);
+    assert.ok(await evaluate("(() => { const d = document.getElementById('crude-dialog'); return d.scrollWidth <= d.clientWidth && document.documentElement.scrollWidth <= innerWidth; })()"), `crude modal must fit ${width}px`);
+    await evaluate("document.querySelectorAll('.crude-hit')[0].click()");
+    assert.ok(await evaluate("(() => { const tip = document.querySelector('.crude-tooltip').getBoundingClientRect(); const box = document.getElementById('crude-chart').getBoundingClientRect(); return tip.left >= box.left - 1 && tip.right <= box.right + 1; })()"), "crude tooltip fits chart");
+    if (process.env.BESFUEL_SCREENSHOT) {
+      const target = path.parse(process.env.BESFUEL_SCREENSHOT);
+      await evaluate("document.getElementById('close-crude').focus(); document.getElementById('crude-dialog').scrollTop = 0");
+      const shot = await send("Page.captureScreenshot", { format: "png" });
+      fs.writeFileSync(path.join(target.dir, `${target.name}-crude-${width}${target.ext}`), Buffer.from(shot.data, "base64"));
+    }
+  }
+  await send("Input.dispatchKeyEvent", { type: "keyDown", key: "Escape", code: "Escape", windowsVirtualKeyCode: 27 });
+  await send("Input.dispatchKeyEvent", { type: "keyUp", key: "Escape", code: "Escape", windowsVirtualKeyCode: 27 });
+  assert.equal(await evaluate("document.getElementById('crude-dialog').open"), false);
+  assert.equal(await evaluate("document.activeElement.id"), "open-crude");
+  await send("Emulation.setDeviceMetricsOverride", { width: 390, height: 1500, deviceScaleFactor: 1, mobile: true });
   const initialHistory = buildHistory(guangdong, "92", todayIso);
   assert.equal(await evaluate("document.querySelectorAll('.chart-point').length"), initialHistory.points.length);
   assert.equal(await evaluate("document.querySelectorAll('.chart-hit').length"), initialHistory.points.length);
@@ -367,10 +412,62 @@ async function main() {
   assert.equal(await evaluate("document.getElementById('prediction-source').hidden"), true);
   assert.equal(await evaluate("document.getElementById('trip-total').textContent"), expectedTotal(7.77));
   await send("Emulation.setDeviceMetricsOverride", { width: 390, height: 1500, deviceScaleFactor: 1, mobile: true });
+  let crudeResponseMode = "valid";
   server = http.createServer((request, response) => {
     const pathname = new URL(request.url, "http://localhost").pathname;
     const allowed = new Map([["/", "index.html"], ["/index.html", "index.html"], ["/styles.css", "styles.css"],
-      ["/app.js", "app.js"], ["/data/prices.js", "data/prices.js"], ["/lib/calc.js", "lib/calc.js"], ["/lib/history.js", "lib/history.js"]]);
+      ["/app.js", "app.js"], ["/data/prices.js", "data/prices.js"], ["/lib/calc.js", "lib/calc.js"], ["/lib/history.js", "lib/history.js"],
+      ["/crude-ui.js", "crude-ui.js"], ["/lib/crude.js", "lib/crude.js"], ["/data/crude-prices.js", "data/crude-prices.js"]]);
+    if (pathname === "/data/crude-prices.json") {
+      response.setHeader("Content-Type", "application/json; charset=utf-8");
+      const fresh = structuredClone(crudeSnapshot);
+      delete fresh.collection;
+      if (crudeResponseMode === "alternate" || crudeResponseMode === "alternate-partly-older") {
+        fresh.updatedAt = new Date(Math.max(Date.parse(fresh.updatedAt), Date.parse(crudeSnapshot.collection?.checkedAt || fresh.updatedAt)) + 1000).toISOString();
+        for (const [id, series] of Object.entries(fresh.series)) {
+          const provider = alternateProvider;
+          Object.assign(series, provider.instruments[id], { sourceName: provider.name, basis: provider.basis, fetchedAt: fresh.updatedAt });
+          series.history = series.history.slice(-12);
+          (series.intraday || series.history.at(-1)).price += .11;
+        }
+        if (crudeResponseMode === "alternate-partly-older") {
+          fresh.series.brent.fetchedAt = new Date(Date.parse(crudeSnapshot.series.brent.fetchedAt) - 60000).toISOString();
+        }
+      }
+      if (crudeResponseMode === "invalid") delete fresh.series.wti;
+      if (crudeResponseMode === "older") {
+        fresh.updatedAt = new Date(Date.parse(fresh.updatedAt) - 60000).toISOString();
+        for (const series of Object.values(fresh.series)) series.fetchedAt = new Date(Date.parse(series.fetchedAt) - 60000).toISOString();
+        (fresh.series.wti.intraday || fresh.series.wti.history.at(-1)).price += 10;
+      }
+      if (["auto-yahoo", "auto-yahoo-old-status", "auto-outage", "auto-recovered"].includes(crudeResponseMode)) {
+        const recovered = crudeResponseMode === "auto-recovered";
+        const providerId = recovered ? "eastmoney" : "yahoo";
+        const provider = crudeModel.providers[providerId];
+        const baseTime = Math.max(Date.parse(crudeSnapshot.updatedAt), Date.parse(crudeSnapshot.collection?.checkedAt || crudeSnapshot.updatedAt));
+        fresh.updatedAt = new Date(baseTime + (recovered ? 4000 : 2000)).toISOString();
+        for (const [id, series] of Object.entries(fresh.series)) {
+          Object.assign(series, provider.instruments[id], { sourceName: provider.name, basis: provider.basis, fetchedAt: fresh.updatedAt });
+          series.history = series.history.slice(-12);
+          (series.intraday || series.history.at(-1)).price += recovered ? .33 : .22;
+        }
+        const outage = crudeResponseMode === "auto-outage" || crudeResponseMode === "auto-yahoo-old-status";
+        fresh.collection = {
+          mode: "auto", activeProvider: providerId, outcome: outage ? "retained" : "updated",
+          checkedAt: new Date(baseTime + (recovered ? 4000 : outage ? 3000 : 2000)).toISOString(),
+          switchedFrom: outage ? null : recovered ? "yahoo" : (alternateProvider === crudeModel.providers.yahoo ? "eastmoney" : Object.keys(crudeModel.providers).find(id => crudeModel.providers[id] === alternateProvider)),
+          attempts: recovered ? [{ provider: "eastmoney", ok: true, reason: "" }] : outage
+            ? crudeModel.providerPriority.map(provider => ({ provider, ok: false, reason: "test outage" }))
+            : [{ provider: "eastmoney", ok: false, reason: "test outage" }, { provider: "yahoo", ok: true, reason: "" }]
+        };
+        if (crudeResponseMode === "auto-yahoo-old-status") {
+          fresh.collection.checkedAt = new Date(baseTime + 1000).toISOString();
+          fresh.updatedAt = fresh.collection.checkedAt;
+          for (const series of Object.values(fresh.series)) series.fetchedAt = fresh.updatedAt;
+        }
+      }
+      response.end(JSON.stringify(fresh)); return;
+    }
     if (pathname === "/data/prices.json") {
       const snapshot = JSON.parse(fs.readFileSync(path.join(root, "data", "prices.json"), "utf8"));
       snapshot.regions.guangdong.grades["92"].price = Number((guangdong.grades["92"].price + .07).toFixed(2));
@@ -400,6 +497,107 @@ async function main() {
   assert.equal(await evaluate("document.getElementById('current-price').textContent"), (guangdong.grades["92"].price + .07).toFixed(2));
   assert.equal(await evaluate("document.getElementById('trip-price').value"), "10");
   assert.equal(await evaluate("document.getElementById('trip-total').textContent"), "8.10");
+  await evaluate("document.getElementById('open-crude').click()");
+  await delay(150);
+  assert.equal(await evaluate("document.getElementById('crude-price').textContent"), crudeQuote.price.toFixed(2));
+  await evaluate("document.getElementById('close-crude').click()");
+  crudeResponseMode = "invalid";
+  await evaluate("document.getElementById('open-crude').click()");
+  for (let attempt = 0; attempt < 30; attempt++) {
+    if (await evaluate("document.getElementById('crude-status').textContent.includes('继续显示')")) break;
+    await delay(50);
+  }
+  assert.ok(await evaluate("document.getElementById('crude-status').textContent.includes('继续显示')"));
+  assert.equal(await evaluate("document.getElementById('crude-price').textContent"), crudeQuote.price.toFixed(2));
+  assert.equal(await evaluate("document.getElementById('trip-total').textContent"), "8.10");
+  await evaluate("document.getElementById('close-crude').click()");
+  crudeResponseMode = "older";
+  await evaluate("document.getElementById('open-crude').click()");
+  await delay(150);
+  assert.equal(await evaluate("document.getElementById('crude-price').textContent"), crudeQuote.price.toFixed(2), "older crude JSON must not replace loaded data");
+  await evaluate("document.getElementById('close-crude').click()");
+  crudeResponseMode = "alternate-partly-older";
+  await evaluate("document.getElementById('open-crude').click()");
+  await delay(150);
+  assert.equal(await evaluate("document.getElementById('crude-price').textContent"), crudeQuote.price.toFixed(2), "source change cannot replace only one curve");
+  assert.equal(await evaluate("document.getElementById('crude-source').textContent"), `${crudeModel.providers[crudeModel.providerId(crudeSnapshot.series.wti)].displayName} ↗`);
+  await evaluate("document.getElementById('close-crude').click()");
+  crudeResponseMode = "alternate";
+  await evaluate("document.getElementById('open-crude').click()");
+  for (let attempt = 0; attempt < 30; attempt++) {
+    if (await evaluate("document.getElementById('crude-source').textContent") === `${alternateProvider.displayName} ↗`) break;
+    await delay(50);
+  }
+  assert.equal(await evaluate("document.getElementById('crude-source').textContent"), `${alternateProvider.displayName} ↗`);
+  assert.equal(await evaluate("document.getElementById('crude-basis').textContent"), alternateProvider.basis === "cfd-daily"
+    ? "CFD 差价合约日线 · 第三方参考" : alternateProvider.basis === "nymex-futures-daily"
+      ? "NYMEX 期货日线 · 第三方参考" : "期货连续日线 · 第三方参考");
+  assert.equal(await evaluate("document.getElementById('crude-price').textContent"), (crudeQuote.price + .11).toFixed(2));
+  assert.ok(await evaluate("document.querySelectorAll('.crude-hit').length <= 13"), "source change replaces whole history rather than splicing curves");
+  await evaluate("document.querySelector('[data-crude-series=\"brent\"]').click()");
+  assert.equal(await evaluate("document.getElementById('crude-source').href"), alternateProvider.instruments.brent.sourceUrl);
+  assert.equal(await evaluate("document.getElementById('crude-price').textContent"), (brentQuote.price + .11).toFixed(2));
+  for (const width of [320, 1280]) {
+    await send("Emulation.setDeviceMetricsOverride", { width, height: 900, deviceScaleFactor: 1, mobile: width < 600 });
+    assert.ok(await evaluate("(() => { const d = document.getElementById('crude-dialog'); return d.scrollWidth <= d.clientWidth && document.documentElement.scrollWidth <= innerWidth; })()"), `backup source display must fit ${width}px`);
+    if (process.env.BESFUEL_SCREENSHOT) {
+      const target = path.parse(process.env.BESFUEL_SCREENSHOT);
+      await evaluate("document.getElementById('close-crude').focus(); document.getElementById('crude-dialog').scrollTop = 0");
+      const shot = await send("Page.captureScreenshot", { format: "png" });
+      fs.writeFileSync(path.join(target.dir, `${target.name}-backup-${width}${target.ext}`), Buffer.from(shot.data, "base64"));
+    }
+  }
+  await evaluate("document.getElementById('close-crude').click()");
+  crudeResponseMode = "auto-yahoo";
+  await evaluate("document.querySelector('[data-crude-series=\"wti\"]').click(); document.getElementById('open-crude').click(); document.getElementById('close-crude').click(); document.getElementById('open-crude').click()");
+  for (let attempt = 0; attempt < 50; attempt++) {
+    if (await evaluate("document.getElementById('crude-source').textContent") === "Yahoo Finance ↗") break;
+    await delay(50);
+  }
+  assert.equal(await evaluate("document.getElementById('crude-source').textContent"), "Yahoo Finance ↗");
+  assert.equal(await evaluate("document.getElementById('crude-source').href"), crudeModel.providers.yahoo.instruments.wti.sourceUrl);
+  assert.equal(await evaluate("document.getElementById('crude-basis').textContent"), "NYMEX 期货日线 · 第三方参考");
+  assert.ok(await evaluate("document.getElementById('crude-status').textContent.includes('切换为 Yahoo Finance')"));
+  assert.equal(await evaluate("document.getElementById('crude-price').textContent"), (crudeQuote.price + .22).toFixed(2));
+  const yahooCollectionTime = await evaluate("document.getElementById('crude-collected').textContent");
+  for (const width of [320, 1280]) {
+    await send("Emulation.setDeviceMetricsOverride", { width, height: 1000, deviceScaleFactor: 1, mobile: width < 600 });
+    assert.ok(await evaluate("(() => { const d = document.getElementById('crude-dialog'); return d.scrollWidth <= d.clientWidth && document.documentElement.scrollWidth <= innerWidth; })()"), `automatic source message fits ${width}px`);
+    if (process.env.BESFUEL_SCREENSHOT) {
+      const target = path.parse(process.env.BESFUEL_SCREENSHOT);
+      await evaluate("document.getElementById('close-crude').focus(); document.getElementById('crude-dialog').scrollTop = 0");
+      const shot = await send("Page.captureScreenshot", { format: "png" });
+      fs.writeFileSync(path.join(target.dir, `${target.name}-auto-yahoo-${width}${target.ext}`), Buffer.from(shot.data, "base64"));
+    }
+  }
+  await evaluate("document.getElementById('close-crude').click()");
+  crudeResponseMode = "auto-yahoo-old-status";
+  await evaluate("document.getElementById('open-crude').click()");
+  await delay(200);
+  assert.ok(await evaluate("!document.getElementById('crude-status').textContent.includes('更新未成功')"), "older check status must not replace the latest result");
+  await evaluate("document.getElementById('close-crude').click()");
+  crudeResponseMode = "auto-outage";
+  await evaluate("document.getElementById('open-crude').click()");
+  for (let attempt = 0; attempt < 50; attempt++) {
+    if (await evaluate("document.getElementById('crude-status').textContent.includes('更新未成功')")) break;
+    await delay(50);
+  }
+  assert.ok(await evaluate("document.getElementById('crude-status').textContent.includes('更新未成功')"));
+  assert.equal(await evaluate("document.getElementById('crude-collected').textContent"), yahooCollectionTime);
+  assert.equal(await evaluate("document.getElementById('crude-price').textContent"), (crudeQuote.price + .22).toFixed(2));
+  await evaluate("document.getElementById('close-crude').click()");
+  crudeResponseMode = "auto-recovered";
+  await evaluate("document.getElementById('open-crude').click()");
+  for (let attempt = 0; attempt < 50; attempt++) {
+    if (await evaluate("document.getElementById('crude-source').textContent") === "Eastmoney ↗") break;
+    await delay(50);
+  }
+  assert.equal(await evaluate("document.getElementById('crude-source').textContent"), "Eastmoney ↗");
+  assert.ok(await evaluate("document.getElementById('crude-status').textContent.includes('切换为 Eastmoney')"));
+  assert.ok(await evaluate("!document.getElementById('crude-status').textContent.includes('更新未成功')"));
+  assert.equal(await evaluate("document.getElementById('crude-price').textContent"), (crudeQuote.price + .33).toFixed(2));
+  assert.equal(await evaluate("document.getElementById('trip-total').textContent"), "8.10");
+  await evaluate("document.getElementById('close-crude').click()");
   if (process.env.BESFUEL_DEPLOY_URL) {
     await send("Page.navigate", { url: process.env.BESFUEL_DEPLOY_URL });
     for (let attempt = 0; attempt < 100; attempt++) {

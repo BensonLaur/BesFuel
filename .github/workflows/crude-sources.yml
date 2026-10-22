@@ -1,0 +1,40 @@
+name: 验证原油来源直连
+
+on:
+  push:
+    branches: [codex/crude-auto-update]
+    paths:
+      - '.github/workflows/crude-sources.yml'
+      - 'scripts/update-crude.cjs'
+      - 'lib/crude.js'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check-source:
+    name: 直连 ${{ matrix.source }}
+    runs-on: windows-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        source: [eastmoney, yahoo, sina]
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+      - name: 验证两个品种及历史完整性
+        shell: pwsh
+        env:
+          CRUDE_SOURCE: ${{ matrix.source }}
+          BESFUEL_YAHOO_PROXY: ''
+        run: |
+          npm run update:crude -- --source=$env:CRUDE_SOURCE --check
+          $checkExit = $LASTEXITCODE
+          "原油直连来源：$env:CRUDE_SOURCE；退出码：$checkExit。仅检查，不改快照、不提交、不部署。" | Out-File -FilePath $env:GITHUB_STEP_SUMMARY -Append -Encoding utf8
+          exit $checkExit

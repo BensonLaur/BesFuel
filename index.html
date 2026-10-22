@@ -8,9 +8,12 @@
   <title>BesFuel · 油价随行</title>
   <link rel="stylesheet" href="styles.css">
   <script defer src="data/prices.js"></script>
+  <script defer src="data/crude-prices.js"></script>
   <script defer src="lib/calc.js"></script>
   <script defer src="lib/history.js"></script>
+  <script defer src="lib/crude.js"></script>
   <script defer src="app.js"></script>
+  <script defer src="crude-ui.js"></script>
 </head>
 <body>
   <div class="page-shell">
@@ -61,7 +64,7 @@
         </section>
 
         <section class="adjustment-card card" aria-labelledby="adjustment-heading">
-          <div class="section-heading"><div><p class="card-kicker">下一轮变化</p><h2 id="adjustment-heading">调价观察</h2></div></div>
+          <div class="section-heading"><div><p class="card-kicker">下一轮变化</p><h2 id="adjustment-heading">调价观察</h2></div><button class="crude-trigger" id="open-crude" type="button" aria-haspopup="dialog" aria-controls="crude-dialog">原油趋势参考 <span aria-hidden="true">↗</span></button></div>
           <div class="adjustment-pair">
             <div><span>下次调价窗口</span><strong id="next-window">待核实</strong><small id="window-detail">以主管部门公告为准</small><small class="adjustment-sources"><a id="window-rule-source" href="#data-notes" target="_blank" rel="noopener noreferrer" hidden>调价规则 ↗</a><a id="window-holiday-source" href="#data-notes" target="_blank" rel="noopener noreferrer" hidden>放假安排 ↗</a></small></div>
             <div><span id="prediction-label">市场估算 · 全国参考</span><strong id="prediction" class="prediction-value"><span id="prediction-arrow" class="prediction-arrow" aria-hidden="true" hidden></span><span id="prediction-text">暂无本轮可靠预估</span></strong><small id="prediction-status" hidden>已超过两天，等待本轮更新；仅作历史参考</small><small id="prediction-detail">预测会与正式价格分开显示</small><small class="adjustment-sources"><a id="prediction-source" href="#data-notes" target="_blank" rel="noopener noreferrer" hidden>查看预测来源 ↗</a></small></div>
@@ -102,6 +105,35 @@
     </main>
     <footer class="site-footer"><span>BesFuel · 油价随行</span><span>为每一程，留一笔明白账。</span></footer>
   </div>
+  <dialog class="crude-dialog" id="crude-dialog" aria-labelledby="crude-title" aria-describedby="crude-description">
+    <div class="crude-head">
+      <div><p class="card-kicker">国际市场 · 趋势参考</p><h2 id="crude-title">看懂原油的起伏</h2></div>
+      <button class="support-close" id="close-crude" type="button" aria-label="关闭原油趋势">×</button>
+    </div>
+    <p class="crude-description" id="crude-description">关注国际原油近期走势，为国内调价提供一个观察角度。</p>
+    <div class="crude-toolbar">
+      <div class="crude-switch" role="group" aria-label="选择原油品种">
+        <button type="button" data-crude-series="wti" aria-pressed="true">WTI 原油</button>
+        <button type="button" data-crude-series="brent" aria-pressed="false">布伦特原油</button>
+      </div>
+      <span class="crude-unit">美元 / 桶</span>
+    </div>
+    <div class="crude-quote">
+      <div><span class="crude-series-label" id="crude-series-label">WTI 原油（West Texas Intermediate；主要代表美国市场）</span><div class="crude-value-line"><strong id="crude-price">—</strong><span id="crude-change"></span></div><p id="crude-comparison">正在读取价格快照…</p></div>
+      <div class="crude-quote-time"><span class="crude-badge" id="crude-kind">日线参考</span><span id="crude-asof">—</span><span id="crude-collected">—</span></div>
+    </div>
+    <p class="crude-status" id="crude-status" role="status" hidden></p>
+    <div class="crude-chart" id="crude-chart" role="group" aria-label="原油价格走势图"></div>
+    <div class="crude-chart-meta"><span id="crude-range">—</span><span><i class="crude-legend-dot" aria-hidden="true"></i> 已完成日线 <i class="crude-legend-dot provisional" aria-hidden="true"></i> 盘中快照</span></div>
+    <div class="crude-periods" role="group" aria-label="选择原油趋势时间范围">
+      <button type="button" data-crude-days="30" aria-pressed="true">近 1 个月</button>
+      <button type="button" data-crude-days="90" aria-pressed="false">近 3 个月</button>
+      <button type="button" data-crude-days="180" aria-pressed="false">近 6 个月</button>
+    </div>
+    <div class="crude-bottom"><span id="crude-basis">期货连续日线 · 第三方参考</span><a id="crude-source" target="_blank" rel="noopener noreferrer">Eastmoney ↗</a></div>
+    <p class="crude-note">实线为已完成日线，虚线及空心点为尚未完成的盘中快照，均按采集时点展示。连续合约换月可能影响曲线；原油涨跌不等同于国内下一轮调价幅度。</p>
+    <div class="crude-external"><span>更多盘中行情</span><a id="crude-live" target="_blank" rel="noopener noreferrer">TradingView ↗</a><small>部分网络可能无法访问</small></div>
+  </dialog>
   <dialog class="support-dialog" id="support-dialog" aria-labelledby="support-title">
     <div class="support-head">
       <div><p class="card-kicker">自愿支持</p><h2 id="support-title">给 BesFuel 加点油</h2></div>
