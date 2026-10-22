@@ -85,9 +85,13 @@ npm run validate:crude
 | Yahoo Finance | 能直连返回行情，但两种原油均因 OHLC 不完整被拒绝；本机经代理复核发现 10-21 的 `close` 为 `null` |
 | Sina Finance | 两个品种均通过；各 199 条已完成日线，截至 10-21，另有 10-22 盘中快照 |
 
-Yahoo 本次验证失败不等于网络不可达，也不能把 HTTP 成功当作数据可用。保持原有校验：缺少收盘价时不补值、不跳过这条部分缺失记录；自动模式继续尝试 Sina。三源仍按既定顺序尝试，Yahoo 只有在数据恢复完整并通过校验后才会被采用。
+Yahoo 早间验证失败不等于网络不可达，也不能把 HTTP 成功当作数据可用。保持原有校验：缺少收盘价时不补值、不跳过这条部分缺失记录；自动模式继续尝试 Sina。三源仍按既定顺序尝试，Yahoo 只有在数据恢复完整并通过校验后才会被采用。
+
+2026-10-22 北京时间 20:05，以相同校验规则完成 [晚间三源直连复测](https://github.com/BensonLaur/BesFuel/actions/runs/39775517088)，Eastmoney、Yahoo Finance、Sina Finance 全部通过。Yahoo 的 WTI 和布伦特均取得 199 条已完成日线（截至 10-21），另有 10-22 盘中快照；此前缺失收盘字段的问题已恢复。本次没有放宽 OHLC 校验，后续仍逐次检查，不能由这次成功推定上游长期稳定。
 
 正式流程复用 `.github/workflows/pages.yml` 的北京时间每天 10:00、20:00 定时任务及手动、main 推送触发。原油快照和成品油快照一并提交和打包；定时任务可能延迟，不承诺实时行情。访客不直接访问第三方接口。
+
+2026-10-22 首次完整接入后的 [正式采集与 Pages 发布](https://github.com/BensonLaur/BesFuel/actions/runs/39775549077)成功：Actions 中 251 项测试、更新器故障测试、站点打包和浏览器检查全部通过。实际发布的原油快照由 Eastmoney 于北京时间 20:12 采集；发布后再次验证线上弹窗、曲线、来源标签、手机布局，以及线上 JSON 与离线副本和部署提交的一致性，均通过。
 
 `npm run update:crude:ci` 写入本轮检查摘要。所有来源失败时仅在旧 JSON/JS 一致且有效的条件下继续发布，并记录 Actions 警告和页面失败状态；快照损坏、写入或测试失败时停止部署。普通 `npm run update:crude` 全部失败仍以非零退出。`npm run build` 后可设置 `$env:BESFUEL_SITE_DIR = 'public'` 再执行 `npm run smoke`，直接检查将上传的站点产物。
 
