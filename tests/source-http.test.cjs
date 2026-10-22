@@ -26,7 +26,7 @@ test("request-header compatibility is scoped and TLS fallback only handles the v
 });
 
 test("request failures retain URL and nested DNS, timeout and TLS causes", async () => {
-  for (const [code, category] of [["ENOTFOUND", "dns"], ["UND_ERR_CONNECT_TIMEOUT", "timeout"], ["ERR_SSL_BAD_ECPOINT", "tls"]]) {
+  for (const [code, category] of [["ENOTFOUND", "dns"], ["UND_ERR_CONNECT_TIMEOUT", "timeout"], ["ETIMEDOUT", "timeout"], ["ERR_SSL_BAD_ECPOINT", "tls"]]) {
     const cause = Object.assign(new Error("underlying failure"), { code });
     const reader = makeReader([host], { fetcher: async () => { throw new TypeError("fetch failed", { cause }); } });
     await assert.rejects(reader.getText(url), error => {

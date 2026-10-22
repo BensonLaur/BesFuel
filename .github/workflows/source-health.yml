@@ -20,6 +20,10 @@ jobs:
       matrix:
         os: [windows-latest, ubuntu-latest]
     timeout-minutes: 25
+    env:
+      # Government endpoints may need more than Node's default 250 ms before
+      # trying the next IPv4/IPv6 address from the hosted runner.
+      NODE_OPTIONS: --network-family-autoselection-attempt-timeout=2000
     steps:
       - uses: actions/checkout@v6
         with:
