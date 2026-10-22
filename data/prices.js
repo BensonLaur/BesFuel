@@ -1,7 +1,7 @@
 // Generated from data/prices.json; do not edit directly.
 window.BESFUEL_DATA = {
   "version": 2,
-  "checkedAt": "2026-10-22",
+  "checkedAt": "2026-10-23",
   "regions": {
     "guangdong": {
       "name": "广东",
@@ -1037,7 +1037,7 @@ window.BESFUEL_DATA = {
     "jilin": {
       "name": "吉林",
       "priceScope": "吉林省成品油最高零售价格（元/升）；92、95 号乙醇汽油和 0 号车用柴油",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "吉林省发展和改革委员会",
         "url": "https://jldrc.jl.gov.cn/ztzl/nyzyjg/202609/t20260924_3672674.html"
@@ -2136,7 +2136,7 @@ window.BESFUEL_DATA = {
     "heilongjiang-south": {
       "name": "黑龙江南区",
       "priceScope": "黑龙江省南区（哈尔滨、牡丹江、大庆、鸡西、七台河、绥芬河）汽、柴油最高零售吨价按官方夏季系数折算为元/升；实际成交价可能更低。",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "黑龙江省发展和改革委员会",
         "url": "https://drc.hlj.gov.cn/drc/c111486/202609/c00_31979097.shtml"
@@ -2338,7 +2338,7 @@ window.BESFUEL_DATA = {
     "heilongjiang-north": {
       "name": "黑龙江北区",
       "priceScope": "黑龙江省北区（齐齐哈尔、佳木斯、双鸭山、伊春、黑河、鹤岗、绥化、大兴安岭、抚远）汽、柴油最高零售吨价按官方夏季系数折算为元/升；实际成交价可能更低。",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "黑龙江省发展和改革委员会",
         "url": "https://drc.hlj.gov.cn/drc/c111486/202609/c00_31979097.shtml"
@@ -7309,7 +7309,7 @@ window.BESFUEL_DATA = {
     "xizang-lhasa": {
       "name": "西藏拉萨价区",
       "priceScope": "西藏自治区拉萨价区（拉萨、日喀则、山南、林芝、那曲）汽、柴油最高零售价格（元/升）；加油站实付价可能不同。",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "西藏自治区发展和改革委员会",
         "url": "https://drc.xizang.gov.cn/fgdt/jggl/202609/t20260924_560588.html"
@@ -7821,7 +7821,7 @@ window.BESFUEL_DATA = {
     "xizang-ngari": {
       "name": "西藏·阿里价区",
       "priceScope": "西藏自治区阿里价区（阿里地区）汽、柴油最高零售价格（元/升）；与拉萨、昌都价区分别定价，加油站实付价可能不同。",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "西藏自治区发展和改革委员会",
         "url": "https://drc.xizang.gov.cn/fgdt/jggl/202609/t20260924_560588.html"
@@ -8032,7 +8032,7 @@ window.BESFUEL_DATA = {
     "xizang-changdu": {
       "name": "西藏昌都价区",
       "priceScope": "西藏自治区发改委公布的昌都价区（昌都市）汽、柴油最高零售价格，单位元/升；加油站实际成交价可能不同。",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "西藏自治区发展和改革委员会",
         "url": "https://drc.xizang.gov.cn/fgdt/jggl/202609/t20260924_560588.html"
@@ -8544,7 +8544,7 @@ window.BESFUEL_DATA = {
     "shandong": {
       "name": "山东",
       "priceScope": "山东省公布的汽、柴油最高零售价格（元/升）；省级公告仅列全省一张价格表，未另列市县价区；加油站实付价可能不同。",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "威海市发展和改革委员会（山东省价表）",
         "url": "https://fgw.weihai.gov.cn/art/2026/9/24/art_53887_6642605.html"
@@ -8755,7 +8755,7 @@ window.BESFUEL_DATA = {
     "ningxia": {
       "name": "宁夏",
       "priceScope": "宁夏市场车用汽油、柴油最高零售价格（元/升）；加油站实付价可能不同。",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "宁夏回族自治区发展和改革委员会",
         "url": "https://fzggw.nx.gov.cn/tzgg/202609/t20260924_5357138.html"
@@ -9267,7 +9267,7 @@ window.BESFUEL_DATA = {
     "xinjiang-karamay-main": {
       "name": "新疆·克拉玛依（克拉玛依、白碱滩、乌尔禾）",
       "priceScope": "克拉玛依市克拉玛依区、白碱滩区、乌尔禾区各加油站成品油最高零售价格（元/升）；实付价可能不同。",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "克拉玛依市发展和改革委员会",
         "url": "https://www.klmy.gov.cn/klmys/c100186/202609/12cf558ed5584d25b75d1f4e709f8746.shtml"
@@ -9568,7 +9568,7 @@ window.BESFUEL_DATA = {
     "xinjiang-dushanzi": {
       "name": "新疆·克拉玛依（独山子区）",
       "priceScope": "克拉玛依市独山子区加油站成品油最高零售价格（元/升）；依市发改委公告独山子区列核录，0号柴油价格不同于克拉玛依、白碱滩、乌尔禾区。实际成交价可能不同。",
-      "checkedAt": "2026-10-22",
+      "checkedAt": "2026-10-23",
       "source": {
         "name": "克拉玛依市发展和改革委员会",
         "url": "https://www.klmy.gov.cn/klmys/c100186/202609/12cf558ed5584d25b75d1f4e709f8746.shtml"
