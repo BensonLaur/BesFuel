@@ -158,7 +158,8 @@ test("custom runtime forwards temporary credentials and signals invocation error
   await new Promise(resolve => server.listen(0, "127.0.0.1", resolve));
   t.after(() => { server.closeAllConnections(); server.close(); });
   const url = `http://127.0.0.1:${server.address().port}/invoke`;
-  const options = { method: "POST", headers: { "x-fc-security-token": "temporary-test-token" } };
+  const options = { method: "POST", headers: { "x-fc-access-key-id": "temporary-test-id",
+    "x-fc-access-key-secret": "temporary-test-secret", "x-fc-security-token": "temporary-test-token" } };
   const ok = await fetch(url, { ...options, body: "{}" });
   assert.equal(ok.headers.get("x-fc-status"), "200");
   assert.deepEqual(await ok.json(), { ok: true });
@@ -166,6 +167,38 @@ test("custom runtime forwards temporary credentials and signals invocation error
   assert.equal(failed.status, 500);
   assert.equal(failed.headers.get("x-fc-status"), "404");
   assert.deepEqual(await failed.json(), { error: "mock storage failure" });
+});
+
+test("Debian 11 invocations use complete role credentials from the environment", async t => {
+  const runtimeEnv = { ALIBABA_CLOUD_ACCESS_KEY_ID: "environment-test-id",
+    ALIBABA_CLOUD_ACCESS_KEY_SECRET: "environment-test-secret", ALIBABA_CLOUD_SECURITY_TOKEN: "environment-test-token" };
+  const server = createServer(async (body, context) => {
+    assert.deepEqual(context.credentials, { accessKeyId: runtimeEnv.ALIBABA_CLOUD_ACCESS_KEY_ID,
+      accessKeySecret: runtimeEnv.ALIBABA_CLOUD_ACCESS_KEY_SECRET, securityToken: runtimeEnv.ALIBABA_CLOUD_SECURITY_TOKEN });
+    // Construct the real OSS client without sending a network request. Missing
+    // role credentials must fail before collection or publishing begins.
+    createStore({ env, credentials: context.credentials });
+    return { ok: true };
+  }, { env: runtimeEnv });
+  await new Promise(resolve => server.listen(0, "127.0.0.1", resolve));
+  t.after(() => { server.closeAllConnections(); server.close(); });
+  const url = `http://127.0.0.1:${server.address().port}/invoke`;
+  const invoke = headers => fetch(url, { method: "POST", headers, body: "{}" });
+  for (const headers of [{}, { "x-fc-access-key-id": "other-session-id", "x-fc-access-key-secret": "other-session-secret" }]) {
+    const result = await invoke(headers);
+    assert.equal(result.status, 200);
+    assert.deepEqual(await result.json(), { ok: true });
+  }
+  // A warm server resolves credentials per invocation instead of capturing them at startup.
+  runtimeEnv.ALIBABA_CLOUD_SECURITY_TOKEN = "renewed-environment-token";
+  assert.equal((await invoke({})).status, 200);
+  delete runtimeEnv.ALIBABA_CLOUD_SECURITY_TOKEN;
+  const missing = await invoke({});
+  assert.equal(missing.status, 500);
+  assert.equal(missing.headers.get("x-fc-status"), "404");
+  const error = (await missing.json()).error;
+  assert.match(error, /缺少临时 OSS 凭证/);
+  assert.ok(!error.includes(runtimeEnv.ALIBABA_CLOUD_ACCESS_KEY_SECRET));
 });
 
 test("invalid cloud file leaves both browser and JSON snapshots untouched", t => {

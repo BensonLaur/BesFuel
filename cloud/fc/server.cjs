@@ -2,7 +2,7 @@
 const http = require("node:http");
 const { execute } = require("./index.cjs");
 
-function createServer(handler = execute) {
+function createServer(handler = execute, { env = process.env } = {}) {
   let running = false;
   return http.createServer(async (request, response) => {
     const send = (status, body) => {
@@ -20,8 +20,15 @@ function createServer(handler = execute) {
         if (bytes > 128 * 1024) throw new Error("FC 事件过大");
         chunks.push(chunk);
       }
-      const context = { credentials: { accessKeyId: request.headers["x-fc-access-key-id"],
-        accessKeySecret: request.headers["x-fc-access-key-secret"], securityToken: request.headers["x-fc-security-token"] } };
+      const headers = { accessKeyId: request.headers["x-fc-access-key-id"],
+        accessKeySecret: request.headers["x-fc-access-key-secret"], securityToken: request.headers["x-fc-security-token"] };
+      // Debian 11 omits the token header and injects role credentials into the
+      // environment. Select a whole credential set; never mix different sessions.
+      const completeHeaders = Object.values(headers).every(value => typeof value === "string" && value.length > 0);
+      const context = { credentials: completeHeaders ? headers : {
+        accessKeyId: env.ALIBABA_CLOUD_ACCESS_KEY_ID, accessKeySecret: env.ALIBABA_CLOUD_ACCESS_KEY_SECRET,
+        securityToken: env.ALIBABA_CLOUD_SECURITY_TOKEN
+      } };
       const result = await handler(Buffer.concat(chunks).toString("utf8") || "{}", context);
       send(200, result);
     } catch (error) {

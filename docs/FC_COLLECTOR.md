@@ -39,7 +39,7 @@ FC 通过同地域 OSS 内网地址写入；Actions 通过 HTTPS 公网地址读
 
 ## 部署正式函数
 
-探测函数 `besfuel-source-probe` 可以保留供诊断。新建正式函数 `besfuel-collector`，使用代码包和自定义运行时 Debian 11，上传 `besfuel-fc-collector.zip`。
+探测函数 `besfuel-source-probe` 可以保留供诊断。在控制台选择创建 **Web 函数**，新建正式函数 `besfuel-collector`，使用代码包和自定义运行时 Debian 11，上传 `besfuel-fc-collector.zip`。Web 函数提供自定义启动命令；本任务通过控制台/API 和定时器调用，不创建 HTTP 触发器。[创建入口说明](https://help.aliyun.com/zh/functioncompute/creating-a-web-function)
 
 | 配置 | 值 |
 | --- | --- |
@@ -61,7 +61,7 @@ FC 通过同地域 OSS 内网地址写入；Actions 通过 HTTPS 公网地址读
 chmod 755 /code/runtime/node && exec /code/runtime/node /code/cloud/fc/server.cjs
 ```
 
-将 `fc-environment.json` 中的 Bucket 和地域填入函数环境变量。运行时从 FC 的请求头取得临时凭证，成功或异常通过 `x-fc-status` 告知平台。[自定义运行时调用协议](https://help.aliyun.com/zh/functioncompute/web-functions)、[凭证请求头](https://help.aliyun.com/zh/functioncompute/context-and-log-format-1)
+将 `fc-environment.json` 中的 Bucket 和地域填入函数环境变量。Debian 11 的临时角色凭证由 FC 注入 `ALIBABA_CLOUD_ACCESS_KEY_ID`、`ALIBABA_CLOUD_ACCESS_KEY_SECRET` 和 `ALIBABA_CLOUD_SECURITY_TOKEN`，无需手填密钥。程序兼容完整的旧版凭证请求头；请求头缺项时整体使用环境变量，避免混用不同会话的密钥和 Token。成功或异常通过 `x-fc-status` 告知平台。[自定义运行时调用协议](https://help.aliyun.com/zh/functioncompute/web-functions)、[Debian 11 凭证说明](https://help.aliyun.com/zh/functioncompute/context-and-log-format-1)、[系统环境变量](https://help.aliyun.com/zh/functioncompute/environment-variables)
 
 先用 `{}` 手动调用一次。返回 `storage.written: true` 后，确认 OSS 出现对应 `regions/...json`。`healthy: false` 表示部分官网本轮失败，具体失败仍保存在结果内；写入 OSS 本身失败则函数报错，不产生新的结果对象。
 
