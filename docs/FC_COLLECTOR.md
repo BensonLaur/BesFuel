@@ -75,7 +75,7 @@ CRON_TZ=Asia/Shanghai 0 45 9,19 * * *
 
 创建角色 `besfuel-github-read`，信任策略使用 `github-role-trust.json`。该策略限定 BesFuel 仓库的 `main` 分支。创建自定义策略 `BesFuelGithubReadSnapshots`，内容为 `github-oss-policy.json`，附加到该角色：只能列举 `regions/` 并读取该前缀内的对象，不能写入、删除或修改 Bucket。
 
-Actions 取数任务单独运行，不绑定 `github-pages` environment，因此 OIDC 主体为 `repo:BensonLaur/BesFuel:ref:refs/heads/main`。不要把角色信任条件扩大到任意仓库或任意分支。
+Actions 取数任务单独运行，不绑定 `github-pages` environment。此仓库已启用 GitHub 的不可变主体格式，经 `gh api repos/BensonLaur/BesFuel/actions/oidc/customization/sub` 核验，`sub_claim_prefix` 为 `repo:BensonLaur@11558955/BesFuel@1392534028`，因此信任策略中的 `oidc:sub` 必须精确填写 `repo:BensonLaur@11558955/BesFuel@1392534028:ref:refs/heads/main`。旧的不带数字 ID 的格式会触发 `AuthenticationFail.NoPermission`。迁移或重命名仓库后，应重新查询实际主体配置；不要把角色信任条件扩大到任意仓库或任意分支。[GitHub 不可变主体说明](https://docs.github.com/en/actions/reference/security/oidc#immutable-subject-claims)
 
 在仓库 Actions Variables 中填入 `github-variables.json` 的配置：
 

@@ -19,7 +19,8 @@ function configuration(accountId, bucket) {
     "github-role-trust.json": { Version: "1", Statement: [{ Effect: "Allow", Action: "sts:AssumeRole",
       Principal: { Federated: [provider] }, Condition: { StringEquals: {
         "oidc:iss": "https://token.actions.githubusercontent.com", "oidc:aud": "sts.aliyuncs.com",
-        "oidc:sub": "repo:BensonLaur/BesFuel:ref:refs/heads/main"
+        // Verified via this repository's actions/oidc/customization/sub endpoint.
+        "oidc:sub": "repo:BensonLaur@11558955/BesFuel@1392534028:ref:refs/heads/main"
       } } }] },
     "github-variables.json": { BESFUEL_FC_ENABLED: "true", BESFUEL_OSS_BUCKET: bucket,
       BESFUEL_ALIYUN_OIDC_PROVIDER_ARN: provider, BESFUEL_ALIYUN_READ_ROLE_ARN: `acs:ram::${accountId}:role/besfuel-github-read` },

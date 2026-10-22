@@ -217,7 +217,7 @@ test("generated policies scope cloud writes and GitHub reads to the dedicated pr
   const config = configuration("1234567890123456", "besfuel-test-bucket");
   assert.deepEqual(config["fc-oss-policy.json"].Statement[0].Action, ["oss:PutObject"]);
   assert.deepEqual(config["github-oss-policy.json"].Statement[0].Action, ["oss:GetObject"]);
-  assert.equal(config["github-role-trust.json"].Statement[0].Condition.StringEquals["oidc:sub"], "repo:BensonLaur/BesFuel:ref:refs/heads/main");
+  assert.equal(config["github-role-trust.json"].Statement[0].Condition.StringEquals["oidc:sub"], "repo:BensonLaur@11558955/BesFuel@1392534028:ref:refs/heads/main");
   assert.equal(config["deployment.json"].minimumInstances, 0);
   assert.throws(() => configuration("1234567890123456", "bucket/escape"));
 });
