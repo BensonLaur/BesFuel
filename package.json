@@ -14,6 +14,7 @@
     "validate:crude": "node scripts/update-crude.cjs --validate",
     "update:regions": "node scripts/update-regions.cjs",
     "check:monitors": "node scripts/check-monitors.cjs",
+    "check:sources": "node scripts/audit-sources.cjs",
     "smoke": "node tests/browser-smoke.cjs",
     "build": "node scripts/build-site.cjs",
     "preview": "node scripts/serve-local.cjs"

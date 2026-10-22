@@ -34,9 +34,12 @@ async function probeCurl(requests) {
         "--silent", "--show-error", "--ipv4", "--noproxy", "*", "--connect-timeout", "8", "--max-time", "20",
         "--output", process.platform === "win32" ? "NUL" : "/dev/null", "--write-out", "%{http_code} %{remote_ip} %{ssl_verify_result}", url
       ], { windowsHide: true, timeout: 25000, maxBuffer: 100000 });
-      results.push({ url, ok: true, response: result.stdout.trim(), stderr: result.stderr.trim() });
+      const status = Number(result.stdout.trim().split(/\s+/)[0]);
+      results.push({ url, ok: status >= 200 && status < 300, transportOk: true, status,
+        response: result.stdout.trim(), stderr: result.stderr.trim() });
     } catch (error) {
-      results.push({ url, ok: false, code: error.code, response: String(error.stdout || "").trim(), error: String(error.stderr || error.message).trim() });
+      results.push({ url, ok: false, transportOk: false, code: error.code,
+        response: String(error.stdout || "").trim(), error: String(error.stderr || error.message).trim() });
     }
     console.log("curl comparison", JSON.stringify(results.at(-1)));
   }

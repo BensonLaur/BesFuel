@@ -9,7 +9,7 @@ function reportHealth(title, results, summaryFile = process.env.GITHUB_STEP_SUMM
   const count = counts(results);
   const headline = `${title}：${count.total} 项，核对通过 ${count.passed}，采集失败 ${count.failed}，待人工复核 ${count.review}`;
   console.log(headline);
-  if (process.env.GITHUB_ACTIONS && (count.failed || count.review)) {
+  if (process.env.GITHUB_ACTIONS && summaryFile && (count.failed || count.review)) {
     console.warn(`::warning::${headline}。发布成功不代表所有地区核对成功；失败地区保留旧数据和核对日期。`);
   }
   if (summaryFile) {

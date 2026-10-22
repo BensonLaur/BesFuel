@@ -51,6 +51,8 @@ npm run build
 npm run smoke
 ```
 
+运行 `npm run check:sources` 可只读检查真实官网来源；采集失败会非零退出，详细结果和网络限制见 [来源健康检查](docs/SOURCE_HEALTH.md)。
+
 更新地区价格和核验来源的方法见 [数据维护说明](docs/DATA.md)；部署流程与实现边界见 [实施方案](docs/IMPLEMENTATION_PLAN.md)。
 
 ## 项目结构
