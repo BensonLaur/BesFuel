@@ -1,12 +1,12 @@
 // Generated from data/prices.json; do not edit directly.
 window.BESFUEL_DATA = {
   "version": 2,
-  "checkedAt": "2026-10-26",
+  "checkedAt": "2026-10-27",
   "regions": {
     "guangdong": {
       "name": "广东",
       "priceScope": "广东省公布的全省最高销售价格；加油站实际成交价可能不同。",
-      "checkedAt": "2026-10-26",
+      "checkedAt": "2026-10-27",
       "source": {
         "name": "广东省发展和改革委员会",
         "url": "https://drc.gd.gov.cn/ywgg/content/post_4960317.html"
@@ -7520,7 +7520,7 @@ window.BESFUEL_DATA = {
     "anhui": {
       "name": "安徽",
       "priceScope": "安徽省汽、柴油最高零售价格（元/升）；省发改委统一发布全省价格表，加油站实付价可能不同。",
-      "checkedAt": "2026-10-25",
+      "checkedAt": "2026-10-26",
       "source": {
         "name": "安徽省发展和改革委员会",
         "url": "https://fzggw.ah.gov.cn/ywdt/tzgg/150688401.html"
