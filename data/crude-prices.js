@@ -2,7 +2,7 @@
 window.BESFUEL_CRUDE_DATA = {
   "version": 1,
   "usage": "third-party-reference",
-  "updatedAt": "2026-10-26T18:22:51.189Z",
+  "updatedAt": "2026-10-27T07:25:33.288Z",
   "series": {
     "wti": {
       "name": "WTI 原油",
@@ -12,12 +12,8 @@ window.BESFUEL_CRUDE_DATA = {
       "currency": "USD",
       "unit": "barrel",
       "basis": "continuous-futures-daily",
-      "fetchedAt": "2026-10-26T18:22:51.189Z",
+      "fetchedAt": "2026-10-27T07:25:33.288Z",
       "history": [
-        {
-          "date": "2026-01-19",
-          "price": 59.43
-        },
         {
           "date": "2026-01-20",
           "price": 59.52
@@ -809,11 +805,15 @@ window.BESFUEL_CRUDE_DATA = {
         {
           "date": "2026-10-23",
           "price": 103.44
+        },
+        {
+          "date": "2026-10-26",
+          "price": 101.25
         }
       ],
       "intraday": {
-        "date": "2026-10-26",
-        "price": 102.03
+        "date": "2026-10-27",
+        "price": 101.96
       }
     },
     "brent": {
@@ -824,12 +824,8 @@ window.BESFUEL_CRUDE_DATA = {
       "currency": "USD",
       "unit": "barrel",
       "basis": "continuous-futures-daily",
-      "fetchedAt": "2026-10-26T18:22:51.189Z",
+      "fetchedAt": "2026-10-27T07:25:33.288Z",
       "history": [
-        {
-          "date": "2026-01-19",
-          "price": 64.18
-        },
         {
           "date": "2026-01-20",
           "price": 64
@@ -1621,18 +1617,22 @@ window.BESFUEL_CRUDE_DATA = {
         {
           "date": "2026-10-23",
           "price": 117.38
+        },
+        {
+          "date": "2026-10-26",
+          "price": 110.15
         }
       ],
       "intraday": {
-        "date": "2026-10-26",
-        "price": 110.97
+        "date": "2026-10-27",
+        "price": 111.04
       }
     }
   },
   "collection": {
     "mode": "auto",
     "outcome": "updated",
-    "checkedAt": "2026-10-26T18:22:51.189Z",
+    "checkedAt": "2026-10-27T07:25:33.288Z",
     "activeProvider": "eastmoney",
     "attempts": [
       {
