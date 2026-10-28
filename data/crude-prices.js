@@ -2,7 +2,7 @@
 window.BESFUEL_CRUDE_DATA = {
   "version": 1,
   "usage": "third-party-reference",
-  "updatedAt": "2026-10-27T17:37:00.320Z",
+  "updatedAt": "2026-10-28T01:01:15.603Z",
   "series": {
     "wti": {
       "name": "WTI 原油",
@@ -12,12 +12,8 @@ window.BESFUEL_CRUDE_DATA = {
       "currency": "USD",
       "unit": "barrel",
       "basis": "continuous-futures-daily",
-      "fetchedAt": "2026-10-27T17:37:00.320Z",
+      "fetchedAt": "2026-10-28T01:01:15.603Z",
       "history": [
-        {
-          "date": "2026-01-20",
-          "price": 59.52
-        },
         {
           "date": "2026-01-21",
           "price": 60.67
@@ -809,11 +805,15 @@ window.BESFUEL_CRUDE_DATA = {
         {
           "date": "2026-10-26",
           "price": 101.25
+        },
+        {
+          "date": "2026-10-27",
+          "price": 100.2
         }
       ],
       "intraday": {
-        "date": "2026-10-27",
-        "price": 100.09
+        "date": "2026-10-28",
+        "price": 100.4
       }
     },
     "brent": {
@@ -824,12 +824,8 @@ window.BESFUEL_CRUDE_DATA = {
       "currency": "USD",
       "unit": "barrel",
       "basis": "continuous-futures-daily",
-      "fetchedAt": "2026-10-27T17:37:00.320Z",
+      "fetchedAt": "2026-10-28T01:01:15.603Z",
       "history": [
-        {
-          "date": "2026-01-20",
-          "price": 64
-        },
         {
           "date": "2026-01-21",
           "price": 64.62
@@ -1621,18 +1617,22 @@ window.BESFUEL_CRUDE_DATA = {
         {
           "date": "2026-10-26",
           "price": 110.15
+        },
+        {
+          "date": "2026-10-27",
+          "price": 109.74
         }
       ],
       "intraday": {
-        "date": "2026-10-27",
-        "price": 109.63
+        "date": "2026-10-28",
+        "price": 109.86
       }
     }
   },
   "collection": {
     "mode": "auto",
     "outcome": "updated",
-    "checkedAt": "2026-10-27T17:37:00.320Z",
+    "checkedAt": "2026-10-28T01:01:15.603Z",
     "activeProvider": "eastmoney",
     "attempts": [
       {

@@ -10231,14 +10231,14 @@
       "holidaySourceUrl": "https://www.beijing.gov.cn/cs/gncs/zcwj/202603/t20260327_4568275.html"
     },
     "forecast": {
-      "direction": null,
-      "amountPerLiter": null,
-      "description": null,
-      "sourceName": null,
-      "sourceUrl": null,
-      "updatedAt": null,
-      "windowDate": null,
-      "workday": null
+      "direction": "up",
+      "amountPerLiter": 0.29,
+      "description": "预计上调约 0.29 元/升",
+      "sourceName": "团友网",
+      "sourceUrl": "https://www.tuanyou.net/yuanyou/bianhualv/831.html",
+      "updatedAt": "2026-10-27",
+      "windowDate": "2026-10-29",
+      "workday": 8
     }
   }
 }
