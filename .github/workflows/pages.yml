@@ -77,7 +77,6 @@ jobs:
       issues: write
     env:
       NODE_OPTIONS: --network-family-autoselection-attempt-timeout=2000
-      BESFUEL_FORECAST_REPORT: ${{ runner.temp }}/market-forecast.json
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -95,6 +94,8 @@ jobs:
           path: ${{ runner.temp }}/fc-regions
       - name: 核对广东官方油价
         shell: pwsh
+        env:
+          BESFUEL_FORECAST_REPORT: ${{ runner.temp }}/market-forecast.json
         run: |
           powershell -NoProfile -File .\scripts\update-guangdong.ps1
           if ($LASTEXITCODE -ne 0) {
@@ -121,6 +122,7 @@ jobs:
         shell: pwsh
         env:
           BESFUEL_REVIEW_REPORT: ${{ runner.temp }}/automatic-review.json
+          BESFUEL_FORECAST_REPORT: ${{ runner.temp }}/market-forecast.json
           BESFUEL_FC_ENABLED: ${{ vars.BESFUEL_FC_ENABLED }}
         run: |
           if ($env:BESFUEL_FC_ENABLED -eq 'true') {
