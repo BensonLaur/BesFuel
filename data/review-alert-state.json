@@ -3,285 +3,285 @@
   "entries": {
     "liaoning": {
       "signature": "16681fe201cfa8e00b97ed1fb2707c3cfc1ae2b45b2f9e1c29301f4a76395663",
-      "consecutive": 20,
+      "consecutive": 21,
       "alerted": true,
-      "lastRun": "40654056828",
+      "lastRun": "40741827985",
       "openIssue": true
     },
     "beijing": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     },
     "fujian": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     },
     "guangxi": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     },
     "inner-mongolia-east": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     },
     "inner-mongolia-west": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     },
     "jiangsu": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     },
     "shanghai": {
-      "signature": null,
-      "consecutive": 0,
+      "signature": "9c66491fc16a7c0d0cf12a55f8211dad5094227378639efd5b7354a54b4d12c0",
+      "consecutive": 1,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     },
     "shanxi": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     },
     "sichuan-zone1": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     },
     "sichuan-zone3": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     },
     "tianjin": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     },
     "anhui": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     },
     "chongqing": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     },
     "guizhou-zone1": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     },
     "guizhou-zone2": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     },
     "guizhou-zone3": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     },
     "hebei": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     },
     "heilongjiang-north": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     },
     "heilongjiang-south": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     },
     "henan": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     },
     "hunan": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     },
     "jilin": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     },
     "ningxia": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     },
     "qinghai-zone1": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     },
     "qinghai-zone2": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     },
     "qinghai-zone3": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     },
     "shaanxi-midnorth": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     },
     "shaanxi-south": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     },
     "shaanxi-xian": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     },
     "shandong": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     },
     "sichuan-zone2": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     },
     "xinjiang-dushanzi": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     },
     "xinjiang-karamay-main": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     },
     "xizang-changdu": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     },
     "xizang-lhasa": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     },
     "xizang-ngari": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     },
     "yunnan-kunming": {
       "signature": "4d2a314e8e5b561c026c43f8dd4f7f94b26a058bd3381cf45d8a8d65fd37a59e",
-      "consecutive": 10,
+      "consecutive": 11,
       "alerted": true,
-      "lastRun": "40654056828",
+      "lastRun": "40741827985",
       "openIssue": true
     },
     "yunnan-zone2": {
       "signature": "4d2a314e8e5b561c026c43f8dd4f7f94b26a058bd3381cf45d8a8d65fd37a59e",
-      "consecutive": 10,
+      "consecutive": 11,
       "alerted": true,
-      "lastRun": "40654056828",
+      "lastRun": "40741827985",
       "openIssue": true
     },
     "yunnan-zone3": {
       "signature": "4d2a314e8e5b561c026c43f8dd4f7f94b26a058bd3381cf45d8a8d65fd37a59e",
-      "consecutive": 10,
+      "consecutive": 11,
       "alerted": true,
-      "lastRun": "40654056828",
+      "lastRun": "40741827985",
       "openIssue": true
     },
     "yunnan-zone4": {
       "signature": "4d2a314e8e5b561c026c43f8dd4f7f94b26a058bd3381cf45d8a8d65fd37a59e",
-      "consecutive": 10,
+      "consecutive": 11,
       "alerted": true,
-      "lastRun": "40654056828",
+      "lastRun": "40741827985",
       "openIssue": true
     },
     "yunnan-zone5": {
       "signature": "4d2a314e8e5b561c026c43f8dd4f7f94b26a058bd3381cf45d8a8d65fd37a59e",
-      "consecutive": 10,
+      "consecutive": 11,
       "alerted": true,
-      "lastRun": "40654056828",
+      "lastRun": "40741827985",
       "openIssue": true
     },
     "zhejiang": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     },
     "hainan": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     },
     "jiangxi": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     },
     "market-forecast": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "40654056828"
+      "lastRun": "40741827985"
     }
   }
 }
