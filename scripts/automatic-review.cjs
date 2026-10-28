@@ -13,6 +13,7 @@ const { readHunan } = require("./automatic-hunan.cjs");
 const { validateExtras } = require("./cloud-extra.cjs");
 const { applyDocuments } = require("./automatic-documents.cjs");
 const { GROUPS } = require("./cloud-evidence.cjs");
+const { readCheckReport } = require("./read-market-forecast.cjs");
 const root = path.resolve(__dirname, "..");
 
 // Only these audited adapters already enforce the retail/litre column and all
@@ -108,11 +109,15 @@ async function main() {
   }
   const initial = JSON.parse(fs.readFileSync(path.join(root, "data/prices.json"), "utf8"));
   const result = await runAutomatic({ bundle, initial });
+  const forecastChecks = process.env.BESFUEL_FORECAST_REPORT ?
+    (result.data.nationalAdjustment.nextAdjustment.date ? readCheckReport(process.env.BESFUEL_FORECAST_REPORT, chinaDate()) :
+      [{ id: "market-forecast", ok: true }]) : [];
   writeSnapshot(result.data);
   if (bundle) console.log(`采用 FC 地区快照：${bundle.generatedAt}；采集代码：${bundle.revision}`);
   reportHealth("FC 地区自动采集", result.sources);
   reportHealth("自动核价后的 FC 公告检查", result.monitors);
   reportHealth("海南、江西官方价表自动采集", result.direct);
+  if (forecastChecks.length) reportHealth("全国市场估算", forecastChecks);
   const documentIds = Object.values(GROUPS).flat();
   const automaticDocumentCount = result.monitors.filter(item => documentIds.includes(item.id) && item.automatic && item.ok).length;
   console.log(bundle?.evidence ? `正文及附件自动核价：${automaticDocumentCount}/${documentIds.length} 个价区通过` :
@@ -120,7 +125,7 @@ async function main() {
   const reportFile = process.env.BESFUEL_REVIEW_REPORT || path.join(root, ".automatic-review.json");
   fs.writeFileSync(reportFile, JSON.stringify({ version: 1, checkedAt: chinaDate(),
     documentEvidenceReceived: Boolean(bundle?.evidence), automaticDocumentCount,
-    results: [...result.sources, ...result.monitors, ...result.direct] }, null, 2));
+    results: [...result.sources, ...result.monitors, ...result.direct, ...forecastChecks] }, null, 2));
 }
 if (require.main === module) main().catch(error => { console.error(error.message); process.exitCode = 1; });
 module.exports = { AUTOMATIC_MONITORS, acceptMonitor, acceptParsedMonitors, runAutomatic };

@@ -77,6 +77,7 @@ jobs:
       issues: write
     env:
       NODE_OPTIONS: --network-family-autoselection-attempt-timeout=2000
+      BESFUEL_FORECAST_REPORT: ${{ runner.temp }}/market-forecast.json
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

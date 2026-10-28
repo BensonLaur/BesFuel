@@ -73,9 +73,13 @@ async function deliver(actions, { token, repository, runUrl, fetcher = fetch } =
     // A retry after a successful API write must not create another notification.
     if (existing.some(issue => issue.body?.includes(fingerprint))) continue;
     const safeDetail = action.detail.replace(/@/g, "＠").replace(/[<>]/g, "");
-    const body = `${marker(action.id)}\n${fingerprint}\n\n@${repository.split("/")[0]}，该地区出现需要处理的新异常。\n\n` +
-      `${safeDetail}\n\n已保留此前可信价格和核对日期；如适用系数到期，页面继续隐藏失效升价。\n\n` +
-      `${action.url ? `官方依据：${action.url}\n\n` : ""}[核价运行](${runUrl})\n\n同一异常不会重复提醒，核对恢复后自动关闭本记录。`;
+    const market = action.id === "market-forecast";
+    const subject = market ? "全国市场估算" : "该地区";
+    const retention = market ? "保留本轮此前通过校验的估算及原计算日期；跨周期隐藏旧估算，地区官方油价照常独立更新。" :
+      "已保留此前可信价格和核对日期；如适用系数到期，页面继续隐藏失效升价。";
+    const body = `${marker(action.id)}\n${fingerprint}\n\n@${repository.split("/")[0]}，${subject}出现需要处理的新异常。\n\n` +
+      `${safeDetail}\n\n${retention}\n\n` +
+      `${action.url ? `${market ? "第三方来源" : "官方依据"}：${action.url}\n\n` : ""}[核价运行](${runUrl})\n\n同一异常不会重复提醒，核对恢复后自动关闭本记录。`;
     for (const issue of existing) await api(`/issues/${issue.number}`, "PATCH", { state: "closed", state_reason: "not_planned" });
     issues.push(await api("/issues", "POST", { title: `[油价核验] ${action.id} 需要处理`, body }));
   }
