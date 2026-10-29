@@ -2,7 +2,7 @@
 window.BESFUEL_CRUDE_DATA = {
   "version": 1,
   "usage": "third-party-reference",
-  "updatedAt": "2026-10-28T18:06:30.809Z",
+  "updatedAt": "2026-10-29T08:14:50.892Z",
   "series": {
     "wti": {
       "name": "WTI 原油",
@@ -12,12 +12,8 @@ window.BESFUEL_CRUDE_DATA = {
       "currency": "USD",
       "unit": "barrel",
       "basis": "continuous-futures-daily",
-      "fetchedAt": "2026-10-28T18:06:30.809Z",
+      "fetchedAt": "2026-10-29T08:14:50.892Z",
       "history": [
-        {
-          "date": "2026-01-21",
-          "price": 60.67
-        },
         {
           "date": "2026-01-22",
           "price": 59.67
@@ -809,11 +805,15 @@ window.BESFUEL_CRUDE_DATA = {
         {
           "date": "2026-10-27",
           "price": 100.2
+        },
+        {
+          "date": "2026-10-28",
+          "price": 101.94
         }
       ],
       "intraday": {
-        "date": "2026-10-28",
-        "price": 102.66
+        "date": "2026-10-29",
+        "price": 101.75
       }
     },
     "brent": {
@@ -824,12 +824,8 @@ window.BESFUEL_CRUDE_DATA = {
       "currency": "USD",
       "unit": "barrel",
       "basis": "continuous-futures-daily",
-      "fetchedAt": "2026-10-28T18:06:30.809Z",
+      "fetchedAt": "2026-10-29T08:14:50.892Z",
       "history": [
-        {
-          "date": "2026-01-21",
-          "price": 64.62
-        },
         {
           "date": "2026-01-22",
           "price": 63.71
@@ -1621,18 +1617,22 @@ window.BESFUEL_CRUDE_DATA = {
         {
           "date": "2026-10-27",
           "price": 109.74
+        },
+        {
+          "date": "2026-10-28",
+          "price": 110.74
         }
       ],
       "intraday": {
-        "date": "2026-10-28",
-        "price": 111.61
+        "date": "2026-10-29",
+        "price": 110.68
       }
     }
   },
   "collection": {
     "mode": "auto",
     "outcome": "updated",
-    "checkedAt": "2026-10-28T18:06:30.809Z",
+    "checkedAt": "2026-10-29T08:14:50.892Z",
     "activeProvider": "eastmoney",
     "attempts": [
       {
