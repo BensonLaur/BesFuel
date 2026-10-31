@@ -6766,15 +6766,15 @@ window.BESFUEL_DATA = {
     "qinghai-zone1": {
       "name": "青海第一价区",
       "priceScope": "青海省发改委价表中的第一价区汽、柴油最高零售价格（元/升）；价区所辖具体地区待省级正式划分文件复核，加油站实付价可能不同。",
-      "checkedAt": "2026-10-29",
+      "checkedAt": "2026-10-31",
       "source": {
         "name": "青海省发展和改革委员会",
-        "url": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202609/t20260924_92769.html"
+        "url": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202610/t20261030_92962.html"
       },
-      "effectiveLabel": "2026-09-24 24:00 起",
+      "effectiveLabel": "2026-10-29 24:00 起",
       "grades": {
         "92": {
-          "price": 8.57,
+          "price": 8.85,
           "history": [
             {
               "date": "2026-04-22",
@@ -6835,11 +6835,16 @@ window.BESFUEL_DATA = {
               "date": "2026-09-25",
               "price": 8.57,
               "sourceUrl": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202609/t20260924_92769.html"
+            },
+            {
+              "date": "2026-10-30",
+              "price": 8.85,
+              "sourceUrl": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202610/t20261030_92962.html"
             }
           ]
         },
         "95": {
-          "price": 9.19,
+          "price": 9.48,
           "history": [
             {
               "date": "2026-04-22",
@@ -6900,6 +6905,11 @@ window.BESFUEL_DATA = {
               "date": "2026-09-25",
               "price": 9.19,
               "sourceUrl": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202609/t20260924_92769.html"
+            },
+            {
+              "date": "2026-10-30",
+              "price": 9.48,
+              "sourceUrl": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202610/t20261030_92962.html"
             }
           ]
         },
@@ -6908,7 +6918,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 8.22,
+          "price": 8.5,
           "history": [
             {
               "date": "2026-04-22",
@@ -6969,6 +6979,11 @@ window.BESFUEL_DATA = {
               "date": "2026-09-25",
               "price": 8.22,
               "sourceUrl": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202609/t20260924_92769.html"
+            },
+            {
+              "date": "2026-10-30",
+              "price": 8.5,
+              "sourceUrl": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202610/t20261030_92962.html"
             }
           ]
         }
@@ -6977,15 +6992,15 @@ window.BESFUEL_DATA = {
     "qinghai-zone2": {
       "name": "青海·二价区",
       "priceScope": "青海省发改委价表中的第二价区汽、柴油最高零售价格（元/升）；价区所辖具体地区待省级正式划分文件复核，加油站实付价可能不同。",
-      "checkedAt": "2026-10-29",
+      "checkedAt": "2026-10-31",
       "source": {
         "name": "青海省发展和改革委员会",
-        "url": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202609/t20260924_92769.html"
+        "url": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202610/t20261030_92962.html"
       },
-      "effectiveLabel": "2026-09-24 24:00 起",
+      "effectiveLabel": "2026-10-29 24:00 起",
       "grades": {
         "92": {
-          "price": 8.66,
+          "price": 8.94,
           "history": [
             {
               "date": "2026-04-22",
@@ -7046,11 +7061,16 @@ window.BESFUEL_DATA = {
               "date": "2026-09-25",
               "price": 8.66,
               "sourceUrl": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202609/t20260924_92769.html"
+            },
+            {
+              "date": "2026-10-30",
+              "price": 8.94,
+              "sourceUrl": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202610/t20261030_92962.html"
             }
           ]
         },
         "95": {
-          "price": 9.28,
+          "price": 9.58,
           "history": [
             {
               "date": "2026-04-22",
@@ -7111,6 +7131,11 @@ window.BESFUEL_DATA = {
               "date": "2026-09-25",
               "price": 9.28,
               "sourceUrl": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202609/t20260924_92769.html"
+            },
+            {
+              "date": "2026-10-30",
+              "price": 9.58,
+              "sourceUrl": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202610/t20261030_92962.html"
             }
           ]
         },
@@ -7119,7 +7144,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 8.31,
+          "price": 8.59,
           "history": [
             {
               "date": "2026-04-22",
@@ -7180,6 +7205,11 @@ window.BESFUEL_DATA = {
               "date": "2026-09-25",
               "price": 8.31,
               "sourceUrl": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202609/t20260924_92769.html"
+            },
+            {
+              "date": "2026-10-30",
+              "price": 8.59,
+              "sourceUrl": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202610/t20261030_92962.html"
             }
           ]
         }

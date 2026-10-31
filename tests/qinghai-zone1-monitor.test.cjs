@@ -20,7 +20,7 @@ function list(title = '我省调整省内成品油最高零售价格', href = ar
 
 function article(image = './W020261015123456789.JPG', published = '2026年10月15日 16:11') {
   return `<h1>我省调整省内成品油最高零售价格</h1>
-    <span>发布时间：${published}</span>
+    <span>来源：价格处供稿</span><span>发布时间：${published}</span>
     <p>根据国家统一规定，我省自2026年10月15日24时起同步调整省内各价区汽、柴油最高零售价格。</p>
     <p>附件：青海省汽、柴油最高零售价格表</p>
     <p><img src="${image}" title="捕获.JPG" /></p>`;
@@ -46,10 +46,10 @@ test('discovers the official image and requires a human to review new litre pric
 
 test('rejects unknown notice, date mismatch, and non-official image', async () => {
   await assert.rejects(monitor.collect(readers({ title: '我省预测省内成品油最高零售价格' })), /未知油价公告标题/);
-  await assert.rejects(monitor.collect(readers({ href: 'http://fgw.qinghai.gov.cn/xwzx/tzgg/202610/t20261014_99999.html' })), /公告路径与列表日期不符/);
+  await assert.rejects(monitor.collect(readers({ href: 'http://fgw.qinghai.gov.cn/xwzx/tzgg/202610/t20260914_99999.html' })), /目录与文件日期不符/);
   await assert.rejects(monitor.collect(readers({ published: '2026年10月14日 16:11' })), /发布日期与列表不符/);
   await assert.rejects(monitor.collect(readers({ image: 'https://example.org/prices.jpg' })), /图片数量异常|不是预期/);
-  await assert.rejects(monitor.collect(readers({ image: './W020261014123456789.JPG' })), /图片日期与公告不符/);
+  await assert.rejects(monitor.collect(readers({ image: './W020261032123456789.JPG' })), /图片文件日期无效/);
 });
 
 test('new image cannot silently replace the audited snapshot', async () => {

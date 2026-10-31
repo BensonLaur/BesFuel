@@ -33,6 +33,12 @@ function officialUrl(reference, baseUrl, pathname, label) {
   return url.href;
 }
 
+function inspectUploadPath(url, pattern, label) {
+  const [, directory, stamp] = new URL(url).pathname.match(pattern);
+  validDate(`${stamp.slice(0, 4)}-${stamp.slice(4, 6)}-${stamp.slice(6)}`, `${label}文件日期`);
+  if (directory !== stamp.slice(0, 6)) throw new Error(`青海二价区：${label}目录与文件日期不符：${url}`);
+}
+
 function currentChinaDate() {
   const parts = Object.fromEntries(new Intl.DateTimeFormat('en-GB', {
     timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit',
@@ -51,9 +57,11 @@ function entriesFromList(html, listUrl, section) {
     if (previous && publishedDate >= previous) throw new Error(`青海二价区：官网${section}通告日期顺序异常`);
     previous = publishedDate;
     // 价格动态栏目曾把 7 月 31 日公告重新挂到 8 月目录，列表日期以正文再核对。
-    const path = new RegExp(`^/${section}/\\d{6}/t\\d{8}_\\d+\\.html$`);
+    const path = new RegExp(`^/${section}/(\\d{6})/t(\\d{8})_\\d+\\.html$`);
+    const url = officialUrl(match[1], listUrl, path, '价格通告');
+    inspectUploadPath(url, path, '价格通告');
     entries.push({ publishedDate, effectiveDate: nextDate(publishedDate), title: match[2].trim(),
-      url: officialUrl(match[1], listUrl, path, '价格通告'), section });
+      url, section });
   }
   return entries;
 }
@@ -70,15 +78,20 @@ function inspectArticle(html, notice) {
   }
   const [year, month, day] = notice.publishedDate.split('-');
   const plain = body.replace(/<[^>]*>|\s|&nbsp;/g, '');
-  if (!new RegExp(`自${year}年0?${Number(month)}月0?${Number(day)}日24时起`).test(plain)) {
+  if (!new RegExp(`我省自${year}年0?${Number(month)}月0?${Number(day)}日24时起同步调整省内各价区汽、柴油最高零售价格`).test(plain)) {
     throw new Error(`青海二价区：通告没有对应的 24 时执行时间：${notice.url}`);
   }
   const images = [...body.matchAll(/<img\b[^>]*src="([^"]+)"/g)]
     .map(match => match[1]).filter(src => /(?:^|\/)W020\d+\.(?:JPG|jpg|png)$/.test(src));
   if (images.length !== 1) throw new Error(`青海二价区：官方价格表图片缺失或重复：${notice.url}`);
-  const stamp = notice.publishedDate.replaceAll('-', '');
-  const imagePath = new RegExp(`^/${notice.section}/${stamp.slice(0, 6)}/W020${stamp.slice(2)}\\d+\\.(?:JPG|jpg|png)$`);
+  // 公告和图片可能在发布后重新上传；绑定公告目录，业务日期仍从正文核验。
+  const imagePath = new RegExp(`^/${notice.section}/(\\d{6})/W0(\\d{8})\\d+\\.(?:jpe?g|png)$`, 'i');
   const imageUrl = officialUrl(images[0], notice.url, imagePath, '价格表图片');
+  inspectUploadPath(imageUrl, imagePath, '价格表图片');
+  if (new URL(imageUrl).pathname.slice(0, new URL(imageUrl).pathname.lastIndexOf('/')) !==
+      new URL(notice.url).pathname.slice(0, new URL(notice.url).pathname.lastIndexOf('/'))) {
+    throw new Error(`青海二价区：价格表图片不在公告目录：${imageUrl}`);
+  }
   // 元/升价格印在图片内，必须人工核对二价区行后才能更新站点数据。
   return { publishedDate: notice.publishedDate, effectiveDate: notice.effectiveDate,
     url: notice.url, imageUrl, requiresManualPriceReview: true };

@@ -1,0 +1,52 @@
+{
+  "capturedAt": "2026-10-31",
+  "note": "Official list and announcement fragments; unrelated navigation omitted. Original response and CRLF fixture hashes are separate. Images are original bytes, visually reviewed by oil grade, price zone and yuan/litre column.",
+  "files": [
+    {
+      "name": "notice-list.html",
+      "url": "http://fgw.qinghai.gov.cn/xwzx/tzgg/",
+      "sourceSha256": "0eab1c90af8f0ef61c579e41768b567c69a2b381c001e4d21b8e705c03896097",
+      "fixtureSha256": "0c9a8a5f956ee860a79f4a40939d2a96bb9f143e716780a8b8cab6f5f0d5a3ce"
+    },
+    {
+      "name": "price-list.html",
+      "url": "http://fgw.qinghai.gov.cn/sjfb/jgdt/",
+      "sourceSha256": "a3c979e205b355a06c1a378ff2a21d46f4dcce98b19584dac971c8887bb49e2c",
+      "fixtureSha256": "94cfcaa64f2da00e24f2de215e8c1e1c28d0045712b5806b5e4f292c1806563d"
+    },
+    {
+      "name": "20261029.html",
+      "url": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202610/t20261030_92962.html",
+      "sourceSha256": "084204f59fe8e6c690fbeb40dab041abeb3a308727459cebf6fc44398baeaf2c",
+      "fixtureSha256": "0b047e03c2bae5188e495278b570daaa28bc19fd5f8559683158236024424046"
+    },
+    {
+      "name": "20261029-price.html",
+      "url": "http://fgw.qinghai.gov.cn/sjfb/jgdt/202610/t20261029_92959.html",
+      "sourceSha256": "b7a6a8ecbff9e335f0866aba3a946d60a4ab7eaf55127b5c28c5c11f0fd7d110",
+      "fixtureSha256": "045743fca975dafa19216a4a28c39695f06b140361c138373daf42560412772d"
+    },
+    {
+      "name": "20260924.html",
+      "url": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202609/t20260924_92769.html",
+      "sourceSha256": "ceee0906c57253d1cbb06c06e79d6b59e1b6f22e20d4fd7a9fea054a45ab2002",
+      "fixtureSha256": "4acbea27b494eb31ba5ee159e51872aa8b08fa7efadccbeab8a0f995b08c1b0f"
+    },
+    {
+      "name": "20261029.png",
+      "url": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202610/W020261030518614379022.png",
+      "sourceSha256": "bfbdef493e20b8f66cb7f8a0c458368ba3b95c6e891d3c7c274acb2e8ca87984",
+      "fixtureSha256": "bfbdef493e20b8f66cb7f8a0c458368ba3b95c6e891d3c7c274acb2e8ca87984"
+    },
+    {
+      "name": "20260924.JPG",
+      "url": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202609/W020260924585955568253.JPG",
+      "sourceSha256": "100653e25b0ede67a9cd30e97c8162ecb8f591bfec0ee5b162336b12f01e3b63",
+      "fixtureSha256": "100653e25b0ede67a9cd30e97c8162ecb8f591bfec0ee5b162336b12f01e3b63"
+    }
+  ],
+  "mirrorImage": {
+    "url": "http://fgw.qinghai.gov.cn/sjfb/jgdt/202610/W020261029622724221294.png",
+    "sha256": "bfbdef493e20b8f66cb7f8a0c458368ba3b95c6e891d3c7c274acb2e8ca87984"
+  }
+}
