@@ -2,7 +2,7 @@
 window.BESFUEL_CRUDE_DATA = {
   "version": 1,
   "usage": "third-party-reference",
-  "updatedAt": "2026-10-29T08:14:50.892Z",
+  "updatedAt": "2026-10-31T09:26:40.214Z",
   "series": {
     "wti": {
       "name": "WTI 原油",
@@ -12,12 +12,8 @@ window.BESFUEL_CRUDE_DATA = {
       "currency": "USD",
       "unit": "barrel",
       "basis": "continuous-futures-daily",
-      "fetchedAt": "2026-10-29T08:14:50.892Z",
+      "fetchedAt": "2026-10-31T09:26:40.214Z",
       "history": [
-        {
-          "date": "2026-01-22",
-          "price": 59.67
-        },
         {
           "date": "2026-01-23",
           "price": 61.28
@@ -809,12 +805,17 @@ window.BESFUEL_CRUDE_DATA = {
         {
           "date": "2026-10-28",
           "price": 101.94
+        },
+        {
+          "date": "2026-10-29",
+          "price": 102.86
+        },
+        {
+          "date": "2026-10-30",
+          "price": 102.95
         }
       ],
-      "intraday": {
-        "date": "2026-10-29",
-        "price": 101.75
-      }
+      "intraday": null
     },
     "brent": {
       "name": "布伦特原油",
@@ -824,12 +825,8 @@ window.BESFUEL_CRUDE_DATA = {
       "currency": "USD",
       "unit": "barrel",
       "basis": "continuous-futures-daily",
-      "fetchedAt": "2026-10-29T08:14:50.892Z",
+      "fetchedAt": "2026-10-31T09:26:40.214Z",
       "history": [
-        {
-          "date": "2026-01-22",
-          "price": 63.71
-        },
         {
           "date": "2026-01-23",
           "price": 65.44
@@ -1621,18 +1618,23 @@ window.BESFUEL_CRUDE_DATA = {
         {
           "date": "2026-10-28",
           "price": 110.74
+        },
+        {
+          "date": "2026-10-29",
+          "price": 111.6
+        },
+        {
+          "date": "2026-10-30",
+          "price": 113.4
         }
       ],
-      "intraday": {
-        "date": "2026-10-29",
-        "price": 110.68
-      }
+      "intraday": null
     }
   },
   "collection": {
     "mode": "auto",
     "outcome": "updated",
-    "checkedAt": "2026-10-29T08:14:50.892Z",
+    "checkedAt": "2026-10-31T09:26:40.214Z",
     "activeProvider": "eastmoney",
     "attempts": [
       {
