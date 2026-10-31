@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "checkedAt": "2026-10-31",
+  "checkedAt": "2026-11-01",
   "regions": {
     "guangdong": {
       "name": "广东",
       "priceScope": "广东省公布的全省最高销售价格；加油站实际成交价可能不同。",
-      "checkedAt": "2026-10-31",
+      "checkedAt": "2026-11-01",
       "source": {
         "name": "广东省发展和改革委员会",
         "url": "https://drc.gd.gov.cn/ywgg/content/post_4972645.html"
