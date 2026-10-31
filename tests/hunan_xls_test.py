@@ -28,6 +28,14 @@ def workbook(record):
 
 
 class HunanWorkbookTest(unittest.TestCase):
+    def test_october_official_xls_retail_prices_and_effective_date(self):
+        import xlrd
+        file = ROOT / "tests/fixtures/recovery-20261029/hunan-20261029.xls"
+        book = xlrd.open_workbook(file, formatting_info=True)
+        self.assertEqual(module.extract(book, "2026-10-29"), {"92": 8.83, "95": 9.38, "diesel": 8.66})
+        with self.assertRaises(ValueError):
+            module.extract(book, "2026-10-28")
+
     def test_displayed_precision(self):
         self.assertEqual(module.extract(workbook(FIXTURE), FIXTURE["date"]), {"92": 8.55, "95": 9.09, "diesel": 8.37})
 

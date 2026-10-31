@@ -1,0 +1,77 @@
+{
+  "capturedAt": "2026-10-31",
+  "note": "Relevant official metadata, list and announcement/attachment fragments; unrelated navigation and scripts are omitted. Text uses CRLF. Original response and fixture hashes are recorded separately.",
+  "files": [
+    {
+      "name": "henan.html",
+      "url": "https://fgw.henan.gov.cn/2026/10-29/3442609.html",
+      "sourceSha256": "da963d62edd1380677b028923b832291408bcccab381b69716aa538db16b5d9f",
+      "fixtureSha256": "218de292652f637381f3fc7d7f230b58d876ab4369730becf2f69f208f5e1e09"
+    },
+    {
+      "name": "henan-list.html",
+      "url": "https://fgw.henan.gov.cn/xwzx/tzgg/cpydj/",
+      "sourceSha256": "7b32610d13d18b98f9b5e6c78484da100129edf92cd55246399fc3e251d67498",
+      "fixtureSha256": "fae0d6db845c62808cd417d175762d9bfc8101499a0ef1da4d7aa6969c320c2c"
+    },
+    {
+      "name": "hunan.html",
+      "url": "https://fgw.hunan.gov.cn/fgw/jggb11/202610/t20261029_34090753.html",
+      "sourceSha256": "8deb39bf9b6d0331f6c2041f9749accb757c02fae172894f6f92f288e30e01a5",
+      "fixtureSha256": "111f44bb08c7ad20be61b9a430e377fb5118cf40a5e4456020eb86f02437a5f9"
+    },
+    {
+      "name": "hunan-list.html",
+      "url": "https://fgw.hunan.gov.cn/fgw/jggb11/newxxgklist.html",
+      "sourceSha256": "4c14e1798223d7a154c4a7da618fe04d0126dc5a99b1020451f6e8c67e389496",
+      "fixtureSha256": "2f76504dccbc2bb2c5fa5de35ee3c3a43251031b9b3a30d3429682519df0624c"
+    },
+    {
+      "name": "hunan-20261029.xls",
+      "url": "https://fgw.hunan.gov.cn/fgw/jggb11/202610/34090753/files/5f49acd264d543ab8e876a64f31c0d93.xls",
+      "sourceSha256": "200836831a31004c3e58b40ef3ad2aad233c856773c1d78fa75ebc0193089ace",
+      "fixtureSha256": "200836831a31004c3e58b40ef3ad2aad233c856773c1d78fa75ebc0193089ace"
+    },
+    {
+      "name": "zhejiang.html",
+      "url": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_0d3ec855380f4270a618df050d1ca8d7.html",
+      "sourceSha256": "522b2036d6d1937ab1e30b145898b75e3cbe2d92406769d3dbf85530883348c1",
+      "fixtureSha256": "9a23545b90af13c21f152f3c68b645eb0db5e7f4a755a9fd21cf9ebbc37ddad4"
+    },
+    {
+      "name": "yunnan-oil-list.html",
+      "url": "https://yndrc.yn.gov.cn/fgsj/jggb/cpyjg/",
+      "sourceSha256": "e59db1320c92bccfd9fc2f9b7429fad1b1c91e5f4ec411b07bdbdada1dc19ac2",
+      "fixtureSha256": "82d62a0b780457b9e204f19b95c87df5927eb28f5ff285818ed4a6da3cd9313f"
+    },
+    {
+      "name": "yunnan-20261029.html",
+      "url": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html",
+      "sourceSha256": "373cacc2c8639bf052893c342ac4156bb1fb8feb93cf1e0b0b688c4ce379bf2d",
+      "fixtureSha256": "a87019dfc641c8727766cca4df391860372c1f4dccfcabbff456d769fd29006d"
+    },
+    {
+      "name": "yunnan-20260924.html",
+      "url": "https://yndrc.yn.gov.cn/fgsj/jggb/cpyjg/202609/t20260924_4344066.html",
+      "sourceSha256": "75e38ab03e947bb5f245260f4188655dd824d1b816bdf513e6d1598d17498158",
+      "fixtureSha256": "08d96823829158f81282bcf34154b1f397439afd8bbe4080296024820554694a"
+    },
+    {
+      "name": "yunnan-20261029.pdf",
+      "url": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/P020261029587511868286.pdf",
+      "sourceSha256": "da4cb46bd177e6b6598492f64ca104257bbfba0a6ac272fa715319f95080c662",
+      "fixtureSha256": "da4cb46bd177e6b6598492f64ca104257bbfba0a6ac272fa715319f95080c662"
+    },
+    {
+      "name": "yunnan-20260924.pdf",
+      "url": "https://yndrc.yn.gov.cn/fgsj/jggb/cpyjg/202609/P020261022613826315296.pdf",
+      "sourceSha256": "4783dcec8aa43389005abff581593ee8dbf19a60bc8c7f4ce396f20f9350664c",
+      "fixtureSha256": "4783dcec8aa43389005abff581593ee8dbf19a60bc8c7f4ce396f20f9350664c"
+    },
+    {
+      "name": "zhejiang-list.json",
+      "urlPrefix": "https://fzggw.zj.gov.cn/api-gateway/jpaas-publish-server/front/page/build/unit",
+      "fixtureSha256": "2bb37e2931ba0d2d540fa904ceb31bd7230b3abc12bf34af484a2688fe0f067c"
+    }
+  ]
+}

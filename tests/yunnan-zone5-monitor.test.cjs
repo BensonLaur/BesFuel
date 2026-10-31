@@ -8,25 +8,27 @@ const verified = require('../data/verified/yunnan-zone5.json');
 const { checkMonitors } = require('../scripts/check-monitors.cjs');
 const { importVerified } = require('../scripts/import-verified.cjs');
 
-const listUrl = 'https://yndrc.yn.gov.cn/html/fagaishuju/jiagegongbu/';
+const listUrl = 'https://yndrc.yn.gov.cn/fgsj/jggb/cpyjg/';
 const articleUrl = 'https://yndrc.yn.gov.cn/html/2026/meidianyouqi_1015/29999.html';
 const pdfUrl = 'https://yndrc.yn.gov.cn/uploadfile/s2/2026/1015/20261015012345678.pdf';
 
 function listing(title = '云南省成品油价格按机制调整', href = '/html/2026/meidianyouqi_1015/29999.html') {
-  return `<li><a href="/html/2026/jiageyushoufei_1016/30000.html">云南省重要民生商品零售价格情况</a><span>2026-10-16</span></li>
-    <li><a href="${href}">${title}</a><span>2026-10-15</span></li>`;
+  return `<meta name="ColumnName" content="成品油价格"><div class="list-content"><ul><li><a href="/html/2026/jiageyushoufei_1016/30000.html">云南省重要民生商品零售价格情况</a><span>2026-10-16</span></li>
+    <li><a href="${href}">${title}</a><span>2026-10-15</span></li></ul></div>`;
 }
 
 function article(attachment = '/uploadfile/s2/2026/1015/20261015012345678.pdf') {
   return `<meta name="ArticleTitle" content="云南省成品油价格按机制调整">
     <meta name="PubDate" content="2026-10-15 17:50:58">
+    <meta name="ColumnName" content="成品油价格"><meta name="ContentSource" content="价格收费管理处">
+    <div class="show-title">云南省成品油价格按机制调整</div>
     <p>自10月15日24时起，调整后云南省各地区的汽、柴油最高零售价格见附表。</p>
     <p>附表：<a href="${attachment}">云南省各地区汽、柴油最高零售价格表</a></p>
     <p>2026年10月15日</p>`;
 }
 
 function readers({ title, href, attachment } = {}) {
-  return { async getText(url) {
+  return { getBuffer: async () => ({ buffer: Buffer.concat([Buffer.from('%PDF-'), Buffer.alloc(2048), Buffer.from('%%EOF')]) }), async getText(url) {
     if (url === listUrl) return listing(title, href);
     if (url === articleUrl) return article(attachment);
     throw new Error(`unexpected URL: ${url}`);
@@ -44,7 +46,7 @@ test('discovers the latest official notice and PDF for manual yuan-per-litre rev
 });
 
 test('rejects changed title, off-host links and PDF date mismatch', async () => {
-  await assert.rejects(monitor.collect(readers({ title: '云南省成品油价格预测' })), /未知油价公告标题/);
+  await assert.rejects(monitor.collect(readers({ title: '云南省成品油价格预测' })), /未知.*公告标题/);
   await assert.rejects(monitor.collect(readers({ href: 'https://example.org/notice.html' })), /不是预期/);
   await assert.rejects(monitor.collect(readers({ attachment: '/uploadfile/s2/2026/1014/20261014012345678.pdf' })),
     /PDF 日期与公告不符/);

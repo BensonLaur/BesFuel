@@ -5,7 +5,7 @@ const assert = require('node:assert/strict');
 const monitor = require('../scripts/monitors/yunnan-kunming.cjs');
 const verified = require('../data/verified/yunnan-kunming.json');
 
-const LIST_URL = 'https://yndrc.yn.gov.cn/html/fagaishuju/jiagegongbu/meidianyouqi/';
+const LIST_URL = 'https://yndrc.yn.gov.cn/fgsj/jggb/cpyjg/';
 const CURRENT_PATH = '/html/2026/meidianyouqi_0924/28568.html';
 const PRIOR_PATH = '/html/2026/jiageyushoufei_0911/28416.html';
 const CURRENT_URL = `https://yndrc.yn.gov.cn${CURRENT_PATH}`;
@@ -34,7 +34,7 @@ function article(options = {}) {
 }
 
 function reader(listHtml = list(), articleHtml = article(),
-  pdf = Buffer.concat([Buffer.from('%PDF-'), Buffer.alloc(2048)])) {
+  pdf = Buffer.concat([Buffer.from('%PDF-'), Buffer.alloc(2048), Buffer.from('%%EOF')])) {
   return {
     getText: async url => {
       if (url === LIST_URL) return listHtml;
@@ -69,7 +69,7 @@ test('keeps the previous published price until the 24:00 change takes effect', a
     getText: async url => pages[url],
     getBuffer: async url => {
       assert.equal(url, previousPdf);
-      return { buffer: Buffer.concat([Buffer.from('%PDF-'), Buffer.alloc(2048)]) };
+      return { buffer: Buffer.concat([Buffer.from('%PDF-'), Buffer.alloc(2048), Buffer.from('%%EOF')]) };
     },
     today: '2026-09-24',
   });

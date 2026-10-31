@@ -4436,15 +4436,15 @@ window.BESFUEL_DATA = {
     "yunnan-kunming": {
       "name": "云南·昆明",
       "priceScope": "云南省昆明地区（第一价区）汽、柴油最高零售价格（元/升）",
-      "checkedAt": "2026-10-23",
+      "checkedAt": "2026-10-31",
       "source": {
         "name": "云南省发展和改革委员会",
-        "url": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+        "url": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
       },
-      "effectiveLabel": "2026-09-24 24:00 起",
+      "effectiveLabel": "2026-10-29 24:00 起",
       "grades": {
         "92": {
-          "price": 8.76,
+          "price": 9.04,
           "history": [
             {
               "date": "2025-08-27",
@@ -4570,11 +4570,16 @@ window.BESFUEL_DATA = {
               "date": "2026-09-25",
               "price": 8.76,
               "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+            },
+            {
+              "date": "2026-10-30",
+              "price": 9.04,
+              "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
             }
           ]
         },
         "95": {
-          "price": 9.4,
+          "price": 9.7,
           "history": [
             {
               "date": "2025-08-27",
@@ -4700,6 +4705,11 @@ window.BESFUEL_DATA = {
               "date": "2026-09-25",
               "price": 9.4,
               "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+            },
+            {
+              "date": "2026-10-30",
+              "price": 9.7,
+              "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
             }
           ]
         },
@@ -4708,7 +4718,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 8.37,
+          "price": 8.65,
           "history": [
             {
               "date": "2025-08-27",
@@ -4834,6 +4844,11 @@ window.BESFUEL_DATA = {
               "date": "2026-09-25",
               "price": 8.37,
               "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+            },
+            {
+              "date": "2026-10-30",
+              "price": 8.65,
+              "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
             }
           ]
         }
@@ -4842,15 +4857,15 @@ window.BESFUEL_DATA = {
     "yunnan-zone2": {
       "name": "云南第二价区",
       "priceScope": "云南省第二价区（曲靖、楚雄、玉溪）汽、柴油最高零售价格（元/升）；县城及国省道加油站原则上执行同价区价格，乡镇站点可按规定地区差加价，实付价可能不同。",
-      "checkedAt": "2026-10-23",
+      "checkedAt": "2026-10-31",
       "source": {
         "name": "云南省发展和改革委员会",
-        "url": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+        "url": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
       },
-      "effectiveLabel": "2026-09-24 24:00 起",
+      "effectiveLabel": "2026-10-29 24:00 起",
       "grades": {
         "92": {
-          "price": 8.83,
+          "price": 9.11,
           "history": [
             {
               "date": "2026-04-22",
@@ -4911,11 +4926,16 @@ window.BESFUEL_DATA = {
               "date": "2026-09-25",
               "price": 8.83,
               "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+            },
+            {
+              "date": "2026-10-30",
+              "price": 9.11,
+              "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
             }
           ]
         },
         "95": {
-          "price": 9.48,
+          "price": 9.77,
           "history": [
             {
               "date": "2026-04-22",
@@ -4976,6 +4996,11 @@ window.BESFUEL_DATA = {
               "date": "2026-09-25",
               "price": 9.48,
               "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+            },
+            {
+              "date": "2026-10-30",
+              "price": 9.77,
+              "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
             }
           ]
         },
@@ -4984,7 +5009,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 8.45,
+          "price": 8.74,
           "history": [
             {
               "date": "2026-04-22",
@@ -5045,6 +5070,11 @@ window.BESFUEL_DATA = {
               "date": "2026-09-25",
               "price": 8.45,
               "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+            },
+            {
+              "date": "2026-10-30",
+              "price": 8.74,
+              "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
             }
           ]
         }
@@ -5053,15 +5083,15 @@ window.BESFUEL_DATA = {
     "yunnan-zone4": {
       "name": "云南·普洱、保山、丽江",
       "priceScope": "云南省第四价区（普洱、保山、丽江）汽、柴油最高零售价格（元/升）",
-      "checkedAt": "2026-10-23",
+      "checkedAt": "2026-10-31",
       "source": {
         "name": "云南省发展和改革委员会",
-        "url": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+        "url": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
       },
-      "effectiveLabel": "2026-09-24 24:00 起",
+      "effectiveLabel": "2026-10-29 24:00 起",
       "grades": {
         "92": {
-          "price": 8.99,
+          "price": 9.26,
           "history": [
             {
               "date": "2025-08-27",
@@ -5187,11 +5217,16 @@ window.BESFUEL_DATA = {
               "date": "2026-09-25",
               "price": 8.99,
               "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+            },
+            {
+              "date": "2026-10-30",
+              "price": 9.26,
+              "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
             }
           ]
         },
         "95": {
-          "price": 9.63,
+          "price": 9.93,
           "history": [
             {
               "date": "2025-08-27",
@@ -5317,6 +5352,11 @@ window.BESFUEL_DATA = {
               "date": "2026-09-25",
               "price": 9.63,
               "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+            },
+            {
+              "date": "2026-10-30",
+              "price": 9.93,
+              "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
             }
           ]
         },
@@ -5325,7 +5365,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 8.62,
+          "price": 8.91,
           "history": [
             {
               "date": "2025-08-27",
@@ -5451,6 +5491,11 @@ window.BESFUEL_DATA = {
               "date": "2026-09-25",
               "price": 8.62,
               "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+            },
+            {
+              "date": "2026-10-30",
+              "price": 8.91,
+              "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
             }
           ]
         }
@@ -5459,15 +5504,15 @@ window.BESFUEL_DATA = {
     "yunnan-zone5": {
       "name": "云南第五价区",
       "priceScope": "云南省第五价区（西双版纳、德宏、迪庆、怒江、临沧）汽、柴油最高零售价格（元/升）；加油站实付价可能不同。",
-      "checkedAt": "2026-10-23",
+      "checkedAt": "2026-10-31",
       "source": {
         "name": "云南省发展和改革委员会",
-        "url": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+        "url": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
       },
-      "effectiveLabel": "2026-09-24 24:00 起",
+      "effectiveLabel": "2026-10-29 24:00 起",
       "grades": {
         "92": {
-          "price": 9.05,
+          "price": 9.32,
           "history": [
             {
               "date": "2026-04-22",
@@ -5528,11 +5573,16 @@ window.BESFUEL_DATA = {
               "date": "2026-09-25",
               "price": 9.05,
               "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+            },
+            {
+              "date": "2026-10-30",
+              "price": 9.32,
+              "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
             }
           ]
         },
         "95": {
-          "price": 9.69,
+          "price": 9.99,
           "history": [
             {
               "date": "2026-04-22",
@@ -5593,6 +5643,11 @@ window.BESFUEL_DATA = {
               "date": "2026-09-25",
               "price": 9.69,
               "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+            },
+            {
+              "date": "2026-10-30",
+              "price": 9.99,
+              "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
             }
           ]
         },
@@ -5601,7 +5656,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 8.69,
+          "price": 8.98,
           "history": [
             {
               "date": "2026-04-22",
@@ -5662,6 +5717,11 @@ window.BESFUEL_DATA = {
               "date": "2026-09-25",
               "price": 8.69,
               "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+            },
+            {
+              "date": "2026-10-30",
+              "price": 8.98,
+              "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
             }
           ]
         }
@@ -5670,15 +5730,15 @@ window.BESFUEL_DATA = {
     "yunnan-zone3": {
       "name": "云南·昭通、红河、文山、大理",
       "priceScope": "云南省发改委各地区汽柴油最高零售价格表中昭通、红河、文山、大理四州市所在价格组（元/升）；乡镇加价规则和加油站实付价以当地公告为准。",
-      "checkedAt": "2026-10-23",
+      "checkedAt": "2026-10-31",
       "source": {
         "name": "云南省发展和改革委员会",
-        "url": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+        "url": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
       },
-      "effectiveLabel": "2026-09-24 24:00 起",
+      "effectiveLabel": "2026-10-29 24:00 起",
       "grades": {
         "92": {
-          "price": 8.91,
+          "price": 9.19,
           "history": [
             {
               "date": "2026-04-22",
@@ -5739,11 +5799,16 @@ window.BESFUEL_DATA = {
               "date": "2026-09-25",
               "price": 8.91,
               "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+            },
+            {
+              "date": "2026-10-30",
+              "price": 9.19,
+              "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
             }
           ]
         },
         "95": {
-          "price": 9.55,
+          "price": 9.85,
           "history": [
             {
               "date": "2026-04-22",
@@ -5804,6 +5869,11 @@ window.BESFUEL_DATA = {
               "date": "2026-09-25",
               "price": 9.55,
               "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+            },
+            {
+              "date": "2026-10-30",
+              "price": 9.85,
+              "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
             }
           ]
         },
@@ -5812,7 +5882,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 8.54,
+          "price": 8.82,
           "history": [
             {
               "date": "2026-04-22",
@@ -5873,6 +5943,11 @@ window.BESFUEL_DATA = {
               "date": "2026-09-25",
               "price": 8.54,
               "sourceUrl": "https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html"
+            },
+            {
+              "date": "2026-10-30",
+              "price": 8.82,
+              "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
             }
           ]
         }

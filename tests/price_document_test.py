@@ -13,6 +13,16 @@ DAY = "2026-09-24"
 
 
 class OfficialDocumentTest(unittest.TestCase):
+    def test_migrated_yunnan_recovery_matches_both_official_pdf_periods(self):
+        directory = ROOT / "tests/fixtures/recovery-20261029"
+        for day in ["2026-09-24", "2026-10-29"]:
+            parsed = module.parse_yunnan(*module.read_pdf(directory / ("yunnan-" + day.replace("-", "") + ".pdf")), day)
+            for key, prices in parsed.items():
+                supplement = json.loads((ROOT / "data/verified" / (key + "-20261029.json")).read_text(encoding="utf-8"))
+                self.assertEqual(prices, next(notice["prices"] for notice in supplement["notices"] if notice["publishedDate"] == day))
+            with self.assertRaisesRegex(ValueError, "生效日"):
+                module.parse_yunnan(*module.read_pdf(directory / ("yunnan-" + day.replace("-", "") + ".pdf")), "2026-10-28")
+
     def test_real_official_documents_match_independently_verified_prices(self):
         for group, name in [("jilin", "jilin.pdf"), ("yunnan", "yunnan.pdf"), ("sichuan", "sichuan.docx")]:
             text, rows = module.read_docx(FIXTURES / name) if group == "sichuan" else module.read_pdf(FIXTURES / name)

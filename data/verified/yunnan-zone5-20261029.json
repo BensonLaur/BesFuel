@@ -1,0 +1,43 @@
+{
+  "id": "yunnan-zone5",
+  "name": "云南第五价区",
+  "sourceName": "云南省发展和改革委员会",
+  "priceScope": "云南省第五价区（西双版纳、德宏、迪庆、怒江、临沧）汽、柴油最高零售价格（元/升）；加油站实付价可能不同。",
+  "allowedHostnames": [
+    "yndrc.yn.gov.cn"
+  ],
+  "unit": "元/升",
+  "checkedAt": "2026-10-31",
+  "review": {
+    "reason": "补齐官网迁移期间的新价格。新专栏最近两期为 10-29、09-24；09-24 官方 PDF 与此前核价逐项一致，10-29 原文及 PDF 明确新执行日和五价区升价。",
+    "listUrl": "https://yndrc.yn.gov.cn/fgsj/jggb/cpyjg/",
+    "previousUrl": "https://yndrc.yn.gov.cn/fgsj/jggb/cpyjg/202609/t20260924_4344066.html",
+    "previousPdfUrl": "https://yndrc.yn.gov.cn/fgsj/jggb/cpyjg/202609/P020261022613826315296.pdf",
+    "previousPdfSha256": "4783dcec8aa43389005abff581593ee8dbf19a60bc8c7f4ce396f20f9350664c",
+    "currentPdfSha256": "da4cb46bd177e6b6598492f64ca104257bbfba0a6ac272fa715319f95080c662"
+  },
+  "notices": [
+    {
+      "publishedDate": "2026-09-24",
+      "effectiveDate": "2026-09-25",
+      "url": "https://yndrc.yn.gov.cn/fgsj/jggb/cpyjg/202609/t20260924_4344066.html",
+      "pdfUrl": "https://yndrc.yn.gov.cn/fgsj/jggb/cpyjg/202609/P020261022613826315296.pdf",
+      "prices": {
+        "92": 9.05,
+        "95": 9.69,
+        "diesel": 8.69
+      }
+    },
+    {
+      "publishedDate": "2026-10-29",
+      "effectiveDate": "2026-10-30",
+      "url": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html",
+      "pdfUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/P020261029587511868286.pdf",
+      "prices": {
+        "92": 9.32,
+        "95": 9.99,
+        "diesel": 8.98
+      }
+    }
+  ]
+}

@@ -86,7 +86,7 @@ function inspectArticle(html, entry) {
   const expectedColumn = entry.url.includes('/col/col1599544/') ? '通知公告' :
     entry.url.includes('/col/col1229629046/') ? '重要公告' : '成品油价格';
   if (title !== entry.title || pubDate !== entry.publishedDate ||
-      column !== expectedColumn || source !== '价格处' ||
+      column !== expectedColumn || !['价格处', '办公室'].includes(source) ||
       !html.includes(`发布日期：${entry.publishedDate}`)) {
     throw new Error(`浙江油价公告：正文标题、栏目、来源或日期与列表不符：${entry.url}`);
   }

@@ -68,7 +68,7 @@ function parseArticle(html, entry) {
   const text = content.replace(/<[^>]+>/g, '').replace(/&nbsp;|&#160;/gi, '').replace(/\s|\u00a0/g, '');
   const [year, month, day] = entry.publishedDate.split('-').map(Number);
   if (!text.includes(`自${year}年${month}月${day}日24时起`) ||
-      !text.includes('我省国VIB车用乙醇汽油和国VI车用柴油最高零售价格和批发价格')) {
+      !/我省国VIB车用乙醇汽油(?:和|、)国VI车用柴油最高零售价格和批发价格/.test(text)) {
     throw new Error(`河南油价公告：生效日或适用油品异常：${entry.url}`);
   }
   const retail = text.split('最高零售价格：')[1]?.split('最高批发价格：')[0];

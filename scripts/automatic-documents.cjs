@@ -42,9 +42,10 @@ function parseXizang(html, latest) {
 }
 function parseZhejiang(html, latest) {
   const text = compact(html), day = latest.publishedDate;
+  const source = /<meta name="ContentSource" content="([^"]+)"/.exec(html)?.[1];
   assert.ok(/^浙江省成品油价格(?:按机制)?(?:调整|上调|下调|不作调整)$/.test(latest.title), "浙江公告类型异常");
   assert.ok(html.includes(`content="${latest.title}"`) &&
-    html.includes(`content="${day} `) && html.includes('content="价格处"') &&
+    html.includes(`content="${day} `) && ["价格处", "办公室"].includes(source) &&
     text.includes(`浙江省发展和改革委员会${dayText(day)}`), "浙江公告标题、日期或来源不符");
   if (latest.kind === "unchanged") {
     assert.ok(latest.title === "浙江省成品油价格不作调整" && text.includes("本次汽、柴油价格不作调整"), "浙江不调整结论缺失");

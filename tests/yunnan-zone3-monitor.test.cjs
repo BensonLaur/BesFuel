@@ -9,7 +9,7 @@ const { importVerified } = require('../scripts/import-verified.cjs');
 const snapshot = createSnapshot();
 
 const HOST = 'https://yndrc.yn.gov.cn';
-const LIST_URL = `${HOST}/html/fagaishuju/jiagegongbu/meidianyouqi/`;
+const LIST_URL = `${HOST}/fgsj/jggb/cpyjg/`;
 const CURRENT_PATH = '/html/2026/meidianyouqi_0924/28568.html';
 const PREVIOUS_PATH = '/html/2026/jiageyushoufei_0911/28416.html';
 const PDF_PATH = '/uploadfile/s2/2026/0924/20260924055055206.pdf';

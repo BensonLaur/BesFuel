@@ -6,7 +6,7 @@ const monitor = require('../scripts/monitors/yunnan-zone4.cjs');
 const zone4 = require('../data/verified/yunnan-zone4.json');
 const kunming = require('../data/verified/yunnan-kunming.json');
 
-const LIST_URL = 'https://yndrc.yn.gov.cn/html/fagaishuju/jiagegongbu/meidianyouqi/';
+const LIST_URL = 'https://yndrc.yn.gov.cn/fgsj/jggb/cpyjg/';
 const ARTICLE_URL = 'https://yndrc.yn.gov.cn/html/2026/meidianyouqi_0924/28568.html';
 const PDF_URL = 'https://yndrc.yn.gov.cn/uploadfile/s2/2026/0924/20260924055055206.pdf';
 const TITLE = '云南省成品油价格按机制调整';
@@ -30,7 +30,7 @@ test('fourth zone follows the same dated provincial PDF bulletin', async () => {
     },
     getBuffer: async url => {
       assert.equal(url, PDF_URL);
-      return { buffer: Buffer.concat([Buffer.from('%PDF-'), Buffer.alloc(2048)]) };
+      return { buffer: Buffer.concat([Buffer.from('%PDF-'), Buffer.alloc(2048), Buffer.from('%%EOF')]) };
     },
     today: '2026-09-28',
   });

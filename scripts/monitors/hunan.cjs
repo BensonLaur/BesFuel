@@ -8,7 +8,8 @@ const ARTICLE_PATH = /^\/fgw\/(?:xxgk_70899\/(?:gzdtf\/gzdt|tzgg)|jggb11)\/(\d{6
 function compact(html) {
   return html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, '').replace(/<[^>]*>/g, '')
     .replace(/&(?:nbsp|ensp|emsp|#160|#x[aA]0);/gi, '')
-    .replace(/[\s\u00a0\u2000-\u200b\u3000]/g, '');
+    .replace(/[\s\u00a0\u2000-\u200b\u3000]/g, '')
+    .replace(/（/g, '(').replace(/）/g, ')');
 }
 
 function validDate(value, label) {
