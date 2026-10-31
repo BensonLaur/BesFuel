@@ -3,285 +3,603 @@
   "entries": {
     "liaoning": {
       "signature": "8988474c8bf50427421a8525264d2e0db4b6d4b8d2b8a21e1ebdfc75f7572079",
-      "consecutive": 1,
+      "consecutive": 2,
       "alerted": true,
-      "lastRun": "41188611969",
+      "lastRun": "41190302413",
+      "problem": {
+        "type": "review",
+        "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
+        "url": "https://fgw.ln.gov.cn/fgw/articleFileDir/2026-10/29/c7331259230947d4b29f651de078711a/2026102916211516206.pdf",
+        "immediate": true
+      },
       "openIssue": true
     },
     "beijing": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413"
     },
     "fujian": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413"
     },
     "guangxi": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413"
     },
     "inner-mongolia-east": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413"
     },
     "inner-mongolia-west": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413"
     },
     "jiangsu": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413"
     },
     "shanghai": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413"
     },
     "shanxi": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413"
     },
     "sichuan-zone1": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413"
     },
     "sichuan-zone3": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413"
     },
     "tianjin": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413"
     },
     "anhui": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413"
     },
     "chongqing": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413"
     },
     "guizhou-zone1": {
       "signature": "b6e8561f4ed4db50cda8e02038c46cc36a8cf35fce28ec5512c75e72403ac9fd",
-      "consecutive": 1,
+      "consecutive": 2,
       "alerted": true,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413",
+      "problem": {
+        "type": "review",
+        "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
+        "url": "https://fgw.guizhou.gov.cn/fggz/tzgg/202610/t20261029_91052549.html",
+        "immediate": true
+      },
+      "openIssue": true
     },
     "guizhou-zone2": {
       "signature": "b6e8561f4ed4db50cda8e02038c46cc36a8cf35fce28ec5512c75e72403ac9fd",
-      "consecutive": 1,
+      "consecutive": 2,
       "alerted": true,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413",
+      "problem": {
+        "type": "review",
+        "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
+        "url": "https://fgw.guizhou.gov.cn/fggz/tzgg/202610/t20261029_91052549.html",
+        "immediate": true
+      },
+      "openIssue": true
     },
     "guizhou-zone3": {
       "signature": "b6e8561f4ed4db50cda8e02038c46cc36a8cf35fce28ec5512c75e72403ac9fd",
-      "consecutive": 1,
+      "consecutive": 2,
       "alerted": true,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413",
+      "problem": {
+        "type": "review",
+        "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
+        "url": "https://fgw.guizhou.gov.cn/fggz/tzgg/202610/t20261029_91052549.html",
+        "immediate": true
+      },
+      "openIssue": true
     },
     "hebei": {
       "signature": "241fab9d819a976fa043889e0397860bac5e2bbe0156ab8375a6ff9c296852ce",
-      "consecutive": 1,
+      "consecutive": 2,
       "alerted": true,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413",
+      "problem": {
+        "type": "review",
+        "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
+        "url": "https://hbdrc.hebei.gov.cn/gggs_980/202610/t20261029_141051.html",
+        "immediate": true
+      },
+      "openIssue": true
     },
     "heilongjiang-north": {
       "signature": "12f94834837a83c9124d3b16912009d16785e1c5f98c898c340faaa3eef310c3",
-      "consecutive": 1,
+      "consecutive": 2,
       "alerted": true,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413",
+      "problem": {
+        "type": "review",
+        "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
+        "url": "https://drc.hlj.gov.cn/drc/c111486/202610/c00_31989330.shtml",
+        "immediate": true
+      },
+      "openIssue": true
     },
     "heilongjiang-south": {
       "signature": "12f94834837a83c9124d3b16912009d16785e1c5f98c898c340faaa3eef310c3",
-      "consecutive": 1,
+      "consecutive": 2,
       "alerted": true,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413",
+      "problem": {
+        "type": "review",
+        "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
+        "url": "https://drc.hlj.gov.cn/drc/c111486/202610/c00_31989330.shtml",
+        "immediate": true
+      },
+      "openIssue": true
     },
     "henan": {
       "signature": "f4542daf2e2a16a729ec88014dd0ea248f5847f55b325ce54453dd9e7282de24",
-      "consecutive": 1,
+      "consecutive": 2,
       "alerted": true,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413",
+      "problem": {
+        "type": "validation",
+        "detail": "河南油价公告：生效日或适用油品异常：https://fgw.henan.gov.cn/2026/10-29/3442609.html",
+        "url": "",
+        "immediate": true
+      },
+      "openIssue": true
     },
     "hunan": {
       "signature": "b73dd1e60990074d462f4e9022271502ac34608770aacb92311ddb367602f5be",
-      "consecutive": 1,
+      "consecutive": 2,
       "alerted": true,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413",
+      "problem": {
+        "type": "validation",
+        "detail": "湖南油价公告：标题、日期、价格性质或附件说明不符：https://fgw.hunan.gov.cn/fgw/jggb11/202610/t20261029_34090753.html",
+        "url": "",
+        "immediate": true
+      },
+      "openIssue": true
     },
     "jilin": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413"
     },
     "ningxia": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413"
     },
     "qinghai-zone1": {
       "signature": "f77eebf3ce2dd8ecfe5c4c1dbb45e903606e92896180a4951107f2df8600de14",
-      "consecutive": 1,
+      "consecutive": 2,
       "alerted": true,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413",
+      "problem": {
+        "type": "validation",
+        "detail": "青海第一价区：公告路径与列表日期不符：http://fgw.qinghai.gov.cn/xwzx/tzgg/202610/t20261030_92962.html",
+        "url": "",
+        "immediate": true
+      },
+      "openIssue": true
     },
     "qinghai-zone2": {
       "signature": "0efd0ca645177419d5ec229bf0241a7898debb3b876de543457a5393f5bf8c97",
-      "consecutive": 1,
+      "consecutive": 2,
       "alerted": true,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413",
+      "problem": {
+        "type": "validation",
+        "detail": "青海二价区：价格表图片不是预期的官网地址：http://fgw.qinghai.gov.cn/xwzx/tzgg/202610/W020261030518614379022.png",
+        "url": "",
+        "immediate": true
+      },
+      "openIssue": true
     },
     "qinghai-zone3": {
       "signature": "476378e9bbbddd1037e4d673e011680acb6cd63bfb38e1e76b552b1cce287d73",
-      "consecutive": 1,
+      "consecutive": 2,
       "alerted": true,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413",
+      "problem": {
+        "type": "review",
+        "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
+        "url": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202610/t20261030_92962.html",
+        "immediate": true
+      },
+      "openIssue": true
     },
     "shaanxi-midnorth": {
       "signature": "c4e2b47901838cd81187cb9441951c1053f9c98d8ebc70ea4689231d92a68379",
-      "consecutive": 1,
+      "consecutive": 2,
       "alerted": true,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413",
+      "problem": {
+        "type": "review",
+        "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
+        "url": "https://sndrc.shaanxi.gov.cn/sy/xwxx/gggg/202610/t20261029_3707976.html",
+        "immediate": true
+      },
+      "openIssue": true
     },
     "shaanxi-south": {
       "signature": "c4e2b47901838cd81187cb9441951c1053f9c98d8ebc70ea4689231d92a68379",
-      "consecutive": 1,
+      "consecutive": 2,
       "alerted": true,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413",
+      "problem": {
+        "type": "review",
+        "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
+        "url": "https://sndrc.shaanxi.gov.cn/sy/xwxx/gggg/202610/t20261029_3707976.html",
+        "immediate": true
+      },
+      "openIssue": true
     },
     "shaanxi-xian": {
       "signature": "c2a3d17fdea712f07baca1f5b65683352d5837607eadcde075943ebffdbb762b",
-      "consecutive": 1,
+      "consecutive": 2,
       "alerted": true,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413",
+      "problem": {
+        "type": "review",
+        "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
+        "url": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202610/t20261029_3707976.html",
+        "immediate": true
+      },
+      "openIssue": true
     },
     "shandong": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413"
     },
     "sichuan-zone2": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413"
     },
     "xinjiang-dushanzi": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413"
     },
     "xinjiang-karamay-main": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413"
     },
     "xizang-changdu": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413"
     },
     "xizang-lhasa": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413"
     },
     "xizang-ngari": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413"
     },
     "yunnan-kunming": {
       "signature": "4d2a314e8e5b561c026c43f8dd4f7f94b26a058bd3381cf45d8a8d65fd37a59e",
-      "consecutive": 13,
+      "consecutive": 14,
       "alerted": true,
-      "lastRun": "41188611969",
+      "lastRun": "41190302413",
+      "problem": {
+        "type": "validation",
+        "detail": "yunnan: 对应的官方公告尚未通过检查",
+        "url": "",
+        "immediate": true
+      },
       "openIssue": true
     },
     "yunnan-zone2": {
       "signature": "4d2a314e8e5b561c026c43f8dd4f7f94b26a058bd3381cf45d8a8d65fd37a59e",
-      "consecutive": 13,
+      "consecutive": 14,
       "alerted": true,
-      "lastRun": "41188611969",
+      "lastRun": "41190302413",
+      "problem": {
+        "type": "validation",
+        "detail": "yunnan: 对应的官方公告尚未通过检查",
+        "url": "",
+        "immediate": true
+      },
       "openIssue": true
     },
     "yunnan-zone3": {
       "signature": "4d2a314e8e5b561c026c43f8dd4f7f94b26a058bd3381cf45d8a8d65fd37a59e",
-      "consecutive": 13,
+      "consecutive": 14,
       "alerted": true,
-      "lastRun": "41188611969",
+      "lastRun": "41190302413",
+      "problem": {
+        "type": "validation",
+        "detail": "yunnan: 对应的官方公告尚未通过检查",
+        "url": "",
+        "immediate": true
+      },
       "openIssue": true
     },
     "yunnan-zone4": {
       "signature": "4d2a314e8e5b561c026c43f8dd4f7f94b26a058bd3381cf45d8a8d65fd37a59e",
-      "consecutive": 13,
+      "consecutive": 14,
       "alerted": true,
-      "lastRun": "41188611969",
+      "lastRun": "41190302413",
+      "problem": {
+        "type": "validation",
+        "detail": "yunnan: 对应的官方公告尚未通过检查",
+        "url": "",
+        "immediate": true
+      },
       "openIssue": true
     },
     "yunnan-zone5": {
       "signature": "4d2a314e8e5b561c026c43f8dd4f7f94b26a058bd3381cf45d8a8d65fd37a59e",
-      "consecutive": 13,
+      "consecutive": 14,
       "alerted": true,
-      "lastRun": "41188611969",
+      "lastRun": "41190302413",
+      "problem": {
+        "type": "validation",
+        "detail": "yunnan: 对应的官方公告尚未通过检查",
+        "url": "",
+        "immediate": true
+      },
       "openIssue": true
     },
     "zhejiang": {
       "signature": "42d3aaa7b539f98dc3a10b0832f7ec00bfaff88498cb2b5541dab70b3b06bb62",
-      "consecutive": 1,
+      "consecutive": 2,
       "alerted": true,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413",
+      "problem": {
+        "type": "validation",
+        "detail": "zhejiang: 对应的官方公告尚未通过检查",
+        "url": "",
+        "immediate": true
+      },
+      "openIssue": true
     },
     "hainan": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413"
     },
     "jiangxi": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413"
     },
     "market-forecast": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41188611969"
+      "lastRun": "41190302413"
     }
+  },
+  "summary": {
+    "signature": "082a7ca0b908a7841940328bae6fc9fb95dda4b0a440a95e4e7603240e3dd2b5",
+    "sequence": 1,
+    "published": true,
+    "active": [
+      {
+        "id": "guizhou-zone1",
+        "signature": "b6e8561f4ed4db50cda8e02038c46cc36a8cf35fce28ec5512c75e72403ac9fd",
+        "type": "review",
+        "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
+        "url": "https://fgw.guizhou.gov.cn/fggz/tzgg/202610/t20261029_91052549.html",
+        "immediate": true
+      },
+      {
+        "id": "guizhou-zone2",
+        "signature": "b6e8561f4ed4db50cda8e02038c46cc36a8cf35fce28ec5512c75e72403ac9fd",
+        "type": "review",
+        "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
+        "url": "https://fgw.guizhou.gov.cn/fggz/tzgg/202610/t20261029_91052549.html",
+        "immediate": true
+      },
+      {
+        "id": "guizhou-zone3",
+        "signature": "b6e8561f4ed4db50cda8e02038c46cc36a8cf35fce28ec5512c75e72403ac9fd",
+        "type": "review",
+        "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
+        "url": "https://fgw.guizhou.gov.cn/fggz/tzgg/202610/t20261029_91052549.html",
+        "immediate": true
+      },
+      {
+        "id": "hebei",
+        "signature": "241fab9d819a976fa043889e0397860bac5e2bbe0156ab8375a6ff9c296852ce",
+        "type": "review",
+        "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
+        "url": "https://hbdrc.hebei.gov.cn/gggs_980/202610/t20261029_141051.html",
+        "immediate": true
+      },
+      {
+        "id": "heilongjiang-north",
+        "signature": "12f94834837a83c9124d3b16912009d16785e1c5f98c898c340faaa3eef310c3",
+        "type": "review",
+        "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
+        "url": "https://drc.hlj.gov.cn/drc/c111486/202610/c00_31989330.shtml",
+        "immediate": true
+      },
+      {
+        "id": "heilongjiang-south",
+        "signature": "12f94834837a83c9124d3b16912009d16785e1c5f98c898c340faaa3eef310c3",
+        "type": "review",
+        "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
+        "url": "https://drc.hlj.gov.cn/drc/c111486/202610/c00_31989330.shtml",
+        "immediate": true
+      },
+      {
+        "id": "henan",
+        "signature": "f4542daf2e2a16a729ec88014dd0ea248f5847f55b325ce54453dd9e7282de24",
+        "type": "validation",
+        "detail": "河南油价公告：生效日或适用油品异常：https://fgw.henan.gov.cn/2026/10-29/3442609.html",
+        "url": "",
+        "immediate": true
+      },
+      {
+        "id": "hunan",
+        "signature": "b73dd1e60990074d462f4e9022271502ac34608770aacb92311ddb367602f5be",
+        "type": "validation",
+        "detail": "湖南油价公告：标题、日期、价格性质或附件说明不符：https://fgw.hunan.gov.cn/fgw/jggb11/202610/t20261029_34090753.html",
+        "url": "",
+        "immediate": true
+      },
+      {
+        "id": "liaoning",
+        "signature": "8988474c8bf50427421a8525264d2e0db4b6d4b8d2b8a21e1ebdfc75f7572079",
+        "type": "review",
+        "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
+        "url": "https://fgw.ln.gov.cn/fgw/articleFileDir/2026-10/29/c7331259230947d4b29f651de078711a/2026102916211516206.pdf",
+        "immediate": true
+      },
+      {
+        "id": "qinghai-zone1",
+        "signature": "f77eebf3ce2dd8ecfe5c4c1dbb45e903606e92896180a4951107f2df8600de14",
+        "type": "validation",
+        "detail": "青海第一价区：公告路径与列表日期不符：http://fgw.qinghai.gov.cn/xwzx/tzgg/202610/t20261030_92962.html",
+        "url": "",
+        "immediate": true
+      },
+      {
+        "id": "qinghai-zone2",
+        "signature": "0efd0ca645177419d5ec229bf0241a7898debb3b876de543457a5393f5bf8c97",
+        "type": "validation",
+        "detail": "青海二价区：价格表图片不是预期的官网地址：http://fgw.qinghai.gov.cn/xwzx/tzgg/202610/W020261030518614379022.png",
+        "url": "",
+        "immediate": true
+      },
+      {
+        "id": "qinghai-zone3",
+        "signature": "476378e9bbbddd1037e4d673e011680acb6cd63bfb38e1e76b552b1cce287d73",
+        "type": "review",
+        "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
+        "url": "http://fgw.qinghai.gov.cn/xwzx/tzgg/202610/t20261030_92962.html",
+        "immediate": true
+      },
+      {
+        "id": "shaanxi-midnorth",
+        "signature": "c4e2b47901838cd81187cb9441951c1053f9c98d8ebc70ea4689231d92a68379",
+        "type": "review",
+        "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
+        "url": "https://sndrc.shaanxi.gov.cn/sy/xwxx/gggg/202610/t20261029_3707976.html",
+        "immediate": true
+      },
+      {
+        "id": "shaanxi-south",
+        "signature": "c4e2b47901838cd81187cb9441951c1053f9c98d8ebc70ea4689231d92a68379",
+        "type": "review",
+        "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
+        "url": "https://sndrc.shaanxi.gov.cn/sy/xwxx/gggg/202610/t20261029_3707976.html",
+        "immediate": true
+      },
+      {
+        "id": "shaanxi-xian",
+        "signature": "c2a3d17fdea712f07baca1f5b65683352d5837607eadcde075943ebffdbb762b",
+        "type": "review",
+        "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
+        "url": "https://sndrc.shaanxi.gov.cn/zjww/jgcs/csxx/jgc/202610/t20261029_3707976.html",
+        "immediate": true
+      },
+      {
+        "id": "yunnan-kunming",
+        "signature": "4d2a314e8e5b561c026c43f8dd4f7f94b26a058bd3381cf45d8a8d65fd37a59e",
+        "type": "validation",
+        "detail": "yunnan: 对应的官方公告尚未通过检查",
+        "url": "",
+        "immediate": true
+      },
+      {
+        "id": "yunnan-zone2",
+        "signature": "4d2a314e8e5b561c026c43f8dd4f7f94b26a058bd3381cf45d8a8d65fd37a59e",
+        "type": "validation",
+        "detail": "yunnan: 对应的官方公告尚未通过检查",
+        "url": "",
+        "immediate": true
+      },
+      {
+        "id": "yunnan-zone3",
+        "signature": "4d2a314e8e5b561c026c43f8dd4f7f94b26a058bd3381cf45d8a8d65fd37a59e",
+        "type": "validation",
+        "detail": "yunnan: 对应的官方公告尚未通过检查",
+        "url": "",
+        "immediate": true
+      },
+      {
+        "id": "yunnan-zone4",
+        "signature": "4d2a314e8e5b561c026c43f8dd4f7f94b26a058bd3381cf45d8a8d65fd37a59e",
+        "type": "validation",
+        "detail": "yunnan: 对应的官方公告尚未通过检查",
+        "url": "",
+        "immediate": true
+      },
+      {
+        "id": "yunnan-zone5",
+        "signature": "4d2a314e8e5b561c026c43f8dd4f7f94b26a058bd3381cf45d8a8d65fd37a59e",
+        "type": "validation",
+        "detail": "yunnan: 对应的官方公告尚未通过检查",
+        "url": "",
+        "immediate": true
+      },
+      {
+        "id": "zhejiang",
+        "signature": "42d3aaa7b539f98dc3a10b0832f7ec00bfaff88498cb2b5541dab70b3b06bb62",
+        "type": "validation",
+        "detail": "zhejiang: 对应的官方公告尚未通过检查",
+        "url": "",
+        "immediate": true
+      }
+    ],
+    "recovered": [],
+    "issueNumber": 22
   }
 }
