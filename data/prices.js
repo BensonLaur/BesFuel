@@ -8588,15 +8588,15 @@ window.BESFUEL_DATA = {
     "henan": {
       "name": "河南",
       "priceScope": "河南省国VIB车用乙醇汽油和国VI车用柴油最高零售价格（元/升）；加油站可在最高价以内自主定价。",
-      "checkedAt": "2026-10-29",
+      "checkedAt": "2026-10-31",
       "source": {
         "name": "河南省发展和改革委员会",
-        "url": "https://fgw.henan.gov.cn/2026/09-24/3432590.html"
+        "url": "https://fgw.henan.gov.cn/2026/10-29/3442609.html"
       },
-      "effectiveLabel": "2026-09-24 24:00 起",
+      "effectiveLabel": "2026-10-29 24:00 起",
       "grades": {
         "92": {
-          "price": 8.62,
+          "price": 8.9,
           "history": [
             {
               "date": "2026-01-21",
@@ -8687,11 +8687,16 @@ window.BESFUEL_DATA = {
               "date": "2026-09-25",
               "price": 8.62,
               "sourceUrl": "https://fgw.henan.gov.cn/2026/09-24/3432590.html"
+            },
+            {
+              "date": "2026-10-30",
+              "price": 8.9,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/10-29/3442609.html"
             }
           ]
         },
         "95": {
-          "price": 9.21,
+          "price": 9.5,
           "history": [
             {
               "date": "2026-01-21",
@@ -8782,6 +8787,11 @@ window.BESFUEL_DATA = {
               "date": "2026-09-25",
               "price": 9.21,
               "sourceUrl": "https://fgw.henan.gov.cn/2026/09-24/3432590.html"
+            },
+            {
+              "date": "2026-10-30",
+              "price": 9.5,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/10-29/3442609.html"
             }
           ]
         },
@@ -8790,7 +8800,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 8.29,
+          "price": 8.58,
           "history": [
             {
               "date": "2026-01-21",
@@ -8881,6 +8891,11 @@ window.BESFUEL_DATA = {
               "date": "2026-09-25",
               "price": 8.29,
               "sourceUrl": "https://fgw.henan.gov.cn/2026/09-24/3432590.html"
+            },
+            {
+              "date": "2026-10-30",
+              "price": 8.58,
+              "sourceUrl": "https://fgw.henan.gov.cn/2026/10-29/3442609.html"
             }
           ]
         }
@@ -10199,15 +10214,15 @@ window.BESFUEL_DATA = {
     "zhejiang": {
       "name": "浙江",
       "priceScope": "浙江省公布的成品油最高零售价格（元/升）；已核公告未列省内分价区。",
-      "checkedAt": "2026-10-29",
+      "checkedAt": "2026-10-31",
       "source": {
         "name": "浙江省发展和改革委员会",
-        "url": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_fa840097ac1b42fea2caf5bf35e71bdf.html"
+        "url": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_0d3ec855380f4270a618df050d1ca8d7.html"
       },
-      "effectiveLabel": "2026-09-24 24:00 起",
+      "effectiveLabel": "2026-10-29 24:00 起",
       "grades": {
         "92": {
-          "price": 8.58,
+          "price": 8.85,
           "history": [
             {
               "date": "2026-04-22",
@@ -10268,11 +10283,16 @@ window.BESFUEL_DATA = {
               "date": "2026-09-25",
               "price": 8.58,
               "sourceUrl": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_ed9666e8c2204d60b9207d75412e7cee.html"
+            },
+            {
+              "date": "2026-10-30",
+              "price": 8.85,
+              "sourceUrl": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_0d3ec855380f4270a618df050d1ca8d7.html"
             }
           ]
         },
         "95": {
-          "price": 9.12,
+          "price": 9.42,
           "history": [
             {
               "date": "2026-04-22",
@@ -10333,6 +10353,11 @@ window.BESFUEL_DATA = {
               "date": "2026-09-25",
               "price": 9.12,
               "sourceUrl": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_ed9666e8c2204d60b9207d75412e7cee.html"
+            },
+            {
+              "date": "2026-10-30",
+              "price": 9.42,
+              "sourceUrl": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_0d3ec855380f4270a618df050d1ca8d7.html"
             }
           ]
         },
@@ -10341,7 +10366,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 8.28,
+          "price": 8.57,
           "history": [
             {
               "date": "2026-04-22",
@@ -10402,30 +10427,34 @@ window.BESFUEL_DATA = {
               "date": "2026-09-25",
               "price": 8.28,
               "sourceUrl": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_ed9666e8c2204d60b9207d75412e7cee.html"
+            },
+            {
+              "date": "2026-10-30",
+              "price": 8.57,
+              "sourceUrl": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_0d3ec855380f4270a618df050d1ca8d7.html"
             }
           ]
         }
       },
       "latestNotice": {
-        "kind": "unchanged",
-        "date": "2026-10-15",
-        "title": "浙江省成品油价格不作调整",
-        "sourceUrl": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_fa840097ac1b42fea2caf5bf35e71bdf.html",
-        "priceSourceUrl": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_fa840097ac1b42fea2caf5bf35e71bdf.html"
+        "kind": "adjusted",
+        "date": "2026-10-29",
+        "title": "浙江成品油价格调整",
+        "sourceUrl": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_0d3ec855380f4270a618df050d1ca8d7.html"
       }
     },
     "hunan": {
       "name": "湖南",
       "priceScope": "湖南省成品油全省统一最高零售价格（元/升）。",
-      "checkedAt": "2026-10-29",
+      "checkedAt": "2026-10-31",
       "source": {
         "name": "湖南省发展和改革委员会",
-        "url": "https://fgw.hunan.gov.cn/fgw/jggb11/202609/t20260924_34071920.html"
+        "url": "https://fgw.hunan.gov.cn/fgw/jggb11/202610/t20261029_34090753.html"
       },
-      "effectiveLabel": "2026-09-24 24:00 起",
+      "effectiveLabel": "2026-10-29 24:00 起",
       "grades": {
         "92": {
-          "price": 8.55,
+          "price": 8.83,
           "history": [
             {
               "date": "2026-08-15",
@@ -10446,11 +10475,16 @@ window.BESFUEL_DATA = {
               "date": "2026-09-25",
               "price": 8.55,
               "sourceUrl": "https://fgw.hunan.gov.cn/fgw/jggb11/202609/t20260924_34071920.html"
+            },
+            {
+              "date": "2026-10-30",
+              "price": 8.83,
+              "sourceUrl": "https://fgw.hunan.gov.cn/fgw/jggb11/202610/t20261029_34090753.html"
             }
           ]
         },
         "95": {
-          "price": 9.09,
+          "price": 9.38,
           "history": [
             {
               "date": "2026-08-15",
@@ -10471,6 +10505,11 @@ window.BESFUEL_DATA = {
               "date": "2026-09-25",
               "price": 9.09,
               "sourceUrl": "https://fgw.hunan.gov.cn/fgw/jggb11/202609/t20260924_34071920.html"
+            },
+            {
+              "date": "2026-10-30",
+              "price": 9.38,
+              "sourceUrl": "https://fgw.hunan.gov.cn/fgw/jggb11/202610/t20261029_34090753.html"
             }
           ]
         },
@@ -10479,7 +10518,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 8.37,
+          "price": 8.66,
           "history": [
             {
               "date": "2026-08-15",
@@ -10500,6 +10539,11 @@ window.BESFUEL_DATA = {
               "date": "2026-09-25",
               "price": 8.37,
               "sourceUrl": "https://fgw.hunan.gov.cn/fgw/jggb11/202609/t20260924_34071920.html"
+            },
+            {
+              "date": "2026-10-30",
+              "price": 8.66,
+              "sourceUrl": "https://fgw.hunan.gov.cn/fgw/jggb11/202610/t20261029_34090753.html"
             }
           ]
         }
