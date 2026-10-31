@@ -3,9 +3,9 @@
   "entries": {
     "liaoning": {
       "signature": "8988474c8bf50427421a8525264d2e0db4b6d4b8d2b8a21e1ebdfc75f7572079",
-      "consecutive": 3,
+      "consecutive": 4,
       "alerted": true,
-      "lastRun": "41193280342",
+      "lastRun": "41197380669",
       "problem": {
         "type": "review",
         "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
@@ -18,85 +18,85 @@
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41193280342"
+      "lastRun": "41197380669"
     },
     "fujian": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41193280342"
+      "lastRun": "41197380669"
     },
     "guangxi": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41193280342"
+      "lastRun": "41197380669"
     },
     "inner-mongolia-east": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41193280342"
+      "lastRun": "41197380669"
     },
     "inner-mongolia-west": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41193280342"
+      "lastRun": "41197380669"
     },
     "jiangsu": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41193280342"
+      "lastRun": "41197380669"
     },
     "shanghai": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41193280342"
+      "lastRun": "41197380669"
     },
     "shanxi": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41193280342"
+      "lastRun": "41197380669"
     },
     "sichuan-zone1": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41193280342"
+      "lastRun": "41197380669"
     },
     "sichuan-zone3": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41193280342"
+      "lastRun": "41197380669"
     },
     "tianjin": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41193280342"
+      "lastRun": "41197380669"
     },
     "anhui": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41193280342"
+      "lastRun": "41197380669"
     },
     "chongqing": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41193280342"
+      "lastRun": "41197380669"
     },
     "guizhou-zone1": {
       "signature": "b6e8561f4ed4db50cda8e02038c46cc36a8cf35fce28ec5512c75e72403ac9fd",
-      "consecutive": 3,
+      "consecutive": 4,
       "alerted": true,
-      "lastRun": "41193280342",
+      "lastRun": "41197380669",
       "problem": {
         "type": "review",
         "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
@@ -107,9 +107,9 @@
     },
     "guizhou-zone2": {
       "signature": "b6e8561f4ed4db50cda8e02038c46cc36a8cf35fce28ec5512c75e72403ac9fd",
-      "consecutive": 3,
+      "consecutive": 4,
       "alerted": true,
-      "lastRun": "41193280342",
+      "lastRun": "41197380669",
       "problem": {
         "type": "review",
         "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
@@ -120,9 +120,9 @@
     },
     "guizhou-zone3": {
       "signature": "b6e8561f4ed4db50cda8e02038c46cc36a8cf35fce28ec5512c75e72403ac9fd",
-      "consecutive": 3,
+      "consecutive": 4,
       "alerted": true,
-      "lastRun": "41193280342",
+      "lastRun": "41197380669",
       "problem": {
         "type": "review",
         "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
@@ -133,9 +133,9 @@
     },
     "hebei": {
       "signature": "241fab9d819a976fa043889e0397860bac5e2bbe0156ab8375a6ff9c296852ce",
-      "consecutive": 3,
+      "consecutive": 4,
       "alerted": true,
-      "lastRun": "41193280342",
+      "lastRun": "41197380669",
       "problem": {
         "type": "review",
         "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
@@ -146,9 +146,9 @@
     },
     "heilongjiang-north": {
       "signature": "12f94834837a83c9124d3b16912009d16785e1c5f98c898c340faaa3eef310c3",
-      "consecutive": 3,
+      "consecutive": 4,
       "alerted": true,
-      "lastRun": "41193280342",
+      "lastRun": "41197380669",
       "problem": {
         "type": "review",
         "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
@@ -159,9 +159,9 @@
     },
     "heilongjiang-south": {
       "signature": "12f94834837a83c9124d3b16912009d16785e1c5f98c898c340faaa3eef310c3",
-      "consecutive": 3,
+      "consecutive": 4,
       "alerted": true,
-      "lastRun": "41193280342",
+      "lastRun": "41197380669",
       "problem": {
         "type": "review",
         "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
@@ -174,57 +174,43 @@
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41193280342"
+      "lastRun": "41197380669"
     },
     "hunan": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41193280342"
+      "lastRun": "41197380669"
     },
     "jilin": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41193280342"
+      "lastRun": "41197380669"
     },
     "ningxia": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41193280342"
+      "lastRun": "41197380669"
     },
     "qinghai-zone1": {
-      "signature": "f77eebf3ce2dd8ecfe5c4c1dbb45e903606e92896180a4951107f2df8600de14",
-      "consecutive": 3,
-      "alerted": true,
-      "lastRun": "41193280342",
-      "problem": {
-        "type": "validation",
-        "detail": "青海第一价区：公告路径与列表日期不符：http://fgw.qinghai.gov.cn/xwzx/tzgg/202610/t20261030_92962.html",
-        "url": "",
-        "immediate": true
-      },
-      "openIssue": true
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "41197380669"
     },
     "qinghai-zone2": {
-      "signature": "0efd0ca645177419d5ec229bf0241a7898debb3b876de543457a5393f5bf8c97",
-      "consecutive": 3,
-      "alerted": true,
-      "lastRun": "41193280342",
-      "problem": {
-        "type": "validation",
-        "detail": "青海二价区：价格表图片不是预期的官网地址：http://fgw.qinghai.gov.cn/xwzx/tzgg/202610/W020261030518614379022.png",
-        "url": "",
-        "immediate": true
-      },
-      "openIssue": true
+      "signature": null,
+      "consecutive": 0,
+      "alerted": false,
+      "lastRun": "41197380669"
     },
     "qinghai-zone3": {
       "signature": "476378e9bbbddd1037e4d673e011680acb6cd63bfb38e1e76b552b1cce287d73",
-      "consecutive": 3,
+      "consecutive": 4,
       "alerted": true,
-      "lastRun": "41193280342",
+      "lastRun": "41197380669",
       "problem": {
         "type": "review",
         "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
@@ -235,9 +221,9 @@
     },
     "shaanxi-midnorth": {
       "signature": "c4e2b47901838cd81187cb9441951c1053f9c98d8ebc70ea4689231d92a68379",
-      "consecutive": 3,
+      "consecutive": 4,
       "alerted": true,
-      "lastRun": "41193280342",
+      "lastRun": "41197380669",
       "problem": {
         "type": "review",
         "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
@@ -248,9 +234,9 @@
     },
     "shaanxi-south": {
       "signature": "c4e2b47901838cd81187cb9441951c1053f9c98d8ebc70ea4689231d92a68379",
-      "consecutive": 3,
+      "consecutive": 4,
       "alerted": true,
-      "lastRun": "41193280342",
+      "lastRun": "41197380669",
       "problem": {
         "type": "review",
         "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
@@ -261,9 +247,9 @@
     },
     "shaanxi-xian": {
       "signature": "c2a3d17fdea712f07baca1f5b65683352d5837607eadcde075943ebffdbb762b",
-      "consecutive": 3,
+      "consecutive": 4,
       "alerted": true,
-      "lastRun": "41193280342",
+      "lastRun": "41197380669",
       "problem": {
         "type": "review",
         "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
@@ -276,102 +262,102 @@
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41193280342"
+      "lastRun": "41197380669"
     },
     "sichuan-zone2": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41193280342"
+      "lastRun": "41197380669"
     },
     "xinjiang-dushanzi": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41193280342"
+      "lastRun": "41197380669"
     },
     "xinjiang-karamay-main": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41193280342"
+      "lastRun": "41197380669"
     },
     "xizang-changdu": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41193280342"
+      "lastRun": "41197380669"
     },
     "xizang-lhasa": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41193280342"
+      "lastRun": "41197380669"
     },
     "xizang-ngari": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41193280342"
+      "lastRun": "41197380669"
     },
     "yunnan-kunming": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41193280342"
+      "lastRun": "41197380669"
     },
     "yunnan-zone2": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41193280342"
+      "lastRun": "41197380669"
     },
     "yunnan-zone3": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41193280342"
+      "lastRun": "41197380669"
     },
     "yunnan-zone4": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41193280342"
+      "lastRun": "41197380669"
     },
     "yunnan-zone5": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41193280342"
+      "lastRun": "41197380669"
     },
     "zhejiang": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41193280342"
+      "lastRun": "41197380669"
     },
     "hainan": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41193280342"
+      "lastRun": "41197380669"
     },
     "jiangxi": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41193280342"
+      "lastRun": "41197380669"
     },
     "market-forecast": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41193280342"
+      "lastRun": "41197380669"
     }
   },
   "summary": {
-    "signature": "16307511123e31f6c168cfa3b840e2b19ebfebdaae17883b07d0585060fdad34",
-    "sequence": 2,
+    "signature": "18f3a419ccb4ad232b27fe55765c34190bf791320c1fdb287f46efed7bd55c86",
+    "sequence": 3,
     "published": true,
     "active": [
       {
@@ -431,22 +417,6 @@
         "immediate": true
       },
       {
-        "id": "qinghai-zone1",
-        "signature": "f77eebf3ce2dd8ecfe5c4c1dbb45e903606e92896180a4951107f2df8600de14",
-        "type": "validation",
-        "detail": "青海第一价区：公告路径与列表日期不符：http://fgw.qinghai.gov.cn/xwzx/tzgg/202610/t20261030_92962.html",
-        "url": "",
-        "immediate": true
-      },
-      {
-        "id": "qinghai-zone2",
-        "signature": "0efd0ca645177419d5ec229bf0241a7898debb3b876de543457a5393f5bf8c97",
-        "type": "validation",
-        "detail": "青海二价区：价格表图片不是预期的官网地址：http://fgw.qinghai.gov.cn/xwzx/tzgg/202610/W020261030518614379022.png",
-        "url": "",
-        "immediate": true
-      },
-      {
         "id": "qinghai-zone3",
         "signature": "476378e9bbbddd1037e4d673e011680acb6cd63bfb38e1e76b552b1cce287d73",
         "type": "review",
@@ -480,6 +450,26 @@
       }
     ],
     "recovered": [
+      {
+        "id": "qinghai-zone1",
+        "signature": "f77eebf3ce2dd8ecfe5c4c1dbb45e903606e92896180a4951107f2df8600de14",
+        "type": "validation",
+        "detail": "青海第一价区：公告路径与列表日期不符：http://fgw.qinghai.gov.cn/xwzx/tzgg/202610/t20261030_92962.html",
+        "url": "",
+        "immediate": true,
+        "recoveredAt": "2026-10-31",
+        "runKey": "41197380669"
+      },
+      {
+        "id": "qinghai-zone2",
+        "signature": "0efd0ca645177419d5ec229bf0241a7898debb3b876de543457a5393f5bf8c97",
+        "type": "validation",
+        "detail": "青海二价区：价格表图片不是预期的官网地址：http://fgw.qinghai.gov.cn/xwzx/tzgg/202610/W020261030518614379022.png",
+        "url": "",
+        "immediate": true,
+        "recoveredAt": "2026-10-31",
+        "runKey": "41197380669"
+      },
       {
         "id": "henan",
         "signature": "f4542daf2e2a16a729ec88014dd0ea248f5847f55b325ce54453dd9e7282de24",
