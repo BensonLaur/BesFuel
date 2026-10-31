@@ -1,8 +1,7 @@
 'use strict';
+const { createSnapshot } = require("./helpers/snapshot.cjs");
 
 const assert = require('node:assert/strict');
-const fs = require('node:fs');
-const path = require('node:path');
 const { test } = require('node:test');
 const monitor = require('../scripts/monitors/yunnan-zone2.cjs');
 const verified = require('../data/verified/yunnan-zone2.json');
@@ -73,7 +72,7 @@ test('twelve audited PDF tables have ordered effective dates and distinct second
     assert.match(notice.pdfUrl, /^https:\/\/yndrc\.yn\.gov\.cn\/uploadfile\/s2\/2026\/\d{4}\/\d{17}\.pdf$/);
     assert.ok(notice.prices.diesel < notice.prices['92'] && notice.prices['92'] < notice.prices['95']);
   }
-  const existing = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'prices.json'), 'utf8'));
+  const existing = createSnapshot();
   const data = importVerified(existing, verified);
   assert.equal(data.regions['yunnan-zone2'].grades['92'].price, 8.83);
   assert.equal(data.regions['yunnan-zone2'].grades['92'].history.length, 12);

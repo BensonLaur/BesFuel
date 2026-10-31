@@ -1,8 +1,7 @@
 'use strict';
+const { createSnapshot } = require("./helpers/snapshot.cjs");
 
 const assert = require('node:assert/strict');
-const fs = require('node:fs');
-const path = require('node:path');
 const { test } = require('node:test');
 const monitor = require('../scripts/monitors/shaanxi-midnorth.cjs');
 const verified = require('../data/verified/shaanxi-midnorth.json');
@@ -73,7 +72,7 @@ test('audited history combines the northern gasoline row with the non-Xian diese
     assert.match(notice.imageUrl, /^https:\/\/sndrc\.shaanxi\.gov\.cn\/sy\/xwxx\/gggg\/\d{6}\/W\d+(?:_ORIGIN)?\.png$/);
     assert.ok(notice.prices.diesel < notice.prices['92'] && notice.prices['92'] < notice.prices['95']);
   }
-  const existing = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'prices.json'), 'utf8'));
+  const existing = createSnapshot();
   const data = importVerified(existing, verified);
   assert.equal(data.regions['shaanxi-midnorth'].grades.diesel.price, 8.36);
   assert.equal(data.regions['shaanxi-midnorth'].grades['92'].history.length, 12);

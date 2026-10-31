@@ -53,6 +53,16 @@ npm run smoke
 
 运行 `npm run check:sources` 可只读检查真实官网来源；采集失败会非零退出，详细结果和网络限制见 [来源健康检查](docs/SOURCE_HEALTH.md)。
 
+业务测试通过 `tests/helpers/snapshot.cjs` 构造独立样本，模拟的浏览器场景同时固定数据和时钟；仓库快照的一致性校验与真实页面冒烟仍使用实际数据。CI 在采集前后运行测试，失败时也上传 `automatic-review` 和 `ci-diagnostics-<attempt>` 产物，包含检查退出码、日志、输入快照和 FC 原始证据。
+
+调查历史 FC 失败时，下载对应运行的 `fc-regions.json`，并准备该运行提交中的 `data/prices.json` 作为采集前快照。安装 `npm ci --ignore-scripts` 及 `scripts/review-requirements.txt` 中经哈希锁定的 Python 依赖后，可以执行：
+
+```powershell
+node scripts/replay-fc.cjs <fc-regions.json> <prices-before.json> <仓库外的空目录>
+```
+
+重放在隔离副本中执行采集前后的完整检查（Node、Python、PowerShell、快照校验、构建及浏览器冒烟），同时验证重复应用幂等和旧核验记录不能覆盖新价格。采集只读取所提供的 FC 证据，保留原始时间戳并在证据捕获时刻校验时效；不会抓取实时来源、修改工作区数据或发布。输出目录保留全部结果，便于复查。
+
 地区采集可通过阿里云杭州 FC 执行，结果保存到私有 OSS，由 Actions 使用 OIDC 临时身份读取、校验并发布。部署包、最小权限和定时配置见 [FC 采集接入](docs/FC_COLLECTOR.md)。完成云端配置并启用 `BESFUEL_FC_ENABLED` 后切换；广东和原油继续使用原发布任务。
 
 更新地区价格和核验来源的方法见 [数据维护说明](docs/DATA.md)；部署流程与实现边界见 [实施方案](docs/IMPLEMENTATION_PLAN.md)。

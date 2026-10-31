@@ -54,8 +54,8 @@ function acceptParsedMonitors(bundle, initial, options = {}) {
   });
   return { data, sources: replay.sources, monitors: results };
 }
-async function runAutomatic({ bundle, initial, today = chinaDate(), reader = publishingReader } = {}) {
-  const replay = bundle ? acceptParsedMonitors(bundle, initial) : { data: structuredClone(initial), sources: [], monitors: [] };
+async function runAutomatic({ bundle, initial, now = new Date(), today = chinaDate(now), reader = publishingReader } = {}) {
+  const replay = bundle ? acceptParsedMonitors(bundle, initial, { now }) : { data: structuredClone(initial), sources: [], monitors: [] };
   const extra = bundle ? validateExtras(bundle) : null;
   let data = replay.data;
   const direct = [];

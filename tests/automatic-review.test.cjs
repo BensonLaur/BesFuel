@@ -1,4 +1,5 @@
 "use strict";
+const { createSnapshot } = require("./helpers/snapshot.cjs");
 const test = require("node:test");
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
@@ -11,7 +12,7 @@ const { counts } = require("../scripts/source-health.cjs");
 const { publicHttpFallback } = require("../scripts/publish-reader.cjs");
 const { validateExtras, extraDigest } = require("../scripts/cloud-extra.cjs");
 const crypto = require("node:crypto");
-const snapshot = require("../data/prices.json");
+const snapshot = createSnapshot("henan", "hainan", "jiangxi", "hunan");
 const fixture = id => fs.readFileSync(path.join(__dirname, "fixtures/automatic", id + ".html"), "utf8");
 const record = id => require(`../data/verified/${id}.json`);
 
@@ -99,12 +100,12 @@ test("a matching Hunan announcement cannot refresh its date if XLS verification 
   const monitors = loadModules("monitors").map(m => m.id === "hunan" ?
     { id: m.id, ok: true, needsReview: false, latest: record("hunan").notices.at(-1) } :
     { id: m.id, ok: false, error: "offline" });
-  const now = new Date().toISOString();
+  const now = "2026-10-29T04:00:00.000Z";
   const bundle = { format: "besfuel-regions-v1", adapterDigest: adapterDigest(), revision: "a".repeat(40),
     startedAt: now, generatedAt: now, sources, monitors, counts: { sources: counts(sources), monitors: counts(monitors) } };
   const reader = () => ({ getBuffer: async () => { throw Error("attachment unavailable"); },
     getText: async () => { throw Error("offline"); } });
-  const result = await runAutomatic({ bundle, initial, reader });
+  const result = await runAutomatic({ bundle, initial, reader, now: new Date(now) });
   assert.deepEqual(result.data.regions.hunan, initial.regions.hunan);
   assert.equal(result.monitors.find(m => m.id === "hunan").ok, false);
 });

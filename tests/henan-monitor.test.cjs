@@ -1,4 +1,5 @@
 'use strict';
+const { createSnapshot } = require("./helpers/snapshot.cjs");
 
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
@@ -72,7 +73,7 @@ test('rejects forged host, mismatched date, source, and missing grade', async ()
 
 test('18 provincial notices import as audited history', () => {
   const record = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'verified', 'henan.json'), 'utf8'));
-  const snapshot = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'prices.json'), 'utf8'));
+  const snapshot = createSnapshot();
   const merged = importVerified(snapshot, record);
   const region = merged.regions.henan;
   assert.equal(record.notices.length, 18);

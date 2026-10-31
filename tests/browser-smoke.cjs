@@ -8,6 +8,7 @@ const { pathToFileURL } = require("node:url");
 const { calculate } = require("../lib/calc.js");
 const { buildHistory } = require("../lib/history.js");
 const { readDevToolsPort } = require("./helpers/browser-port.cjs");
+const { createSnapshot } = require("./helpers/snapshot.cjs");
 
 const root = path.resolve(process.env.BESFUEL_SITE_DIR || path.join(__dirname, ".."));
 const snapshot = JSON.parse(fs.readFileSync(path.join(root, "data", "prices.json"), "utf8"));
@@ -185,23 +186,10 @@ async function main() {
     if (key === "guangdong") continue;
     await setValue("region", key, "change");
     assert.equal(await evaluate("document.getElementById('region-label').textContent"), region.name);
-    assert.equal(await evaluate("document.getElementById('current-price').textContent"), region.grades["92"].price.toFixed(2));
+    const available = region.grades["92"].price !== null && (!region.priceValidThrough || region.priceValidThrough >= todayIso);
+    assert.equal(await evaluate("document.getElementById('current-price').textContent"), available ? region.grades["92"].price.toFixed(2) : "—");
     assert.equal(await evaluate("document.querySelectorAll('.chart-point').length"), buildHistory(region, "92", todayIso).points.length);
     assert.equal(await evaluate("document.getElementById('next-window').textContent"), windowFresh ? national.nextAdjustment.dateLabel : national.nextAdjustment.date ? "待重新核实" : "待核实");
-  }
-  if (snapshot.regions["shaanxi-xian"]) {
-    await setValue("region", "shaanxi-xian", "change");
-    assert.equal(await evaluate("(document.querySelector('.chart-path').getAttribute('d').match(/\\bM\\b/g) || []).length"), 3);
-    assert.ok(await evaluate("document.getElementById('history-note').textContent.includes('2026-05-22')"));
-    assert.ok(await evaluate("document.getElementById('history-note').textContent.includes('2026-08-15')"));
-  }
-  if (snapshot.regions["heilongjiang-south"]) {
-    await setValue("region", "heilongjiang-south", "change");
-    await evaluate("window.BESFUEL_DATA.regions['heilongjiang-south'].priceValidThrough = '2000-01-01'; document.getElementById('region').dispatchEvent(new Event('change', { bubbles: true }))");
-    assert.equal(await evaluate("document.getElementById('current-price').textContent"), "—");
-    assert.equal(await evaluate("document.getElementById('freshness').textContent"), "待复核");
-    assert.equal(await evaluate("document.getElementById('trip-price').value"), "");
-    assert.ok(await evaluate("document.getElementById('price-detail').textContent.includes('季节折算系数已到期')"));
   }
   await setValue("region", "guangdong", "change");
   await setValue("distance", "9", "input");
@@ -265,6 +253,38 @@ async function main() {
     fs.writeFileSync(path.join(target.dir, `${target.name}-support${target.ext}`), Buffer.from(supportScreenshot.data, "base64"));
     await evaluate("document.getElementById('close-support').click()");
   }
+  // Real snapshot checks above stay separate from deterministic UI scenarios.
+  const noticeSnapshot = createSnapshot("hebei", "shaanxi-xian", "heilongjiang-south");
+  const noticeGuangdong = noticeSnapshot.regions.guangdong;
+  async function installScenario(data, day) {
+    await evaluate(`(() => {
+      window.fixtureOriginalDate ||= Date;
+      window.fixtureDay = ${JSON.stringify(day)};
+      window.Date = class extends window.fixtureOriginalDate {
+        constructor(...args) { super(...(args.length ? args : [window.fixtureDay + 'T12:00:00+08:00'])); }
+        static now() { return new window.fixtureOriginalDate(window.fixtureDay + 'T12:00:00+08:00').getTime(); }
+      };
+      Object.assign(window.BESFUEL_DATA, ${JSON.stringify(data)});
+      document.getElementById('region').value = 'guangdong';
+      document.getElementById('grade').value = '92';
+      document.getElementById('region').dispatchEvent(new Event('change', { bubbles: true }));
+    })()`);
+  }
+  await installScenario(noticeSnapshot, '2026-10-22');
+  if (noticeSnapshot.regions["shaanxi-xian"]) {
+    await setValue("region", "shaanxi-xian", "change");
+    assert.equal(await evaluate("(document.querySelector('.chart-path').getAttribute('d').match(/\\bM\\b/g) || []).length"), 3);
+    assert.ok(await evaluate("document.getElementById('history-note').textContent.includes('2026-05-22')"));
+    assert.ok(await evaluate("document.getElementById('history-note').textContent.includes('2026-08-15')"));
+  }
+  if (noticeSnapshot.regions["heilongjiang-south"]) {
+    await setValue("region", "heilongjiang-south", "change");
+    await evaluate("window.BESFUEL_DATA.regions['heilongjiang-south'].priceValidThrough = '2000-01-01'; document.getElementById('region').dispatchEvent(new Event('change', { bubbles: true }))");
+    assert.equal(await evaluate("document.getElementById('current-price').textContent"), "—");
+    assert.equal(await evaluate("document.getElementById('freshness').textContent"), "待复核");
+    assert.equal(await evaluate("document.getElementById('trip-price').value"), "");
+    assert.ok(await evaluate("document.getElementById('price-detail').textContent.includes('季节折算系数已到期')"));
+  }
   // An unchanged decision is separate from price history, future estimates and the selected grade.
   await setValue("region", "guangdong", "change");
   await setValue("grade", "92", "change");
@@ -278,15 +298,15 @@ async function main() {
     document.getElementById('region').dispatchEvent(new Event('change', { bubbles: true }));
   })()`);
   assert.equal(await evaluate("document.getElementById('latest-notice-source').textContent"), "2026-10-15 · 本轮不作调整，继续执行当前价格 ↗");
-  assert.equal(await evaluate("document.getElementById('effective-time').textContent"), guangdong.effectiveLabel);
-  assert.equal(await evaluate("document.getElementById('current-price').textContent"), guangdong.grades["92"].price.toFixed(2));
-  assert.equal(await evaluate("document.querySelectorAll('.chart-point').length"), guangdong.grades["92"].history.length + 1);
+  assert.equal(await evaluate("document.getElementById('effective-time').textContent"), noticeGuangdong.effectiveLabel);
+  assert.equal(await evaluate("document.getElementById('current-price').textContent"), noticeGuangdong.grades["92"].price.toFixed(2));
+  assert.equal(await evaluate("document.querySelectorAll('.chart-point').length"), noticeGuangdong.grades["92"].history.length + 1);
   assert.ok(await evaluate("document.getElementById('history-range').textContent.endsWith('2026-10-15')"));
-  assert.equal(await evaluate("document.getElementById('history-count').textContent"), `${guangdong.grades["92"].history.length} 条价格记录 · 1 条不调整公告`);
+  assert.equal(await evaluate("document.getElementById('history-count').textContent"), `${noticeGuangdong.grades["92"].history.length} 条价格记录 · 1 条不调整公告`);
   assert.ok(await evaluate("document.querySelector('.chart-value').textContent.includes('不调整')"));
   assert.ok(await evaluate("document.getElementById('history-note').textContent.includes('空心节点')"));
   await evaluate("[...document.querySelectorAll('.chart-hit')].at(-1).click()");
-  assert.equal(await evaluate("document.querySelector('.chart-tooltip').textContent"), `2026-10-15 不作调整${guangdong.grades["92"].price.toFixed(2)} 元/升`);
+  assert.equal(await evaluate("document.querySelector('.chart-tooltip').textContent"), `2026-10-15 不作调整${noticeGuangdong.grades["92"].price.toFixed(2)} 元/升`);
   assert.ok(await evaluate("[...document.querySelectorAll('.chart-hit')].at(-1).getAttribute('aria-label').includes('不作调整')"));
   await send("Input.dispatchKeyEvent", { type: "keyDown", key: "ArrowLeft", code: "ArrowLeft", windowsVirtualKeyCode: 37 });
   assert.ok(await evaluate("document.querySelector('.chart-tooltip').textContent.includes('生效')"));
@@ -322,11 +342,32 @@ async function main() {
   assert.equal(await evaluate("document.getElementById('latest-notice').hidden"), false);
   await evaluate("window.BESFUEL_DATA.regions.guangdong.latestNotice.kind = 'adjusted'; document.getElementById('region').dispatchEvent(new Event('change', { bubbles: true }))");
   assert.ok(await evaluate("document.getElementById('latest-notice-source').textContent.includes('本轮价格调整')"));
-  assert.equal(await evaluate("document.querySelectorAll('.chart-point').length"), guangdong.grades["92"].history.length);
-  assert.ok(await evaluate(`document.getElementById('history-range').textContent.endsWith(${JSON.stringify(guangdong.grades["92"].history.at(-1).date)})`));
+  assert.equal(await evaluate("document.querySelectorAll('.chart-point').length"), noticeGuangdong.grades["92"].history.length);
+  assert.ok(await evaluate(`document.getElementById('history-range').textContent.endsWith(${JSON.stringify(noticeGuangdong.grades["92"].history.at(-1).date)})`));
   await evaluate("delete window.BESFUEL_DATA.regions.guangdong.latestNotice; document.getElementById('region').dispatchEvent(new Event('change', { bubbles: true }))");
   assert.equal(await evaluate("document.getElementById('latest-notice').hidden"), true);
   await evaluate("if (window.savedLatestNotice) window.BESFUEL_DATA.regions.guangdong.latestNotice = window.savedLatestNotice");
+  await send("Emulation.setDeviceMetricsOverride", { width: 390, height: 1500, deviceScaleFactor: 1, mobile: true });
+  // A newer price can cross a month or year; older unchanged notices must
+  // disappear while a subsequent unchanged decision adds exactly one node.
+  for (const [effective, noticeDay] of [['2026-10-30', '2026-11-12'], ['2026-11-13', '2026-11-26'], ['2027-01-01', '2027-01-14']]) {
+    const data = structuredClone(noticeSnapshot), region = data.regions.guangdong;
+    data.checkedAt = region.checkedAt = noticeDay;
+    for (const grade of ['92', '95', 'diesel']) {
+      const entry = region.grades[grade];
+      entry.price = Number((entry.price + .1).toFixed(2));
+      entry.history.push({ date: effective, price: entry.price, sourceUrl: region.source.url });
+    }
+    region.latestNotice = { kind: 'unchanged', date: '2026-10-15', title: '旧周期不调整公告', sourceUrl: region.source.url };
+    await installScenario(data, noticeDay);
+    assert.equal(await evaluate("document.querySelectorAll('.chart-point').length"), 3, 'old notice cannot extend a new price history');
+    region.latestNotice.date = noticeDay;
+    await installScenario(data, noticeDay);
+    assert.equal(await evaluate("document.querySelectorAll('.chart-point').length"), 4);
+    assert.equal(await evaluate("document.getElementById('current-price').textContent"), '8.73');
+    assert.ok(await evaluate(`document.getElementById('history-range').textContent.endsWith(${JSON.stringify(noticeDay)})`));
+  }
+  await installScenario(noticeSnapshot, '2026-10-22');
   await send("Emulation.setDeviceMetricsOverride", { width: 390, height: 1500, deviceScaleFactor: 1, mobile: true });
   await evaluate(`(() => {
     const region = structuredClone(window.BESFUEL_DATA.regions.guangdong);
@@ -341,7 +382,7 @@ async function main() {
   await setValue("grade", "92", "change");
   assert.equal(await evaluate("document.getElementById('current-price').textContent"), "7.77");
   assert.equal(await evaluate("document.getElementById('region').selectedOptions[0].textContent"), "示例地区");
-  assert.equal(await evaluate("document.getElementById('prediction-text').textContent"), forecastVisible ? national.forecast.description : "暂无本轮可靠预估");
+  assert.equal(await evaluate("document.getElementById('prediction-text').textContent"), "暂无本轮可靠预估");
   await evaluate(`(() => {
     const OriginalDate = Date;
     window.forecastTestDay = '2026-10-02';

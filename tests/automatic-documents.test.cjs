@@ -1,4 +1,5 @@
 "use strict";
+const { createSnapshot } = require("./helpers/snapshot.cjs");
 const test = require("node:test");
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
@@ -7,7 +8,7 @@ const crypto = require("node:crypto");
 const { GROUPS, plan, collectEvidence, validateEvidence } = require("../scripts/cloud-evidence.cjs");
 const { parseXizang, parseZhejiang, parseBinary, acceptDocument, applyDocuments } = require("../scripts/automatic-documents.cjs");
 const { planAlerts } = require("../scripts/review-alerts.cjs");
-const snapshot = require("../data/prices.json");
+const snapshot = createSnapshot(...Object.values(GROUPS).flat());
 const fixture = name => fs.readFileSync(path.join(__dirname, "fixtures/automatic/documents", name));
 const record = id => require(`../data/verified/${id}.json`);
 const latest = id => structuredClone(record(id).notices.find(n => n.publishedDate === "2026-09-24"));

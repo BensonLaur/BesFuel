@@ -1,8 +1,7 @@
 'use strict';
+const { createSnapshot } = require("./helpers/snapshot.cjs");
 
 const assert = require('node:assert/strict');
-const fs = require('node:fs');
-const path = require('node:path');
 const { test } = require('node:test');
 const monitor = require('../scripts/monitors/shandong.cjs');
 const verified = require('../data/verified/shandong.json');
@@ -87,7 +86,7 @@ test('12 independently linked government tables import as one province price zon
     assert.ok(verified.allowedHostnames.includes(url.hostname));
     assert.equal(notice.prices.diesel < notice.prices['92'] && notice.prices['92'] < notice.prices['95'], true);
   }
-  const existing = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'prices.json'), 'utf8'));
+  const existing = createSnapshot();
   const imported = importVerified(existing, verified);
   assert.equal(imported.regions.shandong.grades['92'].price, 8.57);
   assert.equal(imported.regions.shandong.grades['95'].history.length, 12);

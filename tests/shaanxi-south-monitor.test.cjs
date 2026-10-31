@@ -1,11 +1,12 @@
 'use strict';
+const { createSnapshot } = require("./helpers/snapshot.cjs");
 
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
 const monitor = require('../scripts/monitors/shaanxi-south.cjs');
 const verified = require('../data/verified/shaanxi-south.json');
 const { importVerified } = require('../scripts/import-verified.cjs');
-const snapshot = require('../data/prices.json');
+const snapshot = createSnapshot();
 
 const HOST = 'https://sndrc.shaanxi.gov.cn';
 const LIST_URL = `${HOST}/sy/xwxx/gggg/`;

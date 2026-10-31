@@ -1,11 +1,12 @@
 'use strict';
+const { createSnapshot } = require("./helpers/snapshot.cjs");
 
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
 const monitor = require('../scripts/monitors/qinghai-zone2.cjs');
 const verified = require('../data/verified/qinghai-zone2.json');
 const { importVerified } = require('../scripts/import-verified.cjs');
-const snapshot = require('../data/prices.json');
+const snapshot = createSnapshot();
 
 const HOST = 'http://fgw.qinghai.gov.cn';
 const NOTICE_LIST = `${HOST}/xwzx/tzgg/`;

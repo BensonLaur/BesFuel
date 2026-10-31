@@ -1,4 +1,5 @@
 'use strict';
+const { createSnapshot } = require("./helpers/snapshot.cjs");
 
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
@@ -96,7 +97,7 @@ test('rejects a forged host, mismatched source, missing city scope, wrong unit, 
 
 test('18 signed city notices import as audited, city-scoped history', () => {
   const record = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'verified', 'xinjiang-karamay-main.json'), 'utf8'));
-  const snapshot = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'prices.json'), 'utf8'));
+  const snapshot = createSnapshot();
   const merged = importVerified(snapshot, record);
   const region = merged.regions['xinjiang-karamay-main'];
   assert.equal(record.notices.length, 18);

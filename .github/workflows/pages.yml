@@ -92,6 +92,14 @@ jobs:
         with:
           name: fc-regions
           path: ${{ runner.temp }}/fc-regions
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - name: 安装经哈希校验的官方表格读取器
+        run: |
+          python -m pip install --only-binary=:all: --require-hashes -r scripts/review-requirements.txt
+      - name: 采集前运行独立业务测试
+        run: node scripts/ci-checks.cjs unit "${{ runner.temp }}/ci-diagnostics/before"
       - name: 核对广东官方油价
         shell: pwsh
         env:
@@ -112,13 +120,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           npm run check:monitors
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-      - uses: actions/setup-python@v7
-        with:
-          python-version: '3.12'
-      - name: 安装经哈希校验的官方表格读取器
-        run: |
-          python -m pip install --only-binary=:all: --require-hashes -r scripts/review-requirements.txt
       - name: 自动核价并校验官方正文与附件
+        id: automatic-review
         shell: pwsh
         env:
           BESFUEL_REVIEW_REPORT: ${{ runner.temp }}/automatic-review.json
@@ -140,29 +143,31 @@ jobs:
         run: |
           npm run update:crude:ci
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-      - name: 运行测试并检查站点产物
-        shell: pwsh
-        run: |
-          npm test
-          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          python -m unittest discover -s tests -p '*_test.py'
-          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          npm run test:updater
-          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          npm run build
-          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          $env:BESFUEL_SITE_DIR = Join-Path $PWD 'public'
-          npm run smoke
-          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: 采集后运行测试并检查站点产物
+        run: node scripts/ci-checks.cjs all "${{ runner.temp }}/ci-diagnostics/after"
       - name: 仅提醒需要处理的新异常
         shell: pwsh
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node scripts/review-alerts.cjs "$env:RUNNER_TEMP/automatic-review.json"
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: automatic-review
-          path: ${{ runner.temp }}/automatic-review.json
+          path: |
+            ${{ runner.temp }}/automatic-review.json
+            ${{ runner.temp }}/market-forecast.json
+          if-no-files-found: warn
+          retention-days: 14
+      - name: 保存失败诊断、检查日志和输入快照
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci-diagnostics-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/ci-diagnostics
+            ${{ runner.temp }}/fc-regions/fc-regions.json
+          if-no-files-found: warn
           retention-days: 14
       - name: 记录有变化的可信快照
         shell: pwsh

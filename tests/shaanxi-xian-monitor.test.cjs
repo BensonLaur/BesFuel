@@ -1,4 +1,5 @@
 'use strict';
+const { createSnapshot } = require("./helpers/snapshot.cjs");
 
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
@@ -111,6 +112,6 @@ test('verified images retain 23 dated Xi’an price tables and flag the two miss
       assert.ok(Number.isFinite(notice.prices[grade]) && notice.prices[grade] > 6 && notice.prices[grade] < 10);
     }
   }
-  const imported = importVerified(require('../data/prices.json'), verified);
+  const imported = importVerified(createSnapshot(), verified);
   assert.equal(imported.regions['shaanxi-xian'].grades.diesel.price, 8.19);
 });

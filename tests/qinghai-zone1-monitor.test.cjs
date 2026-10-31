@@ -1,8 +1,7 @@
 'use strict';
+const { createSnapshot } = require("./helpers/snapshot.cjs");
 
 const assert = require('node:assert/strict');
-const fs = require('node:fs');
-const path = require('node:path');
 const { test } = require('node:test');
 const monitor = require('../scripts/monitors/qinghai-zone1.cjs');
 const verified = require('../data/verified/qinghai-zone1.json');
@@ -77,7 +76,7 @@ test('official first-zone history includes the July 3 adjustment and imports cur
     assert.match(notice.imageUrl, /^http:\/\/fgw\.qinghai\.gov\.cn\/(?:xwzx\/tzgg|sjfb\/jgdt)\/\d{6}\/W\d+\.(?:JPG|png)$/);
     assert.ok(notice.prices.diesel < notice.prices['92'] && notice.prices['92'] < notice.prices['95']);
   }
-  const existing = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'prices.json'), 'utf8'));
+  const existing = createSnapshot();
   const data = importVerified(existing, verified);
   assert.equal(data.regions['qinghai-zone1'].grades.diesel.price, 8.22);
   assert.equal(data.regions['qinghai-zone1'].grades['92'].history.length, 12);

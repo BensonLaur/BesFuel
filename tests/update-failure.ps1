@@ -9,10 +9,11 @@ function Get-ContentHash([string]$path) {
 try {
     New-Item -ItemType Directory -Path (Join-Path $fixtureRoot 'scripts'), (Join-Path $fixtureRoot 'data') -Force | Out-Null
     Copy-Item -LiteralPath (Join-Path $root 'scripts/update-guangdong.ps1') -Destination (Join-Path $fixtureRoot 'scripts/update-guangdong.ps1')
-    Copy-Item -LiteralPath (Join-Path $root 'data/prices.json') -Destination (Join-Path $fixtureRoot 'data/prices.json')
-    Copy-Item -LiteralPath (Join-Path $root 'data/prices.js') -Destination (Join-Path $fixtureRoot 'data/prices.js')
     $jsonPath = Join-Path $fixtureRoot 'data/prices.json'
     $jsPath = Join-Path $fixtureRoot 'data/prices.js'
+    $nodeExecutable = (Get-Command node -CommandType Application | Select-Object -First 1).Source
+    & $nodeExecutable (Join-Path $root 'tests/helpers/snapshot.cjs') $jsonPath $jsPath
+    if ($LASTEXITCODE -ne 0) { throw 'Fixture creation failed.' }
     $beforeJson = Get-ContentHash $jsonPath
     $beforeJs = Get-ContentHash $jsPath
     $data = Get-Content -LiteralPath $jsonPath -Raw -Encoding UTF8 | ConvertFrom-Json
@@ -43,7 +44,6 @@ try {
 
     # Exercise forecast updates with official and market responses controlled locally.
     # Keep the real snapshot formatter and validator so both published files are checked.
-    $nodeExecutable = (Get-Command node -CommandType Application | Select-Object -First 1).Source
     $data.regions.guangdong.PSObject.Properties.Remove('latestNotice')
     $marketWindow = '2026-10-15'
     $data.nationalAdjustment.nextAdjustment.date = $marketWindow

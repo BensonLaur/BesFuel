@@ -65,7 +65,9 @@ try {
     Copy-Item -LiteralPath (Join-Path $root 'scripts/update-guangdong.ps1') -Destination (Join-Path $fixtureRoot 'scripts/update-guangdong.ps1')
     $jsonPath = Join-Path $fixtureRoot 'data/prices.json'
     $jsPath = Join-Path $fixtureRoot 'data/prices.js'
-    $fixture = Get-Content -LiteralPath (Join-Path $root 'data/prices.json') -Raw -Encoding UTF8 | ConvertFrom-Json
+    & $nodeExecutable (Join-Path $root 'tests/helpers/snapshot.cjs') $jsonPath $jsPath
+    if ($LASTEXITCODE -ne 0) { throw 'Notice fixture creation failed.' }
+    $fixture = Get-Content -LiteralPath $jsonPath -Raw -Encoding UTF8 | ConvertFrom-Json
     $region = $fixture.regions.guangdong
     $region.PSObject.Properties.Remove('latestNotice')
     # Historical fixture dates stay in the past and do not depend on the live adjustment cycle.

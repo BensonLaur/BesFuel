@@ -1,4 +1,5 @@
 'use strict';
+const { createSnapshot } = require("./helpers/snapshot.cjs");
 
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
@@ -89,7 +90,7 @@ test('rejects forged host, mismatched metadata, unit, and incomplete price table
 
 test('18 signed provincial notices import as audited history', () => {
   const record = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'verified', 'ningxia.json'), 'utf8'));
-  const snapshot = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'prices.json'), 'utf8'));
+  const snapshot = createSnapshot();
   const merged = importVerified(snapshot, record);
   const region = merged.regions.ningxia;
   assert.equal(record.notices.length, 18);

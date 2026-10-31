@@ -1,11 +1,12 @@
 'use strict';
+const { createSnapshot } = require("./helpers/snapshot.cjs");
 
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
 const monitor = require('../scripts/monitors/yunnan-zone3.cjs');
 const verified = require('../data/verified/yunnan-zone3.json');
 const { importVerified } = require('../scripts/import-verified.cjs');
-const snapshot = require('../data/prices.json');
+const snapshot = createSnapshot();
 
 const HOST = 'https://yndrc.yn.gov.cn';
 const LIST_URL = `${HOST}/html/fagaishuju/jiagegongbu/meidianyouqi/`;

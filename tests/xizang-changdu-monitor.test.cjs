@@ -1,8 +1,7 @@
 'use strict';
+const { createSnapshot } = require("./helpers/snapshot.cjs");
 
 const assert = require('node:assert/strict');
-const fs = require('node:fs');
-const path = require('node:path');
 const { test } = require('node:test');
 const monitor = require('../scripts/monitors/xizang-changdu.cjs');
 const verified = require('../data/verified/xizang-changdu.json');
@@ -109,7 +108,7 @@ test('12 signed official notices retain Changdu prices, effective dates and sour
   // 6 月通知正文署期 18 日、19 日生效，官网 22 日补登，不应把补登日期当执行日。
   assert.match(verified.notices[4].url, /t20260622_/);
   assert.equal(verified.notices[4].publishedDate, '2026-06-18');
-  const snapshot = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'prices.json'), 'utf8'));
+  const snapshot = createSnapshot();
   const imported = importVerified(snapshot, verified).regions[verified.id];
   assert.equal(imported.grades['92'].price, 9.66);
   assert.equal(imported.grades['95'].price, 10.20);

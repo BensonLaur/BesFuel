@@ -1,5 +1,4 @@
 const assert = require("node:assert/strict");
-const fs = require("node:fs");
 const path = require("node:path");
 const test = require("node:test");
 const { validateFiles, validateSnapshot } = require("../scripts/validate-data.cjs");
@@ -7,14 +6,15 @@ const { validateFiles, validateSnapshot } = require("../scripts/validate-data.cj
 const root = path.resolve(__dirname, "..");
 const jsonPath = path.join(root, "data/prices.json");
 const jsPath = path.join(root, "data/prices.js");
-const clone = () => JSON.parse(fs.readFileSync(jsonPath, "utf8"));
+const { createSnapshot } = require("./helpers/snapshot.cjs");
+const clone = () => createSnapshot("hebei");
 
 function snapshotWithForecast() {
   const snapshot = clone();
   const window = new Date(`${snapshot.checkedAt}T00:00:00Z`);
   window.setUTCDate(window.getUTCDate() + 14);
   const windowDate = window.toISOString().slice(0, 10);
-  // Build a complete national fixture: the live snapshot may have no forecast after a cycle change.
+  // Keep source/date validation independent of the published adjustment cycle.
   snapshot.nationalAdjustment = {
     nextAdjustment: {
       date: windowDate,

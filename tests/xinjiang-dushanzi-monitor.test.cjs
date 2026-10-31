@@ -1,9 +1,8 @@
 'use strict';
+const { createSnapshot } = require("./helpers/snapshot.cjs");
 
 const assert = require('node:assert/strict');
 const { test } = require('node:test');
-const fs = require('node:fs');
-const path = require('node:path');
 const monitor = require('../scripts/monitors/xinjiang-dushanzi.cjs');
 const verified = require('../data/verified/xinjiang-dushanzi.json');
 const { importVerified } = require('../scripts/import-verified.cjs');
@@ -88,7 +87,7 @@ test('preserves twelve individually sourced Dushanzi rounds and imports only its
   assert.deepEqual(verified.notices.at(-1).prices, { 92: 8.48, 95: 9.13, diesel: 8.00 });
   assert.ok(verified.notices.every(notice => notice.url.startsWith('https://www.klmy.gov.cn/klmys/c100186/') &&
     Number.isFinite(notice.prices.diesel)));
-  const snapshot = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/prices.json'), 'utf8'));
+  const snapshot = createSnapshot();
   const imported = importVerified(snapshot, verified);
   assert.equal(imported.regions['xinjiang-dushanzi'].grades.diesel.price, 8.00);
   assert.equal(imported.regions['xinjiang-dushanzi'].grades.diesel.history.length, 12);

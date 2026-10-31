@@ -1,4 +1,5 @@
 'use strict';
+const { createSnapshot } = require("./helpers/snapshot.cjs");
 
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
@@ -137,6 +138,6 @@ test('verified record has 25 ordered official tables and the latest third-zone p
       assert.ok(Number.isFinite(notice.prices[grade]) && notice.prices[grade] > 6 && notice.prices[grade] < 10);
     }
   }
-  const imported = importVerified(require('../data/prices.json'), verified);
+  const imported = importVerified(createSnapshot(), verified);
   assert.equal(imported.regions['qinghai-zone3'].grades.diesel.price, 8.42);
 });

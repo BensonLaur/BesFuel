@@ -1,4 +1,5 @@
 "use strict";
+const { createSnapshot } = require("./helpers/snapshot.cjs");
 const test = require("node:test");
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
@@ -13,7 +14,7 @@ const { execute } = require("../cloud/fc/index.cjs");
 const { createServer } = require("../cloud/fc/server.cjs");
 const { importFile } = require("../scripts/import-cloud.cjs");
 const { writeSnapshot } = require("../scripts/update-regions.cjs");
-const initial = require("../data/prices.json");
+const initial = createSnapshot("beijing", "guangxi", "anhui", "inner-mongolia-east");
 const now = new Date(`${initial.checkedAt}T04:00:00.000Z`);
 const revision = "a".repeat(40);
 const source = require("../scripts/sources/beijing.cjs");

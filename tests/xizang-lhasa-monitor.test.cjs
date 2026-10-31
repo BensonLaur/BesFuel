@@ -1,8 +1,7 @@
 'use strict';
+const { createSnapshot } = require("./helpers/snapshot.cjs");
 
 const assert = require('node:assert/strict');
-const fs = require('node:fs');
-const path = require('node:path');
 const { test } = require('node:test');
 const monitor = require('../scripts/monitors/xizang-lhasa.cjs');
 const verified = require('../data/verified/xizang-lhasa.json');
@@ -85,7 +84,7 @@ test('audited history keeps the five-city zone and the delayed June notice', () 
     assert.match(notice.url, /^https:\/\/drc\.xizang\.gov\.cn\/(?:zwgk_1941\/tz|fgdt\/jggl)\/\d{6}\/t\d{8}_\d+\.html$/);
     assert.ok(notice.prices.diesel < notice.prices['92'] && notice.prices['92'] < notice.prices['95']);
   }
-  const existing = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'prices.json'), 'utf8'));
+  const existing = createSnapshot();
   const data = importVerified(existing, verified);
   assert.equal(data.regions['xizang-lhasa'].grades.diesel.price, 8.83);
   assert.equal(data.regions['xizang-lhasa'].grades['92'].history.length, 12);

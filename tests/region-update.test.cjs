@@ -1,3 +1,4 @@
+const { createSnapshot } = require("./helpers/snapshot.cjs");
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
@@ -5,7 +6,7 @@ const test = require("node:test");
 const { updateAll, officialUrl } = require("../scripts/update-regions.cjs");
 const { importVerified } = require("../scripts/import-verified.cjs");
 
-const snapshot = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "data", "prices.json"), "utf8"));
+const snapshot = createSnapshot();
 const source = {
   id: "example", name: "示例地区", sourceName: "示例官方部门",
   priceScope: "官方最高零售价；加油站实际成交价可能不同。",

@@ -1,11 +1,49 @@
 "use strict";
+const { createSnapshot } = require("./helpers/snapshot.cjs");
 const test = require("node:test");
 const assert = require("node:assert/strict");
-const snapshot = require("../data/prices.json");
+const snapshot = createSnapshot("zhejiang");
 const zhejiang = require("../data/verified/zhejiang.json");
 const hunan = require("../data/verified/hunan.json");
 const { importVerified } = require("../scripts/import-verified.cjs");
 const { classifyMonitor } = require("../scripts/check-monitors.cjs");
+const { updateAll } = require("../scripts/update-regions.cjs");
+
+const automaticallyUpdated = ["anhui", "chongqing", "ningxia", "shandong", "xinjiang-dushanzi",
+  "xinjiang-karamay-main", "xizang-changdu", "xizang-lhasa", "xizang-ngari"];
+
+for (const id of automaticallyUpdated) {
+  test(`${id}: later official rounds survive stale imports across month and year boundaries`, async () => {
+    const record = require(`../data/verified/${id}.json`);
+    let current = createSnapshot(id);
+    const original = structuredClone(current);
+    for (const [publishedDate, effectiveDate] of [
+      ["2026-10-29", "2026-10-30"], ["2026-11-12", "2026-11-13"], ["2026-12-31", "2027-01-01"]
+    ]) {
+      const prices = Object.fromEntries(["92", "95", "diesel"].map(grade =>
+        [grade, Number((current.regions[id].grades[grade].price + .1).toFixed(2))]));
+      const notice = { publishedDate, effectiveDate, prices,
+        url: new URL(`/test-price-${publishedDate}.html`, record.notices.at(-1).url).href };
+      const source = { ...record, collect: async () => [notice] };
+      const before = structuredClone(current);
+      const next = await updateAll({ sources: [source], initial: current, today: effectiveDate });
+      assert.equal(next.results[0].ok, true);
+      assert.deepEqual(current, before, "collection must not mutate the supplied snapshot");
+      assert.deepEqual(next.data.regions[id].grades["92"].history.slice(0, -1), before.regions[id].grades["92"].history);
+      assert.equal(next.data.regions[id].grades["92"].history.at(-1).date, effectiveDate);
+      current = next.data;
+      const trusted = structuredClone(current);
+      assert.throws(() => importVerified(current, record), /官方列表比已保存的可信价格旧/);
+      const stale = await updateAll({ sources: [{ ...record, collect: async () => record.notices }],
+        initial: current, today: effectiveDate });
+      assert.equal(stale.results[0].ok, false);
+      assert.match(stale.results[0].error, /官方列表比已保存的可信价格旧/);
+      assert.deepEqual(stale.data, trusted);
+      assert.deepEqual(current, trusted);
+    }
+    assert.deepEqual(createSnapshot(id), original, "test scenarios must not share mutable histories");
+  });
+}
 
 test("a reviewed no-change notice advances evidence without adding a price date", () => {
   const base = structuredClone(snapshot);

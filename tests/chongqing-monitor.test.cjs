@@ -1,8 +1,7 @@
 'use strict';
+const { createSnapshot } = require("./helpers/snapshot.cjs");
 
 const assert = require('node:assert/strict');
-const fs = require('node:fs');
-const path = require('node:path');
 const { test } = require('node:test');
 const monitor = require('../scripts/monitors/chongqing.cjs');
 const verified = require('../data/verified/chongqing.json');
@@ -98,7 +97,7 @@ test('12 official tables include late-posted April and July notices and import c
     assert.match(notice.url, /^https:\/\/fzggw\.cq\.gov\.cn\/zwgk\/zfxxgkml\/jgxx\/jgzc\/\d{6}\/t\d{8}_\d+\.html$/);
     assert.ok(notice.prices.diesel < notice.prices['92'] && notice.prices['92'] < notice.prices['95']);
   }
-  const existing = JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'data', 'prices.json'), 'utf8'));
+  const existing = createSnapshot();
   const imported = importVerified(existing, verified);
   assert.equal(imported.regions.chongqing.grades['92'].price, 8.67);
   assert.equal(imported.regions.chongqing.grades.diesel.history.length, 12);
