@@ -3,8 +3,8 @@ const fs = require("node:fs");
 const path = require("node:path");
 const crypto = require("node:crypto");
 const assert = require("node:assert/strict");
+const { buildSummary, deliver, renderSummary, SUMMARY_MARKER } = require("./review-summary.cjs");
 const root = path.resolve(__dirname, "..");
-const marker = id => `<!-- besfuel-data-alert:${id} -->`;
 function problem(result) {
   if (result.ok && !result.needsReview) return null;
   if (result.ok) return { type: "review", detail: result.latest?.requiresManualCoefficientReview ?
@@ -19,6 +19,7 @@ function problem(result) {
 function planAlerts(report, previous, runKey) {
   assert.equal(report.version, 1, "核价报告格式异常");
   assert.ok(Array.isArray(report.results), "核价报告结果缺失");
+  assert.equal(new Set(report.results.map(result => result.id)).size, report.results.length, "核价项目重复");
   const state = structuredClone(previous || { version: 1, entries: {} }), actions = [];
   assert.equal(state.version, 1, "提醒状态格式异常");
   for (const result of report.results) {
@@ -32,9 +33,9 @@ function planAlerts(report, previous, runKey) {
     const signature = crypto.createHash("sha256").update(JSON.stringify(current)).digest("hex");
     const same = prior?.signature === signature;
     const consecutive = same ? prior.consecutive + (prior.lastRun === runKey ? 0 : 1) : 1;
-    const entry = { signature, consecutive, alerted: same ? prior.alerted : false, lastRun: runKey };
-    // A previous alert can still be open while a different transient error is
-    // awaiting its three-run threshold. Recovery must close that old issue too.
+    const entry = { signature, consecutive, alerted: same ? prior.alerted : false, lastRun: runKey, problem: current };
+    // Keep the prior confirmed problem during a different transient error's
+    // observation period, until recovery or a new problem has been confirmed.
     if (prior?.openIssue || prior?.alerted) entry.openIssue = true;
     if (!entry.alerted && (current.immediate || consecutive >= 3)) {
       actions.push({ id: result.id, kind: "alert", ...current, signature });
@@ -42,47 +43,8 @@ function planAlerts(report, previous, runKey) {
     }
     state.entries[result.id] = entry;
   }
-  return { state, actions };
-}
-async function deliver(actions, { token, repository, runUrl, fetcher = fetch } = {}) {
-  if (!actions.length) return;
-  assert.ok(token && /^[\w.-]+\/[\w.-]+$/.test(repository), "缺少 GitHub 提醒配置");
-  async function api(endpoint, method = "GET", value) {
-    const response = await fetcher(`https://api.github.com/repos/${repository}${endpoint}`, {
-      method, headers: { Authorization: `Bearer ${token}`, Accept: "application/vnd.github+json",
-        "Content-Type": "application/json", "X-GitHub-Api-Version": "2022-11-28" },
-      ...(value ? { body: JSON.stringify(value) } : {}), signal: AbortSignal.timeout(20000)
-    });
-    if (!response.ok) throw new Error(`GitHub 异常提醒失败：HTTP ${response.status}`);
-    return response.json();
-  }
-  const issues = [];
-  for (let page = 1; ; page++) {
-    const batch = await api(`/issues?state=open&per_page=100&page=${page}`);
-    issues.push(...batch.filter(issue => !issue.pull_request && issue.user?.login === "github-actions[bot]"));
-    if (batch.length < 100) break;
-    assert.ok(page < 10, "未能完整读取异常记录列表");
-  }
-  for (const action of actions) {
-    const existing = issues.filter(issue => issue.body?.includes(marker(action.id)));
-    if (action.kind === "resolve") {
-      for (const issue of existing) await api(`/issues/${issue.number}`, "PATCH", { state: "closed", state_reason: "completed" });
-      continue;
-    }
-    const fingerprint = `<!-- evidence:${action.signature} -->`;
-    // A retry after a successful API write must not create another notification.
-    if (existing.some(issue => issue.body?.includes(fingerprint))) continue;
-    const safeDetail = action.detail.replace(/@/g, "＠").replace(/[<>]/g, "");
-    const market = action.id === "market-forecast";
-    const subject = market ? "全国市场估算" : "该地区";
-    const retention = market ? "保留本轮此前通过校验的估算及原计算日期；跨周期隐藏旧估算，地区官方油价照常独立更新。" :
-      "已保留此前可信价格和核对日期；如适用系数到期，页面继续隐藏失效升价。";
-    const body = `${marker(action.id)}\n${fingerprint}\n\n@${repository.split("/")[0]}，${subject}出现需要处理的新异常。\n\n` +
-      `${safeDetail}\n\n${retention}\n\n` +
-      `${action.url ? `${market ? "第三方来源" : "官方依据"}：${action.url}\n\n` : ""}[核价运行](${runUrl})\n\n同一异常不会重复提醒，核对恢复后自动关闭本记录。`;
-    for (const issue of existing) await api(`/issues/${issue.number}`, "PATCH", { state: "closed", state_reason: "not_planned" });
-    issues.push(await api("/issues", "POST", { title: `[油价核验] ${action.id} 需要处理`, body }));
-  }
+  const summary = buildSummary(report, previous, state, runKey);
+  return { state, actions, summary };
 }
 async function main() {
   const report = JSON.parse(fs.readFileSync(process.argv[2], "utf8"));
@@ -90,12 +52,18 @@ async function main() {
   const previous = fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, "utf8")) : undefined;
   const plan = planAlerts(report, previous, process.env.GITHUB_RUN_ID || `local-${report.checkedAt}`);
   if (process.env.GITHUB_ACTIONS === "true") {
-    await deliver(plan.actions, { token: process.env.GITHUB_TOKEN, repository: process.env.GITHUB_REPOSITORY,
+    const prices = JSON.parse(fs.readFileSync(path.join(root, "data/prices.json"), "utf8"));
+    const delivery = await deliver(plan, { token: process.env.GITHUB_TOKEN, repository: process.env.GITHUB_REPOSITORY,
+      names: Object.fromEntries(Object.entries(prices.regions).map(([id, region]) => [id, region.name])),
       runUrl: `https://github.com/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}` });
-    // Persist only after delivery succeeds, so a failed notification is retried.
+    if (delivery.issueNumber) plan.state.summary.issueNumber = delivery.issueNumber;
+    else if (previous?.summary?.issueNumber) plan.state.summary.issueNumber = previous.summary.issueNumber;
+    // Persist after complete delivery. Remote event markers also protect retries
+    // if the notification succeeded but this state could not be saved afterward.
     fs.writeFileSync(file, (JSON.stringify(plan.state, null, 2) + "\n").replace(/\r?\n/g, "\r\n"));
   }
-  console.log(`异常提醒：${plan.actions.filter(a => a.kind === "alert").length} 项新异常，${plan.actions.filter(a => a.kind === "resolve").length} 项恢复；相同异常不重复通知。`);
+  console.log(`异常汇总：新增或变化 ${plan.summary.added.length} 项，持续 ${plan.summary.ongoing.length} 项，` +
+    `已恢复 ${plan.summary.resolved.length} 项；${plan.summary.changed ? "本轮最多发送一条汇总提醒" : "事项无变化，不写入 GitHub、不提醒"}。`);
 }
 if (require.main === module) main().catch(error => { console.error(error.message); process.exitCode = 1; });
-module.exports = { problem, planAlerts, deliver };
+module.exports = { problem, planAlerts, deliver, renderSummary, SUMMARY_MARKER };

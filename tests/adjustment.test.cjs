@@ -105,13 +105,13 @@ test("market validation failures alert once and a verified collection resolves t
   assert.equal(good.forecast.amountPerLiter, 0.29);
   assert.deepEqual(planAlerts(alertReport(good.result), plan.state, "3").actions.map(a => a.kind), ["resolve"]);
   let posted;
-  await deliver(plan.actions, { token: "test", repository: "owner/repo", fetcher: async (url, options) => {
+  await deliver(plan, { token: "test", repository: "owner/repo", fetcher: async (url, options) => {
     if (options.method === "POST") posted = JSON.parse(options.body);
     return new Response(JSON.stringify(options.method === "GET" ? [] : { number: 1 }), { status: 200 });
   } });
   assert.match(posted.body, /全国市场估算/);
   assert.match(posted.body, /第三方来源/);
-  assert.doesNotMatch(posted.body, /官方依据|该地区/);
+  assert.doesNotMatch(posted.body, /\[官方依据\]|该地区/);
 });
 
 test("temporary market network failures use the existing three-run threshold and stale estimates stay dated", async () => {

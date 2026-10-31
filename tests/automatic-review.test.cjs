@@ -6,7 +6,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const { discover, parseArticle } = require("../scripts/automatic-tables.cjs");
 const { acceptMonitor, runAutomatic } = require("../scripts/automatic-review.cjs");
-const { planAlerts, deliver } = require("../scripts/review-alerts.cjs");
+const { planAlerts, deliver, renderSummary } = require("../scripts/review-alerts.cjs");
 const { loadModules, adapterDigest } = require("../scripts/cloud-bundle.cjs");
 const { counts } = require("../scripts/source-health.cjs");
 const { publicHttpFallback } = require("../scripts/publish-reader.cjs");
@@ -152,8 +152,9 @@ test("new unresolved evidence alerts once and retry delivery does not repeat wri
   assert.equal(p.actions.length, 1);
   assert.equal(planAlerts(report([r]), p.state, "2").actions.length, 0);
   assert.equal(planAlerts(report([{ ...r, latest: { url: "https://fgw.ln.gov.cn/newer.pdf" } }]), p.state, "2").actions.length, 1);
-  const calls = [], issue = { number: 3, user: { login: "github-actions[bot]" }, body: `<!-- besfuel-data-alert:liaoning -->\n<!-- evidence:${p.actions[0].signature} -->` };
-  await deliver(p.actions, { token: "test", repository: "owner/repo", fetcher: async (url, args) => {
+  const calls = [], issue = { number: 3, user: { login: "github-actions[bot]" },
+    body: renderSummary(p.summary).replace("<!-- summary-notify:update -->", "<!-- summary-notify:create -->") };
+  await deliver(p, { token: "test", repository: "owner/repo", fetcher: async (url, args) => {
     calls.push(args.method); return { ok: true, json: async () => [issue] };
   } });
   assert.deepEqual(calls, ["GET"]);

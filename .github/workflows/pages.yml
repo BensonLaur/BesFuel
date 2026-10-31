@@ -145,7 +145,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - name: 采集后运行测试并检查站点产物
         run: node scripts/ci-checks.cjs all "${{ runner.temp }}/ci-diagnostics/after"
-      - name: 仅提醒需要处理的新异常
+      - name: 汇总核价变化（无变化不提醒）
+        if: ${{ !cancelled() && steps.automatic-review.outcome == 'success' }}
         shell: pwsh
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

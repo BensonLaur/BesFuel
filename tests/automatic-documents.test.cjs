@@ -112,7 +112,7 @@ test("parser subprocess failures do not include changing temporary directories i
   await assert.rejects(parseBinary("jilin", doc, latest("jilin"), async () => { throw { stderr: "PDF 缺少唯一的可读文字价表" }; }),
     error => error.message === "jilin: 附件解析未通过：PDF 缺少唯一的可读文字价表");
 });
-test("the same document problem stays quiet; new evidence alerts, and recovery closes an older issue", () => {
+test("the same document problem stays quiet; new evidence alerts, and recovery resolves the summary item", () => {
   const failed = { id: "jilin", ok: false, error: "表头变化", failure: { category: "validation", url: latest("jilin").url }, evidenceFingerprint: "a".repeat(64) };
   const report = result => ({ version: 1, results: [result] });
   const first = planAlerts(report(failed), undefined, "1");

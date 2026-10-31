@@ -55,6 +55,8 @@ npm run smoke
 
 业务测试通过 `tests/helpers/snapshot.cjs` 构造独立样本，模拟的浏览器场景同时固定数据和时钟；仓库快照的一致性校验与真实页面冒烟仍使用实际数据。CI 在采集前后运行测试，失败时也上传 `automatic-review` 和 `ci-diagnostics-<attempt>` 产物，包含检查退出码、日志、输入快照和 FC 原始证据。
 
+核价异常集中到一条汇总 Issue，展示新增或变化、持续及已恢复事项，并给出可交给 Codex 的来源和下一步。无变化时不写入 GitHub、不提醒；每轮变化最多发送一条汇总通知，旧的地区 Issue 仅保留历史。处理边界和去重规则见 [地区自动核验与异常提醒](docs/AUTO_REVIEW.md)。
+
 调查历史 FC 失败时，下载对应运行的 `fc-regions.json`，并准备该运行提交中的 `data/prices.json` 作为采集前快照。安装 `npm ci --ignore-scripts` 及 `scripts/review-requirements.txt` 中经哈希锁定的 Python 依赖后，可以执行：
 
 ```powershell
