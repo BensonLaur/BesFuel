@@ -1,7 +1,7 @@
 {
   "version": 1,
   "usage": "third-party-reference",
-  "updatedAt": "2026-10-31T17:02:13.187Z",
+  "updatedAt": "2026-11-01T08:56:14.092Z",
   "series": {
     "wti": {
       "name": "WTI 原油",
@@ -11,7 +11,7 @@
       "currency": "USD",
       "unit": "barrel",
       "basis": "continuous-futures-daily",
-      "fetchedAt": "2026-10-31T17:02:13.187Z",
+      "fetchedAt": "2026-11-01T08:56:14.092Z",
       "history": [
         {
           "date": "2026-01-23",
@@ -824,7 +824,7 @@
       "currency": "USD",
       "unit": "barrel",
       "basis": "continuous-futures-daily",
-      "fetchedAt": "2026-10-31T17:02:13.187Z",
+      "fetchedAt": "2026-11-01T08:56:14.092Z",
       "history": [
         {
           "date": "2026-01-23",
@@ -1633,7 +1633,7 @@
   "collection": {
     "mode": "auto",
     "outcome": "updated",
-    "checkedAt": "2026-10-31T17:02:13.187Z",
+    "checkedAt": "2026-11-01T08:56:14.092Z",
     "activeProvider": "eastmoney",
     "attempts": [
       {
@@ -1642,6 +1642,6 @@
         "reason": ""
       }
     ],
-    "switchedFrom": "yahoo"
+    "switchedFrom": null
   }
 }

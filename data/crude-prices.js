@@ -2,7 +2,7 @@
 window.BESFUEL_CRUDE_DATA = {
   "version": 1,
   "usage": "third-party-reference",
-  "updatedAt": "2026-10-31T17:02:13.187Z",
+  "updatedAt": "2026-11-01T08:56:14.092Z",
   "series": {
     "wti": {
       "name": "WTI 原油",
@@ -12,7 +12,7 @@ window.BESFUEL_CRUDE_DATA = {
       "currency": "USD",
       "unit": "barrel",
       "basis": "continuous-futures-daily",
-      "fetchedAt": "2026-10-31T17:02:13.187Z",
+      "fetchedAt": "2026-11-01T08:56:14.092Z",
       "history": [
         {
           "date": "2026-01-23",
@@ -825,7 +825,7 @@ window.BESFUEL_CRUDE_DATA = {
       "currency": "USD",
       "unit": "barrel",
       "basis": "continuous-futures-daily",
-      "fetchedAt": "2026-10-31T17:02:13.187Z",
+      "fetchedAt": "2026-11-01T08:56:14.092Z",
       "history": [
         {
           "date": "2026-01-23",
@@ -1634,7 +1634,7 @@ window.BESFUEL_CRUDE_DATA = {
   "collection": {
     "mode": "auto",
     "outcome": "updated",
-    "checkedAt": "2026-10-31T17:02:13.187Z",
+    "checkedAt": "2026-11-01T08:56:14.092Z",
     "activeProvider": "eastmoney",
     "attempts": [
       {
@@ -1643,6 +1643,6 @@ window.BESFUEL_CRUDE_DATA = {
         "reason": ""
       }
     ],
-    "switchedFrom": "yahoo"
+    "switchedFrom": null
   }
 };
