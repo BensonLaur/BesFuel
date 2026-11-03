@@ -2,7 +2,7 @@
 window.BESFUEL_CRUDE_DATA = {
   "version": 1,
   "usage": "third-party-reference",
-  "updatedAt": "2026-11-03T09:13:06.221Z",
+  "updatedAt": "2026-11-03T19:17:38.240Z",
   "series": {
     "wti": {
       "name": "WTI 原油",
@@ -12,7 +12,7 @@ window.BESFUEL_CRUDE_DATA = {
       "currency": "USD",
       "unit": "barrel",
       "basis": "continuous-futures-daily",
-      "fetchedAt": "2026-11-03T09:13:06.221Z",
+      "fetchedAt": "2026-11-03T19:17:38.240Z",
       "history": [
         {
           "date": "2026-01-27",
@@ -813,7 +813,7 @@ window.BESFUEL_CRUDE_DATA = {
       ],
       "intraday": {
         "date": "2026-11-03",
-        "price": 98.16
+        "price": 96.03
       }
     },
     "brent": {
@@ -824,7 +824,7 @@ window.BESFUEL_CRUDE_DATA = {
       "currency": "USD",
       "unit": "barrel",
       "basis": "continuous-futures-daily",
-      "fetchedAt": "2026-11-03T09:13:06.221Z",
+      "fetchedAt": "2026-11-03T19:17:38.240Z",
       "history": [
         {
           "date": "2026-01-27",
@@ -1625,14 +1625,14 @@ window.BESFUEL_CRUDE_DATA = {
       ],
       "intraday": {
         "date": "2026-11-03",
-        "price": 106.88
+        "price": 103.57
       }
     }
   },
   "collection": {
     "mode": "auto",
     "outcome": "updated",
-    "checkedAt": "2026-11-03T09:13:06.221Z",
+    "checkedAt": "2026-11-03T19:17:38.240Z",
     "activeProvider": "eastmoney",
     "attempts": [
       {
@@ -1641,6 +1641,6 @@ window.BESFUEL_CRUDE_DATA = {
         "reason": ""
       }
     ],
-    "switchedFrom": "yahoo"
+    "switchedFrom": null
   }
 };

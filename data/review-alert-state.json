@@ -3,9 +3,9 @@
   "entries": {
     "liaoning": {
       "signature": "8988474c8bf50427421a8525264d2e0db4b6d4b8d2b8a21e1ebdfc75f7572079",
-      "consecutive": 10,
+      "consecutive": 11,
       "alerted": true,
-      "lastRun": "41608976484",
+      "lastRun": "41701588823",
       "problem": {
         "type": "review",
         "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
@@ -18,85 +18,85 @@
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41608976484"
+      "lastRun": "41701588823"
     },
     "fujian": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41608976484"
+      "lastRun": "41701588823"
     },
     "guangxi": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41608976484"
+      "lastRun": "41701588823"
     },
     "inner-mongolia-east": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41608976484"
+      "lastRun": "41701588823"
     },
     "inner-mongolia-west": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41608976484"
+      "lastRun": "41701588823"
     },
     "jiangsu": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41608976484"
+      "lastRun": "41701588823"
     },
     "shanghai": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41608976484"
+      "lastRun": "41701588823"
     },
     "shanxi": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41608976484"
+      "lastRun": "41701588823"
     },
     "sichuan-zone1": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41608976484"
+      "lastRun": "41701588823"
     },
     "sichuan-zone3": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41608976484"
+      "lastRun": "41701588823"
     },
     "tianjin": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41608976484"
+      "lastRun": "41701588823"
     },
     "anhui": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41608976484"
+      "lastRun": "41701588823"
     },
     "chongqing": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41608976484"
+      "lastRun": "41701588823"
     },
     "guizhou-zone1": {
       "signature": "b6e8561f4ed4db50cda8e02038c46cc36a8cf35fce28ec5512c75e72403ac9fd",
-      "consecutive": 10,
+      "consecutive": 11,
       "alerted": true,
-      "lastRun": "41608976484",
+      "lastRun": "41701588823",
       "problem": {
         "type": "review",
         "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
@@ -107,9 +107,9 @@
     },
     "guizhou-zone2": {
       "signature": "b6e8561f4ed4db50cda8e02038c46cc36a8cf35fce28ec5512c75e72403ac9fd",
-      "consecutive": 10,
+      "consecutive": 11,
       "alerted": true,
-      "lastRun": "41608976484",
+      "lastRun": "41701588823",
       "problem": {
         "type": "review",
         "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
@@ -120,9 +120,9 @@
     },
     "guizhou-zone3": {
       "signature": "b6e8561f4ed4db50cda8e02038c46cc36a8cf35fce28ec5512c75e72403ac9fd",
-      "consecutive": 10,
+      "consecutive": 11,
       "alerted": true,
-      "lastRun": "41608976484",
+      "lastRun": "41701588823",
       "problem": {
         "type": "review",
         "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
@@ -133,9 +133,9 @@
     },
     "hebei": {
       "signature": "241fab9d819a976fa043889e0397860bac5e2bbe0156ab8375a6ff9c296852ce",
-      "consecutive": 10,
+      "consecutive": 11,
       "alerted": true,
-      "lastRun": "41608976484",
+      "lastRun": "41701588823",
       "problem": {
         "type": "review",
         "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
@@ -146,9 +146,9 @@
     },
     "heilongjiang-north": {
       "signature": "c8bcc7d328e6fc175a4988807fe23353bfb64c35829e08355be21b71c57a619e",
-      "consecutive": 5,
+      "consecutive": 6,
       "alerted": true,
-      "lastRun": "41608976484",
+      "lastRun": "41701588823",
       "problem": {
         "type": "review",
         "detail": "季节折算系数已到期，需新的官方系数",
@@ -159,9 +159,9 @@
     },
     "heilongjiang-south": {
       "signature": "c8bcc7d328e6fc175a4988807fe23353bfb64c35829e08355be21b71c57a619e",
-      "consecutive": 5,
+      "consecutive": 6,
       "alerted": true,
-      "lastRun": "41608976484",
+      "lastRun": "41701588823",
       "problem": {
         "type": "review",
         "detail": "季节折算系数已到期，需新的官方系数",
@@ -174,43 +174,43 @@
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41608976484"
+      "lastRun": "41701588823"
     },
     "hunan": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41608976484"
+      "lastRun": "41701588823"
     },
     "jilin": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41608976484"
+      "lastRun": "41701588823"
     },
     "ningxia": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41608976484"
+      "lastRun": "41701588823"
     },
     "qinghai-zone1": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41608976484"
+      "lastRun": "41701588823"
     },
     "qinghai-zone2": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41608976484"
+      "lastRun": "41701588823"
     },
     "qinghai-zone3": {
       "signature": "476378e9bbbddd1037e4d673e011680acb6cd63bfb38e1e76b552b1cce287d73",
-      "consecutive": 10,
+      "consecutive": 11,
       "alerted": true,
-      "lastRun": "41608976484",
+      "lastRun": "41701588823",
       "problem": {
         "type": "review",
         "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
@@ -221,9 +221,9 @@
     },
     "shaanxi-midnorth": {
       "signature": "c4e2b47901838cd81187cb9441951c1053f9c98d8ebc70ea4689231d92a68379",
-      "consecutive": 10,
+      "consecutive": 11,
       "alerted": true,
-      "lastRun": "41608976484",
+      "lastRun": "41701588823",
       "problem": {
         "type": "review",
         "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
@@ -234,9 +234,9 @@
     },
     "shaanxi-south": {
       "signature": "c4e2b47901838cd81187cb9441951c1053f9c98d8ebc70ea4689231d92a68379",
-      "consecutive": 10,
+      "consecutive": 11,
       "alerted": true,
-      "lastRun": "41608976484",
+      "lastRun": "41701588823",
       "problem": {
         "type": "review",
         "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
@@ -247,9 +247,9 @@
     },
     "shaanxi-xian": {
       "signature": "c2a3d17fdea712f07baca1f5b65683352d5837607eadcde075943ebffdbb762b",
-      "consecutive": 10,
+      "consecutive": 11,
       "alerted": true,
-      "lastRun": "41608976484",
+      "lastRun": "41701588823",
       "problem": {
         "type": "review",
         "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
@@ -259,13 +259,13 @@
       "openIssue": true
     },
     "shandong": {
-      "signature": "05a5a6becd21050741cbc1e7fe40b3aef948d3315ae7d9b6fcbe7e3909f3f07e",
+      "signature": "5cb76774c14a9dd437734e740b817d97f4db850a080c85b6dcc20841b03f3662",
       "consecutive": 1,
       "alerted": false,
-      "lastRun": "41608976484",
+      "lastRun": "41701588823",
       "problem": {
-        "type": "dns",
-        "detail": "官方来源持续访问失败（dns）",
+        "type": "network",
+        "detail": "官方来源持续访问失败（network）",
         "url": "https://fgw.weihai.gov.cn/col/col53887/index.html",
         "immediate": false
       }
@@ -274,96 +274,102 @@
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41608976484"
+      "lastRun": "41701588823"
     },
     "xinjiang-dushanzi": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41608976484"
+      "lastRun": "41701588823"
     },
     "xinjiang-karamay-main": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41608976484"
+      "lastRun": "41701588823"
     },
     "xizang-changdu": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41608976484"
+      "lastRun": "41701588823"
     },
     "xizang-lhasa": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41608976484"
+      "lastRun": "41701588823"
     },
     "xizang-ngari": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41608976484"
+      "lastRun": "41701588823"
     },
     "yunnan-kunming": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41608976484"
+      "lastRun": "41701588823"
     },
     "yunnan-zone2": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41608976484"
+      "lastRun": "41701588823"
     },
     "yunnan-zone3": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41608976484"
+      "lastRun": "41701588823"
     },
     "yunnan-zone4": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41608976484"
+      "lastRun": "41701588823"
     },
     "yunnan-zone5": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41608976484"
+      "lastRun": "41701588823"
     },
     "zhejiang": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41608976484"
+      "lastRun": "41701588823"
     },
     "hainan": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41608976484"
+      "lastRun": "41701588823"
     },
     "jiangxi": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "41608976484"
+      "lastRun": "41701588823"
     },
     "market-forecast": {
-      "signature": null,
-      "consecutive": 0,
-      "alerted": false,
-      "lastRun": "41608976484"
+      "signature": "817f6500ca11f9fabbf4eceff2d01150714bb5867530e558941f0b8d413dfaef",
+      "consecutive": 1,
+      "alerted": true,
+      "lastRun": "41701588823",
+      "problem": {
+        "type": "validation",
+        "detail": "forecast fields do not match the next window",
+        "url": "https://www.tuanyou.net/youjia/",
+        "immediate": true
+      }
     }
   },
   "summary": {
-    "signature": "9f1956e5c75f56c7ca99bfe232ae1765fefcb7dca713e094e8dd5c0e1001f4a0",
-    "sequence": 6,
+    "signature": "84da6a27b4bff9b2934112c58d8cd443a73a3bb86b070846d3dfa89bc7f3b25b",
+    "sequence": 7,
     "published": true,
     "active": [
       {
@@ -423,6 +429,14 @@
         "immediate": true
       },
       {
+        "id": "market-forecast",
+        "signature": "817f6500ca11f9fabbf4eceff2d01150714bb5867530e558941f0b8d413dfaef",
+        "type": "validation",
+        "detail": "forecast fields do not match the next window",
+        "url": "https://www.tuanyou.net/youjia/",
+        "immediate": true
+      },
+      {
         "id": "qinghai-zone3",
         "signature": "476378e9bbbddd1037e4d673e011680acb6cd63bfb38e1e76b552b1cce287d73",
         "type": "review",
@@ -456,16 +470,6 @@
       }
     ],
     "recovered": [
-      {
-        "id": "market-forecast",
-        "signature": "ef1153a9d46c463f10e3949e22f053317254d30de1becae43e4b678062649548",
-        "type": "validation",
-        "detail": "本轮市场估算超过两天未更新，最近计算日期：2026-10-30",
-        "url": "https://www.tuanyou.net/yuanyou/bianhualv/834.html",
-        "immediate": true,
-        "recoveredAt": "2026-11-02",
-        "runKey": "41417469619"
-      },
       {
         "id": "qinghai-zone1",
         "signature": "f77eebf3ce2dd8ecfe5c4c1dbb45e903606e92896180a4951107f2df8600de14",
