@@ -89,6 +89,78 @@ a { color: inherit; }
 .result span, .result small { color: #708778; font-size: 11px; }
 .result strong { color: #194a36; font-size: clamp(27px, 4vw, 37px); line-height: 1.25; letter-spacing: -.045em; font-variant-numeric: tabular-nums; }
 .calc-note { margin: 13px 0 0; color: #839589; font-size: 11px; }
+.calc-footer { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 16px; margin-top: 13px; }
+.calc-footer .calc-note { flex: 1 1 180px; margin: 0; line-height: 1.6; }
+.record-add { flex-shrink: 0; padding: 8px 11px; border: 1px solid #cfe3d4; border-radius: 9px; background: #f2f8f3; color: #236746; font-size: 12px; font-weight: 650; }
+.record-add:hover { background: #e5f1e8; }
+.record-add:disabled { cursor: default; color: #7c8f82; background: #f8faf8; opacity: .65; }
+.record-status { margin: 9px 0 0; color: #327353; font-size: 11px; line-height: 1.6; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.trip-records { min-width: 0; margin-top: 16px; border: 1px solid #dce8dd; border-radius: 16px; background: #fff; }
+.trip-records summary { display: flex; align-items: center; gap: 12px; padding: 17px 22px; list-style: none; cursor: pointer; border-radius: 16px; }
+.trip-records summary::-webkit-details-marker { display: none; }
+.trip-records summary:hover { background: #f7faf7; }
+.records-title { display: flex; align-items: center; gap: 9px; color: #315d45; font-size: 14px; font-weight: 650; }
+.records-count { padding: 2px 7px; border-radius: 6px; background: #edf4ee; color: #538064; font-size: 11px; font-variant-numeric: tabular-nums; }
+.records-local { margin-left: auto; color: #839589; font-size: 11px; }
+.records-toggle-label { color: #397754; font-size: 11px; white-space: nowrap; }
+.records-toggle-label::after { content: "展开 ＋"; }
+.trip-records[open] .records-toggle-label::after { content: "收起 −"; }
+.records-content { padding: 8px 22px 20px; }
+.records-hint { margin: 0 0 14px; color: #7d8f82; font-size: 11px; line-height: 1.8; }
+.records-empty { margin: 10px 0 0; padding: 22px 12px; border-radius: 10px; background: #f8faf7; color: #7a8e80; font-size: 12px; line-height: 1.8; text-align: center; }
+.records-table-wrap { max-height: 480px; overflow: auto; border: 1px solid #e5ece4; border-radius: 11px; }
+.records-table { width: 100%; border-collapse: collapse; font-size: 12px; font-variant-numeric: tabular-nums; }
+.records-table th { position: sticky; top: 0; z-index: 1; padding: 12px 10px; background: #f2f7f2; color: #607e69; font-size: 11px; font-weight: 550; text-align: left; white-space: nowrap; }
+.records-table th small { display: block; margin-top: 3px; color: #7d8f82; font-size: 10px; font-weight: 400; }
+.records-table td { padding: 13px 10px; border-top: 1px solid #e8eee7; vertical-align: middle; }
+.records-table td:not(:first-child) { white-space: nowrap; }
+.records-table tbody tr:hover { background: #fafcf9; }
+.record-trip { min-width: 130px; max-width: 220px; overflow-wrap: anywhere; }
+.record-trip strong, .record-route, .record-trip small { display: block; }
+.record-trip strong { font-size: 13px; }
+.record-route { margin-top: 4px; line-height: 1.5; }
+.record-trip small { margin-top: 4px; color: #809084; font-size: 10px; line-height: 1.6; }
+.record-total { color: #236746; font-weight: 700; }
+.records-table time { display: block; max-width: 100px; white-space: normal; color: #748679; font-size: 11px; line-height: 1.6; }
+.record-delete { min-height: 36px; padding: 6px 8px; border: 0; border-radius: 7px; background: transparent; color: #906158; font-size: 11px; }
+.record-delete:hover { background: #fbefec; color: #a04d40; }
+.record-feedback { margin: 0 0 12px; color: #52785e; font-size: 12px; line-height: 1.8; }
+.record-error { color: #9d5141; font-size: 12px; line-height: 1.7; }
+.record-dialog { width: min(430px, calc(100vw - 24px)); max-height: calc(100dvh - 32px); overflow-y: auto; padding: 24px; border: 1px solid #d7e6d9; border-radius: 20px; background: #fff; color: #18362e; box-shadow: 0 20px 70px #102e2250; }
+.record-dialog::backdrop { background: #102e2270; backdrop-filter: blur(3px); }
+.record-dialog-description { margin: 14px 0; color: #7c8e80; font-size: 12px; line-height: 1.7; }
+.record-preview { margin: 0 0 20px; padding: 13px 15px; border-radius: 11px; background: #f0f6f0; color: #3f7151; font-size: 12px; line-height: 1.9; white-space: pre-line; }
+.record-dialog .field > span > small { margin-left: 4px; color: #8a9b8e; font-size: 10px; }
+.record-note-field { margin-top: 16px; }
+.record-note-field input { font-size: 14px; font-weight: 400; }
+.record-dialog-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 22px; }
+.record-dialog-actions button { min-height: 42px; padding: 10px 20px; border-radius: 10px; font-size: 13px; }
+.record-cancel { border: 1px solid #dce7dd; background: #fff; color: #6c8271; }
+.record-save { border: 1px solid #246a48; background: #246a48; color: #fff; font-weight: 650; }
+.record-save:hover { background: #195637; }
+.record-dialog > .records-hint { margin: 14px 0 0; }
+[hidden] { display: none !important; }
+@media (max-width: 640px) {
+  .trip-records summary { padding: 16px; gap: 8px; }
+  .records-local { display: none; }
+  .records-toggle-label { margin-left: auto; }
+  .records-content { padding: 8px 16px 16px; }
+  .records-table-wrap { border: 0; border-radius: 0; }
+  .records-table, .records-table tbody { display: block; }
+  .records-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .records-table tr { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 16px; padding: 16px; border: 1px solid #e1e9df; border-radius: 12px; background: #fbfdf9; }
+  .records-table tr + tr { margin-top: 10px; }
+  .records-table td { min-width: 0; padding: 0; border: 0; }
+  .records-table td::before { display: block; margin-bottom: 5px; color: #829185; font-size: 10px; font-weight: 400; content: attr(data-label); }
+  .records-table .record-trip { grid-column: 1 / -1; max-width: none; padding-right: 42px; }
+  .record-trip::before { display: none !important; }
+  .records-table td:last-child { position: absolute; top: 8px; right: 8px; }
+  .records-table td:last-child::before { display: none; }
+  .records-table time { max-width: none; }
+  .record-delete { min-height: 40px; min-width: 40px; }
+  .record-dialog { padding: 20px; }
+}
 .support-trigger { display: flex; align-items: center; justify-content: space-between; width: 100%; margin-top: 19px; padding: 13px 15px; border: 1px solid #cfe3d4; border-radius: 12px; background: #f2f8f3; color: #236746; font-size: 13px; font-weight: 700; text-align: left; }
 .support-trigger:hover { background: #e9f4eb; }
 .support-trigger span { font-size: 17px; }

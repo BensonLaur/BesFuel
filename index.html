@@ -10,9 +10,11 @@
   <script defer src="data/prices.js"></script>
   <script defer src="data/crude-prices.js"></script>
   <script defer src="lib/calc.js"></script>
+  <script defer src="lib/trip-records.js"></script>
   <script defer src="lib/history.js"></script>
   <script defer src="lib/crude.js"></script>
   <script defer src="app.js"></script>
+  <script defer src="trip-records.js"></script>
   <script defer src="crude-ui.js"></script>
 </head>
 <body>
@@ -85,7 +87,8 @@
             <div class="result"><span>每公里油费</span><strong id="per-km">—</strong><small>元 / 公里</small></div>
             <div class="result result-total"><span>本次总油费</span><strong id="trip-total">—</strong><small>元</small></div>
           </div>
-          <p class="calc-note" id="calc-note">输入里程后显示全程油费。</p>
+          <div class="calc-footer"><p class="calc-note" id="calc-note">输入里程后显示全程油费。</p><button class="record-add" id="add-trip-record" type="button" aria-haspopup="dialog" aria-controls="trip-record-dialog" disabled>＋ 加入记录</button></div>
+          <p class="record-status" id="record-status" role="status" hidden></p>
           <button class="support-trigger" id="open-support" type="button" aria-haspopup="dialog">⛽ 给 BesFuel 加点油 <span aria-hidden="true">↗</span></button>
         </section>
 
@@ -97,6 +100,23 @@
         </section>
       </div>
 
+      <details class="trip-records" id="trip-records">
+        <summary id="trip-records-toggle"><span class="records-title">计算记录 <span class="records-count" id="trip-record-count">0</span></span><span class="records-local">仅保存在当前浏览器</span><span class="records-toggle-label" aria-hidden="true"></span></summary>
+        <div class="records-content">
+          <p class="records-hint">对照不同路线的里程、油耗与耗时，看看哪一程更合适。记录保留当时的计算值；清除网站数据会删除记录。</p>
+          <p class="record-error" id="records-error" role="alert" hidden></p>
+          <p class="record-feedback" id="record-feedback" role="status" hidden><span id="record-feedback-text"></span> <button class="text-button" id="undo-trip-delete" type="button">撤销删除</button></p>
+          <p class="records-empty" id="records-empty">还没有记录。算好一程后，点击「加入记录」即可保存。</p>
+          <div class="records-table-wrap" id="records-table-wrap" hidden>
+            <table class="records-table" role="table">
+              <caption class="sr-only">已保存的行程计算记录，按记录时间从新到旧排列</caption>
+              <thead role="rowgroup"><tr role="row"><th scope="col">行程</th><th scope="col">平均油耗<small>升/百公里</small></th><th scope="col">计算油价<small>元/升</small></th><th scope="col">每公里油费<small>元/公里</small></th><th scope="col">本次总油费<small>元</small></th><th scope="col">耗时<small>分钟</small></th><th scope="col">记录时间<small>本地时间</small></th><th scope="col"><span class="sr-only">操作</span></th></tr></thead>
+              <tbody id="trip-record-rows" role="rowgroup"></tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+
       <section class="data-notes" id="data-notes" aria-labelledby="notes-heading">
         <h2 id="notes-heading">关于这些数字</h2>
         <p id="source-note">参考价并非加油站实时成交价。页面会显示数据来源和日期；超过更新期限时会提醒核对。</p>
@@ -105,6 +125,18 @@
     </main>
     <footer class="site-footer"><span>BesFuel · 油价随行</span><span>为每一程，留一笔明白账。</span></footer>
   </div>
+  <dialog class="record-dialog" id="trip-record-dialog" aria-labelledby="trip-record-title" aria-describedby="trip-record-description">
+    <div class="support-head"><div><p class="card-kicker">为这一程留个底</p><h2 id="trip-record-title">加入计算记录</h2></div><button class="support-close" id="close-trip-record" type="button" aria-label="关闭记录弹框">×</button></div>
+    <p class="record-dialog-description" id="trip-record-description">补充耗时，方便日后对照；也可以直接保存。</p>
+    <p class="record-preview" id="trip-record-preview"></p>
+    <form id="trip-record-form" novalidate>
+      <label class="field" for="trip-minutes"><span>本次行程耗时 <small>选填</small></span><span class="input-shell"><input id="trip-minutes" name="minutes" type="number" inputmode="decimal" min="0" step="any" placeholder="例如 35" autocomplete="off"><span>分钟</span></span></label>
+      <label class="field record-note-field" for="trip-record-note"><span>行程备注 <small>选填</small></span><span class="input-shell"><input id="trip-record-note" name="note" type="text" maxlength="60" placeholder="例如 上班 · 沿江路" autocomplete="off"></span></label>
+      <p class="record-error" id="record-save-error" role="alert" hidden></p>
+      <div class="record-dialog-actions"><button class="record-cancel" id="cancel-trip-record" type="button">取消</button><button class="record-save" type="submit">保存记录</button></div>
+    </form>
+    <p class="records-hint">记录仅存于当前浏览器，不会上传。</p>
+  </dialog>
   <dialog class="crude-dialog" id="crude-dialog" aria-labelledby="crude-title" aria-describedby="crude-description">
     <div class="crude-head">
       <div><p class="card-kicker">国际市场 · 趋势参考</p><h2 id="crude-title">看懂原油的起伏</h2></div>

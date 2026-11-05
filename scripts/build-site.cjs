@@ -6,7 +6,7 @@ const prices = require("./validate-data.cjs");
 const crude = require("./update-crude.cjs");
 const root = path.resolve(__dirname, "..");
 const siteFiles = [
-  "index.html", "styles.css", "app.js", "crude-ui.js", "lib/calc.js", "lib/history.js", "lib/crude.js",
+  "index.html", "styles.css", "app.js", "trip-records.js", "crude-ui.js", "lib/calc.js", "lib/trip-records.js", "lib/history.js", "lib/crude.js",
   "data/prices.json", "data/prices.js", "data/crude-prices.json", "data/crude-prices.js",
   "resources/support/wechat.png", "resources/support/alipay.png"
 ];

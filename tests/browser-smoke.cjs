@@ -460,7 +460,8 @@ async function main() {
   server = http.createServer((request, response) => {
     const pathname = new URL(request.url, "http://localhost").pathname;
     const allowed = new Map([["/", "index.html"], ["/index.html", "index.html"], ["/styles.css", "styles.css"],
-      ["/app.js", "app.js"], ["/data/prices.js", "data/prices.js"], ["/lib/calc.js", "lib/calc.js"], ["/lib/history.js", "lib/history.js"],
+      ["/app.js", "app.js"], ["/trip-records.js", "trip-records.js"], ["/lib/trip-records.js", "lib/trip-records.js"],
+      ["/data/prices.js", "data/prices.js"], ["/lib/calc.js", "lib/calc.js"], ["/lib/history.js", "lib/history.js"],
       ["/crude-ui.js", "crude-ui.js"], ["/lib/crude.js", "lib/crude.js"], ["/data/crude-prices.js", "data/crude-prices.js"]]);
     if (pathname === "/data/crude-prices.json") {
       response.setHeader("Content-Type", "application/json; charset=utf-8");
@@ -642,6 +643,7 @@ async function main() {
   assert.equal(await evaluate("document.getElementById('crude-price').textContent"), (crudeQuote.price + .33).toFixed(2));
   assert.equal(await evaluate("document.getElementById('trip-total').textContent"), "8.10");
   await evaluate("document.getElementById('close-crude').click()");
+  await require("./helpers/trip-record-browser.cjs")({ evaluate, send, setValue, screenshot: process.env.BESFUEL_SCREENSHOT });
   if (process.env.BESFUEL_DEPLOY_URL) {
     await send("Page.navigate", { url: process.env.BESFUEL_DEPLOY_URL });
     for (let attempt = 0; attempt < 100; attempt++) {

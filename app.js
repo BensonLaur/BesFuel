@@ -146,6 +146,7 @@
     const result = calc.calculate(ui.distance.value, ui.consumption.value, ui.tripPrice.value);
     ui.perKm.textContent = result.perKm === null ? "—" : result.perKm.toFixed(2);
     ui.total.textContent = result.total === null ? "—" : result.total.toFixed(2);
+    $("add-trip-record").disabled = result.total === null;
     ui.calcNote.textContent = result.perKm === null
       ? "请输入有效的百公里油耗和油价。"
       : result.total === null ? "输入本次里程后显示全程油费。" : "按输入的里程、平均油耗和油价估算，仅含燃油。";
