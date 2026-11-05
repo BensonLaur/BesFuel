@@ -10476,7 +10476,7 @@ window.BESFUEL_DATA = {
     "hunan": {
       "name": "湖南",
       "priceScope": "湖南省成品油全省统一最高零售价格（元/升）。",
-      "checkedAt": "2026-11-04",
+      "checkedAt": "2026-11-05",
       "source": {
         "name": "湖南省发展和改革委员会",
         "url": "https://fgw.hunan.gov.cn/fgw/jggb11/202610/t20261029_34090753.html"
