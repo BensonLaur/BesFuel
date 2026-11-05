@@ -54,9 +54,9 @@ test("Hunan's malformed-header and transient network errors can use the bounded 
       assert.equal(args[1], "https://fgw.hunan.gov.cn/prices.xls");
       return { stdout: JSON.stringify({ status: 200, headers: { "Content-Type": "application/vnd.ms-excel" },
         base64: Buffer.from("verified workbook bytes").toString("base64") }) };
-  });
-  assert.equal(await response.text(), "verified workbook bytes");
-  assert.equal(calls, 2);
+    });
+    assert.equal(await response.text(), "verified workbook bytes");
+    assert.equal(calls, 2);
   }
   for (const [url, code, stderr] of [["https://fgw.hunan.gov.cn/prices.xls", 60, "certificate error"],
     ["https://fgw.hunan.gov.cn/prices.xls", 8, "another error"], ["https://drc.jiangxi.gov.cn/", 8, "Header without colon"]]) {
