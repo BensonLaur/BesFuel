@@ -66,26 +66,51 @@ async function runAutomatic({ bundle, initial, now = new Date(), today = chinaDa
   let data = replay.data;
   const direct = [];
   const hunan = replay.monitors.find(item => item.id === "hunan");
-  if (hunan?.ok) {
+  if (hunan && (hunan.ok || recoverableRelayFailure(hunan))) {
     try {
-      const record = recordFor("hunan"), relay = extra?.get("hunan");
+      const record = recordFor("hunan");
+      const saveEvidence = (name, bytes, url) => {
+        if (!hunan.recovery || !recoveryDirectory) return;
+        fs.mkdirSync(recoveryDirectory, { recursive: true });
+        fs.writeFileSync(path.join(recoveryDirectory, name), bytes);
+        hunan.recovery.evidence ||= [];
+        hunan.recovery.evidence.push({ file: name, url });
+      };
+      let readerInstance, page = 0;
+      const directReader = () => readerInstance ||= (() => {
+        const source = reader(record.allowedHostnames);
+        return {
+          getText: async url => {
+            const text = await source.getText(url);
+            // Keep decoded UTF-8 pages for discovery replay, separate from the
+            // original binary XLS and its independently computed SHA256.
+            saveEvidence(`hunan-recovery-${++page}.html`, Buffer.from(text), url);
+            return text;
+          },
+          getBuffer: async url => {
+            const response = await source.getBuffer(url);
+            saveEvidence("hunan-recovery.xls", response.buffer, url);
+            if (hunan.recovery && recoveryDirectory) hunan.recovery.evidenceFile = "hunan-recovery.xls";
+            return response;
+          }
+        };
+      })();
+      const recoveringAnnouncement = !hunan.ok;
+      if (recoveringAnnouncement) {
+        hunan.recovery = { attempted: true, from: "FC", stage: "announcement", error: hunan.error, failure: hunan.failure };
+        // A failed announcement has no validated attachment URL. Run the same
+        // strict official discovery adapter before attempting any workbook.
+        hunan.latest = await require("./monitors/hunan.cjs").collect({ ...directReader(), today: chinaDate(new Date(bundle.startedAt)) });
+      }
+      const relay = recoveringAnnouncement ? null : extra?.get("hunan");
       if (relay && !relay.ok && !recoverableRelayFailure(relay)) {
         throw Object.assign(new Error(relay.error), { details: relay.failure });
       }
       // A failed FC download has no usable bytes. Retry the same bound XLS once
       // on the Windows publisher; integrity/semantic failures never take this path.
-      if (relay && !relay.ok) hunan.recovery = { attempted: true, from: "FC", error: relay.error, failure: relay.failure };
-      const directReader = relay?.ok ? null : reader(record.allowedHostnames);
+      if (relay && !relay.ok) hunan.recovery = { attempted: true, from: "FC", stage: "attachment", error: relay.error, failure: relay.failure };
       const attachmentReader = { getBuffer: async url => {
-        if (!relay?.ok) {
-          const response = await directReader.getBuffer(url);
-          if (relay && recoveryDirectory) {
-            fs.mkdirSync(recoveryDirectory, { recursive: true });
-            fs.writeFileSync(path.join(recoveryDirectory, "hunan-recovery.xls"), response.buffer);
-            hunan.recovery.evidenceFile = "hunan-recovery.xls";
-          }
-          return response;
-        }
+        if (!relay?.ok) return directReader().getBuffer(url);
         assert.equal(url, relay.url, "湖南附件请求与证据不符");
         return { buffer: Buffer.from(relay.base64, "base64") };
       } };
@@ -95,11 +120,13 @@ async function runAutomatic({ bundle, initial, now = new Date(), today = chinaDa
       const next = structuredClone(data);
       mergeRegion(next, record, [latest], chinaDate(new Date(bundle.startedAt)));
       data = next;
-      Object.assign(hunan, { latest, needsReview: false, automatic: true, transport: relay?.ok ? "FC" : "GitHub" });
+      Object.assign(hunan, { ok: true, latest, needsReview: false, automatic: true, transport: relay?.ok ? "FC" : "GitHub" });
+      delete hunan.error;
+      delete hunan.failure;
     } catch (error) {
       data.regions.hunan = structuredClone(initial.regions.hunan);
       Object.assign(hunan, failureResult("hunan", error));
-      hunan.failure.url ||= hunan.latest.url;
+      hunan.failure.url ||= hunan.latest?.url || "";
     }
   }
   for (const id of ["hainan", "jiangxi"]) {

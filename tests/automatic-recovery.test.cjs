@@ -52,12 +52,13 @@ test("Hunan's full-width title leads to the same announcement-bound XLS and real
   await assert.rejects(collect("hunan", fixture.reader(text => text.replaceAll("5f49acd264d543ab8e876a64f31c0d93.xls", "../../other.xls"))), /XLS 附件/);
 });
 
-async function failedHunanRelay(failure) {
+async function failedHunanRelay(failure, announcement = false) {
   const initial = createSnapshot("hunan");
   initial.checkedAt = initial.regions.hunan.checkedAt = "2026-11-04";
   const latest = await collect("hunan");
   const sources = loadModules("sources").map(m => ({ id: m.id, ok: false, error: "unrelated offline source" }));
-  const monitors = loadModules("monitors").map(m => m.id === "hunan" ? { id: m.id, ok: true, latest } :
+  const monitors = loadModules("monitors").map(m => m.id === "hunan" ?
+    (announcement ? { id: m.id, ok: false, error: "FC announcement unavailable", failure } : { id: m.id, ok: true, latest }) :
     { id: m.id, ok: false, error: "unrelated offline monitor" });
   const now = new Date("2026-11-05T09:00:00.000Z");
   const bundle = { format: "besfuel-regions-v1", revision: "a".repeat(40), adapterDigest: adapterDigest(),
@@ -65,7 +66,7 @@ async function failedHunanRelay(failure) {
     counts: { sources: counts(sources), monitors: counts(monitors) },
     extra: { version: 1, digest: extraDigest(), results: [
       ...["hainan", "jiangxi"].map(id => ({ id, ok: false, error: "unrelated offline table" })),
-      { id: "hunan", ok: false, error: "FC attachment unavailable", failure }
+      { id: "hunan", ok: false, error: "FC attachment unavailable", failure: announcement ? { category: "validation" } : failure }
     ] } };
   return { initial, bundle, now };
 }
@@ -105,13 +106,42 @@ test("failed Hunan recovery retains trusted prices and original check date", asy
   assert.match(hunan.error, /不是 XLS/);
 });
 
+test("Hunan rediscovers and verifies the official announcement when FC cannot read the list", async t => {
+  const options = await failedHunanRelay({ category: "network", causes: [{ code: "HPE_INVALID_HEADER_TOKEN" }] }, true);
+  const recoveryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), "besfuel-hunan-announcement-"));
+  t.after(() => fs.rmSync(recoveryDirectory, { recursive: true, force: true }));
+  const result = await runAutomatic({ ...options, reader: () => fixture.reader(), recoveryDirectory });
+  const hunan = result.monitors.find(m => m.id === "hunan");
+  assert.equal(hunan.ok, true, hunan.error);
+  assert.equal(hunan.recovery.stage, "announcement");
+  assert.equal(hunan.transport, "GitHub");
+  assert.equal(hunan.error, undefined);
+  assert.equal(hunan.failure, undefined);
+  assert.deepEqual(hunan.latest.prices, expected.hunan);
+  assert.equal(result.data.regions.hunan.checkedAt, "2026-11-05");
+  assert.deepEqual(fs.readdirSync(recoveryDirectory).sort(), ["hunan-recovery-1.html", "hunan-recovery-2.html", "hunan-recovery.xls"]);
+});
+
+test("failed Hunan announcement recovery preserves the old check date and rejects foreign XLS", async () => {
+  for (const reader of [() => ({ getText: async () => { throw Error("publisher offline"); } }),
+    () => fixture.reader(text => text.replaceAll('5f49acd264d543ab8e876a64f31c0d93.xls', '../../other.xls'))]) {
+    const options = await failedHunanRelay({ category: "timeout" }, true);
+    const result = await runAutomatic({ ...options, reader });
+    assert.equal(result.monitors.find(m => m.id === "hunan").ok, false);
+    assert.deepEqual(result.data.regions.hunan, options.initial.regions.hunan);
+  }
+});
+
 test("Hunan does not retry failed validation, TLS, access denial or rate limiting", async () => {
   for (const failure of [{ category: "validation" }, { category: "tls" }, { category: "http", status: 403 },
     { category: "http", status: 429 }, undefined]) {
-    const options = await failedHunanRelay(failure);
-    const result = await runAutomatic({ ...options, reader: () => ({ getBuffer: async () => assert.fail("must not retry") }) });
-    assert.deepEqual(result.data.regions.hunan, options.initial.regions.hunan);
-    assert.equal(result.monitors.find(m => m.id === "hunan").recovery, undefined);
+    for (const announcement of [false, true]) {
+      const options = await failedHunanRelay(failure, announcement);
+      const forbidden = async () => assert.fail("must not retry");
+      const result = await runAutomatic({ ...options, reader: () => ({ getBuffer: forbidden, getText: forbidden }) });
+      assert.deepEqual(result.data.regions.hunan, options.initial.regions.hunan);
+      assert.equal(result.monitors.find(m => m.id === "hunan").recovery, undefined);
+    }
   }
 });
 

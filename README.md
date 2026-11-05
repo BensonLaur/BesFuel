@@ -55,7 +55,7 @@ npm run smoke
 
 业务测试通过 `tests/helpers/snapshot.cjs` 构造独立样本，模拟的浏览器场景同时固定数据和时钟；仓库快照的一致性校验与真实页面冒烟仍使用实际数据。CI 在采集前后运行测试，失败时也上传 `automatic-review` 和 `ci-diagnostics-<attempt>` 产物，包含检查退出码、日志、输入快照和 FC 原始证据。
 
-`codex/**` 分支推送及发往 main 的 PR 还会先运行[完整离线验证](.github/workflows/ci.yml)，覆盖 Node/Python 测试、更新失败保护、快照校验、构建和浏览器冒烟。湖南 FC 附件遇到临时下载故障时，发布端会尝试重新获取同一官方 XLS 并完整核验，失败则保留原价；恢复日志及原始 XLS 保存在诊断产物中，详见[自动核验说明](docs/AUTO_REVIEW.md)。
+`codex/**` 分支推送及发往 main 的 PR 还会先运行[完整离线验证](.github/workflows/ci.yml)，覆盖 Node/Python 测试、更新失败保护、快照校验、构建和浏览器冒烟。湖南 FC 公告发现或附件下载遇到临时故障时，发布端会尝试重新发现官方公告或获取其绑定的同一 XLS 并完整核验，失败则保留原价；恢复日志及原始 XLS 保存在诊断产物中，详见[自动核验说明](docs/AUTO_REVIEW.md)。
 
 核价异常集中到一条汇总 Issue，展示新增或变化、持续及已恢复事项，并给出可交给 Codex 的来源和下一步。无变化时不写入 GitHub、不提醒；每轮变化最多发送一条汇总通知，旧的地区 Issue 仅保留历史。处理边界和去重规则见 [地区自动核验与异常提醒](docs/AUTO_REVIEW.md)。
 
