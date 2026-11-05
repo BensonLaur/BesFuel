@@ -25,12 +25,13 @@ async function windowsCurl(url, options = {}, run = execute) {
       "--dump-header", headers, "--output", body, "--write-out", "%{http_code}", url],
     { windowsHide: true, timeout: 22000, maxBuffer: 10000, signal: options.signal }); }
     catch (error) {
-      // The official endpoint sometimes emits a header without a colon. Curl
-      // rejects it too; Python's standard parser can read this isolated response
-      // while retaining HTTPS verification and manual redirect handling.
-      if (target.hostname !== "fgw.hunan.gov.cn" || error.code !== 8 ||
-          !/Header without colon/i.test(error.stderr || "")) throw error;
-      console.log(`湖南官网响应头缺少冒号，使用标准库 HTTPS 重新读取：${url}`);
+      // Use one alternate client for malformed metadata or transient network
+      // failures. The caller's original deadline also bounds this second request;
+      // certificate/TLS failures and HTTP refusals never enter this recovery.
+      const malformedHeader = error.code === 8 && /Header without colon/i.test(error.stderr || "");
+      const transientNetwork = [6, 7, 28, 52, 55, 56].includes(error.code);
+      if (target.hostname !== "fgw.hunan.gov.cn" || (!malformedHeader && !transientNetwork)) throw error;
+      console.log(`湖南官网${malformedHeader ? "响应头缺少冒号" : "临时网络故障"}，使用标准库 HTTPS 重新读取：${url}`);
       const recovered = await run(process.env.BESFUEL_PYTHON || "python", [path.join(__dirname, "read-hunan-http.py"), url],
         { windowsHide: true, timeout: 22000, maxBuffer: 7_000_000, signal: options.signal });
       const value = JSON.parse(recovered.stdout);
