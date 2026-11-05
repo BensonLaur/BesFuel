@@ -23,6 +23,11 @@ const AUTOMATIC_MONITORS = Object.freeze(["anhui", "chongqing", "henan", "ningxi
 function recordFor(id) {
   return JSON.parse(fs.readFileSync(path.join(root, "data/verified", `${id}.json`), "utf8"));
 }
+function recoverableRelayFailure(result) {
+  const failure = result?.failure;
+  return result?.ok === false && (["network", "timeout", "dns"].includes(failure?.category) ||
+    failure?.category === "http" && failure.status >= 500 && failure.status < 600);
+}
 function acceptMonitor(data, result, today) {
   assert.ok(result.ok && AUTOMATIC_MONITORS.includes(result.id), "公告未通过自动核价适配器");
   const latest = result.latest, record = recordFor(result.id), old = data.regions[result.id];
@@ -54,7 +59,8 @@ function acceptParsedMonitors(bundle, initial, options = {}) {
   });
   return { data, sources: replay.sources, monitors: results };
 }
-async function runAutomatic({ bundle, initial, now = new Date(), today = chinaDate(now), reader = publishingReader } = {}) {
+async function runAutomatic({ bundle, initial, now = new Date(), today = chinaDate(now), reader = publishingReader,
+  recoveryDirectory = process.env.BESFUEL_RECOVERY_DIRECTORY } = {}) {
   const replay = bundle ? acceptParsedMonitors(bundle, initial, { now }) : { data: structuredClone(initial), sources: [], monitors: [] };
   const extra = bundle ? validateExtras(bundle) : null;
   let data = replay.data;
@@ -63,18 +69,33 @@ async function runAutomatic({ bundle, initial, now = new Date(), today = chinaDa
   if (hunan?.ok) {
     try {
       const record = recordFor("hunan"), relay = extra?.get("hunan");
-      if (relay && !relay.ok) throw Object.assign(new Error(relay.error), { details: relay.failure });
-      const attachmentReader = relay ? { getBuffer: async url => {
+      if (relay && !relay.ok && !recoverableRelayFailure(relay)) {
+        throw Object.assign(new Error(relay.error), { details: relay.failure });
+      }
+      // A failed FC download has no usable bytes. Retry the same bound XLS once
+      // on the Windows publisher; integrity/semantic failures never take this path.
+      if (relay && !relay.ok) hunan.recovery = { attempted: true, from: "FC", error: relay.error, failure: relay.failure };
+      const directReader = relay?.ok ? null : reader(record.allowedHostnames);
+      const attachmentReader = { getBuffer: async url => {
+        if (!relay?.ok) {
+          const response = await directReader.getBuffer(url);
+          if (relay && recoveryDirectory) {
+            fs.mkdirSync(recoveryDirectory, { recursive: true });
+            fs.writeFileSync(path.join(recoveryDirectory, "hunan-recovery.xls"), response.buffer);
+            hunan.recovery.evidenceFile = "hunan-recovery.xls";
+          }
+          return response;
+        }
         assert.equal(url, relay.url, "湖南附件请求与证据不符");
         return { buffer: Buffer.from(relay.base64, "base64") };
-      } } : reader(record.allowedHostnames);
+      } };
       const latest = await readHunan(hunan.latest, attachmentReader);
       assert.ok(initial.regions.hunan.checkedAt <= chinaDate(new Date(bundle.startedAt)), "湖南核对日期回退");
       assert.ok(Date.parse(latest.publishedDate) - Date.parse(data.regions.hunan.checkedAt) <= 3 * 86400000, "湖南公告检查中断，需补齐历史");
       const next = structuredClone(data);
       mergeRegion(next, record, [latest], chinaDate(new Date(bundle.startedAt)));
       data = next;
-      Object.assign(hunan, { latest, needsReview: false, automatic: true });
+      Object.assign(hunan, { latest, needsReview: false, automatic: true, transport: relay?.ok ? "FC" : "GitHub" });
     } catch (error) {
       data.regions.hunan = structuredClone(initial.regions.hunan);
       Object.assign(hunan, failureResult("hunan", error));
@@ -116,6 +137,8 @@ async function main() {
   if (bundle) console.log(`采用 FC 地区快照：${bundle.generatedAt}；采集代码：${bundle.revision}`);
   reportHealth("FC 地区自动采集", result.sources);
   reportHealth("自动核价后的 FC 公告检查", result.monitors);
+  const hunan = result.monitors.find(item => item.id === "hunan");
+  if (hunan?.recovery) console.log(`湖南 FC 附件恢复：${hunan.ok ? "发布端重新下载并完整核验通过" : "恢复未通过，保留旧价格和核对日期"}。`);
   reportHealth("海南、江西官方价表自动采集", result.direct);
   if (forecastChecks.length) reportHealth("全国市场估算", forecastChecks);
   const documentIds = Object.values(GROUPS).flat();
@@ -128,4 +151,4 @@ async function main() {
     results: [...result.sources, ...result.monitors, ...result.direct, ...forecastChecks] }, null, 2));
 }
 if (require.main === module) main().catch(error => { console.error(error.message); process.exitCode = 1; });
-module.exports = { AUTOMATIC_MONITORS, acceptMonitor, acceptParsedMonitors, runAutomatic };
+module.exports = { AUTOMATIC_MONITORS, acceptMonitor, acceptParsedMonitors, runAutomatic, recoverableRelayFailure };

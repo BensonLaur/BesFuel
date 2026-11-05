@@ -2,6 +2,9 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
 const crypto = require("node:crypto");
+const fs = require("node:fs");
+const path = require("node:path");
+const os = require("node:os");
 const fixture = require("./helpers/recovery.cjs");
 const { createSnapshot } = require("./helpers/snapshot.cjs");
 const { importVerified } = require("../scripts/import-verified.cjs");
@@ -11,6 +14,7 @@ const { acceptDocument, parseZhejiang } = require("../scripts/automatic-document
 const { collectEvidence, GROUPS } = require("../scripts/cloud-evidence.cjs");
 const { loadModules, adapterDigest } = require("../scripts/cloud-bundle.cjs");
 const { counts } = require("../scripts/source-health.cjs");
+const { extraDigest } = require("../scripts/cloud-extra.cjs");
 const { planAlerts } = require("../scripts/review-alerts.cjs");
 const yunnan = ["yunnan-kunming", "yunnan-zone2", "yunnan-zone3", "yunnan-zone4", "yunnan-zone5"];
 const ids = ["henan", "hunan", "zhejiang", ...yunnan];
@@ -46,6 +50,69 @@ test("Hunan's full-width title leads to the same announcement-bound XLS and real
   assert.equal(latest.effectiveDate, "2026-10-30");
   assert.deepEqual((await readHunan(latest, fixture.reader())).prices, expected.hunan);
   await assert.rejects(collect("hunan", fixture.reader(text => text.replaceAll("5f49acd264d543ab8e876a64f31c0d93.xls", "../../other.xls"))), /XLS 附件/);
+});
+
+async function failedHunanRelay(failure) {
+  const initial = createSnapshot("hunan");
+  initial.checkedAt = initial.regions.hunan.checkedAt = "2026-11-04";
+  const latest = await collect("hunan");
+  const sources = loadModules("sources").map(m => ({ id: m.id, ok: false, error: "unrelated offline source" }));
+  const monitors = loadModules("monitors").map(m => m.id === "hunan" ? { id: m.id, ok: true, latest } :
+    { id: m.id, ok: false, error: "unrelated offline monitor" });
+  const now = new Date("2026-11-05T09:00:00.000Z");
+  const bundle = { format: "besfuel-regions-v1", revision: "a".repeat(40), adapterDigest: adapterDigest(),
+    startedAt: now.toISOString(), generatedAt: now.toISOString(), sources, monitors,
+    counts: { sources: counts(sources), monitors: counts(monitors) },
+    extra: { version: 1, digest: extraDigest(), results: [
+      ...["hainan", "jiangxi"].map(id => ({ id, ok: false, error: "unrelated offline table" })),
+      { id: "hunan", ok: false, error: "FC attachment unavailable", failure }
+    ] } };
+  return { initial, bundle, now };
+}
+
+test("Hunan recovers the real failed FC header download from the same XLS on the publisher", async t => {
+  const options = await failedHunanRelay({ category: "network", causes: [{ code: "HPE_INVALID_HEADER_TOKEN" }] });
+  const before = structuredClone(options.initial), requested = [];
+  const reader = () => ({ getBuffer: async url => { requested.push(url); return fixture.reader().getBuffer(url); } });
+  const recoveryDirectory = fs.mkdtempSync(path.join(os.tmpdir(), "besfuel-hunan-recovery-"));
+  t.after(() => fs.rmSync(recoveryDirectory, { recursive: true, force: true }));
+  const result = await runAutomatic({ ...options, reader, recoveryDirectory });
+  const hunan = result.monitors.find(m => m.id === "hunan");
+  assert.equal(hunan.ok, true, hunan.error);
+  assert.equal(hunan.transport, "GitHub");
+  assert.equal(hunan.recovery.failure.causes[0].code, "HPE_INVALID_HEADER_TOKEN");
+  assert.deepEqual(requested, [options.bundle.monitors.find(m => m.id === "hunan").latest.attachmentUrl]);
+  assert.deepEqual(hunan.latest.prices, expected.hunan);
+  assert.match(hunan.latest.attachmentSha256, /^[a-f0-9]{64}$/);
+  assert.equal(hunan.recovery.evidenceFile, "hunan-recovery.xls");
+  assert.equal(crypto.createHash("sha256").update(fs.readFileSync(path.join(recoveryDirectory, "hunan-recovery.xls"))).digest("hex"),
+    hunan.latest.attachmentSha256);
+  assert.equal(result.data.regions.hunan.checkedAt, "2026-11-05");
+  assert.deepEqual(options.initial, before);
+});
+
+test("failed Hunan recovery retains trusted prices and original check date", async () => {
+  const options = await failedHunanRelay({ category: "timeout" });
+  let calls = 0;
+  const result = await runAutomatic({ ...options, reader: () => ({ getBuffer: async () => {
+    calls++; return { buffer: Buffer.from("not a workbook") };
+  } }) });
+  assert.equal(calls, 1);
+  assert.deepEqual(result.data.regions.hunan, options.initial.regions.hunan);
+  const hunan = result.monitors.find(m => m.id === "hunan");
+  assert.equal(hunan.ok, false);
+  assert.equal(hunan.recovery.attempted, true);
+  assert.match(hunan.error, /不是 XLS/);
+});
+
+test("Hunan does not retry failed validation, TLS, access denial or rate limiting", async () => {
+  for (const failure of [{ category: "validation" }, { category: "tls" }, { category: "http", status: 403 },
+    { category: "http", status: 429 }, undefined]) {
+    const options = await failedHunanRelay(failure);
+    const result = await runAutomatic({ ...options, reader: () => ({ getBuffer: async () => assert.fail("must not retry") }) });
+    assert.deepEqual(result.data.regions.hunan, options.initial.regions.hunan);
+    assert.equal(result.monitors.find(m => m.id === "hunan").recovery, undefined);
+  }
 });
 
 test("Zhejiang's office-published bulletin passes both independent price checks", async () => {

@@ -58,7 +58,7 @@ jobs:
           BESFUEL_OSS_BUCKET: ${{ vars.BESFUEL_OSS_BUCKET }}
           BESFUEL_OSS_REGION: cn-hangzhou
         run: node scripts/download-cloud.cjs "$RUNNER_TEMP/fc-regions.json"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7.0.2
         if: vars.BESFUEL_FC_ENABLED == 'true'
         with:
           name: fc-regions
@@ -87,7 +87,7 @@ jobs:
           node-version: '22'
       - name: 安装固定版本的运行与测试依赖
         run: npm ci --ignore-scripts
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8.0.2
         if: vars.BESFUEL_FC_ENABLED == 'true'
         with:
           name: fc-regions
@@ -125,6 +125,7 @@ jobs:
         shell: pwsh
         env:
           BESFUEL_REVIEW_REPORT: ${{ runner.temp }}/automatic-review.json
+          BESFUEL_RECOVERY_DIRECTORY: ${{ runner.temp }}/ci-diagnostics/recovery
           BESFUEL_FORECAST_REPORT: ${{ runner.temp }}/market-forecast.json
           BESFUEL_FC_ENABLED: ${{ vars.BESFUEL_FC_ENABLED }}
         run: |
@@ -151,7 +152,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: node scripts/review-alerts.cjs "$env:RUNNER_TEMP/automatic-review.json"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7.0.2
         if: always()
         with:
           name: automatic-review
@@ -162,7 +163,7 @@ jobs:
           retention-days: 14
       - name: 保存失败诊断、检查日志和输入快照
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7.0.2
         with:
           name: ci-diagnostics-${{ github.run_attempt }}
           path: |
@@ -183,10 +184,10 @@ jobs:
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           git push origin HEAD:main
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v4
+      - uses: actions/configure-pages@v6.0.0
+      - uses: actions/upload-pages-artifact@v5.0.0
         with:
           path: public
       - name: 发布 GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5.0.1

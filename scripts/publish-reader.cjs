@@ -8,16 +8,18 @@ const { makeReader } = require("./update-regions.cjs");
 const { fetchOfficial } = require("./source-transport.cjs");
 const execute = promisify(execFile);
 
-async function windowsCurl(url, options = {}) {
-  if (process.platform !== "win32" || new URL(url).hostname !== "drc.jiangxi.gov.cn") {
-    throw new Error("仅江西官网使用 Windows 系统 TLS 兼容读取器");
+async function windowsCurl(url, options = {}, run = execute) {
+  const target = new URL(url);
+  if (process.platform !== "win32" || target.protocol !== "https:" || target.username || target.password ||
+      !["drc.jiangxi.gov.cn", "fgw.hunan.gov.cn"].includes(target.hostname)) {
+    throw new Error("仅江西、湖南官网使用 Windows HTTPS 兼容读取器");
   }
   const directory = fs.mkdtempSync(path.join(os.tmpdir(), "besfuel-official-"));
   const body = path.join(directory, "body"), headers = path.join(directory, "headers");
   try {
     // Curl does not follow redirects here: makeReader checks every destination.
     // Schannel retains certificate verification; no insecure legacy TLS flags.
-    const result = await execute("curl.exe", ["--silent", "--show-error", "--proto", "=https",
+    const result = await run("curl.exe", ["--silent", "--show-error", "--proto", "=https",
       "--connect-timeout", "8", "--max-time", "20", "--max-filesize", "5000000",
       "--dump-header", headers, "--output", body, "--write-out", "%{http_code}", url],
     { windowsHide: true, timeout: 22000, maxBuffer: 10000, signal: options.signal });
@@ -27,7 +29,10 @@ async function windowsCurl(url, options = {}) {
     const parsed = new Headers();
     for (const line of last) {
       const colon = line.indexOf(":");
-      if (colon > 0) parsed.append(line.slice(0, colon), line.slice(colon + 1).trim());
+      // Attachment filenames can contain invalid header bytes. Only these two
+      // headers affect our reader; redirect destinations are still validated.
+      const name = line.slice(0, colon).toLowerCase();
+      if (colon > 0 && ["content-type", "location"].includes(name)) parsed.append(name, line.slice(colon + 1).trim());
     }
     const bytes = fs.readFileSync(body);
     if (bytes.length > 5_000_000) throw new Error("官方文件过大");
@@ -39,7 +44,8 @@ async function windowsCurl(url, options = {}) {
 }
 function publishingReader(hosts) {
   const primary = makeReader(hosts, { timeoutMs: 23000, fetcher: (url, options) =>
-    new URL(url).hostname === "drc.jiangxi.gov.cn" ? windowsCurl(url, options) : fetchOfficial(url, options) });
+    ["drc.jiangxi.gov.cn", "fgw.hunan.gov.cn"].includes(new URL(url).hostname) && process.platform === "win32" ?
+      windowsCurl(url, options) : fetchOfficial(url, options) });
   return publicHttpFallback(primary, makeReader(hosts));
 }
 function publicHttpFallback(primary, fallback) {

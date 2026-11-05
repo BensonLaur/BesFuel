@@ -1,0 +1,43 @@
+name: 验证代码与离线发布
+
+on:
+  push:
+    branches: ['codex/**']
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: besfuel-ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - name: 安装经哈希校验的读取与测试依赖
+        run: python -m pip install --only-binary=:all: --require-hashes -r scripts/review-requirements.txt
+      - name: 验证业务、失败保护、快照、构建和浏览器
+        run: node scripts/ci-checks.cjs all "${{ runner.temp }}/ci-diagnostics"
+      - name: 保存诊断日志和输入快照
+        if: always()
+        uses: actions/upload-artifact@v7.0.2
+        with:
+          name: ci-diagnostics-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/ci-diagnostics
+          if-no-files-found: warn
+          retention-days: 14
