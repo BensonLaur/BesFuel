@@ -43,3 +43,25 @@ test("Windows HTTPS compatibility is limited to the two official hosts", async (
     await assert.rejects(windowsCurl(url, {}, async () => assert.fail("must not launch curl")), /仅江西、湖南官网/);
   }
 });
+
+test("only Hunan's exact malformed-header error can use the standard-library HTTPS reader", { skip: process.platform !== "win32" }, async () => {
+  let calls = 0;
+  const response = await windowsCurl("https://fgw.hunan.gov.cn/prices.xls", {}, async (command, args) => {
+    calls++;
+    if (command === "curl.exe") throw Object.assign(Error("curl failed"), { code: 8, stderr: "curl: (8) Header without colon" });
+    assert.match(args[0], /read-hunan-http\.py$/);
+    assert.equal(args[1], "https://fgw.hunan.gov.cn/prices.xls");
+    return { stdout: JSON.stringify({ status: 200, headers: { "Content-Type": "application/vnd.ms-excel" },
+      base64: Buffer.from("verified workbook bytes").toString("base64") }) };
+  });
+  assert.equal(await response.text(), "verified workbook bytes");
+  assert.equal(calls, 2);
+  for (const [url, code, stderr] of [["https://fgw.hunan.gov.cn/prices.xls", 60, "certificate error"],
+    ["https://fgw.hunan.gov.cn/prices.xls", 8, "another error"], ["https://drc.jiangxi.gov.cn/", 8, "Header without colon"]]) {
+    let attempts = 0;
+    await assert.rejects(windowsCurl(url, {}, async () => {
+      attempts++; throw Object.assign(Error("curl failed"), { code, stderr });
+    }));
+    assert.equal(attempts, 1);
+  }
+});

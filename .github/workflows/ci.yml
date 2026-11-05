@@ -6,6 +6,11 @@ on:
   pull_request:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      check_hunan:
+        description: 额外只读验证湖南真实官网与 XLS（不改数据）
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -34,6 +39,9 @@ jobs:
           python -m pip install --only-binary=:all: --require-hashes -r scripts/review-requirements.txt
       - name: 验证业务、失败保护、快照、构建和浏览器
         run: node scripts/ci-checks.cjs all "${{ runner.temp }}/ci-diagnostics"
+      - name: 只读检查湖南真实来源
+        if: github.event_name == 'workflow_dispatch' && inputs.check_hunan
+        run: node scripts/check-hunan.cjs "${{ runner.temp }}/ci-diagnostics/hunan-live"
       - name: 保存诊断日志和输入快照
         if: always()
         uses: actions/upload-artifact@v7.0.2

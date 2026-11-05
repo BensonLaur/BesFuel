@@ -19,10 +19,25 @@ async function windowsCurl(url, options = {}, run = execute) {
   try {
     // Curl does not follow redirects here: makeReader checks every destination.
     // Schannel retains certificate verification; no insecure legacy TLS flags.
-    const result = await run("curl.exe", ["--silent", "--show-error", "--proto", "=https",
+    let result;
+    try { result = await run("curl.exe", ["--silent", "--show-error", "--proto", "=https",
       "--connect-timeout", "8", "--max-time", "20", "--max-filesize", "5000000",
       "--dump-header", headers, "--output", body, "--write-out", "%{http_code}", url],
-    { windowsHide: true, timeout: 22000, maxBuffer: 10000, signal: options.signal });
+    { windowsHide: true, timeout: 22000, maxBuffer: 10000, signal: options.signal }); }
+    catch (error) {
+      // The official endpoint sometimes emits a header without a colon. Curl
+      // rejects it too; Python's standard parser can read this isolated response
+      // while retaining HTTPS verification and manual redirect handling.
+      if (target.hostname !== "fgw.hunan.gov.cn" || error.code !== 8 ||
+          !/Header without colon/i.test(error.stderr || "")) throw error;
+      console.log(`湖南官网响应头缺少冒号，使用标准库 HTTPS 重新读取：${url}`);
+      const recovered = await run(process.env.BESFUEL_PYTHON || "python", [path.join(__dirname, "read-hunan-http.py"), url],
+        { windowsHide: true, timeout: 22000, maxBuffer: 7_000_000, signal: options.signal });
+      const value = JSON.parse(recovered.stdout);
+      const bytes = Buffer.from(value.base64, "base64");
+      if (bytes.length > 5_000_000) throw new Error("官方文件过大");
+      return new Response([204, 205, 304].includes(value.status) ? null : bytes, { status: value.status, headers: value.headers });
+    }
     const status = Number(result.stdout.trim());
     const blocks = fs.readFileSync(headers, "latin1").trim().split(/\r?\n\r?\n/);
     const last = blocks.at(-1).split(/\r?\n/).slice(1);
