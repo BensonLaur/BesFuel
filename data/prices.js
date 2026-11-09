@@ -1,12 +1,12 @@
 // Generated from data/prices.json; do not edit directly.
 window.BESFUEL_DATA = {
   "version": 2,
-  "checkedAt": "2026-11-09",
+  "checkedAt": "2026-11-10",
   "regions": {
     "guangdong": {
       "name": "广东",
       "priceScope": "广东省公布的全省最高销售价格；加油站实际成交价可能不同。",
-      "checkedAt": "2026-11-09",
+      "checkedAt": "2026-11-10",
       "source": {
         "name": "广东省发展和改革委员会",
         "url": "https://drc.gd.gov.cn/ywgg/content/post_4972645.html"
@@ -1097,7 +1097,7 @@ window.BESFUEL_DATA = {
     "jilin": {
       "name": "吉林",
       "priceScope": "吉林省成品油最高零售价格（元/升）；92、95 号乙醇汽油和 0 号车用柴油",
-      "checkedAt": "2026-11-08",
+      "checkedAt": "2026-11-09",
       "source": {
         "name": "吉林省发展和改革委员会",
         "url": "https://jldrc.jl.gov.cn/ztzl/nyzyjg/202610/t20261029_3683206.html"
@@ -8934,7 +8934,7 @@ window.BESFUEL_DATA = {
     "shandong": {
       "name": "山东",
       "priceScope": "山东省公布的汽、柴油最高零售价格（元/升）；省级公告仅列全省一张价格表，未另列市县价区；加油站实付价可能不同。",
-      "checkedAt": "2026-11-08",
+      "checkedAt": "2026-11-09",
       "source": {
         "name": "威海市发展和改革委员会（山东省价表）",
         "url": "https://fgw.weihai.gov.cn/art/2026/10/29/art_53887_6708946.html"
