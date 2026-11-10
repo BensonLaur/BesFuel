@@ -2,7 +2,7 @@
 window.BESFUEL_CRUDE_DATA = {
   "version": 1,
   "usage": "third-party-reference",
-  "updatedAt": "2026-11-09T22:06:24.106Z",
+  "updatedAt": "2026-11-10T09:28:05.653Z",
   "series": {
     "wti": {
       "name": "WTI 原油",
@@ -12,12 +12,8 @@ window.BESFUEL_CRUDE_DATA = {
       "currency": "USD",
       "unit": "barrel",
       "basis": "continuous-futures-daily",
-      "fetchedAt": "2026-11-09T22:06:24.106Z",
+      "fetchedAt": "2026-11-10T09:28:05.653Z",
       "history": [
-        {
-          "date": "2026-02-02",
-          "price": 62.33
-        },
         {
           "date": "2026-02-03",
           "price": 63.9
@@ -809,11 +805,15 @@ window.BESFUEL_CRUDE_DATA = {
         {
           "date": "2026-11-06",
           "price": 90.34
+        },
+        {
+          "date": "2026-11-09",
+          "price": 86.38
         }
       ],
       "intraday": {
-        "date": "2026-11-09",
-        "price": 86.4
+        "date": "2026-11-10",
+        "price": 85.03
       }
     },
     "brent": {
@@ -824,12 +824,8 @@ window.BESFUEL_CRUDE_DATA = {
       "currency": "USD",
       "unit": "barrel",
       "basis": "continuous-futures-daily",
-      "fetchedAt": "2026-11-09T22:06:24.106Z",
+      "fetchedAt": "2026-11-10T09:28:05.653Z",
       "history": [
-        {
-          "date": "2026-02-02",
-          "price": 66.31
-        },
         {
           "date": "2026-02-03",
           "price": 67.82
@@ -1621,18 +1617,22 @@ window.BESFUEL_CRUDE_DATA = {
         {
           "date": "2026-11-06",
           "price": 97.97
+        },
+        {
+          "date": "2026-11-09",
+          "price": 92.2
         }
       ],
       "intraday": {
-        "date": "2026-11-09",
-        "price": 92.19
+        "date": "2026-11-10",
+        "price": 90.44
       }
     }
   },
   "collection": {
     "mode": "auto",
     "outcome": "updated",
-    "checkedAt": "2026-11-09T22:06:24.106Z",
+    "checkedAt": "2026-11-10T09:28:05.653Z",
     "activeProvider": "eastmoney",
     "attempts": [
       {
