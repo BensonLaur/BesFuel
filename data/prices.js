@@ -1,20 +1,20 @@
 // Generated from data/prices.json; do not edit directly.
 window.BESFUEL_DATA = {
   "version": 2,
-  "checkedAt": "2026-11-12",
+  "checkedAt": "2026-11-13",
   "regions": {
     "guangdong": {
       "name": "广东",
       "priceScope": "广东省公布的全省最高销售价格；加油站实际成交价可能不同。",
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-13",
       "source": {
         "name": "广东省发展和改革委员会",
-        "url": "https://drc.gd.gov.cn/ywgg/content/post_4972645.html"
+        "url": "https://drc.gd.gov.cn/ywgg/content/post_4979520.html"
       },
-      "effectiveLabel": "2026-10-29 24:00 起",
+      "effectiveLabel": "2026-11-12 24:00 起",
       "grades": {
         "92": {
-          "price": 8.91,
+          "price": 8.39,
           "history": [
             {
               "date": "2026-04-22",
@@ -80,11 +80,16 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.91,
               "sourceUrl": "https://drc.gd.gov.cn/ywgg/content/post_4972645.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.39,
+              "sourceUrl": "https://drc.gd.gov.cn/ywgg/content/post_4979520.html"
             }
           ]
         },
         "95": {
-          "price": 9.65,
+          "price": 9.09,
           "history": [
             {
               "date": "2026-04-22",
@@ -150,6 +155,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 9.65,
               "sourceUrl": "https://drc.gd.gov.cn/ywgg/content/post_4972645.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 9.09,
+              "sourceUrl": "https://drc.gd.gov.cn/ywgg/content/post_4979520.html"
             }
           ]
         },
@@ -158,7 +168,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 8.6,
+          "price": 8.06,
           "history": [
             {
               "date": "2026-04-22",
@@ -224,15 +234,20 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.6,
               "sourceUrl": "https://drc.gd.gov.cn/ywgg/content/post_4972645.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.06,
+              "sourceUrl": "https://drc.gd.gov.cn/ywgg/content/post_4979520.html"
             }
           ]
         }
       },
       "latestNotice": {
-        "date": "2026-10-29",
+        "date": "2026-11-12",
         "kind": "adjusted",
-        "title": "2026年10月29日24时起成品油价格调整",
-        "sourceUrl": "https://drc.gd.gov.cn/ywgg/content/post_4972645.html"
+        "title": "2026年11月12日24时起成品油价格调整",
+        "sourceUrl": "https://drc.gd.gov.cn/ywgg/content/post_4979520.html"
       }
     },
     "hebei": {
@@ -10749,21 +10764,21 @@ window.BESFUEL_DATA = {
   },
   "nationalAdjustment": {
     "nextAdjustment": {
-      "date": "2026-11-12",
-      "dateLabel": "预计 2026-11-12 24:00",
+      "date": "2026-11-26",
+      "dateLabel": "预计 2026-11-26 24:00",
       "sourceName": "国家发展改革委调价规则与国务院放假安排",
       "sourceUrl": "https://www.ndrc.gov.cn/xxgk/zcfb/tz/201601/W020190905506573420251.pdf",
       "holidaySourceUrl": "https://www.beijing.gov.cn/cs/gncs/zcwj/202603/t20260327_4568275.html"
     },
     "forecast": {
-      "direction": "down",
-      "amountPerLiter": 0.52,
-      "description": "预计下调约 0.52 元/升",
-      "sourceName": "团友网",
-      "sourceUrl": "https://www.tuanyou.net/yuanyou/bianhualv/843.html",
-      "updatedAt": "2026-11-12",
-      "windowDate": "2026-11-12",
-      "workday": 10
+      "direction": null,
+      "amountPerLiter": null,
+      "description": null,
+      "sourceName": null,
+      "sourceUrl": null,
+      "updatedAt": null,
+      "windowDate": null,
+      "workday": null
     }
   }
 };
