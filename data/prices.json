@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "checkedAt": "2026-11-13",
+  "checkedAt": "2026-11-14",
   "regions": {
     "guangdong": {
       "name": "广东",
       "priceScope": "广东省公布的全省最高销售价格；加油站实际成交价可能不同。",
-      "checkedAt": "2026-11-13",
+      "checkedAt": "2026-11-14",
       "source": {
         "name": "广东省发展和改革委员会",
         "url": "https://drc.gd.gov.cn/ywgg/content/post_4979520.html"
@@ -9278,15 +9278,15 @@
     "shandong": {
       "name": "山东",
       "priceScope": "山东省公布的汽、柴油最高零售价格（元/升）；省级公告仅列全省一张价格表，未另列市县价区；加油站实付价可能不同。",
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-13",
       "source": {
         "name": "威海市发展和改革委员会（山东省价表）",
-        "url": "https://fgw.weihai.gov.cn/art/2026/10/29/art_53887_6708946.html"
+        "url": "https://fgw.weihai.gov.cn/art/2026/11/12/art_53887_6740485.html"
       },
-      "effectiveLabel": "2026-10-29 24:00 起",
+      "effectiveLabel": "2026-11-12 24:00 起",
       "grades": {
         "92": {
-          "price": 8.85,
+          "price": 8.33,
           "history": [
             {
               "date": "2026-04-22",
@@ -9352,11 +9352,16 @@
               "date": "2026-10-30",
               "price": 8.85,
               "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/10/29/art_53887_6708946.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.33,
+              "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/11/12/art_53887_6740485.html"
             }
           ]
         },
         "95": {
-          "price": 9.49,
+          "price": 8.94,
           "history": [
             {
               "date": "2026-04-22",
@@ -9422,6 +9427,11 @@
               "date": "2026-10-30",
               "price": 9.49,
               "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/10/29/art_53887_6708946.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.94,
+              "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/11/12/art_53887_6740485.html"
             }
           ]
         },
@@ -9430,7 +9440,7 @@
           "history": []
         },
         "diesel": {
-          "price": 8.5,
+          "price": 7.96,
           "history": [
             {
               "date": "2026-04-22",
@@ -9496,6 +9506,11 @@
               "date": "2026-10-30",
               "price": 8.5,
               "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/10/29/art_53887_6708946.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 7.96,
+              "sourceUrl": "https://fgw.weihai.gov.cn/art/2026/11/12/art_53887_6740485.html"
             }
           ]
         }
