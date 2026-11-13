@@ -344,15 +344,15 @@ window.BESFUEL_DATA = {
     "beijing": {
       "name": "北京",
       "priceScope": "北京市汽、柴油最高零售价格（元/升）",
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-13",
       "source": {
         "name": "北京市发展和改革委员会",
-        "url": "https://fgw.beijing.gov.cn/fgwzwgk/2024zcwj/bwqtwj/202610/t20261029_4923642.htm"
+        "url": "https://fgw.beijing.gov.cn/fgwzwgk/2024zcwj/bwqtwj/202611/t20261112_4943633.htm"
       },
-      "effectiveLabel": "2026-10-29 24:00 起",
+      "effectiveLabel": "2026-11-12 24:00 起",
       "grades": {
         "92": {
-          "price": 8.89,
+          "price": 8.37,
           "history": [
             {
               "date": "2026-05-09",
@@ -413,11 +413,16 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.89,
               "sourceUrl": "https://fgw.beijing.gov.cn/fgwzwgk/2024zcwj/bwqtwj/202610/t20261029_4923642.htm"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.37,
+              "sourceUrl": "https://fgw.beijing.gov.cn/fgwzwgk/2024zcwj/bwqtwj/202611/t20261112_4943633.htm"
             }
           ]
         },
         "95": {
-          "price": 9.46,
+          "price": 8.91,
           "history": [
             {
               "date": "2026-05-09",
@@ -478,6 +483,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 9.46,
               "sourceUrl": "https://fgw.beijing.gov.cn/fgwzwgk/2024zcwj/bwqtwj/202610/t20261029_4923642.htm"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.91,
+              "sourceUrl": "https://fgw.beijing.gov.cn/fgwzwgk/2024zcwj/bwqtwj/202611/t20261112_4943633.htm"
             }
           ]
         },
@@ -486,7 +496,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 8.65,
+          "price": 8.11,
           "history": [
             {
               "date": "2026-05-09",
@@ -547,6 +557,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.65,
               "sourceUrl": "https://fgw.beijing.gov.cn/fgwzwgk/2024zcwj/bwqtwj/202610/t20261029_4923642.htm"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.11,
+              "sourceUrl": "https://fgw.beijing.gov.cn/fgwzwgk/2024zcwj/bwqtwj/202611/t20261112_4943633.htm"
             }
           ]
         }
@@ -555,15 +570,15 @@ window.BESFUEL_DATA = {
     "shanxi": {
       "name": "山西",
       "priceScope": "山西省成品油最高零售价格（元/升）",
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-13",
       "source": {
         "name": "山西省发展和改革委员会",
-        "url": "https://fgw.shanxi.gov.cn/tzgg/202610/t20261029_10248335.shtml"
+        "url": "https://fgw.shanxi.gov.cn/tzgg/202611/t20261112_10258802.shtml"
       },
-      "effectiveLabel": "2026-10-29 24:00 起",
+      "effectiveLabel": "2026-11-12 24:00 起",
       "grades": {
         "92": {
-          "price": 8.82,
+          "price": 8.31,
           "history": [
             {
               "date": "2026-07-04",
@@ -604,11 +619,16 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.82,
               "sourceUrl": "https://fgw.shanxi.gov.cn/tzgg/202610/t20261029_10248335.shtml"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.31,
+              "sourceUrl": "https://fgw.shanxi.gov.cn/tzgg/202611/t20261112_10258802.shtml"
             }
           ]
         },
         "95": {
-          "price": 9.53,
+          "price": 8.97,
           "history": [
             {
               "date": "2026-07-04",
@@ -649,6 +669,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 9.53,
               "sourceUrl": "https://fgw.shanxi.gov.cn/tzgg/202610/t20261029_10248335.shtml"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.97,
+              "sourceUrl": "https://fgw.shanxi.gov.cn/tzgg/202611/t20261112_10258802.shtml"
             }
           ]
         },
@@ -657,7 +682,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 8.67,
+          "price": 8.13,
           "history": [
             {
               "date": "2026-07-04",
@@ -698,6 +723,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.67,
               "sourceUrl": "https://fgw.shanxi.gov.cn/tzgg/202610/t20261029_10248335.shtml"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.13,
+              "sourceUrl": "https://fgw.shanxi.gov.cn/tzgg/202611/t20261112_10258802.shtml"
             }
           ]
         }
@@ -706,15 +736,15 @@ window.BESFUEL_DATA = {
     "tianjin": {
       "name": "天津",
       "priceScope": "天津市成品油最高零售价格（元/升）",
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-13",
       "source": {
         "name": "天津市发展和改革委员会",
-        "url": "https://fzgg.tj.gov.cn/xxfb/tzggx/202610/t20261029_7645548.html"
+        "url": "https://fzgg.tj.gov.cn/xxfb/tzggx/202611/t20261112_7655221.html"
       },
-      "effectiveLabel": "2026-10-29 24:00 起",
+      "effectiveLabel": "2026-11-12 24:00 起",
       "grades": {
         "92": {
-          "price": 8.88,
+          "price": 8.36,
           "history": [
             {
               "date": "2025-10-14",
@@ -840,11 +870,16 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.88,
               "sourceUrl": "https://fzgg.tj.gov.cn/xxfb/tzggx/202610/t20261029_7645548.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.36,
+              "sourceUrl": "https://fzgg.tj.gov.cn/xxfb/tzggx/202611/t20261112_7655221.html"
             }
           ]
         },
         "95": {
-          "price": 9.39,
+          "price": 8.84,
           "history": [
             {
               "date": "2025-10-14",
@@ -970,6 +1005,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 9.39,
               "sourceUrl": "https://fzgg.tj.gov.cn/xxfb/tzggx/202610/t20261029_7645548.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.84,
+              "sourceUrl": "https://fzgg.tj.gov.cn/xxfb/tzggx/202611/t20261112_7655221.html"
             }
           ]
         },
@@ -978,7 +1018,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 8.6,
+          "price": 8.06,
           "history": [
             {
               "date": "2025-10-14",
@@ -1104,6 +1144,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.6,
               "sourceUrl": "https://fzgg.tj.gov.cn/xxfb/tzggx/202610/t20261029_7645548.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.06,
+              "sourceUrl": "https://fzgg.tj.gov.cn/xxfb/tzggx/202611/t20261112_7655221.html"
             }
           ]
         }
@@ -1112,15 +1157,15 @@ window.BESFUEL_DATA = {
     "jilin": {
       "name": "吉林",
       "priceScope": "吉林省成品油最高零售价格（元/升）；92、95 号乙醇汽油和 0 号车用柴油",
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-13",
       "source": {
         "name": "吉林省发展和改革委员会",
-        "url": "https://jldrc.jl.gov.cn/ztzl/nyzyjg/202610/t20261029_3683206.html"
+        "url": "https://jldrc.jl.gov.cn/ztzl/nyzyjg/202611/t20261112_3685952.html"
       },
-      "effectiveLabel": "2026-10-29 24:00 起",
+      "effectiveLabel": "2026-11-12 24:00 起",
       "grades": {
         "92": {
-          "price": 8.85,
+          "price": 8.33,
           "history": [
             {
               "date": "2026-08-15",
@@ -1146,11 +1191,16 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.85,
               "sourceUrl": "https://jldrc.jl.gov.cn/ztzl/nyzyjg/202610/t20261029_3683206.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.33,
+              "sourceUrl": "https://jldrc.jl.gov.cn/ztzl/nyzyjg/202611/t20261112_3685952.html"
             }
           ]
         },
         "95": {
-          "price": 9.55,
+          "price": 8.99,
           "history": [
             {
               "date": "2026-08-15",
@@ -1176,6 +1226,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 9.55,
               "sourceUrl": "https://jldrc.jl.gov.cn/ztzl/nyzyjg/202610/t20261029_3683206.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.99,
+              "sourceUrl": "https://jldrc.jl.gov.cn/ztzl/nyzyjg/202611/t20261112_3685952.html"
             }
           ]
         },
@@ -1184,7 +1239,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 8.5,
+          "price": 7.97,
           "history": [
             {
               "date": "2026-08-15",
@@ -1210,6 +1265,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.5,
               "sourceUrl": "https://jldrc.jl.gov.cn/ztzl/nyzyjg/202610/t20261029_3683206.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 7.97,
+              "sourceUrl": "https://jldrc.jl.gov.cn/ztzl/nyzyjg/202611/t20261112_3685952.html"
             }
           ]
         }
@@ -1218,15 +1278,15 @@ window.BESFUEL_DATA = {
     "shanghai": {
       "name": "上海",
       "priceScope": "上海市车用汽、柴油最高零售价格（元/升）",
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-13",
       "source": {
         "name": "上海市发展和改革委员会",
-        "url": "https://fgw.sh.gov.cn/fgw_jggl/20261029/c4173f8c7fb84f8486130488d93f1751.html"
+        "url": "https://fgw.sh.gov.cn/fgw_jggl/20261112/0f5137f27eff456e9e9c2db749801342.html"
       },
-      "effectiveLabel": "2026-10-29 24:00 起",
+      "effectiveLabel": "2026-11-12 24:00 起",
       "grades": {
         "92": {
-          "price": 8.85,
+          "price": 8.33,
           "history": [
             {
               "date": "2025-10-14",
@@ -1352,11 +1412,16 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.85,
               "sourceUrl": "https://fgw.sh.gov.cn/fgw_jggl/20261029/c4173f8c7fb84f8486130488d93f1751.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.33,
+              "sourceUrl": "https://fgw.sh.gov.cn/fgw_jggl/20261112/0f5137f27eff456e9e9c2db749801342.html"
             }
           ]
         },
         "95": {
-          "price": 9.41,
+          "price": 8.87,
           "history": [
             {
               "date": "2025-10-14",
@@ -1482,6 +1547,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 9.41,
               "sourceUrl": "https://fgw.sh.gov.cn/fgw_jggl/20261029/c4173f8c7fb84f8486130488d93f1751.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.87,
+              "sourceUrl": "https://fgw.sh.gov.cn/fgw_jggl/20261112/0f5137f27eff456e9e9c2db749801342.html"
             }
           ]
         },
@@ -1490,7 +1560,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 8.57,
+          "price": 8.03,
           "history": [
             {
               "date": "2025-10-14",
@@ -1616,6 +1686,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.57,
               "sourceUrl": "https://fgw.sh.gov.cn/fgw_jggl/20261029/c4173f8c7fb84f8486130488d93f1751.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.03,
+              "sourceUrl": "https://fgw.sh.gov.cn/fgw_jggl/20261112/0f5137f27eff456e9e9c2db749801342.html"
             }
           ]
         }
@@ -1624,15 +1699,15 @@ window.BESFUEL_DATA = {
     "fujian": {
       "name": "福建",
       "priceScope": "福建省汽、柴油最高零售价格（元/升）",
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-13",
       "source": {
         "name": "福建省发展和改革委员会",
-        "url": "https://fgw.fujian.gov.cn/zfxxgkzl/zfxxgkml/yzdgkdqtxx/202610/t20261029_7242151.htm"
+        "url": "https://fgw.fujian.gov.cn/zfxxgkzl/zfxxgkml/yzdgkdqtxx/202611/t20261112_7248758.htm"
       },
-      "effectiveLabel": "2026-10-29 24:00 起",
+      "effectiveLabel": "2026-11-12 24:00 起",
       "grades": {
         "92": {
-          "price": 8.84,
+          "price": 8.33,
           "history": [
             {
               "date": "2025-10-14",
@@ -1758,11 +1833,16 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.84,
               "sourceUrl": "https://fgw.fujian.gov.cn/zfxxgkzl/zfxxgkml/yzdgkdqtxx/202610/t20261029_7242151.htm"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.33,
+              "sourceUrl": "https://fgw.fujian.gov.cn/zfxxgkzl/zfxxgkml/yzdgkdqtxx/202611/t20261112_7248758.htm"
             }
           ]
         },
         "95": {
-          "price": 9.44,
+          "price": 8.89,
           "history": [
             {
               "date": "2025-10-14",
@@ -1888,6 +1968,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 9.44,
               "sourceUrl": "https://fgw.fujian.gov.cn/zfxxgkzl/zfxxgkml/yzdgkdqtxx/202610/t20261029_7242151.htm"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.89,
+              "sourceUrl": "https://fgw.fujian.gov.cn/zfxxgkzl/zfxxgkml/yzdgkdqtxx/202611/t20261112_7248758.htm"
             }
           ]
         },
@@ -1896,7 +1981,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 8.58,
+          "price": 8.04,
           "history": [
             {
               "date": "2025-10-14",
@@ -2022,6 +2107,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.58,
               "sourceUrl": "https://fgw.fujian.gov.cn/zfxxgkzl/zfxxgkml/yzdgkdqtxx/202610/t20261029_7242151.htm"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.04,
+              "sourceUrl": "https://fgw.fujian.gov.cn/zfxxgkzl/zfxxgkml/yzdgkdqtxx/202611/t20261112_7248758.htm"
             }
           ]
         }
@@ -2030,15 +2120,15 @@ window.BESFUEL_DATA = {
     "guangxi": {
       "name": "广西",
       "priceScope": "广西市场成品油最高零售价格（元/升）",
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-13",
       "source": {
         "name": "广西壮族自治区发展和改革委员会",
-        "url": "http://fgw.gxzf.gov.cn/xwzx/xwfb/t28278529.shtml"
+        "url": "http://fgw.gxzf.gov.cn/xwzx/xwfb/t28333989.shtml"
       },
-      "effectiveLabel": "2026-10-29 24:00 起",
+      "effectiveLabel": "2026-11-12 24:00 起",
       "grades": {
         "92": {
-          "price": 8.94,
+          "price": 8.43,
           "history": [
             {
               "date": "2026-04-08",
@@ -2109,11 +2199,16 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.94,
               "sourceUrl": "http://fgw.gxzf.gov.cn/xwzx/xwfb/t28278529.shtml"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.43,
+              "sourceUrl": "http://fgw.gxzf.gov.cn/xwzx/xwfb/t28333989.shtml"
             }
           ]
         },
         "95": {
-          "price": 9.66,
+          "price": 9.1,
           "history": [
             {
               "date": "2026-04-08",
@@ -2184,6 +2279,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 9.66,
               "sourceUrl": "http://fgw.gxzf.gov.cn/xwzx/xwfb/t28278529.shtml"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 9.1,
+              "sourceUrl": "http://fgw.gxzf.gov.cn/xwzx/xwfb/t28333989.shtml"
             }
           ]
         },
@@ -2192,7 +2292,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 8.64,
+          "price": 8.11,
           "history": [
             {
               "date": "2026-04-08",
@@ -2263,6 +2363,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.64,
               "sourceUrl": "http://fgw.gxzf.gov.cn/xwzx/xwfb/t28278529.shtml"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.11,
+              "sourceUrl": "http://fgw.gxzf.gov.cn/xwzx/xwfb/t28333989.shtml"
             }
           ]
         }
@@ -3007,15 +3112,15 @@ window.BESFUEL_DATA = {
     "jiangsu": {
       "name": "江苏",
       "priceScope": "江苏省汽、柴油最高零售价格（元/升）",
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-13",
       "source": {
         "name": "江苏省发展和改革委员会",
-        "url": "https://fzggw.jiangsu.gov.cn/art/2026/10/29/art_91435_11851729.html"
+        "url": "https://fzggw.jiangsu.gov.cn/art/2026/11/12/art_91435_11859194.html"
       },
-      "effectiveLabel": "2026-10-29 24:00 起",
+      "effectiveLabel": "2026-11-12 24:00 起",
       "grades": {
         "92": {
-          "price": 8.85,
+          "price": 8.34,
           "history": [
             {
               "date": "2025-10-28",
@@ -3136,11 +3241,16 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.85,
               "sourceUrl": "https://fzggw.jiangsu.gov.cn/art/2026/10/29/art_91435_11851729.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.34,
+              "sourceUrl": "https://fzggw.jiangsu.gov.cn/art/2026/11/12/art_91435_11859194.html"
             }
           ]
         },
         "95": {
-          "price": 9.41,
+          "price": 8.87,
           "history": [
             {
               "date": "2025-10-28",
@@ -3261,6 +3371,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 9.41,
               "sourceUrl": "https://fzggw.jiangsu.gov.cn/art/2026/10/29/art_91435_11851729.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.87,
+              "sourceUrl": "https://fzggw.jiangsu.gov.cn/art/2026/11/12/art_91435_11859194.html"
             }
           ]
         },
@@ -3269,7 +3384,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 8.55,
+          "price": 8.01,
           "history": [
             {
               "date": "2025-10-28",
@@ -3390,6 +3505,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.55,
               "sourceUrl": "https://fzggw.jiangsu.gov.cn/art/2026/10/29/art_91435_11851729.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.01,
+              "sourceUrl": "https://fzggw.jiangsu.gov.cn/art/2026/11/12/art_91435_11859194.html"
             }
           ]
         }
@@ -3534,15 +3654,15 @@ window.BESFUEL_DATA = {
     "sichuan-zone1": {
       "name": "四川第一价区",
       "priceScope": "四川省第一价区（二、三价区以外的其他地区）汽、柴油最高零售价格（元/升）；二价区含攀枝花、凉山和阿坝汶川、理县、茂县，三价区含甘孜及阿坝其余十县；加油站实付价可能不同。",
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-13",
       "source": {
         "name": "四川省发展和改革委员会",
-        "url": "https://fgw.sc.gov.cn/sfgw/tzgg/2026/10/29/041406da684b4d55a7f1c9a91d52d480.shtml"
+        "url": "https://fgw.sc.gov.cn/sfgw/tzgg/2026/11/12/b5b4f1c9359a4455a8f314f71fc264a4.shtml"
       },
-      "effectiveLabel": "2026-10-29 24:00 起",
+      "effectiveLabel": "2026-11-12 24:00 起",
       "grades": {
         "92": {
-          "price": 8.98,
+          "price": 8.46,
           "history": [
             {
               "date": "2026-05-09",
@@ -3593,11 +3713,16 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.98,
               "sourceUrl": "https://fgw.sc.gov.cn/sfgw/tzgg/2026/10/29/041406da684b4d55a7f1c9a91d52d480.shtml"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.46,
+              "sourceUrl": "https://fgw.sc.gov.cn/sfgw/tzgg/2026/11/12/b5b4f1c9359a4455a8f314f71fc264a4.shtml"
             }
           ]
         },
         "95": {
-          "price": 9.59,
+          "price": 9.04,
           "history": [
             {
               "date": "2026-05-09",
@@ -3648,6 +3773,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 9.59,
               "sourceUrl": "https://fgw.sc.gov.cn/sfgw/tzgg/2026/10/29/041406da684b4d55a7f1c9a91d52d480.shtml"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 9.04,
+              "sourceUrl": "https://fgw.sc.gov.cn/sfgw/tzgg/2026/11/12/b5b4f1c9359a4455a8f314f71fc264a4.shtml"
             }
           ]
         },
@@ -3656,7 +3786,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 8.62,
+          "price": 8.09,
           "history": [
             {
               "date": "2026-05-09",
@@ -3707,6 +3837,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.62,
               "sourceUrl": "https://fgw.sc.gov.cn/sfgw/tzgg/2026/10/29/041406da684b4d55a7f1c9a91d52d480.shtml"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.09,
+              "sourceUrl": "https://fgw.sc.gov.cn/sfgw/tzgg/2026/11/12/b5b4f1c9359a4455a8f314f71fc264a4.shtml"
             }
           ]
         }
@@ -3715,15 +3850,15 @@ window.BESFUEL_DATA = {
     "sichuan-zone2": {
       "name": "四川第二价区",
       "priceScope": "四川省二价区：阿坝州汶川县、理县、茂县以及凉山州、攀枝花市行政区域的汽柴油最高零售价格（元/升）；其他地区不适用。",
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-13",
       "source": {
         "name": "四川省发展和改革委员会",
-        "url": "https://fgw.sc.gov.cn/sfgw/tzgg/2026/10/29/041406da684b4d55a7f1c9a91d52d480.shtml"
+        "url": "https://fgw.sc.gov.cn/sfgw/tzgg/2026/11/12/b5b4f1c9359a4455a8f314f71fc264a4.shtml"
       },
-      "effectiveLabel": "2026-10-29 24:00 起",
+      "effectiveLabel": "2026-11-12 24:00 起",
       "grades": {
         "92": {
-          "price": 9.05,
+          "price": 8.54,
           "history": [
             {
               "date": "2026-08-29",
@@ -3744,11 +3879,16 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 9.05,
               "sourceUrl": "https://fgw.sc.gov.cn/sfgw/tzgg/2026/10/29/041406da684b4d55a7f1c9a91d52d480.shtml"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.54,
+              "sourceUrl": "https://fgw.sc.gov.cn/sfgw/tzgg/2026/11/12/b5b4f1c9359a4455a8f314f71fc264a4.shtml"
             }
           ]
         },
         "95": {
-          "price": 9.67,
+          "price": 9.12,
           "history": [
             {
               "date": "2026-08-29",
@@ -3769,6 +3909,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 9.67,
               "sourceUrl": "https://fgw.sc.gov.cn/sfgw/tzgg/2026/10/29/041406da684b4d55a7f1c9a91d52d480.shtml"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 9.12,
+              "sourceUrl": "https://fgw.sc.gov.cn/sfgw/tzgg/2026/11/12/b5b4f1c9359a4455a8f314f71fc264a4.shtml"
             }
           ]
         },
@@ -3777,7 +3922,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 8.71,
+          "price": 8.18,
           "history": [
             {
               "date": "2026-08-29",
@@ -3798,6 +3943,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.71,
               "sourceUrl": "https://fgw.sc.gov.cn/sfgw/tzgg/2026/10/29/041406da684b4d55a7f1c9a91d52d480.shtml"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.18,
+              "sourceUrl": "https://fgw.sc.gov.cn/sfgw/tzgg/2026/11/12/b5b4f1c9359a4455a8f314f71fc264a4.shtml"
             }
           ]
         }
@@ -3806,15 +3956,15 @@ window.BESFUEL_DATA = {
     "sichuan-zone3": {
       "name": "四川第三价区",
       "priceScope": "四川省第三价区（甘孜州，以及阿坝州除汶川县、理县、茂县以外的其他地区）汽、柴油最高零售价格（元/升）；加油站实付价可能不同。",
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-13",
       "source": {
         "name": "四川省发展和改革委员会",
-        "url": "https://fgw.sc.gov.cn/sfgw/tzgg/2026/10/29/041406da684b4d55a7f1c9a91d52d480.shtml"
+        "url": "https://fgw.sc.gov.cn/sfgw/tzgg/2026/11/12/b5b4f1c9359a4455a8f314f71fc264a4.shtml"
       },
-      "effectiveLabel": "2026-10-29 24:00 起",
+      "effectiveLabel": "2026-11-12 24:00 起",
       "grades": {
         "92": {
-          "price": 9.13,
+          "price": 8.61,
           "history": [
             {
               "date": "2026-05-09",
@@ -3865,11 +4015,16 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 9.13,
               "sourceUrl": "https://fgw.sc.gov.cn/sfgw/tzgg/2026/10/29/041406da684b4d55a7f1c9a91d52d480.shtml"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.61,
+              "sourceUrl": "https://fgw.sc.gov.cn/sfgw/tzgg/2026/11/12/b5b4f1c9359a4455a8f314f71fc264a4.shtml"
             }
           ]
         },
         "95": {
-          "price": 9.75,
+          "price": 9.2,
           "history": [
             {
               "date": "2026-05-09",
@@ -3920,6 +4075,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 9.75,
               "sourceUrl": "https://fgw.sc.gov.cn/sfgw/tzgg/2026/10/29/041406da684b4d55a7f1c9a91d52d480.shtml"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 9.2,
+              "sourceUrl": "https://fgw.sc.gov.cn/sfgw/tzgg/2026/11/12/b5b4f1c9359a4455a8f314f71fc264a4.shtml"
             }
           ]
         },
@@ -3928,7 +4088,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 8.79,
+          "price": 8.26,
           "history": [
             {
               "date": "2026-05-09",
@@ -3979,6 +4139,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.79,
               "sourceUrl": "https://fgw.sc.gov.cn/sfgw/tzgg/2026/10/29/041406da684b4d55a7f1c9a91d52d480.shtml"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.26,
+              "sourceUrl": "https://fgw.sc.gov.cn/sfgw/tzgg/2026/11/12/b5b4f1c9359a4455a8f314f71fc264a4.shtml"
             }
           ]
         }
@@ -3987,15 +4152,15 @@ window.BESFUEL_DATA = {
     "inner-mongolia-east": {
       "name": "内蒙古东部价区",
       "priceScope": "内蒙古自治区东部价区（呼伦贝尔市、兴安盟、通辽市、赤峰市、锡林郭勒盟）汽、柴油最高零售价格（元/升）；加油站实付价可能不同。",
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-13",
       "source": {
         "name": "内蒙古自治区发展和改革委员会",
-        "url": "https://fgw.nmg.gov.cn/ywgz/jfgz/cpyjg/202610/t20261029_2971107.html"
+        "url": "https://fgw.nmg.gov.cn/ywgz/jfgz/cpyjg/202611/t20261112_2976714.html"
       },
-      "effectiveLabel": "2026-10-29 24:00 起",
+      "effectiveLabel": "2026-11-12 24:00 起",
       "grades": {
         "92": {
-          "price": 8.96,
+          "price": 8.43,
           "history": [
             {
               "date": "2026-04-22",
@@ -4061,11 +4226,16 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.96,
               "sourceUrl": "https://fgw.nmg.gov.cn/ywgz/jfgz/cpyjg/202610/t20261029_2971107.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.43,
+              "sourceUrl": "https://fgw.nmg.gov.cn/ywgz/jfgz/cpyjg/202611/t20261112_2976714.html"
             }
           ]
         },
         "95": {
-          "price": 9.53,
+          "price": 8.98,
           "history": [
             {
               "date": "2026-04-22",
@@ -4131,6 +4301,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 9.53,
               "sourceUrl": "https://fgw.nmg.gov.cn/ywgz/jfgz/cpyjg/202610/t20261029_2971107.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.98,
+              "sourceUrl": "https://fgw.nmg.gov.cn/ywgz/jfgz/cpyjg/202611/t20261112_2976714.html"
             }
           ]
         },
@@ -4139,7 +4314,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 8.44,
+          "price": 7.91,
           "history": [
             {
               "date": "2026-04-22",
@@ -4205,29 +4380,34 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.44,
               "sourceUrl": "https://fgw.nmg.gov.cn/ywgz/jfgz/cpyjg/202610/t20261029_2971107.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 7.91,
+              "sourceUrl": "https://fgw.nmg.gov.cn/ywgz/jfgz/cpyjg/202611/t20261112_2976714.html"
             }
           ]
         }
       },
       "latestNotice": {
         "kind": "adjusted",
-        "date": "2026-10-29",
+        "date": "2026-11-12",
         "title": "内蒙古东部价区成品油价格调整",
-        "sourceUrl": "https://fgw.nmg.gov.cn/ywgz/jfgz/cpyjg/202610/t20261029_2971107.html"
+        "sourceUrl": "https://fgw.nmg.gov.cn/ywgz/jfgz/cpyjg/202611/t20261112_2976714.html"
       }
     },
     "inner-mongolia-west": {
       "name": "内蒙古西部价区",
       "priceScope": "内蒙古自治区西部价区（呼和浩特市、包头市、乌兰察布市、鄂尔多斯市、巴彦淖尔市、乌海市、阿拉善盟）汽、柴油最高零售价格（元/升）；加油站实付价可能不同。",
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-13",
       "source": {
         "name": "内蒙古自治区发展和改革委员会",
-        "url": "https://fgw.nmg.gov.cn/ywgz/jfgz/cpyjg/202610/t20261029_2971107.html"
+        "url": "https://fgw.nmg.gov.cn/ywgz/jfgz/cpyjg/202611/t20261112_2976714.html"
       },
-      "effectiveLabel": "2026-10-29 24:00 起",
+      "effectiveLabel": "2026-11-12 24:00 起",
       "grades": {
         "92": {
-          "price": 8.89,
+          "price": 8.37,
           "history": [
             {
               "date": "2026-04-22",
@@ -4293,11 +4473,16 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.89,
               "sourceUrl": "https://fgw.nmg.gov.cn/ywgz/jfgz/cpyjg/202610/t20261029_2971107.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.37,
+              "sourceUrl": "https://fgw.nmg.gov.cn/ywgz/jfgz/cpyjg/202611/t20261112_2976714.html"
             }
           ]
         },
         "95": {
-          "price": 9.45,
+          "price": 8.9,
           "history": [
             {
               "date": "2026-04-22",
@@ -4363,6 +4548,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 9.45,
               "sourceUrl": "https://fgw.nmg.gov.cn/ywgz/jfgz/cpyjg/202610/t20261029_2971107.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.9,
+              "sourceUrl": "https://fgw.nmg.gov.cn/ywgz/jfgz/cpyjg/202611/t20261112_2976714.html"
             }
           ]
         },
@@ -4371,7 +4561,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 8.42,
+          "price": 7.9,
           "history": [
             {
               "date": "2026-04-22",
@@ -4437,29 +4627,34 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.42,
               "sourceUrl": "https://fgw.nmg.gov.cn/ywgz/jfgz/cpyjg/202610/t20261029_2971107.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 7.9,
+              "sourceUrl": "https://fgw.nmg.gov.cn/ywgz/jfgz/cpyjg/202611/t20261112_2976714.html"
             }
           ]
         }
       },
       "latestNotice": {
         "kind": "adjusted",
-        "date": "2026-10-29",
+        "date": "2026-11-12",
         "title": "内蒙古西部价区成品油价格调整",
-        "sourceUrl": "https://fgw.nmg.gov.cn/ywgz/jfgz/cpyjg/202610/t20261029_2971107.html"
+        "sourceUrl": "https://fgw.nmg.gov.cn/ywgz/jfgz/cpyjg/202611/t20261112_2976714.html"
       }
     },
     "yunnan-kunming": {
       "name": "云南·昆明",
       "priceScope": "云南省昆明地区（第一价区）汽、柴油最高零售价格（元/升）",
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-13",
       "source": {
         "name": "云南省发展和改革委员会",
-        "url": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
+        "url": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202611/t20261112_4383823.html"
       },
-      "effectiveLabel": "2026-10-29 24:00 起",
+      "effectiveLabel": "2026-11-12 24:00 起",
       "grades": {
         "92": {
-          "price": 9.04,
+          "price": 8.52,
           "history": [
             {
               "date": "2025-08-27",
@@ -4590,11 +4785,16 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 9.04,
               "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.52,
+              "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202611/t20261112_4383823.html"
             }
           ]
         },
         "95": {
-          "price": 9.7,
+          "price": 9.14,
           "history": [
             {
               "date": "2025-08-27",
@@ -4725,6 +4925,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 9.7,
               "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 9.14,
+              "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202611/t20261112_4383823.html"
             }
           ]
         },
@@ -4733,7 +4938,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 8.65,
+          "price": 8.12,
           "history": [
             {
               "date": "2025-08-27",
@@ -4864,6 +5069,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.65,
               "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.12,
+              "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202611/t20261112_4383823.html"
             }
           ]
         }
@@ -4872,15 +5082,15 @@ window.BESFUEL_DATA = {
     "yunnan-zone2": {
       "name": "云南第二价区",
       "priceScope": "云南省第二价区（曲靖、楚雄、玉溪）汽、柴油最高零售价格（元/升）；县城及国省道加油站原则上执行同价区价格，乡镇站点可按规定地区差加价，实付价可能不同。",
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-13",
       "source": {
         "name": "云南省发展和改革委员会",
-        "url": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
+        "url": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202611/t20261112_4383823.html"
       },
-      "effectiveLabel": "2026-10-29 24:00 起",
+      "effectiveLabel": "2026-11-12 24:00 起",
       "grades": {
         "92": {
-          "price": 9.11,
+          "price": 8.59,
           "history": [
             {
               "date": "2026-04-22",
@@ -4946,11 +5156,16 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 9.11,
               "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.59,
+              "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202611/t20261112_4383823.html"
             }
           ]
         },
         "95": {
-          "price": 9.77,
+          "price": 9.22,
           "history": [
             {
               "date": "2026-04-22",
@@ -5016,6 +5231,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 9.77,
               "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 9.22,
+              "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202611/t20261112_4383823.html"
             }
           ]
         },
@@ -5024,7 +5244,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 8.74,
+          "price": 8.21,
           "history": [
             {
               "date": "2026-04-22",
@@ -5090,6 +5310,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.74,
               "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.21,
+              "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202611/t20261112_4383823.html"
             }
           ]
         }
@@ -5098,15 +5323,15 @@ window.BESFUEL_DATA = {
     "yunnan-zone4": {
       "name": "云南·普洱、保山、丽江",
       "priceScope": "云南省第四价区（普洱、保山、丽江）汽、柴油最高零售价格（元/升）",
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-13",
       "source": {
         "name": "云南省发展和改革委员会",
-        "url": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
+        "url": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202611/t20261112_4383823.html"
       },
-      "effectiveLabel": "2026-10-29 24:00 起",
+      "effectiveLabel": "2026-11-12 24:00 起",
       "grades": {
         "92": {
-          "price": 9.26,
+          "price": 8.74,
           "history": [
             {
               "date": "2025-08-27",
@@ -5237,11 +5462,16 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 9.26,
               "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.74,
+              "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202611/t20261112_4383823.html"
             }
           ]
         },
         "95": {
-          "price": 9.93,
+          "price": 9.37,
           "history": [
             {
               "date": "2025-08-27",
@@ -5372,6 +5602,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 9.93,
               "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 9.37,
+              "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202611/t20261112_4383823.html"
             }
           ]
         },
@@ -5380,7 +5615,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 8.91,
+          "price": 8.38,
           "history": [
             {
               "date": "2025-08-27",
@@ -5511,6 +5746,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.91,
               "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.38,
+              "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202611/t20261112_4383823.html"
             }
           ]
         }
@@ -5519,15 +5759,15 @@ window.BESFUEL_DATA = {
     "yunnan-zone5": {
       "name": "云南第五价区",
       "priceScope": "云南省第五价区（西双版纳、德宏、迪庆、怒江、临沧）汽、柴油最高零售价格（元/升）；加油站实付价可能不同。",
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-13",
       "source": {
         "name": "云南省发展和改革委员会",
-        "url": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
+        "url": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202611/t20261112_4383823.html"
       },
-      "effectiveLabel": "2026-10-29 24:00 起",
+      "effectiveLabel": "2026-11-12 24:00 起",
       "grades": {
         "92": {
-          "price": 9.32,
+          "price": 8.8,
           "history": [
             {
               "date": "2026-04-22",
@@ -5593,11 +5833,16 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 9.32,
               "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.8,
+              "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202611/t20261112_4383823.html"
             }
           ]
         },
         "95": {
-          "price": 9.99,
+          "price": 9.43,
           "history": [
             {
               "date": "2026-04-22",
@@ -5663,6 +5908,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 9.99,
               "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 9.43,
+              "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202611/t20261112_4383823.html"
             }
           ]
         },
@@ -5671,7 +5921,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 8.98,
+          "price": 8.44,
           "history": [
             {
               "date": "2026-04-22",
@@ -5737,6 +5987,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.98,
               "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.44,
+              "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202611/t20261112_4383823.html"
             }
           ]
         }
@@ -5745,15 +6000,15 @@ window.BESFUEL_DATA = {
     "yunnan-zone3": {
       "name": "云南·昭通、红河、文山、大理",
       "priceScope": "云南省发改委各地区汽柴油最高零售价格表中昭通、红河、文山、大理四州市所在价格组（元/升）；乡镇加价规则和加油站实付价以当地公告为准。",
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-13",
       "source": {
         "name": "云南省发展和改革委员会",
-        "url": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
+        "url": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202611/t20261112_4383823.html"
       },
-      "effectiveLabel": "2026-10-29 24:00 起",
+      "effectiveLabel": "2026-11-12 24:00 起",
       "grades": {
         "92": {
-          "price": 9.19,
+          "price": 8.67,
           "history": [
             {
               "date": "2026-04-22",
@@ -5819,11 +6074,16 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 9.19,
               "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.67,
+              "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202611/t20261112_4383823.html"
             }
           ]
         },
         "95": {
-          "price": 9.85,
+          "price": 9.3,
           "history": [
             {
               "date": "2026-04-22",
@@ -5889,6 +6149,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 9.85,
               "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 9.3,
+              "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202611/t20261112_4383823.html"
             }
           ]
         },
@@ -5897,7 +6162,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 8.82,
+          "price": 8.29,
           "history": [
             {
               "date": "2026-04-22",
@@ -5963,6 +6228,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.82,
               "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202610/t20261029_4376532.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.29,
+              "sourceUrl": "https://yndrc.yn.gov.cn/zwgk/fdzdgknr/jgysf/202611/t20261112_4383823.html"
             }
           ]
         }
@@ -7639,15 +7909,15 @@ window.BESFUEL_DATA = {
     "xizang-lhasa": {
       "name": "西藏拉萨价区",
       "priceScope": "西藏自治区拉萨价区（拉萨、日喀则、山南、林芝、那曲）汽、柴油最高零售价格（元/升）；加油站实付价可能不同。",
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-13",
       "source": {
         "name": "西藏自治区发展和改革委员会",
-        "url": "https://drc.xizang.gov.cn/zwgk_1941/tz/202610/t20261030_564758.html"
+        "url": "https://drc.xizang.gov.cn/zwgk_1941/tz/202611/t20261112_566589.html"
       },
-      "effectiveLabel": "2026-10-29 24:00 起",
+      "effectiveLabel": "2026-11-12 24:00 起",
       "grades": {
         "92": {
-          "price": 9.75,
+          "price": 9.24,
           "history": [
             {
               "date": "2026-04-22",
@@ -7713,11 +7983,16 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 9.75,
               "sourceUrl": "https://drc.xizang.gov.cn/zwgk_1941/tz/202610/t20261030_564758.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 9.24,
+              "sourceUrl": "https://drc.xizang.gov.cn/zwgk_1941/tz/202611/t20261112_566589.html"
             }
           ]
         },
         "95": {
-          "price": 10.32,
+          "price": 9.77,
           "history": [
             {
               "date": "2026-04-22",
@@ -7783,6 +8058,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 10.32,
               "sourceUrl": "https://drc.xizang.gov.cn/zwgk_1941/tz/202610/t20261030_564758.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 9.77,
+              "sourceUrl": "https://drc.xizang.gov.cn/zwgk_1941/tz/202611/t20261112_566589.html"
             }
           ]
         },
@@ -7791,7 +8071,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 9.11,
+          "price": 8.58,
           "history": [
             {
               "date": "2026-04-22",
@@ -7857,6 +8137,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 9.11,
               "sourceUrl": "https://drc.xizang.gov.cn/zwgk_1941/tz/202610/t20261030_564758.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.58,
+              "sourceUrl": "https://drc.xizang.gov.cn/zwgk_1941/tz/202611/t20261112_566589.html"
             }
           ]
         }
@@ -7865,15 +8150,15 @@ window.BESFUEL_DATA = {
     "anhui": {
       "name": "安徽",
       "priceScope": "安徽省汽、柴油最高零售价格（元/升）；省发改委统一发布全省价格表，加油站实付价可能不同。",
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-13",
       "source": {
         "name": "安徽省发展和改革委员会",
-        "url": "https://fzggw.ah.gov.cn/ywdt/tzgg/150718981.html"
+        "url": "https://fzggw.ah.gov.cn/ywdt/tzgg/150732801.html"
       },
-      "effectiveLabel": "2026-10-29 24:00 起",
+      "effectiveLabel": "2026-11-12 24:00 起",
       "grades": {
         "92": {
-          "price": 8.83,
+          "price": 8.31,
           "history": [
             {
               "date": "2026-01-21",
@@ -7969,11 +8254,16 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.83,
               "sourceUrl": "https://fzggw.ah.gov.cn/ywdt/tzgg/150718981.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.31,
+              "sourceUrl": "https://fzggw.ah.gov.cn/ywdt/tzgg/150732801.html"
             }
           ]
         },
         "95": {
-          "price": 9.43,
+          "price": 8.89,
           "history": [
             {
               "date": "2026-01-21",
@@ -8069,6 +8359,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 9.43,
               "sourceUrl": "https://fzggw.ah.gov.cn/ywdt/tzgg/150718981.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.89,
+              "sourceUrl": "https://fzggw.ah.gov.cn/ywdt/tzgg/150732801.html"
             }
           ]
         },
@@ -8077,7 +8372,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 8.63,
+          "price": 8.09,
           "history": [
             {
               "date": "2026-01-21",
@@ -8173,6 +8468,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.63,
               "sourceUrl": "https://fzggw.ah.gov.cn/ywdt/tzgg/150718981.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.09,
+              "sourceUrl": "https://fzggw.ah.gov.cn/ywdt/tzgg/150732801.html"
             }
           ]
         }
@@ -8181,15 +8481,15 @@ window.BESFUEL_DATA = {
     "xizang-ngari": {
       "name": "西藏·阿里价区",
       "priceScope": "西藏自治区阿里价区（阿里地区）汽、柴油最高零售价格（元/升）；与拉萨、昌都价区分别定价，加油站实付价可能不同。",
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-13",
       "source": {
         "name": "西藏自治区发展和改革委员会",
-        "url": "https://drc.xizang.gov.cn/zwgk_1941/tz/202610/t20261030_564758.html"
+        "url": "https://drc.xizang.gov.cn/zwgk_1941/tz/202611/t20261112_566589.html"
       },
-      "effectiveLabel": "2026-10-29 24:00 起",
+      "effectiveLabel": "2026-11-12 24:00 起",
       "grades": {
         "92": {
-          "price": 10.14,
+          "price": 9.62,
           "history": [
             {
               "date": "2026-04-22",
@@ -8255,11 +8555,16 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 10.14,
               "sourceUrl": "https://drc.xizang.gov.cn/zwgk_1941/tz/202610/t20261030_564758.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 9.62,
+              "sourceUrl": "https://drc.xizang.gov.cn/zwgk_1941/tz/202611/t20261112_566589.html"
             }
           ]
         },
         "95": {
-          "price": 10.71,
+          "price": 10.17,
           "history": [
             {
               "date": "2026-04-22",
@@ -8325,6 +8630,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 10.71,
               "sourceUrl": "https://drc.xizang.gov.cn/zwgk_1941/tz/202610/t20261030_564758.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 10.17,
+              "sourceUrl": "https://drc.xizang.gov.cn/zwgk_1941/tz/202611/t20261112_566589.html"
             }
           ]
         },
@@ -8333,7 +8643,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 9.52,
+          "price": 8.99,
           "history": [
             {
               "date": "2026-04-22",
@@ -8399,6 +8709,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 9.52,
               "sourceUrl": "https://drc.xizang.gov.cn/zwgk_1941/tz/202610/t20261030_564758.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.99,
+              "sourceUrl": "https://drc.xizang.gov.cn/zwgk_1941/tz/202611/t20261112_566589.html"
             }
           ]
         }
@@ -8407,15 +8722,15 @@ window.BESFUEL_DATA = {
     "xizang-changdu": {
       "name": "西藏昌都价区",
       "priceScope": "西藏自治区发改委公布的昌都价区（昌都市）汽、柴油最高零售价格，单位元/升；加油站实际成交价可能不同。",
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-13",
       "source": {
         "name": "西藏自治区发展和改革委员会",
-        "url": "https://drc.xizang.gov.cn/zwgk_1941/tz/202610/t20261030_564758.html"
+        "url": "https://drc.xizang.gov.cn/zwgk_1941/tz/202611/t20261112_566589.html"
       },
-      "effectiveLabel": "2026-10-29 24:00 起",
+      "effectiveLabel": "2026-11-12 24:00 起",
       "grades": {
         "92": {
-          "price": 9.94,
+          "price": 9.42,
           "history": [
             {
               "date": "2026-04-22",
@@ -8481,11 +8796,16 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 9.94,
               "sourceUrl": "https://drc.xizang.gov.cn/zwgk_1941/tz/202610/t20261030_564758.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 9.42,
+              "sourceUrl": "https://drc.xizang.gov.cn/zwgk_1941/tz/202611/t20261112_566589.html"
             }
           ]
         },
         "95": {
-          "price": 10.49,
+          "price": 9.95,
           "history": [
             {
               "date": "2026-04-22",
@@ -8551,6 +8871,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 10.49,
               "sourceUrl": "https://drc.xizang.gov.cn/zwgk_1941/tz/202610/t20261030_564758.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 9.95,
+              "sourceUrl": "https://drc.xizang.gov.cn/zwgk_1941/tz/202611/t20261112_566589.html"
             }
           ]
         },
@@ -8559,7 +8884,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 9.32,
+          "price": 8.79,
           "history": [
             {
               "date": "2026-04-22",
@@ -8625,6 +8950,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 9.32,
               "sourceUrl": "https://drc.xizang.gov.cn/zwgk_1941/tz/202610/t20261030_564758.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.79,
+              "sourceUrl": "https://drc.xizang.gov.cn/zwgk_1941/tz/202611/t20261112_566589.html"
             }
           ]
         }
@@ -9175,15 +9505,15 @@ window.BESFUEL_DATA = {
     "ningxia": {
       "name": "宁夏",
       "priceScope": "宁夏市场车用汽油、柴油最高零售价格（元/升）；加油站实付价可能不同。",
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-13",
       "source": {
         "name": "宁夏回族自治区发展和改革委员会",
-        "url": "https://fzggw.nx.gov.cn/tzgg/202610/t20261029_5385131.html"
+        "url": "https://fzggw.nx.gov.cn/tzgg/202611/t20261112_5398222.html"
       },
-      "effectiveLabel": "2026-10-29 24:00 起",
+      "effectiveLabel": "2026-11-12 24:00 起",
       "grades": {
         "92": {
-          "price": 8.78,
+          "price": 8.26,
           "history": [
             {
               "date": "2026-01-21",
@@ -9279,11 +9609,16 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.78,
               "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202610/t20261029_5385131.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.26,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202611/t20261112_5398222.html"
             }
           ]
         },
         "95": {
-          "price": 9.27,
+          "price": 8.73,
           "history": [
             {
               "date": "2026-01-21",
@@ -9379,6 +9714,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 9.27,
               "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202610/t20261029_5385131.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.73,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202611/t20261112_5398222.html"
             }
           ]
         },
@@ -9387,7 +9727,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 8.46,
+          "price": 7.93,
           "history": [
             {
               "date": "2026-01-21",
@@ -9483,6 +9823,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.46,
               "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202610/t20261029_5385131.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 7.93,
+              "sourceUrl": "https://fzggw.nx.gov.cn/tzgg/202611/t20261112_5398222.html"
             }
           ]
         }
@@ -9491,15 +9836,15 @@ window.BESFUEL_DATA = {
     "chongqing": {
       "name": "重庆",
       "priceScope": "重庆市公布的全市汽、柴油最高零售价格（元/升）；市发改委公告只有一张全市价表，未列区县价区；加油站实付价可能不同。",
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-13",
       "source": {
         "name": "重庆市发展和改革委员会",
-        "url": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202610/t20261029_16320915.html"
+        "url": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202611/t20261112_16402518.html"
       },
-      "effectiveLabel": "2026-10-29 24:00 起",
+      "effectiveLabel": "2026-11-12 24:00 起",
       "grades": {
         "92": {
-          "price": 8.94,
+          "price": 8.43,
           "history": [
             {
               "date": "2026-04-22",
@@ -9565,11 +9910,16 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.94,
               "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202610/t20261029_16320915.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.43,
+              "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202611/t20261112_16402518.html"
             }
           ]
         },
         "95": {
-          "price": 9.45,
+          "price": 8.9,
           "history": [
             {
               "date": "2026-04-22",
@@ -9635,6 +9985,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 9.45,
               "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202610/t20261029_16320915.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.9,
+              "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202611/t20261112_16402518.html"
             }
           ]
         },
@@ -9643,7 +9998,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 8.64,
+          "price": 8.11,
           "history": [
             {
               "date": "2026-04-22",
@@ -9709,6 +10064,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.64,
               "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202610/t20261029_16320915.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.11,
+              "sourceUrl": "https://fzggw.cq.gov.cn/zwgk/zfxxgkml/jgxx/jgzc/202611/t20261112_16402518.html"
             }
           ]
         }
@@ -9717,15 +10077,15 @@ window.BESFUEL_DATA = {
     "xinjiang-karamay-main": {
       "name": "新疆·克拉玛依（克拉玛依、白碱滩、乌尔禾）",
       "priceScope": "克拉玛依市克拉玛依区、白碱滩区、乌尔禾区各加油站成品油最高零售价格（元/升）；实付价可能不同。",
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-13",
       "source": {
         "name": "克拉玛依市发展和改革委员会",
-        "url": "https://www.klmy.gov.cn/klmys/c100186/202610/04850242854a4260b77180aa8a741f9c.shtml"
+        "url": "https://www.klmy.gov.cn/klmys/c100186/202611/e0b343e3f0b04e09a798d53bd03c36bd.shtml"
       },
-      "effectiveLabel": "2026-10-29 24:00 起",
+      "effectiveLabel": "2026-11-12 24:00 起",
       "grades": {
         "92": {
-          "price": 8.76,
+          "price": 8.24,
           "history": [
             {
               "date": "2026-01-21",
@@ -9821,11 +10181,16 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.76,
               "sourceUrl": "https://www.klmy.gov.cn/klmys/c100186/202610/04850242854a4260b77180aa8a741f9c.shtml"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.24,
+              "sourceUrl": "https://www.klmy.gov.cn/klmys/c100186/202611/e0b343e3f0b04e09a798d53bd03c36bd.shtml"
             }
           ]
         },
         "95": {
-          "price": 9.44,
+          "price": 8.87,
           "history": [
             {
               "date": "2026-01-21",
@@ -9921,6 +10286,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 9.44,
               "sourceUrl": "https://www.klmy.gov.cn/klmys/c100186/202610/04850242854a4260b77180aa8a741f9c.shtml"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.87,
+              "sourceUrl": "https://www.klmy.gov.cn/klmys/c100186/202611/e0b343e3f0b04e09a798d53bd03c36bd.shtml"
             }
           ]
         },
@@ -9929,7 +10299,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 8.47,
+          "price": 7.93,
           "history": [
             {
               "date": "2026-01-21",
@@ -10025,6 +10395,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.47,
               "sourceUrl": "https://www.klmy.gov.cn/klmys/c100186/202610/04850242854a4260b77180aa8a741f9c.shtml"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 7.93,
+              "sourceUrl": "https://www.klmy.gov.cn/klmys/c100186/202611/e0b343e3f0b04e09a798d53bd03c36bd.shtml"
             }
           ]
         }
@@ -10033,15 +10408,15 @@ window.BESFUEL_DATA = {
     "xinjiang-dushanzi": {
       "name": "新疆·克拉玛依（独山子区）",
       "priceScope": "克拉玛依市独山子区加油站成品油最高零售价格（元/升）；依市发改委公告独山子区列核录，0号柴油价格不同于克拉玛依、白碱滩、乌尔禾区。实际成交价可能不同。",
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-13",
       "source": {
         "name": "克拉玛依市发展和改革委员会",
-        "url": "https://www.klmy.gov.cn/klmys/c100186/202610/04850242854a4260b77180aa8a741f9c.shtml"
+        "url": "https://www.klmy.gov.cn/klmys/c100186/202611/e0b343e3f0b04e09a798d53bd03c36bd.shtml"
       },
-      "effectiveLabel": "2026-10-29 24:00 起",
+      "effectiveLabel": "2026-11-12 24:00 起",
       "grades": {
         "92": {
-          "price": 8.76,
+          "price": 8.24,
           "history": [
             {
               "date": "2026-04-22",
@@ -10107,11 +10482,16 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.76,
               "sourceUrl": "https://www.klmy.gov.cn/klmys/c100186/202610/04850242854a4260b77180aa8a741f9c.shtml"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.24,
+              "sourceUrl": "https://www.klmy.gov.cn/klmys/c100186/202611/e0b343e3f0b04e09a798d53bd03c36bd.shtml"
             }
           ]
         },
         "95": {
-          "price": 9.44,
+          "price": 8.87,
           "history": [
             {
               "date": "2026-04-22",
@@ -10177,6 +10557,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 9.44,
               "sourceUrl": "https://www.klmy.gov.cn/klmys/c100186/202610/04850242854a4260b77180aa8a741f9c.shtml"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.87,
+              "sourceUrl": "https://www.klmy.gov.cn/klmys/c100186/202611/e0b343e3f0b04e09a798d53bd03c36bd.shtml"
             }
           ]
         },
@@ -10185,7 +10570,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 8.28,
+          "price": 7.75,
           "history": [
             {
               "date": "2026-04-22",
@@ -10251,6 +10636,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.28,
               "sourceUrl": "https://www.klmy.gov.cn/klmys/c100186/202610/04850242854a4260b77180aa8a741f9c.shtml"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 7.75,
+              "sourceUrl": "https://www.klmy.gov.cn/klmys/c100186/202611/e0b343e3f0b04e09a798d53bd03c36bd.shtml"
             }
           ]
         }
@@ -10259,15 +10649,15 @@ window.BESFUEL_DATA = {
     "zhejiang": {
       "name": "浙江",
       "priceScope": "浙江省公布的成品油最高零售价格（元/升）；已核公告未列省内分价区。",
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-13",
       "source": {
         "name": "浙江省发展和改革委员会",
-        "url": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_0d3ec855380f4270a618df050d1ca8d7.html"
+        "url": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_0ab908e911ef4e62a0bb7d9d67869388.html"
       },
-      "effectiveLabel": "2026-10-29 24:00 起",
+      "effectiveLabel": "2026-11-12 24:00 起",
       "grades": {
         "92": {
-          "price": 8.85,
+          "price": 8.34,
           "history": [
             {
               "date": "2026-04-22",
@@ -10333,11 +10723,16 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.85,
               "sourceUrl": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_0d3ec855380f4270a618df050d1ca8d7.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.34,
+              "sourceUrl": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_0ab908e911ef4e62a0bb7d9d67869388.html"
             }
           ]
         },
         "95": {
-          "price": 9.42,
+          "price": 8.87,
           "history": [
             {
               "date": "2026-04-22",
@@ -10403,6 +10798,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 9.42,
               "sourceUrl": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_0d3ec855380f4270a618df050d1ca8d7.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.87,
+              "sourceUrl": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_0ab908e911ef4e62a0bb7d9d67869388.html"
             }
           ]
         },
@@ -10411,7 +10811,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 8.57,
+          "price": 8.03,
           "history": [
             {
               "date": "2026-04-22",
@@ -10477,15 +10877,20 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.57,
               "sourceUrl": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_0d3ec855380f4270a618df050d1ca8d7.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.03,
+              "sourceUrl": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_0ab908e911ef4e62a0bb7d9d67869388.html"
             }
           ]
         }
       },
       "latestNotice": {
         "kind": "adjusted",
-        "date": "2026-10-29",
+        "date": "2026-11-12",
         "title": "浙江成品油价格调整",
-        "sourceUrl": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_0d3ec855380f4270a618df050d1ca8d7.html"
+        "sourceUrl": "https://fzggw.zj.gov.cn/col/col1632199/cpyjg/art/2026/art_0ab908e911ef4e62a0bb7d9d67869388.html"
       }
     },
     "hunan": {
@@ -10597,15 +11002,15 @@ window.BESFUEL_DATA = {
     "hainan": {
       "name": "海南",
       "priceScope": "海南省汽、柴油最高零售价格（元/升）。汽油每升含 1.05 元车辆通行附加费，0 号柴油未含车辆通行附加费。",
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-13",
       "source": {
         "name": "海南省发展和改革委员会",
-        "url": "https://plan.hainan.gov.cn/sfgw/gzdt/202610/6d851d149af141eeb84377fa163aa6c0.shtml"
+        "url": "https://plan.hainan.gov.cn/sfgw/gzdt/202611/0dc2374ee8a54c2ba890fe2102154f72.shtml"
       },
-      "effectiveLabel": "2026-10-29 24:00 起",
+      "effectiveLabel": "2026-11-12 24:00 起",
       "grades": {
         "92": {
-          "price": 10,
+          "price": 9.48,
           "history": [
             {
               "date": "2026-08-29",
@@ -10626,11 +11031,16 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 10,
               "sourceUrl": "https://plan.hainan.gov.cn/sfgw/gzdt/202610/6d851d149af141eeb84377fa163aa6c0.shtml"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 9.48,
+              "sourceUrl": "https://plan.hainan.gov.cn/sfgw/gzdt/202611/0dc2374ee8a54c2ba890fe2102154f72.shtml"
             }
           ]
         },
         "95": {
-          "price": 10.63,
+          "price": 10.08,
           "history": [
             {
               "date": "2026-08-29",
@@ -10651,6 +11061,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 10.63,
               "sourceUrl": "https://plan.hainan.gov.cn/sfgw/gzdt/202610/6d851d149af141eeb84377fa163aa6c0.shtml"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 10.08,
+              "sourceUrl": "https://plan.hainan.gov.cn/sfgw/gzdt/202611/0dc2374ee8a54c2ba890fe2102154f72.shtml"
             }
           ]
         },
@@ -10659,7 +11074,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 8.68,
+          "price": 8.14,
           "history": [
             {
               "date": "2026-08-29",
@@ -10680,6 +11095,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.68,
               "sourceUrl": "https://plan.hainan.gov.cn/sfgw/gzdt/202610/6d851d149af141eeb84377fa163aa6c0.shtml"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.14,
+              "sourceUrl": "https://plan.hainan.gov.cn/sfgw/gzdt/202611/0dc2374ee8a54c2ba890fe2102154f72.shtml"
             }
           ]
         }
@@ -10688,15 +11108,15 @@ window.BESFUEL_DATA = {
     "jiangxi": {
       "name": "江西",
       "priceScope": "江西省汽、柴油最高零售价格（元/升），含消费税、增值税、城建税和教育费附加。",
-      "checkedAt": "2026-11-12",
+      "checkedAt": "2026-11-13",
       "source": {
         "name": "江西省发展和改革委员会",
-        "url": "https://drc.jiangxi.gov.cn/jxsfzhggwyh/col/col14590/content/content_2115797128782086144.html"
+        "url": "https://drc.jiangxi.gov.cn/jxsfzhggwyh/col/col14590/content/content_2120799833955041280.html"
       },
-      "effectiveLabel": "2026-10-29 24:00 起",
+      "effectiveLabel": "2026-11-12 24:00 起",
       "grades": {
         "92": {
-          "price": 8.84,
+          "price": 8.33,
           "history": [
             {
               "date": "2026-09-12",
@@ -10712,11 +11132,16 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.84,
               "sourceUrl": "https://drc.jiangxi.gov.cn/jxsfzhggwyh/col/col14590/content/content_2115797128782086144.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.33,
+              "sourceUrl": "https://drc.jiangxi.gov.cn/jxsfzhggwyh/col/col14590/content/content_2120799833955041280.html"
             }
           ]
         },
         "95": {
-          "price": 9.49,
+          "price": 8.94,
           "history": [
             {
               "date": "2026-09-12",
@@ -10732,6 +11157,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 9.49,
               "sourceUrl": "https://drc.jiangxi.gov.cn/jxsfzhggwyh/col/col14590/content/content_2115797128782086144.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.94,
+              "sourceUrl": "https://drc.jiangxi.gov.cn/jxsfzhggwyh/col/col14590/content/content_2120799833955041280.html"
             }
           ]
         },
@@ -10740,7 +11170,7 @@ window.BESFUEL_DATA = {
           "history": []
         },
         "diesel": {
-          "price": 8.64,
+          "price": 8.1,
           "history": [
             {
               "date": "2026-09-12",
@@ -10756,6 +11186,11 @@ window.BESFUEL_DATA = {
               "date": "2026-10-30",
               "price": 8.64,
               "sourceUrl": "https://drc.jiangxi.gov.cn/jxsfzhggwyh/col/col14590/content/content_2115797128782086144.html"
+            },
+            {
+              "date": "2026-11-13",
+              "price": 8.1,
+              "sourceUrl": "https://drc.jiangxi.gov.cn/jxsfzhggwyh/col/col14590/content/content_2120799833955041280.html"
             }
           ]
         }
