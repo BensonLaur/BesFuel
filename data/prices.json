@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "checkedAt": "2026-11-16",
+  "checkedAt": "2026-11-17",
   "regions": {
     "guangdong": {
       "name": "广东",
       "priceScope": "广东省公布的全省最高销售价格；加油站实际成交价可能不同。",
-      "checkedAt": "2026-11-16",
+      "checkedAt": "2026-11-17",
       "source": {
         "name": "广东省发展和改革委员会",
         "url": "https://drc.gd.gov.cn/ywgg/content/post_4979520.html"
@@ -1277,7 +1277,7 @@
     "shanghai": {
       "name": "上海",
       "priceScope": "上海市车用汽、柴油最高零售价格（元/升）",
-      "checkedAt": "2026-11-15",
+      "checkedAt": "2026-11-16",
       "source": {
         "name": "上海市发展和改革委员会",
         "url": "https://fgw.sh.gov.cn/fgw_jggl/20261112/0f5137f27eff456e9e9c2db749801342.html"
