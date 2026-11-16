@@ -2,7 +2,7 @@
 window.BESFUEL_CRUDE_DATA = {
   "version": 1,
   "usage": "third-party-reference",
-  "updatedAt": "2026-11-15T18:39:27.561Z",
+  "updatedAt": "2026-11-16T09:12:58.121Z",
   "series": {
     "wti": {
       "name": "WTI 原油",
@@ -12,12 +12,8 @@ window.BESFUEL_CRUDE_DATA = {
       "currency": "USD",
       "unit": "barrel",
       "basis": "continuous-futures-daily",
-      "fetchedAt": "2026-11-15T18:39:27.561Z",
+      "fetchedAt": "2026-11-16T09:12:58.121Z",
       "history": [
-        {
-          "date": "2026-02-06",
-          "price": 63.5
-        },
         {
           "date": "2026-02-09",
           "price": 64.42
@@ -815,7 +811,10 @@ window.BESFUEL_CRUDE_DATA = {
           "price": 88.92
         }
       ],
-      "intraday": null
+      "intraday": {
+        "date": "2026-11-16",
+        "price": 88.53
+      }
     },
     "brent": {
       "name": "布伦特原油",
@@ -825,12 +824,8 @@ window.BESFUEL_CRUDE_DATA = {
       "currency": "USD",
       "unit": "barrel",
       "basis": "continuous-futures-daily",
-      "fetchedAt": "2026-11-15T18:39:27.561Z",
+      "fetchedAt": "2026-11-16T09:12:58.121Z",
       "history": [
-        {
-          "date": "2026-02-06",
-          "price": 68.1
-        },
         {
           "date": "2026-02-09",
           "price": 69.14
@@ -1628,13 +1623,16 @@ window.BESFUEL_CRUDE_DATA = {
           "price": 96.29
         }
       ],
-      "intraday": null
+      "intraday": {
+        "date": "2026-11-16",
+        "price": 95.34
+      }
     }
   },
   "collection": {
     "mode": "auto",
     "outcome": "updated",
-    "checkedAt": "2026-11-15T18:39:27.561Z",
+    "checkedAt": "2026-11-16T09:12:58.121Z",
     "activeProvider": "eastmoney",
     "attempts": [
       {
