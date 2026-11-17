@@ -1,7 +1,7 @@
 {
   "version": 1,
   "usage": "third-party-reference",
-  "updatedAt": "2026-11-16T21:47:59.360Z",
+  "updatedAt": "2026-11-17T10:24:28.424Z",
   "series": {
     "wti": {
       "name": "WTI 原油",
@@ -11,12 +11,8 @@
       "currency": "USD",
       "unit": "barrel",
       "basis": "continuous-futures-daily",
-      "fetchedAt": "2026-11-16T21:47:59.360Z",
+      "fetchedAt": "2026-11-17T10:24:28.424Z",
       "history": [
-        {
-          "date": "2026-02-09",
-          "price": 64.42
-        },
         {
           "date": "2026-02-10",
           "price": 64.2
@@ -808,11 +804,15 @@
         {
           "date": "2026-11-13",
           "price": 88.92
+        },
+        {
+          "date": "2026-11-16",
+          "price": 85.06
         }
       ],
       "intraday": {
-        "date": "2026-11-16",
-        "price": 85.09
+        "date": "2026-11-17",
+        "price": 85.92
       }
     },
     "brent": {
@@ -823,12 +823,8 @@
       "currency": "USD",
       "unit": "barrel",
       "basis": "continuous-futures-daily",
-      "fetchedAt": "2026-11-16T21:47:59.360Z",
+      "fetchedAt": "2026-11-17T10:24:28.424Z",
       "history": [
-        {
-          "date": "2026-02-09",
-          "price": 69.14
-        },
         {
           "date": "2026-02-10",
           "price": 69.08
@@ -1620,18 +1616,22 @@
         {
           "date": "2026-11-13",
           "price": 96.29
+        },
+        {
+          "date": "2026-11-16",
+          "price": 91.75
         }
       ],
       "intraday": {
-        "date": "2026-11-16",
-        "price": 91.88
+        "date": "2026-11-17",
+        "price": 92.73
       }
     }
   },
   "collection": {
     "mode": "auto",
     "outcome": "updated",
-    "checkedAt": "2026-11-16T21:47:59.360Z",
+    "checkedAt": "2026-11-17T10:24:28.424Z",
     "activeProvider": "eastmoney",
     "attempts": [
       {
