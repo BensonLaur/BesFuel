@@ -4,7 +4,7 @@ BesFuel 自编写的代码和文档按仓库根目录的 [MIT License](../LICENS
 
 ## 自愿支持收款图片
 
-`resources/support/wechat.png` 与 `resources/support/alipay.png` 是作者提供的原始收款图片。作者已允许将两张原图用于 BesFuel 的公开仓库和 GitHub Pages 页面；此许可只覆盖在 BesFuel 中展示，不能推定第三方有权复制后用于自己的收款页面。图片与 Besktop 原件逐字节一致，未裁剪、改写二维码或更换收款主体。
+`resources/support/wechat.png` 与 `resources/support/alipay.png` 是经作者实测确认的减色 PNG 收款图片。作者已允许将两张图片用于 BesFuel 的公开仓库和 GitHub Pages 页面；此许可只覆盖在 BesFuel 中展示，不能推定第三方有权复制后用于自己的收款页面。图片与 Besktop 的减色 PNG 逐字节一致，保留原始尺寸、二维码内容和收款主体。
 
 图片可见的收款主体分别为微信 `Benson(**城)`、支付宝 `Bes软件`。BesFuel 页面不建立订单、不检测付款、不表示付款成功。付款前，使用者仍应在支付应用中确认实际收款人；发布后还需作者用真实手机分别核验两张码的识别和收款主体。
 
