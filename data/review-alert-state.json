@@ -3,9 +3,9 @@
   "entries": {
     "liaoning": {
       "signature": "795174d8d48d5eac6f337d2e9d505c3d1c89ef970e433d1655b339cc40ea9510",
-      "consecutive": 2,
+      "consecutive": 3,
       "alerted": true,
-      "lastRun": "46066548049",
+      "lastRun": "46132812992",
       "problem": {
         "type": "review",
         "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
@@ -18,19 +18,19 @@
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "46066548049"
+      "lastRun": "46132812992"
     },
     "fujian": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "46066548049"
+      "lastRun": "46132812992"
     },
     "guangxi": {
       "signature": "05108321aa96858cee31ac9b73aeec108908d1898645ba1aaa41fe4bd5f97985",
-      "consecutive": 2,
+      "consecutive": 3,
       "alerted": true,
-      "lastRun": "46066548049",
+      "lastRun": "46132812992",
       "problem": {
         "type": "validation",
         "detail": "广西油价：公告列表缺失：http://fgw.gxzf.gov.cn/xwzx/xwfb/",
@@ -43,43 +43,50 @@
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "46066548049"
+      "lastRun": "46132812992"
     },
     "inner-mongolia-west": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "46066548049"
+      "lastRun": "46132812992"
     },
     "jiangsu": {
       "signature": "50b72d24a98e49db1bdae95b588641c6af8e3b8502e6301203dedc48e6c1ab87",
-      "consecutive": 1,
+      "consecutive": 2,
       "alerted": true,
-      "lastRun": "46066548049",
+      "lastRun": "46132812992",
       "problem": {
         "type": "validation",
         "detail": "江苏油价：公告标题或发布单位与列表不符：https://fzggw.jiangsu.gov.cn/art/2026/11/26/art_91435_11866223.html",
         "url": "",
         "immediate": true
-      }
+      },
+      "openIssue": true
     },
     "shanghai": {
-      "signature": null,
-      "consecutive": 0,
+      "signature": "f4be8d26945ec3aa016ac4d0fe604490670215f250cb92e2005757e1c42616c1",
+      "consecutive": 1,
       "alerted": false,
-      "lastRun": "46066548049"
+      "lastRun": "46132812992",
+      "problem": {
+        "type": "timeout",
+        "detail": "官方来源持续访问失败（timeout）",
+        "url": "https://fgw.sh.gov.cn/fgw_jggl/index_3.html",
+        "immediate": false
+      }
     },
     "shanxi": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "46066548049"
+      "lastRun": "46132812992"
     },
     "sichuan-zone1": {
       "signature": "23f360b80df136a69cc7ae96888c535da797d27eb3cd5cd704cba7055df04223",
-      "consecutive": 2,
+      "consecutive": 3,
       "alerted": true,
-      "lastRun": "46066548049",
+      "lastRun": "46132812992",
       "problem": {
         "type": "validation",
         "detail": "四川第一价区：未知油价公告标题：四川省发展和改革委员会关于降低成品油价格的通知(川发改价格〔2026〕531号)",
@@ -90,9 +97,9 @@
     },
     "sichuan-zone3": {
       "signature": "23f360b80df136a69cc7ae96888c535da797d27eb3cd5cd704cba7055df04223",
-      "consecutive": 2,
+      "consecutive": 3,
       "alerted": true,
-      "lastRun": "46066548049",
+      "lastRun": "46132812992",
       "problem": {
         "type": "validation",
         "detail": "四川第一价区：未知油价公告标题：四川省发展和改革委员会关于降低成品油价格的通知(川发改价格〔2026〕531号)",
@@ -105,25 +112,25 @@
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "46066548049"
+      "lastRun": "46132812992"
     },
     "anhui": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "46066548049"
+      "lastRun": "46132812992"
     },
     "chongqing": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "46066548049"
+      "lastRun": "46132812992"
     },
     "guizhou-zone1": {
       "signature": "0a55fd37ca962a14350cd0afdbb079ba8ee79e69b8b11c3c0a46401dedab75f3",
-      "consecutive": 2,
+      "consecutive": 3,
       "alerted": true,
-      "lastRun": "46066548049",
+      "lastRun": "46132812992",
       "problem": {
         "type": "review",
         "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
@@ -134,9 +141,9 @@
     },
     "guizhou-zone2": {
       "signature": "0a55fd37ca962a14350cd0afdbb079ba8ee79e69b8b11c3c0a46401dedab75f3",
-      "consecutive": 2,
+      "consecutive": 3,
       "alerted": true,
-      "lastRun": "46066548049",
+      "lastRun": "46132812992",
       "problem": {
         "type": "review",
         "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
@@ -147,9 +154,9 @@
     },
     "guizhou-zone3": {
       "signature": "0a55fd37ca962a14350cd0afdbb079ba8ee79e69b8b11c3c0a46401dedab75f3",
-      "consecutive": 2,
+      "consecutive": 3,
       "alerted": true,
-      "lastRun": "46066548049",
+      "lastRun": "46132812992",
       "problem": {
         "type": "review",
         "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
@@ -160,9 +167,9 @@
     },
     "hebei": {
       "signature": "d4b44f3e2ad4fb3e241911c52d3682582c64a0c259f441d3434b059386e4f520",
-      "consecutive": 2,
+      "consecutive": 3,
       "alerted": true,
-      "lastRun": "46066548049",
+      "lastRun": "46132812992",
       "problem": {
         "type": "review",
         "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
@@ -173,9 +180,9 @@
     },
     "heilongjiang-north": {
       "signature": "031077ec49e0e58df31fe9e1ef03fd45b3f573ee8bd50842b78602eb9af649fc",
-      "consecutive": 2,
+      "consecutive": 3,
       "alerted": true,
-      "lastRun": "46066548049",
+      "lastRun": "46132812992",
       "problem": {
         "type": "review",
         "detail": "季节折算系数已到期，需新的官方系数",
@@ -186,9 +193,9 @@
     },
     "heilongjiang-south": {
       "signature": "031077ec49e0e58df31fe9e1ef03fd45b3f573ee8bd50842b78602eb9af649fc",
-      "consecutive": 2,
+      "consecutive": 3,
       "alerted": true,
-      "lastRun": "46066548049",
+      "lastRun": "46132812992",
       "problem": {
         "type": "review",
         "detail": "季节折算系数已到期，需新的官方系数",
@@ -199,9 +206,9 @@
     },
     "henan": {
       "signature": "eafd685da945360cea8339144017f1decca38a0c93107896ad894bd1bbe587ca",
-      "consecutive": 2,
+      "consecutive": 3,
       "alerted": true,
-      "lastRun": "46066548049",
+      "lastRun": "46132812992",
       "problem": {
         "type": "validation",
         "detail": "河南油价公告：生效日或适用油品异常：https://fgw.henan.gov.cn/2026/11-26/3452362.html",
@@ -212,9 +219,9 @@
     },
     "hunan": {
       "signature": "406b3c52d62c338606466ce687c7b2f9e9bfa2a1eba7cab295b8186fb113c864",
-      "consecutive": 3,
+      "consecutive": 4,
       "alerted": true,
-      "lastRun": "46066548049",
+      "lastRun": "46132812992",
       "problem": {
         "type": "validation",
         "detail": "湖南油价公告：未知油价公告标题：关于调整成品油价格的通知(2026年11月２６日)",
@@ -227,19 +234,19 @@
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "46066548049"
+      "lastRun": "46132812992"
     },
     "ningxia": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "46066548049"
+      "lastRun": "46132812992"
     },
     "qinghai-zone1": {
       "signature": "366dc17406d84af9467a07b90408ef75a8372e66019e326919c7d1567f6dee5b",
-      "consecutive": 2,
+      "consecutive": 3,
       "alerted": true,
-      "lastRun": "46066548049",
+      "lastRun": "46132812992",
       "problem": {
         "type": "review",
         "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
@@ -250,9 +257,9 @@
     },
     "qinghai-zone2": {
       "signature": "366dc17406d84af9467a07b90408ef75a8372e66019e326919c7d1567f6dee5b",
-      "consecutive": 2,
+      "consecutive": 3,
       "alerted": true,
-      "lastRun": "46066548049",
+      "lastRun": "46132812992",
       "problem": {
         "type": "review",
         "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
@@ -263,9 +270,9 @@
     },
     "qinghai-zone3": {
       "signature": "366dc17406d84af9467a07b90408ef75a8372e66019e326919c7d1567f6dee5b",
-      "consecutive": 2,
+      "consecutive": 3,
       "alerted": true,
-      "lastRun": "46066548049",
+      "lastRun": "46132812992",
       "problem": {
         "type": "review",
         "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
@@ -276,9 +283,9 @@
     },
     "shaanxi-midnorth": {
       "signature": "2f32c2cb366bc7281f10efd168fe890da435791eee1eba8b0cb7daeabb94d887",
-      "consecutive": 2,
+      "consecutive": 3,
       "alerted": true,
-      "lastRun": "46066548049",
+      "lastRun": "46132812992",
       "problem": {
         "type": "review",
         "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
@@ -289,9 +296,9 @@
     },
     "shaanxi-south": {
       "signature": "2f32c2cb366bc7281f10efd168fe890da435791eee1eba8b0cb7daeabb94d887",
-      "consecutive": 2,
+      "consecutive": 3,
       "alerted": true,
-      "lastRun": "46066548049",
+      "lastRun": "46132812992",
       "problem": {
         "type": "review",
         "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
@@ -302,9 +309,9 @@
     },
     "shaanxi-xian": {
       "signature": "3710d6d88834e4925c6267914b906823bfe2fb0fceff5fb5968f260d702065a1",
-      "consecutive": 2,
+      "consecutive": 3,
       "alerted": true,
-      "lastRun": "46066548049",
+      "lastRun": "46132812992",
       "problem": {
         "type": "review",
         "detail": "发现新的官方公告，现有解析规则尚不能确认完整价格",
@@ -317,13 +324,13 @@
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "46066548049"
+      "lastRun": "46132812992"
     },
     "sichuan-zone2": {
       "signature": "4cf40d0b0fdd2b6563a57f1a25b75b55363e04d4d6c8e67e9b1eef17f0b41df1",
-      "consecutive": 2,
+      "consecutive": 3,
       "alerted": true,
-      "lastRun": "46066548049",
+      "lastRun": "46132812992",
       "problem": {
         "type": "validation",
         "detail": "sichuan: 对应的官方公告尚未通过检查",
@@ -334,9 +341,9 @@
     },
     "xinjiang-dushanzi": {
       "signature": "647eabcf04955c7d3803cedb9affd37045672fa453c33bd3d9769d85194d1d1e",
-      "consecutive": 2,
+      "consecutive": 3,
       "alerted": true,
-      "lastRun": "46066548049",
+      "lastRun": "46132812992",
       "problem": {
         "type": "validation",
         "detail": "独山子油价公告：生效时间、单位、署名或双价区表不符",
@@ -347,9 +354,9 @@
     },
     "xinjiang-karamay-main": {
       "signature": "1b53251b85bd08b6b10ea0ea55571e741a0b6f5ee935e824ffb4bc265b278b83",
-      "consecutive": 2,
+      "consecutive": 3,
       "alerted": true,
-      "lastRun": "46066548049",
+      "lastRun": "46132812992",
       "problem": {
         "type": "validation",
         "detail": "克拉玛依油价公告：升价表、单位或适用区缺失",
@@ -362,73 +369,73 @@
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "46066548049"
+      "lastRun": "46132812992"
     },
     "xizang-lhasa": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "46066548049"
+      "lastRun": "46132812992"
     },
     "xizang-ngari": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "46066548049"
+      "lastRun": "46132812992"
     },
     "yunnan-kunming": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "46066548049"
+      "lastRun": "46132812992"
     },
     "yunnan-zone2": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "46066548049"
+      "lastRun": "46132812992"
     },
     "yunnan-zone3": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "46066548049"
+      "lastRun": "46132812992"
     },
     "yunnan-zone4": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "46066548049"
+      "lastRun": "46132812992"
     },
     "yunnan-zone5": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "46066548049"
+      "lastRun": "46132812992"
     },
     "zhejiang": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "46066548049"
+      "lastRun": "46132812992"
     },
     "hainan": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "46066548049"
+      "lastRun": "46132812992"
     },
     "jiangxi": {
       "signature": null,
       "consecutive": 0,
       "alerted": false,
-      "lastRun": "46066548049"
+      "lastRun": "46132812992"
     },
     "market-forecast": {
       "signature": "817f6500ca11f9fabbf4eceff2d01150714bb5867530e558941f0b8d413dfaef",
-      "consecutive": 2,
+      "consecutive": 3,
       "alerted": true,
-      "lastRun": "46066548049",
+      "lastRun": "46132812992",
       "problem": {
         "type": "validation",
         "detail": "forecast fields do not match the next window",
